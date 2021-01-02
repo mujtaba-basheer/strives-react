@@ -9,6 +9,12 @@ body {
   background-color: aquamarine;
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .showcase {
   background: url(../images/background.png);
   height: 90vh;
