@@ -1,4 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
+  margin-top: 2rem;
   background-color: aquamarine;
+}
+
+.showcase {
+  background: url(../images/background.png);
+  height: 90vh;
 }
 /*# sourceMappingURL=style.css.map */
