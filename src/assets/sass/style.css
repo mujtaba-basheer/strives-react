@@ -100,15 +100,27 @@ body {
   margin-bottom: 1.5em;
 }
 
+.latest-collection__section :hover figure {
+  background: black;
+}
+
 .latest-collection__title {
   margin-bottom: 2em;
   font-size: 1.625em;
   font-weight: 400;
 }
 
-.latest-collection__img {
+.latest-collection__image {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  background: transparent;
+}
+
+.latest-collection__image--img {
+  opacity: 1;
+  width: 100%;
 }
 
 .latest-collection__text {
@@ -204,5 +216,43 @@ body {
   border: 1px solid #e6e8ea;
   margin: 2em auto;
   width: 75vw;
+}
+
+.theme {
+  margin: 3em 0;
+  text-align: center;
+  font-family: "Lora", serif;
+  width: 92vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.theme__section {
+  position: relative;
+  margin-bottom: 1.5em;
+}
+
+.theme__title {
+  margin-bottom: 2em;
+  font-size: 1.625em;
+  font-weight: 400;
+}
+
+.theme__image {
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.theme__image--img {
+  width: 100%;
+  height: auto;
+}
+
+.theme__text {
+  color: #2c3d50;
+  font-weight: 400;
+  margin: 1em 0;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

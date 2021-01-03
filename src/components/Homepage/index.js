@@ -4,6 +4,7 @@ import Navbar from "../Navbar";
 import Showcase from "./Showcase";
 import LatestCollections from "./LatestCollection";
 import Feature from "./Feature";
+import Themes from "./Themes";
 
 const index = () => {
   return (
@@ -12,6 +13,7 @@ const index = () => {
       <Showcase />
       <LatestCollections />
       <Feature />
+      <Themes />
     </>
   );
 };
