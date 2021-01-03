@@ -9,10 +9,12 @@ const index = () => {
     var logo = document.getElementsByClassName("logo")[0];
     if (window.pageYOffset < 80) {
       mainNav.classList.add("mt-1");
+      mainNav.classList.add("ml-5");
       logo.classList.add("mb-1");
       mainNav.classList.remove("scrolled");
     } else {
       mainNav.classList.remove("mt-1");
+      mainNav.classList.remove("ml-5");
       logo.classList.remove("mb-1");
       mainNav.classList.add("scrolled");
     }
@@ -22,9 +24,9 @@ const index = () => {
 
   return (
     <div className="navbar flex">
-      <div className="main-nav flex mt-1">
+      <div className="main-nav flex mt-1"> 
         <img className="logo mb-1" src={logo} alt="strides" />
-        <nav>
+        <nav className="nav">
           <ul className="flex">
             <li>
               <a href="/">Home</a>
