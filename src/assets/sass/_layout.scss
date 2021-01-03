@@ -1,0 +1,43 @@
+.navbar {
+  justify-content: space-between;
+  font-family: Lora;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  color: #ffffff;
+
+  .logo {
+    width: 46px;
+    height: 45px;
+    margin-bottom: 26px;
+  }
+
+  .main-nav {
+    margin-top: 24px;
+    flex-direction: column;
+  }
+
+  .main-nav:first-child {
+    margin-bottom: 26px;
+  }
+
+  .main-nav li {
+    margin: 0 30px;
+  }
+
+  .extra-options {
+    margin-right: 37px;
+  }
+
+  .extra-options li {
+    margin: 0 12.5px;
+  }
+}
+
+.showcase {
+  background: url(../images/background.png);
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

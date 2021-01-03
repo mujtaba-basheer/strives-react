@@ -8,6 +8,7 @@ const index = () => {
     <>
       <Navbar />
       <Showcase />
+      <Showcase />
     </>
   );
 };

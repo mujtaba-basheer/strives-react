@@ -1,21 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "base";
+@import "utilities";
+@import "layout";
+@import "components";
 
-body {
-  margin-top: 2rem;
-  background-color: aquamarine;
-}
 
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.showcase {
-  background: url(../images/background.png);
-  height: 90vh;
-}
