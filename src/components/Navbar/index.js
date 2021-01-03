@@ -3,27 +3,27 @@ import React from "react";
 import logo from "../../assets/images/logo.png";
 
 const index = () => {
-  /*const changeNavbar = () => {
+  const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
-    var sticky = navbar.offsetTop;
-    console.log(sticky, window.pageYOffset);
-    if (window.pageYOffset === sticky) {
-        console.log("true");
-        navbar.classList.remove("sticky");
+    var mainNav = document.getElementsByClassName("main-nav")[0];
+    var logo = document.getElementsByClassName("logo")[0];
+    if (window.pageYOffset < 80) {
+      mainNav.classList.add("mt-1");
+      logo.classList.add("mb-1");
+      mainNav.classList.remove("scrolled");
     } else {
-        console.log("false");
-        navbar.classList.add("sticky");
-
+      mainNav.classList.remove("mt-1");
+      logo.classList.remove("mb-1");
+      mainNav.classList.add("scrolled");
     }
   };
 
-  window.addEventListener("scroll", changeNavbar); */
+  window.addEventListener("scroll", changeNavbar);
 
   return (
-    /* Navbar */
     <div className="navbar flex">
-      <div className="main-nav flex">
-        <img className="logo" src={logo} alt="strides" />
+      <div className="main-nav flex mt-1">
+        <img className="logo mb-1" src={logo} alt="strides" />
         <nav>
           <ul className="flex">
             <li>
@@ -62,6 +62,11 @@ const index = () => {
           <li>
             <a href="">
               <i className="fas fa-shopping-cart"></i>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="fas fa-search"></i>
             </a>
           </li>
         </ul>

@@ -1,25 +1,27 @@
 .navbar {
-  justify-content: space-between;
+  justify-content: center;
   font-family: Lora;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 23px;
   color: #ffffff;
+  transition: all 1s;
+
+  position: fixed;
+  width: 100%;
+  height: 120px;
+  z-index: 2;
 
   .logo {
     width: 46px;
     height: 45px;
-    margin-bottom: 26px;
   }
 
   .main-nav {
-    margin-top: 24px;
     flex-direction: column;
-  }
-
-  .main-nav:first-child {
-    margin-bottom: 26px;
+    align-items: center;
+    justify-content: center;
   }
 
   .main-nav li {
@@ -27,17 +29,24 @@
   }
 
   .extra-options {
-    margin-right: 37px;
+    margin-left: 30rem;
   }
 
   .extra-options li {
     margin: 0 12.5px;
   }
+
+  .scrolled {
+    flex-direction: row;
+  }
 }
 
 .showcase {
-  background: url(../images/background.png);
-  height: 90vh;
+  position: relative;
+  background-image: url(../images/background.png);
+  width: 100%;
+  height: 100vh;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
 }
