@@ -1,6 +1,6 @@
 import React from "react";
 
-const Showcase = () => {
+const LatestCollection = () => {
   return (
     <div>
       <section className="latest-collection">
@@ -43,4 +43,4 @@ const Showcase = () => {
   );
 };
 
-export default Showcase;
+export default LatestCollection;
