@@ -3,11 +3,13 @@ import React from "react";
 const Showcase = () => {
   return (
     <section className="showcase">
-      <div className="showcase-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, ullam
-        obcaecati. Error soluta sunt accusamus unde autem eveniet maiores
-        dolorem reprehenderit dolor, aliquid alias expedita facere aliquam,
-        aperiam eum cum?
+      <div className="showcasedetails flex">
+        <div className="showcasedetails__text">
+          A collection filled with traditions, stories & passion.
+        </div>
+        <div className="showcasedetails__button">
+          <button>SHOP COLLECTION</button>
+        </div>
       </div>
     </section>
   );

@@ -8,15 +8,17 @@ const Index = () => {
   const [hoverarray, setHoverarray] = useState([]);
 
   const changeNavbar = () => {
-    /* var navbar = document.getElementsByClassName("navbar")[0]; */
+    var navbar = document.getElementsByClassName("navbar")[0];
     var mainNav = document.getElementsByClassName("main-nav")[0];
     var logo = document.getElementsByClassName("logo")[0];
     if (window.pageYOffset < 80) {
+      navbar.style.backgroundColor = "transparent";
       mainNav.classList.add("mt-1");
       mainNav.classList.add("ml-5");
       logo.classList.add("mb-1");
       mainNav.classList.remove("scrolled");
     } else {
+      navbar.style.backgroundColor = "rgba(0,0,0, 0.6)";
       mainNav.classList.remove("mt-1");
       mainNav.classList.remove("ml-5");
       logo.classList.remove("mb-1");
@@ -33,11 +35,29 @@ const Index = () => {
       setHoverarray(desk_home_data);
     }
 
-    document.getElementsByClassName("navbar__hovermenu")[0].classList.remove("hide");
+    document
+      .getElementsByClassName("navbar__hovermenu")[0]
+      .classList.remove("hide");
   }
 
   function removeHoverMenu() {
-    document.getElementsByClassName("navbar__hovermenu")[0].classList.add("hide");
+    setTimeout(() => {
+      document
+        .getElementsByClassName("navbar__hovermenu")[0]
+        .classList.add("hide");
+    }, 2000);
+  }
+
+  function opensearchdiv() {
+    document
+      .getElementsByClassName("navbar__searchdiv")[0]
+      .classList.remove("hide");
+  }
+
+  function closesearchdiv() {
+    document
+      .getElementsByClassName("navbar__searchdiv")[0]
+      .classList.add("hide");
   }
 
   return (
@@ -92,10 +112,8 @@ const Index = () => {
                 <i className="fas fa-shopping-cart"></i>
               </a>
             </li>
-            <li>
-              <a href="">
-                <i class="fas fa-search"></i>
-              </a>
+            <li onClick={opensearchdiv}>
+              <i class="fas fa-search"></i>
             </li>
           </ul>
         </div>
@@ -114,6 +132,17 @@ const Index = () => {
           </div>
           <div className="hovermenu__image">
             <img src={img} alt="nav img" />
+          </div>
+        </div>
+      </div>
+      <div className="navbar__searchdiv hide">
+        <div className="search__div flex">
+          <input type="text" placeholder="type to search here" />
+          <div className="searchIcon">
+            <button>Search</button>
+          </div>
+          <div className="closeIcon">
+            <i onClick={closesearchdiv} className="fas fa-times"></i>
           </div>
         </div>
       </div>
