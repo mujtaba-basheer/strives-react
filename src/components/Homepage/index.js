@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from "../Navbar";
+import Navbar from "../Navbar/Index";
 import Showcase from "./Showcase";
 import LatestCollections from "./LatestCollection";
 import Feature from "./Feature";

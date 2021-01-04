@@ -21,7 +21,15 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 .eslintcache
 
 /src/assets/sass/style.css
 /src/assets/sass/style.css.map
+=======
+
+.eslintcache
+
+/src/assets/style.css
+/src/assets/style.css.map
+>>>>>>> 061a7cb470e19b636d32be28da1464cc3573472d

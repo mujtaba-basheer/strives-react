@@ -15,13 +15,14 @@
   margin-bottom: 2rem;
 }
 
+.ml-5 {
+  margin-left: 5rem;
+}
+
 .flex-row {
   flex-direction: row;
 }
 
-/* .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-} */
+.hide {
+  display: none;
+}
