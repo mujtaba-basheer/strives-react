@@ -1,20 +1,17 @@
 import React from "react";
 import feature_big from "../../assets/images/homepage/feature_big.png";
+import feature from "../../assets/images/homepage/feature.png";
 
 const Feature = () => {
   return (
     <div>
       <section className="feature">
         <div className="feature__image">
-          <img
-            className="feature__image--img"
-            alt="feature"
-            src={
-              window.innerWidth >= 1170
-                ? feature_big
-                : "https://chartsjs.s3.us-east-2.amazonaws.com/images/NAY04725+2.png"
-            }
-          />
+          <picture>
+            <source srcset={feature_big} media="(min-width: 1170px)" />
+            <source srcset={feature} />
+            <img className="feature__image--img" alt="feature" src={feature} />
+          </picture>
           <div className="feature__image--border"></div>
         </div>
         <div className="feature__details">

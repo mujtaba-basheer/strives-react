@@ -61,6 +61,7 @@
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
     border: none;
+    cursor: pointer;
     background: #28303a;
   }
 }
@@ -139,6 +140,10 @@
   &__section {
     position: relative;
     margin-bottom: 1.5em;
+  }
+
+  &__desktop {
+    display: none;
   }
 
   &__nav {
@@ -263,7 +268,7 @@
     }
 
     &__divider {
-      margin: 2em auto 2em 0;
+      margin: 1em auto 1.5em 0;
       width: 80%;
     }
   }

@@ -69,7 +69,7 @@ const Themes = () => {
           </div>
           <h3 className="theme__text">{themes[current]["text"]}</h3>
         </div>
-        <div className="theme__section">
+        <div className="theme__section theme__desktop">
           {themes.map(({ url, text }, index) => (
             <div key={index}>
               <div className="theme__image">
