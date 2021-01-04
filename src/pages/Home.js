@@ -1,6 +1,6 @@
 import React from "react";
 
-import Homepage from "../components/Homepage/index";
+import Homepage from "../components/Homepage/Index";
 
 const Home = () => {
   return (
