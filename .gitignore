@@ -24,5 +24,7 @@ yarn-error.log*
 
 .eslintcache
 
-/src/assets/style.css
-/src/assets/style.css.map
+/debug.log
+
+/src/assets/sass/style.css
+/src/assets/sass/style.css.map
