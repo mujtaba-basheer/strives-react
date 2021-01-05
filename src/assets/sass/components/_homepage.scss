@@ -1,5 +1,5 @@
 .latest-collection {
-  margin: 3em 0;
+  margin: 3em auto;
   text-align: center;
   font-family: "Lora", serif;
   width: 92vw;
@@ -10,9 +10,18 @@
     position: relative;
     margin-bottom: 1.5em;
 
-    :hover {
+    &:hover {
       figure {
         background: black;
+
+        img {
+          opacity: 0.8;
+        }
+      }
+
+      & .latest-collection__text {
+        transform: translateY(-2em);
+        font-size: 1.2rem;
       }
     }
   }
@@ -36,11 +45,13 @@
 
   &__text {
     color: #fff;
+    font-size: 1rem;
     text-align: center;
     position: absolute;
     z-index: 10;
     bottom: 5em;
     left: calc(50% - 102px);
+    transition: transform 300ms;
 
     &--head {
       font-size: 2em;
@@ -299,8 +310,6 @@
 
 @media (min-width: 1170px) {
   .latest-collection {
-    margin: 3em 0;
-
     &__container {
       display: flex;
       justify-content: space-around;
