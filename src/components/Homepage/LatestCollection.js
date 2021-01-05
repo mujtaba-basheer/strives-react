@@ -5,7 +5,9 @@ const LatestCollection = () => {
   return (
     <div>
       <section className="latest-collection">
-        <h2 className="latest-collection__title">The Latest Collection</h2>
+        <div className="latest-collection__title section-title">
+          The Latest Collection
+        </div>
         <div className="latest-collection__container">
           <div className="latest-collection__section latest-collection--1">
             <figure className="latest-collection__image">
