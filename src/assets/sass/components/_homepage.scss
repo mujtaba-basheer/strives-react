@@ -308,6 +308,50 @@
   }
 }
 
+.newsletter {
+  background: #f6f9fc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  &__text {
+    font-size: 1.25em;
+    margin: 4em auto 0.25em auto;
+    font-family: var(--ff-p);
+  }
+
+  &__sub {
+    border-radius: 2px;
+    background: rgba(55, 63, 69, 0.2);
+    padding: 0.5em;
+    margin: 0 0.5em 4em 0.5em;
+    display: flex;
+    gap: 1em;
+
+    &--input {
+      display: inline-block;
+      width: 100%;
+      font-family: var(--ff-p);
+      background: rgba(55, 63, 69, 0.2);
+      box-shadow: none;
+      border: none;
+      padding: 0.5em;
+    }
+
+    &--btn {
+      display: inline-block;
+      width: min-content;
+      background: #222b32;
+      color: #fff;
+      padding: 0 1em;
+      border: none;
+      font-weight: lighter;
+      cursor: pointer;
+    }
+  }
+}
+
 @media (min-width: 1170px) {
   .latest-collection {
     &__container {
@@ -522,6 +566,26 @@
           color: rgba($color: #2c3d50, $alpha: 0.6);
         }
       }
+    }
+  }
+
+  .newsletter {
+    background: #f6f9fc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    &__text {
+      font-size: 1.5em;
+      margin: 4em auto 0.25em auto;
+    }
+
+    &__sub {
+      font-size: 1.2rem;
+      width: 40%;
+      padding: 0.5em;
+      margin: 0.5em auto 4em auto;
     }
   }
 }
