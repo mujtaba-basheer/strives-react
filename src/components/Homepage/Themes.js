@@ -38,7 +38,7 @@ const Themes = () => {
   return (
     <div>
       <section className="theme">
-        <h2 className="theme__title">Theme &amp; Occasions</h2>
+        <div className="theme__title section-title">Theme &amp; Occasions</div>
         <div className="theme__section theme__mobile">
           <div className="theme__nav">
             <span>

@@ -5,6 +5,7 @@ import Showcase from "./Showcase";
 import LatestCollections from "./LatestCollection";
 import Feature from "./Feature";
 import Themes from "./Themes";
+import BestSeller from "./BestSeller";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <LatestCollections />
       <Feature />
       <Themes />
+      <BestSeller />
     </>
   );
 };

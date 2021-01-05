@@ -17,7 +17,7 @@ const Feature = () => {
         <div className="feature__details">
           <div>
             <div className="feature__text">
-              <h3 className="feature__text--head">Embroidery</h3>
+              <div className="feature__text--head">Embroidery</div>
               <p className="feature__text--p">
                 Works best with simple, low color count logos or artwork.
               </p>
