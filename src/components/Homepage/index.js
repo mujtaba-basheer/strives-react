@@ -1,6 +1,7 @@
 import React from "react";
 
 import Navbar from "../Navbar/index";
+import Footer from "../Footer/index";
 import Showcase from "./Showcase";
 import LatestCollections from "./LatestCollection";
 import Feature from "./Feature";
@@ -18,6 +19,7 @@ const Index = () => {
       <Themes />
       <BestSeller />
       <Newsletter />
+      <Footer />
     </>
   );
 };
