@@ -184,7 +184,7 @@
       align-items: center;
       position: relative;
       cursor: pointer;
-      color: #2C3D50;
+      color: #2c3d50;
 
       &:after {
         /* content: "\002B"; */
@@ -211,6 +211,28 @@
         flex-direction: column;
         align-items: flex-start;
       }
+    }
+  }
+
+  .sidebar__searchdiv {
+    width: 100%;
+    height: 60%;
+    justify-content: center;
+
+    .closeIcon {
+      position: absolute;
+      right: 15%;
+    }
+
+    input {
+      border: none;
+      width: 80%;
+      border-bottom: 1px solid black;
+      outline: none;
+      padding: 5px;
+      font-size: 18px;
+      line-height: 22px;
+      color: #2c3d50;
     }
   }
 }

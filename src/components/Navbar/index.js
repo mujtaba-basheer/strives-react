@@ -73,6 +73,23 @@ const Index = () => {
     document.getElementById("menu").style.width = "0%";
   }
 
+  function toggleSidebarSearch() {
+    var accordian = document.getElementsByClassName("accordian")[0];
+    var searchdiv = document.getElementsByClassName("sidebar__searchdiv")[0];
+    /* if (accordian.classList.contains("hide")) {
+      accordian.classList.remove("hide");
+    } */
+    accordian.classList.add("hide");
+    searchdiv.classList.remove("hide");
+  }
+
+  function toggleSidebarSearchClose() {
+    var accordian = document.getElementsByClassName("accordian")[0];
+    var searchdiv = document.getElementsByClassName("sidebar__searchdiv")[0];
+    accordian.classList.remove("hide");
+    searchdiv.classList.add("hide");
+  }
+
   return (
     <>
       <div className="navbar flex">
@@ -256,9 +273,19 @@ const Index = () => {
           </div>
         </div>
 
+        <div className="flex sidebar__searchdiv hide">
+          <img
+            className="closeIcon"
+            onClick={toggleSidebarSearchClose}
+            src={closeicon}
+            alt="closeicon"
+          />
+          <input type="text" />
+        </div>
+
         {/* Bottom Area of the Sidebar */}
         <ul className="flex bottom-area">
-          <li>
+          <li onClick={toggleSidebarSearch}>
             <i class="fas fa-search"></i>
           </li>
           <li>
