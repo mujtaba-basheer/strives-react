@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import img from "../../assets/images/NAY047.png";
 import hamburger from "../../assets/images/navbar/hamburger.png";
+import closeicon from "../../assets/images/navbar/close.png";
 import { desk_home_data } from "./NavbarData";
+import { func } from "prop-types";
 
 const Index = () => {
   const [hoverarray, setHoverarray] = useState([]);
@@ -61,6 +63,14 @@ const Index = () => {
     document
       .getElementsByClassName("navbar__searchdiv")[0]
       .classList.add("hide");
+  }
+
+  function openSideMenu() {
+    document.getElementById("menu").style.width = "100%";
+  }
+
+  function closeSideMenu() {
+    document.getElementById("menu").style.width = "0%";
   }
 
   return (
@@ -135,7 +145,7 @@ const Index = () => {
             display: "none",
           }}
         >
-          <img src={hamburger} alt="hamburger" />
+          <img onClick={openSideMenu} src={hamburger} alt="hamburger" />
         </button>
       </div>
       <div className="navbar__hovermenu hide">
@@ -165,6 +175,102 @@ const Index = () => {
             <i onClick={closesearchdiv} className="fas fa-times"></i>
           </div>
         </div>
+      </div>
+      <div
+        id="menu"
+        className="sidemenu"
+        style={{
+          width: "0%",
+        }}
+      >
+        {/* Top Area of the Sidebar */}
+        <ul className="flex top-area">
+          <li>
+            <img
+              className="logo"
+              onClick={closeSideMenu}
+              src={logo}
+              alt="logo"
+            />
+          </li>
+          <li>
+            <img
+              className="closeicon"
+              onClick={closeSideMenu}
+              src={closeicon}
+              alt="close"
+            />
+          </li>
+        </ul>
+
+        {/* Accordian */}
+
+        <div className="accordian">
+          <div className="accordian-item">
+            <div className="accordian-item-header active">Home</div>
+            <div className="accordian-item-body">
+              <ul className="flex">
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+              </ul>
+            </div>
+          </div>
+          <div className="accordian-item">
+            <div className="accordian-item-header">Shop</div>
+            <div className="accordian-item-body">
+              <ul className="flex">
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+              </ul>
+            </div>
+          </div>
+          <div className="accordian-item">
+            <div className="accordian-item-header">Brands</div>
+            <div className="accordian-item-body">
+              <ul className="flex">
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+              </ul>
+            </div>
+          </div>
+          <div className="accordian-item">
+            <div className="accordian-item-header">Collections</div>
+            <div className="accordian-item-body">
+              <ul className="flex">
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Area of the Sidebar */}
+        <ul className="flex bottom-area">
+          <li>
+            <i class="fas fa-search"></i>
+          </li>
+          <li>
+            <i className="far fa-user-circle"></i>
+          </li>
+          <li>
+            <i className="fas fa-heart"></i>
+          </li>
+          <li>
+            <i className="fas fa-shopping-cart"></i>
+          </li>
+        </ul>
       </div>
     </>
   );
