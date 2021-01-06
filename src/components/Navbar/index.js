@@ -13,12 +13,14 @@ const Index = () => {
     var logo = document.getElementsByClassName("logo")[0];
     if (window.pageYOffset < 80) {
       navbar.style.backgroundColor = "transparent";
+      navbar.style.backdropFilter = "blur(0px)";
       mainNav.classList.add("mt-1");
       mainNav.classList.add("ml-5");
       logo.classList.add("mb-1");
       mainNav.classList.remove("scrolled");
     } else {
-      navbar.style.backgroundColor = "rgba(0,0,0, 0.6)";
+      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+      navbar.style.backdropFilter = "blur(20px)";
       mainNav.classList.remove("mt-1");
       mainNav.classList.remove("ml-5");
       logo.classList.remove("mb-1");
@@ -63,8 +65,8 @@ const Index = () => {
   return (
     <>
       <div className="navbar flex">
-        <div className="main-nav flex mt-1">
-          <img className="logo mb-1" src={logo} alt="strides" />
+        <div className="main-nav flex">
+          <img className="logo" src={logo} alt="strides" />
           <nav className="nav">
             <ul className="flex">
               <li>
