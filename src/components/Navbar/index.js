@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import logo from "../../assets/images/logo.png";
 import img from "../../assets/images/NAY047.png";
+import hamburger from "../../assets/images/navbar/hamburger.png";
 import { desk_home_data } from "./NavbarData";
 
 const Index = () => {
@@ -14,16 +15,16 @@ const Index = () => {
     if (window.pageYOffset < 80) {
       navbar.style.backgroundColor = "transparent";
       navbar.style.backdropFilter = "blur(0px)";
-      mainNav.classList.add("mt-1");
+      /* mainNav.classList.add("mt-1");
       mainNav.classList.add("ml-5");
-      logo.classList.add("mb-1");
+      logo.classList.add("mb-1"); */
       mainNav.classList.remove("scrolled");
     } else {
       navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
       navbar.style.backdropFilter = "blur(20px)";
-      mainNav.classList.remove("mt-1");
+      /* mainNav.classList.remove("mt-1");
       mainNav.classList.remove("ml-5");
-      logo.classList.remove("mb-1");
+      logo.classList.remove("mb-1"); */
       mainNav.classList.add("scrolled");
     }
   };
@@ -65,6 +66,15 @@ const Index = () => {
   return (
     <>
       <div className="navbar flex">
+        <img
+          className="logo mobile"
+          style={{
+            display: "none",
+          }}
+          src={logo}
+          alt="strides"
+        />
+
         <div className="main-nav flex">
           <img className="logo" src={logo} alt="strides" />
           <nav className="nav">
@@ -119,6 +129,14 @@ const Index = () => {
             </li>
           </ul>
         </div>
+        <button
+          className="hamburger-menu mobile"
+          style={{
+            display: "none",
+          }}
+        >
+          <img src={hamburger} alt="hamburger" />
+        </button>
       </div>
       <div className="navbar__hovermenu hide">
         <div className="hovermenu flex">

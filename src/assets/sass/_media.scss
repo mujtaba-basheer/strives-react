@@ -1,7 +1,62 @@
-@media (max-width: 1340px) {
+/* @media (max-width: 1031px) {
   .navbar {
+    .mobile {
+      display: none;
+    }
+  }
+} */
+
+@media screen and (max-width: 1030px) {
+  .navbar {
+    justify-content: space-between;
+    padding-right: 10px;
+
+    .mobile {
+      display: block !important;
+    }
+
+    .hamburger-menu {
+      background: none;
+      outline: none;
+      border: none;
+    }
+
+    .main-nav {
+      display: none;
+    }
     .extra-options {
-      margin-left: 0rem;
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .showcase {
+    background-image: url(../images/mobile-background.png);
+  }
+
+  .showcase {
+    .showcasedetails {
+      justify-content: flex-end;
+      width: 287px;
+      height: 80%;
+      align-items: center;
+
+      &__text {
+        font-size: 30px;
+        line-height: 36px;
+        text-align: center;
+        color: #fff;
+      }
+
+      &__button button {
+        padding: 10px;
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: 0.1em;
+        border: 1px solid #fff;
+        color: #ffffff;
+      }
     }
   }
 }
