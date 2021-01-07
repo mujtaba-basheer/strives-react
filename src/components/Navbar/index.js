@@ -5,7 +5,7 @@ import img from "../../assets/images/NAY047.png";
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";
 import { desk_home_data } from "./NavbarData";
-import { func } from "prop-types";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [hoverarray, setHoverarray] = useState([]);
@@ -13,20 +13,14 @@ const Index = () => {
   const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
     var mainNav = document.getElementsByClassName("main-nav")[0];
-    var logo = document.getElementsByClassName("logo")[0];
+    
     if (window.pageYOffset < 80) {
       navbar.style.backgroundColor = "transparent";
       navbar.style.backdropFilter = "blur(0px)";
-      /* mainNav.classList.add("mt-1");
-      mainNav.classList.add("ml-5");
-      logo.classList.add("mb-1"); */
       mainNav.classList.remove("scrolled");
     } else {
       navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
       navbar.style.backdropFilter = "blur(20px)";
-      /* mainNav.classList.remove("mt-1");
-      mainNav.classList.remove("ml-5");
-      logo.classList.remove("mb-1"); */
       mainNav.classList.add("scrolled");
     }
   };
@@ -76,9 +70,6 @@ const Index = () => {
   function toggleSidebarSearch() {
     var accordian = document.getElementsByClassName("accordian")[0];
     var searchdiv = document.getElementsByClassName("sidebar__searchdiv")[0];
-    /* if (accordian.classList.contains("hide")) {
-      accordian.classList.remove("hide");
-    } */
     accordian.classList.add("hide");
     searchdiv.classList.remove("hide");
   }
@@ -93,43 +84,47 @@ const Index = () => {
   return (
     <>
       <div className="navbar flex">
-        <img
-          className="logo mobile"
-          style={{
-            display: "none",
-          }}
-          src={logo}
-          alt="strides"
-        />
+        <Link to="/">
+          <img
+            className="logo mobile"
+            style={{
+              display: "none",
+            }}
+            src={logo}
+            alt="strides"
+          />
+        </Link>
 
         <div className="main-nav flex">
-          <img className="logo" src={logo} alt="strides" />
+          <Link to="/">
+            <img className="logo" src={logo} alt="strides" />
+          </Link>
           <nav className="nav">
             <ul className="flex">
               <li>
-                <a
+                <Link
                   onMouseOver={showHoverMenu}
                   onMouseLeave={removeHoverMenu}
                   className="hovermenu__listitems__home"
-                  href="/"
+                  to="/"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="">Shop</a>
+                <Link to="/">Shop</Link>
               </li>
               <li>
-                <a href="">Brands</a>
+                <Link to="/">Brands</Link>
               </li>
               <li>
-                <a href="">Collections</a>
+                <Link to="/">Collections</Link>
               </li>
               <li>
-                <a href="">Discover</a>
+                <Link to="/">Discover</Link>
               </li>
               <li>
-                <a href="">Ethnic</a>
+                <Link to="/">Ethnic</Link>
               </li>
             </ul>
           </nav>
@@ -137,19 +132,19 @@ const Index = () => {
         <div className="extra-options">
           <ul className="flex">
             <li>
-              <a href="#">
+              <Link to="/login">
                 <i className="far fa-user-circle"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="">
+              <Link to="/">
                 <i className="fas fa-heart"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="">
+              <Link to="/">
                 <i className="fas fa-shopping-cart"></i>
-              </a>
+              </Link>
             </li>
             <li onClick={opensearchdiv}>
               <i class="fas fa-search"></i>
@@ -172,7 +167,7 @@ const Index = () => {
               {hoverarray.length > 0 &&
                 hoverarray.map((h) => (
                   <li>
-                    <a href="">{h}</a>
+                    <Link to="/">{h}</Link>
                   </li>
                 ))}
             </ul>
@@ -285,17 +280,25 @@ const Index = () => {
 
         {/* Bottom Area of the Sidebar */}
         <ul className="flex bottom-area">
+          <li>
+            <Link to="/">
+              <i className="fas fa-shopping-cart"></i>
+            </Link>
+          </li>
+          <li>
+            <Link to="login">
+              <i className="far fa-user-circle"></i>
+            </Link>
+          </li>
+          <li>
+            <Link to="/">
+              <i className="fas fa-heart"></i>
+            </Link>
+          </li>
           <li onClick={toggleSidebarSearch}>
-            <i class="fas fa-search"></i>
-          </li>
-          <li>
-            <i className="far fa-user-circle"></i>
-          </li>
-          <li>
-            <i className="fas fa-heart"></i>
-          </li>
-          <li>
-            <i className="fas fa-shopping-cart"></i>
+            <Link to="/">
+              <i class="fas fa-search"></i>
+            </Link>
           </li>
         </ul>
       </div>
