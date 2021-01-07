@@ -82,11 +82,17 @@
       margin-bottom: 33px;
     }
 
-
-    .hovermenu__listitems ul li:not(:first-child){
+    .hovermenu__listitems ul li:not(:first-child) {
       padding-top: 26px;
     }
 
+    .hovermenu__listitems ul li a {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: rgba(44, 61, 80, 0.8);
+    }
   }
 }
 
