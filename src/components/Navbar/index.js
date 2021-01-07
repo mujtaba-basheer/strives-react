@@ -280,7 +280,7 @@ const Index = () => {
             src={closeicon}
             alt="closeicon"
           />
-          <input type="text" />
+          <input type="text" placeholder="Search Items" />
         </div>
 
         {/* Bottom Area of the Sidebar */}

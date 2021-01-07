@@ -11,7 +11,7 @@
     justify-content: space-between;
     padding-right: 10px;
 
-    .logo{
+    .logo {
       margin-left: 32px;
     }
 
@@ -41,18 +41,23 @@
   }
 
   .showcase {
+    height: 90vh;
     .showcasedetails {
       justify-content: flex-end;
-      width: 287px;
-      height: 80%;
+      width: 100%;
+      height: 95%;
       align-items: center;
+      margin-left: 0;
 
       &__text {
+        width: 287px;
+        height: 108px;
         font-size: 30px;
         line-height: 36px;
         text-align: center;
         color: #fff;
         margin-left: 0px;
+        margin-bottom: 29px;
       }
 
       &__button button {
