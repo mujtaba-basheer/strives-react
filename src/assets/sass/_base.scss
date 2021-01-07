@@ -10,6 +10,7 @@
 :root {
   --ff-l: "Lora", serif;
   --ff-p: "Playfair Display", serif;
+  --text-color-dark: #2c3d50;
 }
 
 ul {
@@ -18,5 +19,5 @@ ul {
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: var(--text-color-dark);
 }

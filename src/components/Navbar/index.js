@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
 import logo from "../../assets/images/logo.png";
-import img from "../../assets/images/NAY047.png";
+import navbar1 from "../../assets/images/navbar/navbar1.png";
+import navbar2 from "../../assets/images/navbar/navbar2.png";
+import navbar3 from "../../assets/images/navbar/navbar3.png";
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";
 import { desk_home_data } from "./NavbarData";
@@ -13,7 +15,7 @@ const Index = () => {
   const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
     var mainNav = document.getElementsByClassName("main-nav")[0];
-    
+
     if (window.pageYOffset < 80) {
       navbar.style.backgroundColor = "transparent";
       navbar.style.backdropFilter = "blur(0px)";
@@ -160,21 +162,98 @@ const Index = () => {
           <img onClick={openSideMenu} src={hamburger} alt="hamburger" />
         </button>
       </div>
-      <div className="navbar__hovermenu hide">
-        <div className="hovermenu flex">
+      <div className="navbar__hovermenu flex hide">
+        <div className="navbar__hovermenu__options flex">
           <div className="hovermenu__listitems">
-            <ul className="flex">
-              {hoverarray.length > 0 &&
-                hoverarray.map((h) => (
-                  <li>
-                    <Link to="/">{h}</Link>
-                  </li>
-                ))}
+            <h3>Explore Collections</h3>
+            <ul>
+              <li>
+                <Link>Bridal Lehengas</Link>
+              </li>
+              <li>
+                <Link>Drape Lehengas</Link>
+              </li>
+              <li>
+                <Link>Printed lehengas</Link>
+              </li>
+              <li>
+                <Link>Bridesmaid Lehengas</Link>
+              </li>
+              <li>
+                <Link>Jacket Lehengas</Link>
+              </li>
+              <li>
+                <Link>Jacket Lehengas</Link>
+              </li>
             </ul>
           </div>
-          <div className="hovermenu__image">
-            <img src={img} alt="nav img" />
+          <div className="hovermenu__listitems">
+            <h3>New Arrivals</h3>
+            <div className="hovermenu_listitems--split flex">
+              <ul className="mr-2">
+                <li>
+                  <Link>Silk</Link>
+                </li>
+                <li>
+                  <Link>Raw Silk</Link>
+                </li>
+                <li>
+                  <Link>Velvet</Link>
+                </li>
+                <li>
+                  <Link>Cotton</Link>
+                </li>
+                <li>
+                  <Link>Georgette</Link>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <Link>Silk</Link>
+                </li>
+                <li>
+                  <Link>Raw Silk</Link>
+                </li>
+                <li>
+                  <Link>Velvet</Link>
+                </li>
+                <li>
+                  <Link>Cotton</Link>
+                </li>
+                <li>
+                  <Link>Georgette</Link>
+                </li>
+              </ul>
+            </div>
           </div>
+          <div className="hovermenu__listitems">
+            <h3>Explore Collections</h3>
+            <ul>
+              <li>
+                <Link>Bridal Lehengas</Link>
+              </li>
+              <li>
+                <Link>Drape Lehengas</Link>
+              </li>
+              <li>
+                <Link>Printed lehengas</Link>
+              </li>
+              <li>
+                <Link>Bridesmaid Lehengas</Link>
+              </li>
+              <li>
+                <Link>Jacket Lehengas</Link>
+              </li>
+              <li>
+                <Link>Jacket Lehengas</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="hovermenu__image">
+          <img src={navbar1} alt="nav img" />
+          <img src={navbar2} alt="nav img" />
+          <img src={navbar3} alt="nav img" />
         </div>
       </div>
       <div className="navbar__searchdiv hide">
