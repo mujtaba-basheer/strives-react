@@ -322,6 +322,7 @@
   }
 
   &__sub {
+    font-size: 1.25em;
     border-radius: 2px;
     background: rgba(55, 63, 69, 0.2);
     padding: 0.5em;
@@ -333,10 +334,10 @@
       display: inline-block;
       width: 100%;
       font-family: var(--ff-p);
-      background: rgba(55, 63, 69, 0.2);
+      background: transparent;
       box-shadow: none;
       border: none;
-      padding: 0.5em;
+      padding: 0.45em;
     }
 
     &--btn {
@@ -582,7 +583,7 @@
     }
 
     &__sub {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       width: 40%;
       padding: 0.5em;
       margin: 0.5em auto 4em auto;
