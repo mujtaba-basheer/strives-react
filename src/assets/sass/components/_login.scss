@@ -49,6 +49,39 @@
         }
       }
 
+      .registerdetails__header {
+        width: 315px;
+        height: 64px;
+        margin-top: 5px;
+
+        &--header {
+          font-size: 24px;
+          line-height: 32px;
+        }
+      }
+
+      .forgotpass__header {
+        width: 352px;
+        height: 72px;
+        margin-bottom: 19px;
+
+        &--headertext {
+          font-size: 28px;
+          line-height: 36px;
+        }
+      }
+
+      .otp__header {
+        width: 352px;
+        height: 72px;
+        margin-bottom: 19px;
+
+        &--headertext {
+          font-size: 28px;
+          line-height: 36px;
+        }
+      }
+
       a {
         font-size: 14px;
         line-height: 18px;
@@ -103,7 +136,8 @@
         flex-direction: column;
 
         input[type="text"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="number"] {
           width: 100%;
           border: 1px solid rgba(44, 61, 80, 0.2);
           border-radius: 2px;
@@ -162,6 +196,11 @@
         justify-content: space-around;
       }
     }
+
+    .forgotpass {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__right {
@@ -199,6 +238,24 @@
         line-height: 28px;
       }
     }
+
+    .registerdetails__header {
+      width: 100%;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .forgotpass__header {
+      width: 100%;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .otp__header {
+      width: 100%;
+      height: auto;
+      text-align: center;
+    }
   }
 }
 
@@ -216,6 +273,28 @@
           span {
             margin-bottom: 5px;
           }
+        }
+      }
+
+      .forgotpass__header {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        text-align: center;
+
+        &--headertext {
+          font-size: 17px;
+          line-height: 28px;
+        }
+      }
+
+      .otp__header {
+        width: 100%;
+        height: auto;
+
+        &--headertext {
+          font-size: 17px;
+          line-height: 28px;
         }
       }
 

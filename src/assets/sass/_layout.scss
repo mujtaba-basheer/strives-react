@@ -299,11 +299,12 @@
       font-weight: normal;
       font-size: 18px;
       line-height: 23px;
-      /* identical to box height */
-
       letter-spacing: 0.1em;
-
       color: #2c3d50;
+    }
+
+    &__button button:hover {
+      cursor: pointer;
     }
   }
 }

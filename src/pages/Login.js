@@ -21,8 +21,8 @@ function LoginArea() {
     <section className="content container">
       <div className="loginbox flex">
         <div className="loginbox__left">
-          <div className="login-container">
-            <div className="logindetails">
+          <div className="logindetails">
+            <div className="login-container">
               <div className="logindetails__header">
                 <p className="logindetails__header--headertext">
                   Welcome back,
@@ -43,13 +43,13 @@ function LoginArea() {
                     />
                     <label htmlFor="keepsignedin">Keep me signed in</label>
                   </span>
-                  <Link>I forgot my password</Link>
+                  <Link to="/forgot">I forgot my password</Link>
                 </div>
               </div>
 
               <button className="logindetails--button">LOGIN</button>
 
-              <Link className="logindetails__signuplink">
+              <Link to="/register" className="logindetails__signuplink">
                 Don’t have an account? Click here to sign up
               </Link>
 
