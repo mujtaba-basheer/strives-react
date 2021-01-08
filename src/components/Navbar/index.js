@@ -31,7 +31,7 @@ const Index = () => {
 
   function showHoverMenu(e) {
     const name = e.target.innerHTML;
-    console.log(e.target.innerHTML);
+    /* console.log(e.target.innerHTML); */
     if (name === "Home") {
       setHoverarray(desk_home_data);
     }
@@ -258,7 +258,7 @@ const Index = () => {
       </div>
       <div className="navbar__searchdiv hide">
         <div className="search__div flex">
-          <input type="text" placeholder="type to search here" />
+          <input type="text" placeholder="Search Items" />
           <div className="searchIcon">
             <button>Search</button>
           </div>

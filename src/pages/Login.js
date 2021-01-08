@@ -2,6 +2,7 @@ import React from "react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -30,19 +31,41 @@ function LoginArea() {
                 </p>
               </div>
               <div className="user-details">
-                <input type="text" />
-                <input type="text" />
+                <input type="text" placeholder="Email" />
+                <input type="password" placeholder="Password" />
 
-                <input type="radio" name="" id="" />
-                <label htmlFor="chekc">Keep me signed in</label>
-
-                <a href="">I forgot my password</a>
+                <div className="extra-options">
+                  <span className="flex">
+                    <input
+                      type="checkbox"
+                      name="keepsignedin"
+                      id="keepsignedin"
+                    />
+                    <label htmlFor="keepsignedin">Keep me signed in</label>
+                  </span>
+                  <Link>I forgot my password</Link>
+                </div>
               </div>
 
-              <button>LOGIN</button>
+              <button className="logindetails--button">LOGIN</button>
 
-              <button>google</button>
-              <button>facebook</button>
+              <Link className="logindetails__signuplink">
+                Don’t have an account? Click here to sign up
+              </Link>
+
+              <div className="wrapper">
+                <div className="badge">OR</div>
+              </div>
+
+              <div className="social-login">
+                <a href="#" class="fb btn-social">
+                  <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                </a>
+
+                <a href="#" class="google btn-social">
+                  <i class="fa fa-google fa-fw"></i> Login with Google+
+                </a>
+              </div>
             </div>
           </div>
         </div>
