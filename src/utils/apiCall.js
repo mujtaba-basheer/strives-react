@@ -1,8 +1,9 @@
 import axios from "axios";
-import { getToken } from "./store";
+/* import { getToken } from "./store"; */
 // const api_url = "https://ses-admin-panel.herokuapp.com/api/";
-const api_url = "http://localhost:5000/api/";
-let token = getToken();
+const api_url = "http://localhost:5001/api/";
+/* let token = getToken(); */
+let token = "";
 class ApiCall {
   post = (url, data) =>
     new Promise((resolve, reject) => {

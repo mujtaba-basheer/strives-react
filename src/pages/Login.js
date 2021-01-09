@@ -1,8 +1,11 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+import ApiCall from "../utils/apiCall";
 
 const Login = () => {
   return (
@@ -17,6 +20,23 @@ const Login = () => {
 export default Login;
 
 function LoginArea() {
+  let history = useHistory();
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data, errors);
+
+    ApiCall.post("login", data)
+      .then((res) => {
+        console.log(res);
+        history.push("/");
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("incorrect password");
+      });
+  };
+
   return (
     <section className="content container">
       <div className="loginbox flex">
@@ -31,23 +51,54 @@ function LoginArea() {
                 </p>
               </div>
               <div className="user-details">
-                <input type="text" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Your email must not exceed 50 characters",
+                      },
+                    })}
+                  />
+                  {errors.email && (
+                    <div className="error">{errors.email.message}</div>
+                  )}
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    ref={register}
+                  />
 
-                <div className="extra-options">
-                  <span className="flex">
-                    <input
-                      type="checkbox"
-                      name="keepsignedin"
-                      id="keepsignedin"
-                    />
-                    <label htmlFor="keepsignedin">Keep me signed in</label>
-                  </span>
-                  <Link to="/forgot">I forgot my password</Link>
-                </div>
+                  {/* for incorrect password */}
+                  {/* {errors.password && (
+                    <div class="alert error">{errors.password.message}</div>
+                  )} */}
+
+                  <div className="extra-options">
+                    <span className="flex">
+                      <input
+                        type="checkbox"
+                        name="keepsignedin"
+                        id="keepsignedin"
+                      />
+                      <label htmlFor="keepsignedin">Keep me signed in</label>
+                    </span>
+                    <Link to="/forgot">I forgot my password</Link>
+                  </div>
+
+                  <button type="submit" className="logindetails--button">
+                    LOGIN
+                  </button>
+                </form>
               </div>
-
-              <button className="logindetails--button">LOGIN</button>
 
               <Link to="/register" className="logindetails__signuplink">
                 Don’t have an account? Click here to sign up

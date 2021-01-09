@@ -4,7 +4,6 @@ import ForgotPassword from "./pages/ForgotPassword";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Otp from "./pages/Otp";
 import Register from "./pages/Register";
 
 const App = () => {
@@ -22,9 +21,6 @@ const App = () => {
         </Route>
         <Route exact path="/forgot">
           <ForgotPassword />
-        </Route>
-        <Route exact path="/otp">
-          <Otp />
         </Route>
       </Switch>
     </Router>

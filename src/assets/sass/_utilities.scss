@@ -44,6 +44,17 @@
   display: none;
 }
 
+.alert {
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  color: var(--text-color-dark);
+}
+
+.error {
+  background-color: #ff4c4c;
+  color: white;
+}
+
 .section-title {
   display: grid;
   grid-template-columns: 1fr max-content 1fr;

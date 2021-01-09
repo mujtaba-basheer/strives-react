@@ -1,8 +1,11 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+
+import { ApiPostNoAuth } from "../Helpers/Api/ApiData";
 
 const ForgotPassword = () => {
   return (
@@ -17,6 +20,16 @@ const ForgotPassword = () => {
 export default ForgotPassword;
 
 function LoginArea() {
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data, errors);
+
+    let registerdata = ApiPostNoAuth(register, data);
+
+    console.log(registerdata);
+  };
+
   return (
     <section className="content container">
       <div className="loginbox flex">
