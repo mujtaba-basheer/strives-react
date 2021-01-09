@@ -278,6 +278,7 @@ const Index = () => {
         <ul className="flex top-area">
           <li>
             <img
+              onClick={closeSideMenu}
               className="logo"
               onClick={closeSideMenu}
               src={logo}

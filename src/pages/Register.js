@@ -32,7 +32,7 @@ function LoginArea() {
               </div>
 
               <div className="user-details">
-                <input type="text" placeholder="Email" />
+                <input type="email" placeholder="Email" />
                 <input type="number" placeholder="Phone" />
                 <input type="password" placeholder="Password" />
                 <input type="password" placeholder="Confirm Password" />
