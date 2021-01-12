@@ -5,8 +5,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
-import { ApiPostNoAuth } from "../Helpers/Api/ApiData";
-
 const ForgotPassword = () => {
   return (
     <>
@@ -24,10 +22,6 @@ function LoginArea() {
 
   const onSubmit = (data) => {
     console.log(data, errors);
-
-    let registerdata = ApiPostNoAuth(register, data);
-
-    console.log(registerdata);
   };
 
   return (

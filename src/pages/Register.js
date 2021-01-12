@@ -30,6 +30,13 @@ function LoginArea() {
   });
   const [otperror, setOtperror] = useState("");
 
+  const [formErrors, setFormErrors] = useState({
+    name: [],
+    email: [],
+    password: [],
+    passwordRepeat: [],
+  });
+
   const { register, handleSubmit, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
@@ -142,7 +149,9 @@ function LoginArea() {
                       })}
                     />
                     {errors.name && (
-                      <div className="error">{errors.email.message}</div>
+                      <div className="alert error mb-1">
+                        {errors.name.message}
+                      </div>
                     )}
                     <input
                       type="email"
@@ -160,7 +169,9 @@ function LoginArea() {
                       })}
                     />
                     {errors.email && (
-                      <div className="error">{errors.email.message}</div>
+                      <div className="alert error mb-1">
+                        {errors.email.message}
+                      </div>
                     )}
                     <input
                       type="number"
@@ -169,7 +180,7 @@ function LoginArea() {
                       ref={register({
                         required: {
                           value: true,
-                          message: "required",
+                          message: "Phone number is required",
                         },
                         minLength: {
                           value: 10,
@@ -182,7 +193,7 @@ function LoginArea() {
                       })}
                     />
                     {errors.phone && (
-                      <div class="alert error">{errors.phone.message}</div>
+                      <div class="alert error mb-1">{errors.phone.message}</div>
                     )}
                     <input
                       type="password"
@@ -200,7 +211,9 @@ function LoginArea() {
                       })}
                     />
                     {errors.password && (
-                      <div class="alert error">{errors.password.message}</div>
+                      <div class="alert error mb-1">
+                        {errors.password.message}
+                      </div>
                     )}
                     <input
                       type="password"
@@ -213,7 +226,7 @@ function LoginArea() {
                       })}
                     />
                     {errors.password_repeat && (
-                      <div class="alert error">
+                      <div class="alert error mb-1">
                         {errors.password_repeat.message}
                       </div>
                     )}
