@@ -45,12 +45,16 @@
 }
 
 .alert {
+  padding-left: 5px;
   color: var(--text-color-dark);
 }
 
 .error {
-  padding-left: 5px;
   color: #ff4c4c;
+}
+
+.success {
+  color: #28a745;
 }
 
 .section-title {

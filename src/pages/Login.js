@@ -16,12 +16,13 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { userInfo } = userLogin;
 
   const onSubmit = (data) => {
-    console.log(data, errors);
-
     dispatch(login(data));
+    if (userInfo) {
+      history.push("/");
+    }
   };
 
   return (
@@ -58,20 +59,26 @@ const Login = () => {
                       })}
                     />
                     {errors.email && (
-                      <div className="error">{errors.email.message}</div>
+                      <div className="alert error mb-1">
+                        {errors.email.message}
+                      </div>
                     )}
                     <input
                       type="password"
                       placeholder="Password"
                       name="password"
-                      ref={register}
+                      ref={register({
+                        required: {
+                          value: true,
+                          message: "Password cannot be empty",
+                        },
+                      })}
                     />
-
-                    {/* for incorrect password */}
-                    {/* {errors.password && (
-                    <div class="alert error">{errors.password.message}</div>
-                  )} */}
-
+                    {errors.password && (
+                      <div class="alert error mb-1">
+                        {errors.password.message}
+                      </div>
+                    )}
                     <div className="extra-options">
                       <span className="flex">
                         <input

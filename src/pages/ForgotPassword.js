@@ -35,11 +35,32 @@ function LoginArea() {
                   Please enter your email to <br /> retreive your password
                 </p>
               </div>
-              <div className="user-details">
-                <input type="email" placeholder="Email" />
-              </div>
 
-              <button className="logindetails--button">SEND EMAIL</button>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="user-details">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    name="email"
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Your Email must not exceed 50 characters",
+                      },
+                    })}
+                  />
+                  {errors.name && (
+                    <div className="alert error mb-1">
+                      {errors.name.message}
+                    </div>
+                  )}
+                  <button className="logindetails--button">SEND EMAIL</button>
+                </div>
+              </form>
 
               <Link to="/login" className="logindetails__signuplink">
                 Return to login screen

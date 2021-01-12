@@ -28,14 +28,9 @@ function LoginArea() {
     name: "",
     phone: "",
   });
+  const [registerFormError, setRegisterFormError] = useState("");
   const [otperror, setOtperror] = useState("");
-
-  const [formErrors, setFormErrors] = useState({
-    name: [],
-    email: [],
-    password: [],
-    passwordRepeat: [],
-  });
+  const [otpsuccess, setOtpsuccess] = useState("");
 
   const { register, handleSubmit, errors, watch } = useForm();
   const password = useRef({});
@@ -43,7 +38,6 @@ function LoginArea() {
 
   const onSubmit = (data) => {
     setUserdata(data);
-    setRegisterstatus("otp");
 
     let otpObj = {
       email: data.email,
@@ -54,10 +48,12 @@ function LoginArea() {
 
     ApiCall.post("send-otp", otpObj)
       .then((res) => {
+        setRegisterstatus("otp");
         console.log(res);
       })
       .catch((err) => {
-        alert("user already exists");
+        console.log(err.response.data.message);
+        setRegisterFormError(err.response.data.message);
         setRegisterstatus("register");
         console.error(err);
       });
@@ -65,6 +61,8 @@ function LoginArea() {
 
   function onResendOtp(e) {
     e.preventDefault();
+
+    setOtpsuccess("OTP has been sent");
 
     let otpObj = {
       email: userdata.email,
@@ -85,7 +83,9 @@ function LoginArea() {
   function onSubmitOtp(e) {
     console.log(userdata.phone);
     e.preventDefault();
-    if (otp === "undefined") {
+    setOtpsuccess("");
+    console.log("uu");
+    if (otp === "" || otp === "undefined") {
       setOtperror("OTP cannot be empty");
     } else {
       let otpObj = {
@@ -100,17 +100,26 @@ function LoginArea() {
           console.log(res);
           if (res.data.message === "OTP verified") {
             console.log("user verified");
-            ApiCall.post("register", userdata)
+
+            ApiCall.post("register", {
+              name: userdata.name,
+              phone: userdata.phone,
+              email: userdata.email,
+              password: userdata.password,
+            })
               .then((res) => {
                 console.log(res);
                 history.push("/");
               })
               .catch((err) => {
+                console.log(err.response);
+
                 console.error(err);
               });
           }
         })
         .catch((err) => {
+          setOtperror(err.response.data.message);
           console.error(err);
         });
     }
@@ -171,6 +180,11 @@ function LoginArea() {
                     {errors.email && (
                       <div className="alert error mb-1">
                         {errors.email.message}
+                      </div>
+                    )}
+                    {registerFormError && (
+                      <div className="alert error mb-1">
+                        {registerFormError}
                       </div>
                     )}
                     <input
@@ -259,6 +273,12 @@ function LoginArea() {
                       value={otp}
                       onChange={(e) => setOtp(e.target.value)}
                     />
+                    {otperror && (
+                      <div className="alert error mb-1">{otperror}</div>
+                    )}
+                    {otpsuccess && (
+                      <div className="alert success mb-1">{otpsuccess}</div>
+                    )}
                     <button
                       type="submit"
                       onClick={onSubmitOtp}
