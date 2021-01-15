@@ -55,6 +55,11 @@
       background-color: var(--text-color-dark);
       color: #fff;
     }
+
+    ul li a.active {
+      background-color: var(--text-color-dark);
+      color: #fff;
+    }
   }
 }
 

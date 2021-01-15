@@ -38,9 +38,14 @@
         border: none;
         border-radius: 2px;
       }
+
+      button:hover {
+        cursor: pointer;
+      }
     }
 
     .userdetails {
+      margin-bottom: 2rem;
       div {
         margin: 25px 0;
       }
@@ -68,6 +73,19 @@
 
       span input {
         padding: 15px 5px;
+      }
+    }
+
+    .changepassword {
+      margin: 0 auto;
+      width: 95%;
+
+      span {
+        width: 100%;
+      }
+
+      div {
+        margin: 20px 0;
       }
     }
   }
@@ -113,6 +131,12 @@
           margin-bottom: 15px;
         }
       }
+
+      .changepassword {
+        div {
+          margin: 20px 0;
+        }
+      }
     }
   }
 }
@@ -122,6 +146,12 @@
     .userdetails {
       div {
         margin: 11px 0;
+      }
+    }
+
+    .changepassword {
+      input {
+        height: 30px;
       }
     }
   }

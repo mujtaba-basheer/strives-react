@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const UserSidebar = () => {
+const UserSidebar = ({ selected }) => {
+  console.log(selected);
   return (
     <div className="usersidebarbackground">
       <div className="usersidebar">
@@ -18,13 +19,28 @@ const UserSidebar = () => {
           </span>
           <ul>
             <li>
-              <Link to="">Profile Information</Link>
+              <Link
+                to="/my-account"
+                className={selected === "MyAccount" ? "active" : ""}
+              >
+                Profile Information
+              </Link>
             </li>
             <li>
-              <Link to="">Manage Addresses</Link>
+              <Link
+                to="/manage-address"
+                className={selected === "ManageAddress" ? "active" : ""}
+              >
+                Manage Addresses
+              </Link>
             </li>
             <li>
-              <Link to="">PAN Card Information</Link>
+              <Link
+                to="change-password"
+                className={selected === "ChangePassword" ? "active" : ""}
+              >
+                Change Password
+              </Link>
             </li>
           </ul>
         </div>

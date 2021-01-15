@@ -7,13 +7,22 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getUserDetails,
   updateUserProfile,
-} from "../redux/actions/userActions";
+} from "../../redux/actions/userActions";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import UserSidebar from "../components/layout/UserSidebar";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import UserSidebar from "../../components/layout/UserSidebar";
 
 const MyAccount = () => {
+  const [formInputStatus, setFormInputStatus] = useState("disabled");
+  const [formData, setFormData] = useState({
+    name: "",
+    gender: "",
+    number: "",
+    dob: "",
+    email: "",
+  });
+
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -37,7 +46,46 @@ const MyAccount = () => {
     } else dispatch(getUserDetails());
   }, [userInfo, history, user, dispatch]);
 
-  const [value, onChange] = useState();
+  function formEdit() {
+    document.getElementsByClassName("header__btn--edit")[0].style.display =
+      "none";
+    document.getElementsByClassName("header__btn--save")[0].style.display =
+      "block  ";
+    setFormInputStatus("");
+  }
+
+  function saveEdit() {
+    var name = document.getElementById("name");
+    var gender = document.getElementById("gender");
+    var email = document.getElementById("email");
+    var dob = document.getElementById("dob");
+    var phone = document.getElementById("phone");
+
+    let formValid = false;
+
+    if (name.value === "" || name.value.length > 50) {
+      name.style.border = "1px solid red";
+    } else if (email.value === "" || email.value.length > 50) {
+      email.style.border = "1px solid red";
+    } else if (dob.value === "") {
+      dob.style.border = "1px solid red";
+    } else if (phone.value === "" || phone.value.length > 15) {
+      phone.style.border = "1px solid red";
+    } else {
+      formValid = true;
+      name.style.border = "1px solid black";
+      email.style.border = "1px solid black";
+      dob.style.border = "1px solid black";
+      phone.style.border = "1px solid black";
+      
+    }
+
+    if(formValid) {
+
+      console.log("Api Call goes here")
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -49,15 +97,25 @@ const MyAccount = () => {
               {" "}
               Back to shopping
             </Link>
-            <UserSidebar />
+            <UserSidebar selected="MyAccount" />
           </div>
 
           <div className="myaccount__right">
             <div className="header flex">
               <p className="header__text">Personal Information</p>
               <span className="header__btns">
-                <button className="header__btn--save">Save</button>
-                <button className="header__btn--edit">Edit</button>
+                <button
+                  className="header__btn--save"
+                  style={{
+                    display: "none",
+                  }}
+                  onClick={saveEdit}
+                >
+                  Save
+                </button>
+                <button className="header__btn--edit" onClick={formEdit}>
+                  Edit
+                </button>
               </span>
             </div>
 
@@ -66,9 +124,12 @@ const MyAccount = () => {
                 <span>
                   <label htmlFor="fname">Full Name</label>
                   <input
-                    value={user ? user.name : ""}
+                    id="name"
+                    onChange={(e) => e.target.value}
                     type="text"
                     placeholder="Name"
+                    required
+                    disabled={formInputStatus}
                   />
                 </span>
               </div>
@@ -76,7 +137,7 @@ const MyAccount = () => {
               <div className="flex">
                 <span>
                   <label for="gender">Gender</label>
-                  <select name="gender" id="gender">
+                  <select name="gender" id="gender" disabled={formInputStatus}>
                     <option value="male">male</option>
                     <option value="female">female</option>
                   </select>
@@ -85,10 +146,12 @@ const MyAccount = () => {
                 <span>
                   <label htmlFor="dob">Date of Birth</label>
                   <input
-                    onChange={(e) => console.log(e.target.value)}
+                    onChange={(e) => e.target.value}
                     type="date"
                     name="dob"
                     id="dob"
+                    required
+                    disabled={formInputStatus}
                   />
                 </span>
               </div>
@@ -97,16 +160,25 @@ const MyAccount = () => {
                 <span>
                   <label htmlFor="email">Email</label>
                   <input
-                    value={user ? user.email : ""}
+                    onChange={(e) => e.target.value}
                     type="email"
                     id="email"
                     placeholder="Email"
+                    required
+                    disabled={formInputStatus}
                   />
                 </span>
 
                 <span>
                   <label htmlFor="phone">Phone Number</label>
-                  <input type="number" placeholder="Phone" />
+                  <input
+                    type="number"
+                    onChange={(e) => e.target.value}
+                    placeholder="Phone"
+                    disabled={formInputStatus}
+                    id="phone"
+                    maxLength="15"
+                  />
                 </span>
               </div>
             </form>

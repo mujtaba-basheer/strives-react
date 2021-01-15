@@ -9,8 +9,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 /* User Details */
-import MyAccount from "./pages/MyAccount";
-
+import MyAccount from "./pages/User/MyAccount";
+import ChangePassword from "./pages/User/ChangePassword";
+import ManageAddress from "./pages/User/ManageAddress";
 
 const App = () => {
   return (
@@ -28,8 +29,17 @@ const App = () => {
         <Route exact path="/forgot">
           <ForgotPassword />
         </Route>
+
         <Route exact path="/my-account">
           <MyAccount />
+        </Route>
+
+        <Route exact path="/change-password">
+          <ChangePassword />
+        </Route>
+
+        <Route exact path="/manage-address">
+          <ManageAddress />
         </Route>
       </Switch>
     </Router>
