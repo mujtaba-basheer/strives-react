@@ -251,7 +251,7 @@ function LoginArea() {
                 </div>
 
                 <Link to="/login" className="logindetails__signuplink">
-                  Don’t have an account? Click here to sign in
+                Have an account? Click here to Sign in
                 </Link>
               </div>
             </div>

@@ -1,6 +1,6 @@
 .loginbox {
   width: 100%;
-  height: 600px;
+  height: 680px;
 
   .loginbox > div {
     flex: 1;
@@ -278,7 +278,7 @@
 
       .user-details {
         .extra-options {
-          flex-direction: column;
+          flex-direction: row;
           span {
             margin-bottom: 5px;
           }

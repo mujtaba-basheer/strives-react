@@ -40,6 +40,11 @@
   flex-direction: row;
 }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
 .hide {
   display: none;
 }

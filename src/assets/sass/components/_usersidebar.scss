@@ -1,0 +1,65 @@
+.usersidebarbackground {
+  width: 325px;
+  background: #f6f9fc;
+  padding: 10px 18px;
+  margin: 1rem 0;
+  margin-right: 50px;
+
+  .usersidebar {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: flex-start;
+
+    &__heading {
+      margin: 20px 0 10px;
+      justify-content: center;
+    }
+
+    &__heading--text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 150%;
+      text-transform: uppercase;
+      color: var(--text-color-dark);
+    }
+
+    &__heading--icon {
+      height: 18px;
+      width: 26px;
+      color: var(--text-color-dark);
+    }
+
+    .myorders,
+    .mystuff,
+    .accountsettings,
+    .logout {
+      width: 100%;
+      border-bottom: 1px solid rgba(44, 61, 80, 0.2);
+    }
+
+    ul li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 10px 0;
+      color: var(--text-color-dark);
+    }
+
+    ul li a:hover {
+      background-color: var(--text-color-dark);
+      color: #fff;
+    }
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .usersidebarbackground {
+    display: none;
+  }
+}
