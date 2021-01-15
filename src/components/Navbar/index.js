@@ -114,7 +114,7 @@ const Index = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/">Shop</Link>
+                <Link to="/my-account">Shop</Link>
               </li>
               <li>
                 <Link to="/">Brands</Link>

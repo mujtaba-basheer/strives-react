@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 /* import { getToken } from "./store"; */
 
 let api_url;
@@ -6,16 +7,11 @@ if (process.env.NODE_ENV === "development")
   api_url = "http://localhost:5001/api/";
 else api_url = "https://strives.herokuapp.com/api/";
 
-let token = "";
 class ApiCall {
-  post = (url, data) =>
+  post = (url, data, headers) =>
     new Promise((resolve, reject) => {
-      var headers = {
-        Authorization: "Bearer " + token,
-      };
-
       axios
-        .post(api_url + url, data, token ? { headers } : undefined)
+        .post(api_url + url, data, headers)
         .then(function (response) {
           resolve(response);
         })
@@ -24,14 +20,10 @@ class ApiCall {
         });
     });
 
-  put = (url, data) =>
+  put = (url, data, headers) =>
     new Promise((resolve, reject) => {
-      var headers = {
-        Authorization: "Bearer " + token,
-      };
-
       axios
-        .put(api_url + url, data, token ? { headers } : undefined)
+        .put(api_url + url, data, headers)
         .then(function (response) {
           resolve(response);
         })
@@ -40,7 +32,7 @@ class ApiCall {
         });
     });
 
-  delete = (url) =>
+  delete = (url, token) =>
     new Promise((resolve, reject) => {
       var headers = {
         Authorization: "Bearer " + token,
@@ -56,14 +48,10 @@ class ApiCall {
         });
     });
 
-  get = (url) =>
+  get = (url, headers) =>
     new Promise((resolve, reject) => {
-      var headers = {
-        Authorization: "Bearer " + token,
-      };
-
       axios
-        .get(api_url + url, { headers })
+        .get(api_url + url, headers)
         .then(function (response) {
           resolve(response);
         })

@@ -1,12 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-date-picker";
-import { Link } from "react-router-dom";
+
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  getUserDetails,
+  updateUserProfile,
+} from "../redux/actions/userActions";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import UserSidebar from "../components/layout/UserSidebar";
 
 const MyAccount = () => {
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const { loading, error, user } = useSelector((state) => state.userDetails);
+  const { loading: loadingLogin, error: errorLogin, userInfo } = useSelector(
+    (state) => state.userLogin
+  );
+
+  useEffect(() => {
+    if (!userInfo) history.push("/login");
+
+    if (user) {
+      console.log(user);
+      // set user details to state
+      //   {
+      //   _id: '5ff992d324303e1808b8ebbd',
+      //   name: 'Richard Rozario',
+      //   email: 'richardrozario.rr@gmail.com'
+      // }
+    } else dispatch(getUserDetails());
+  }, [userInfo, history, user, dispatch]);
+
   const [value, onChange] = useState();
   return (
     <>
@@ -35,7 +65,11 @@ const MyAccount = () => {
               <div className="flex">
                 <span>
                   <label htmlFor="fname">Full Name</label>
-                  <input type="text" placeholder="Name"/>
+                  <input
+                    value={user ? user.name : ""}
+                    type="text"
+                    placeholder="Name"
+                  />
                 </span>
               </div>
 
@@ -50,14 +84,24 @@ const MyAccount = () => {
 
                 <span>
                   <label htmlFor="dob">Date of Birth</label>
-                  <input type="date" name="dob" id="dob" />
+                  <input
+                    onChange={(e) => console.log(e.target.value)}
+                    type="date"
+                    name="dob"
+                    id="dob"
+                  />
                 </span>
               </div>
 
               <div className="flex">
                 <span>
                   <label htmlFor="email">Email</label>
-                  <input type="email" id="email" placeholder="Email" />
+                  <input
+                    value={user ? user.email : ""}
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                  />
                 </span>
 
                 <span>
