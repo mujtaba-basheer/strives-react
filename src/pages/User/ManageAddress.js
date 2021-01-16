@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-date-picker";
+import { useForm } from "react-hook-form";
 
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,6 +25,8 @@ const ChangePassword = () => {
 
   const history = useHistory();
 
+  const { register, handleSubmit, errors, watch } = useForm();
+
   const dispatch = useDispatch();
 
   const { loading, error, user } = useSelector((state) => state.userDetails);
@@ -49,27 +51,13 @@ const ChangePassword = () => {
   function formEdit() {
     document.getElementsByClassName("header__btn--edit")[0].style.display =
       "none";
-    document.getElementsByClassName("header__btn--save")[0].style.display =
-      "block  ";
+    document.getElementsByClassName("submit-button")[0].style.display = "block";
     setFormInputStatus("");
   }
 
-  function saveEdit() {
-    var address = document.getElementById("address");
-
-    let formValid = false;
-
-    if (address.value === "" || address.value.length > 100) {
-      address.style.border = "1px solid red";
-    } else {
-      formValid = true;
-      address.style.border = "1px solid black";
-    }
-
-    if (formValid) {
-      console.log("Api Call goes here");
-    }
-  }
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <>
@@ -87,36 +75,229 @@ const ChangePassword = () => {
 
           <div className="myaccount__right">
             <div className="header flex">
-              <p className="header__text">Change Address</p>
+              <p className="header__text">Manage Address</p>
               <span className="header__btns">
-                <button
-                  className="header__btn--save"
-                  style={{
-                    display: "none",
-                  }}
-                  onClick={saveEdit}
-                >
-                  Save
-                </button>
                 <button className="header__btn--edit" onClick={formEdit}>
                   Edit
                 </button>
               </span>
             </div>
 
-            <form className="userdetails changepassword">
-              <div>
-                <span className="mt-1">
-                  <label htmlFor="address">Change Address</label>
+            <form className="userdetails" onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-inputs">
+                <label className="form-inputs__label" htmlFor="name">
+                  Full Name
+                </label>
+                <input
+                  className="form-inputs__input"
+                  id="name"
+                  placeholder="Name"
+                  name="name"
+                  defaultValue={formData.name}
+                  disabled={formInputStatus}
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Name is required",
+                    },
+                    maxLength: {
+                      value: 50,
+                      message: "Your Name must not exceed 50 characters",
+                    },
+                  })}
+                />
+                {errors.name && (
+                  <div className="alert error">{errors.name.message}</div>
+                )}
+              </div>
+
+              <div className="form-inputs">
+                <label className="form-inputs__label" htmlFor="address1">
+                  Address Line 1
+                </label>
+                <input
+                  className="form-inputs__input"
+                  id="address1"
+                  placeholder="Address"
+                  name="address1"
+                  /* defaultValue={formData.name} */
+                  disabled={formInputStatus}
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Address is required",
+                    },
+                    maxLength: {
+                      value: 200,
+                      message: "Your Name must not exceed 200 characters",
+                    },
+                  })}
+                />
+                {errors.address1 && (
+                  <div className="alert error">{errors.address1.message}</div>
+                )}
+              </div>
+
+              <div className="form-inputs">
+                <label className="form-inputs__label" htmlFor="address2">
+                  Address Line 2
+                </label>
+                <input
+                  className="form-inputs__input"
+                  id="address2"
+                  placeholder="Address"
+                  name="address2"
+                  /* defaultValue={formData.name} */
+                  disabled={formInputStatus}
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Address is required",
+                    },
+                    maxLength: {
+                      value: 200,
+                      message: "Your Name must not exceed 200 characters",
+                    },
+                  })}
+                />
+                {errors.address2 && (
+                  <div className="alert error">{errors.address2.message}</div>
+                )}
+              </div>
+
+              <div className="flex split-input">
+                {/* Select Gender Input */}
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="city">
+                    City
+                  </label>
                   <input
-                    id="address"
-                    onChange={(e) => e.target.value}
-                    type="text"
-                    placeholder="Address"
-                    required
+                    className="form-inputs__input"
+                    id="city"
+                    placeholder="City"
+                    name="city"
+                    /* defaultValue={formData.city} */
                     disabled={formInputStatus}
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "City is required",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "City name must not exceed 50 characters",
+                      },
+                    })}
                   />
-                </span>
+                  {errors.city && (
+                    <div className="alert error">{errors.city.message}</div>
+                  )}
+                </div>
+
+                {/* Select State Input */}
+
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="state">
+                    State
+                  </label>
+                  <input
+                    className="form-inputs__input"
+                    id="state"
+                    placeholder="State"
+                    name="state"
+                    /* defaultValue={formData.name} */
+                    disabled={formInputStatus}
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "State is required",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "State name must not exceed 50 characters",
+                      },
+                    })}
+                  />
+                  {errors.state && (
+                    <div className="alert error">{errors.state.message}</div>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex split-input">
+                {/* Select phone Input */}
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="phone">
+                    Phone Number
+                  </label>
+                  <input
+                    className="form-inputs__input"
+                    type="number"
+                    placeholder="Phone"
+                    id="phone"
+                    /* defaultValue={formData.phone} */
+                    disabled={formInputStatus}
+                    name="phone"
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Phone number is required",
+                      },
+                      minLength: {
+                        value: 10,
+                        message: "Phone number cannot be less than 10 digits",
+                      },
+                      maxLength: {
+                        value: 13,
+                        message: "Your number cannot exceed 13 characters",
+                      },
+                    })}
+                  />
+                  {errors.phone && (
+                    <div class="alert error">{errors.phone.message}</div>
+                  )}
+                </div>
+
+                {/* Select Gender Input */}
+
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="type">
+                    Address Type
+                  </label>
+                  <select
+                    className="form-inputs__select"
+                    /* defaultValue={formData.gender} */
+                    name="type"
+                    disabled={formInputStatus}
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Address Type is required",
+                      },
+                    })}
+                  >
+                    <option value="" defaultChecked disabled>
+                      Select Address Type
+                    </option>
+                    <option value="Work">Work</option>
+                    <option value="Home">Home</option>
+                  </select>
+                  {errors.type && (
+                    <div className="alert error">{errors.type.message}</div>
+                  )}
+                </div>
+              </div>
+              <div className="form-footer flex">
+                <button
+                  style={{
+                    display: "none",
+                  }}
+                  type="submit"
+                  id="save"
+                  className="submit-button"
+                >
+                  Save
+                </button>
               </div>
             </form>
           </div>

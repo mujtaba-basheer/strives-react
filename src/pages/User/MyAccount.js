@@ -25,6 +25,8 @@ const MyAccount = () => {
 
   const history = useHistory();
 
+  const { register, handleSubmit, errors, watch } = useForm();
+
   const dispatch = useDispatch();
 
   const { loading, error, user } = useSelector((state) => state.userDetails);
@@ -60,35 +62,10 @@ const MyAccount = () => {
     setFormInputStatus("");
   }
 
-  function saveEdit() {
-    var name = document.getElementById("name");
-    var gender = document.getElementById("gender");
-    var email = document.getElementById("email");
-    var dob = document.getElementById("dob");
-    var phone = document.getElementById("phone");
-
-    let formValid = false;
-
-    if (name.value === "" || name.value.length > 50) {
-      name.style.border = "1px solid red";
-    } else if (email.value === "" || email.value.length > 50) {
-      email.style.border = "1px solid red";
-    } else if (dob.value === "") {
-      dob.style.border = "1px solid red";
-    } else if (phone.value === "" || phone.value.length > 15) {
-      phone.style.border = "1px solid red";
-    } else {
-      formValid = true;
-      name.style.border = "1px solid black";
-      email.style.border = "1px solid black";
-      dob.style.border = "1px solid black";
-      phone.style.border = "1px solid black";
-    }
-
-    if (formValid) {
-      dispatch(updateUserProfile(formData));
-    }
-  }
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(updateUserProfile(data));
+  };
 
   return (
     <>
@@ -118,7 +95,7 @@ const MyAccount = () => {
               </span>
             </div>
 
-            <form className="userdetails">
+            <form className="userdetails" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-inputs">
                 <label className="form-inputs__label" htmlFor="name">
                   Full Name
@@ -126,15 +103,24 @@ const MyAccount = () => {
                 <input
                   className="form-inputs__input"
                   id="name"
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  value={formData.name}
-                  type="text"
                   placeholder="Name"
-                  required
+                  name="name"
+                  defaultValue={formData.name}
                   disabled={formInputStatus}
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Name is required",
+                    },
+                    maxLength: {
+                      value: 50,
+                      message: "Your Name must not exceed 50 characters",
+                    },
+                  })}
                 />
+                {errors.name && (
+                  <div className="alert error">{errors.name.message}</div>
+                )}
               </div>
 
               <div className="flex split-input">
@@ -145,13 +131,15 @@ const MyAccount = () => {
                   </label>
                   <select
                     className="form-inputs__select"
-                    value={formData.gender}
+                    defaultValue={formData.gender}
                     name="gender"
-                    id="gender"
                     disabled={formInputStatus}
-                    onChange={(e) =>
-                      setFormData({ ...formData, gender: e.target.value })
-                    }
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Gender is required",
+                      },
+                    })}
                   >
                     <option value="" defaultChecked disabled>
                       Select Gender
@@ -159,6 +147,9 @@ const MyAccount = () => {
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
+                  {errors.gender && (
+                    <div className="alert error">{errors.gender.message}</div>
+                  )}
                 </div>
 
                 {/* Select Gender Input */}
@@ -169,16 +160,21 @@ const MyAccount = () => {
                   </label>
                   <input
                     className="form-inputs__input"
-                    value={formData.dob}
                     type="date"
                     name="dob"
-                    id="dob"
-                    onChange={(e) =>
-                      setFormData({ ...formData, dob: e.target.value })
-                    }
-                    required
+                    defaultValue={formData.dob}
                     disabled={formInputStatus}
+                    id="dob"
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Date of Birth is required",
+                      },
+                    })}
                   />
+                  {errors.dob && (
+                    <div className="alert error">{errors.dob.message}</div>
+                  )}
                 </div>
               </div>
 
@@ -191,14 +187,23 @@ const MyAccount = () => {
                     className="form-inputs__input"
                     placeholder="Email"
                     id="email"
+                    name="email"
+                    defaultValue={formData.email}
                     disabled={formInputStatus}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    type="email"
-                    value={formData.email}
-                    required
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Your email must not exceed 50 characters",
+                      },
+                    })}
                   />
+                  {errors.email && (
+                    <div className="alert error">{errors.email.message}</div>
+                  )}
                 </div>
 
                 <div className="form-inputs">
@@ -207,16 +212,30 @@ const MyAccount = () => {
                   </label>
                   <input
                     className="form-inputs__input"
-                    value={formData.phone}
                     type="number"
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
                     placeholder="Phone"
-                    disabled={formInputStatus}
                     id="phone"
-                    maxLength="15"
+                    defaultValue={formData.phone}
+                    disabled={formInputStatus}
+                    name="phone"
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Phone number is required",
+                      },
+                      minLength: {
+                        value: 10,
+                        message: "Phone number cannot be less than 10 digits",
+                      },
+                      maxLength: {
+                        value: 12,
+                        message: "Your number cannot exceed 12 characters",
+                      },
+                    })}
                   />
+                  {errors.phone && (
+                    <div class="alert error">{errors.phone.message}</div>
+                  )}
                 </div>
               </div>
               <div className="form-footer flex">

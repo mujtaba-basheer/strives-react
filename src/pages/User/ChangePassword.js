@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import DatePicker from "react-date-picker";
+import React, { useState, useEffect, useRef } from "react";
+import { useForm } from "react-hook-form";
 
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,6 +24,10 @@ const ChangePassword = () => {
   });
 
   const history = useHistory();
+
+  const { register, handleSubmit, errors, watch } = useForm();
+  const password = useRef({});
+  password.current = watch("password", "");
 
   const dispatch = useDispatch();
 
@@ -54,33 +58,17 @@ const ChangePassword = () => {
     setFormInputStatus("");
   }
 
-  function saveEdit() {
-    var currentpass = document.getElementById("currentpass");
-    var newpass = document.getElementById("newpass");
-    var connewpass = document.getElementById("connewpass");
-
-    console.log(typeof currentpass.value, newpass.value, connewpass.value, !(connewpass.toString() !== newpass.toString()));
-
-    let formValid = false;
-
-    if (currentpass.value === "") {
-      currentpass.style.border = "1px solid red";
-    } else if (newpass.value === "" || newpass.value.length < 8) {
-      newpass.style.border = "1px solid red";
-    } else if (!(connewpass.toString() !== newpass.toString())) {
-      connewpass.style.border = "1px solid red";
-    } else {
-      console.log("yo ");
-      formValid = true;
-      currentpass.style.border = "1px solid black";
-      newpass.style.border = "1px solid black";
-      connewpass.style.border = "1px solid black";
-    }
-
-    if (formValid) {
-      console.log("hh");
-    }
+  function formEdit() {
+    document.getElementsByClassName("header__btn--edit")[0].style.display =
+      "none";
+    document.getElementsByClassName("submit-button")[0].style.display = "block";
+    setFormInputStatus("");
   }
+
+  const onSubmit = (data) => {
+    console.log(data);
+    /* dispatch(updateUserProfile(data)); */
+  };
 
   return (
     <>
@@ -100,59 +88,106 @@ const ChangePassword = () => {
             <div className="header flex">
               <p className="header__text">Change Password</p>
               <span className="header__btns">
-                <button
-                  className="header__btn--save"
-                  style={{
-                    display: "none",
-                  }}
-                  onClick={saveEdit}
-                >
-                  Save
-                </button>
                 <button className="header__btn--edit" onClick={formEdit}>
                   Edit
                 </button>
               </span>
             </div>
 
-            <form className="userdetails changepassword">
-              <span>
-                <label htmlFor="fname">Curent Password</label>
+            <form className="userdetails" onSubmit={handleSubmit(onSubmit)}>
+              {/* Current Password */}
+              <div className="form-inputs">
+                <label className="form-inputs__label" htmlFor="currentpass">
+                  Current Password
+                </label>
                 <input
-                  id="currentpass"
-                  onChange={(e) => e.target.value}
-                  type="text"
-                  placeholder="Current Password"
-                  required
+                  className="form-inputs__input"
+                  /* defaultValue={formData.email} */
                   disabled={formInputStatus}
+                  type="password"
+                  placeholder="Cuurent Password"
+                  name="currentpass"
+                  ref={register({
+                    required: {
+                      value: true,
+                      messsage: "You must specify a password",
+                    },
+                    maxLength: {
+                      value: 200,
+                      message: "Password must have at least 8 characters",
+                    },
+                  })}
                 />
-              </span>
-
-              <div>
-                <span className="mt-1">
-                  <label htmlFor="fname">New Password</label>
-                  <input
-                    id="newpass"
-                    onChange={(e) => e.target.value}
-                    type="text"
-                    placeholder="New Password"
-                    required
-                    disabled={formInputStatus}
-                  />
-                </span>
+                {errors.currentpass && (
+                  <div class="alert error">{errors.currentpass.message}</div>
+                )}
               </div>
 
-              <span>
-                <label htmlFor="fname">Confirm New Password</label>
+              {/* New Password */}
+              <div className="form-inputs">
+                <label className="form-inputs__label" htmlFor="currentpass">
+                  New Password
+                </label>
                 <input
-                  id="connewpass"
-                  onChange={(e) => e.target.value}
-                  type="text"
-                  placeholder="Confirm New Password"
-                  required
+                  className="form-inputs__input"
+                  /* defaultValue={formData.email} */
                   disabled={formInputStatus}
+                  type="password"
+                  placeholder="New Password"
+                  name="password"
+                  ref={register({
+                    required: {
+                      value: true,
+                      messsage: "You must specify a password",
+                    },
+                    minLength: {
+                      value: 8,
+                      message: "Password must have at least 8 characters",
+                    },
+                  })}
                 />
-              </span>
+                {errors.password && (
+                  <div class="alert error">{errors.password.message}</div>
+                )}
+              </div>
+
+              {/* Confirm New Password */}
+              <div className="form-inputs">
+                <label className="form-inputs__label" htmlFor="currentpass">
+                  Confirm New Password
+                </label>
+                <input
+                  className="form-inputs__input"
+                  /* defaultValue={formData.email} */
+                  disabled={formInputStatus}
+                  type="password"
+                  placeholder="Confirm New Password"
+                  name="password_repeat"
+                  ref={register({
+                    validate: (value) =>
+                      value === password.current ||
+                      "The passwords do not match",
+                  })}
+                />
+                {errors.password_repeat && (
+                  <div class="alert error">
+                    {errors.password_repeat.message}
+                  </div>
+                )}
+              </div>
+
+              <div className="form-footer flex">
+                <button
+                  style={{
+                    display: "none",
+                  }}
+                  type="submit"
+                  id="save"
+                  className="submit-button"
+                >
+                  Save
+                </button>
+              </div>
             </form>
           </div>
         </div>
