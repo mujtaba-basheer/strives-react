@@ -1,8 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/actions/userActions";
 
 const UserSidebar = ({ selected }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   console.log(selected);
+
   return (
     <div className="usersidebarbackground">
       <div className="usersidebar">
@@ -64,7 +69,15 @@ const UserSidebar = ({ selected }) => {
           </ul>
         </div>
         <div className="logout">
-          <Link className="flex flex usersidebar__heading">
+          <Link
+            to="/"
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(logout());
+              history.push("/");
+            }}
+            className="flex flex usersidebar__heading"
+          >
             <p className="usersidebar__heading--text">LOGOUT</p>
           </Link>
         </div>

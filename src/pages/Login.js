@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -17,6 +17,10 @@ const Login = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo, error: loginError } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) history.push("/");
+  }, [userInfo, history]);
 
   const onSubmit = (data) => {
     dispatch(login(data));
