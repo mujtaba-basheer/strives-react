@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-date-picker";
+import { useForm } from "react-hook-form";
 
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -56,8 +56,7 @@ const MyAccount = () => {
   function formEdit() {
     document.getElementsByClassName("header__btn--edit")[0].style.display =
       "none";
-    document.getElementsByClassName("header__btn--save")[0].style.display =
-      "block  ";
+    document.getElementsByClassName("submit-button")[0].style.display = "block";
     setFormInputStatus("");
   }
 
@@ -113,15 +112,6 @@ const MyAccount = () => {
               )}
               {updateError && <h3 style={{ color: "red" }}>{updateError}</h3>}
               <span className="header__btns">
-                <button
-                  className="header__btn--save"
-                  style={{
-                    display: "none",
-                  }}
-                  onClick={saveEdit}
-                >
-                  Save
-                </button>
                 <button className="header__btn--edit" onClick={formEdit}>
                   Edit
                 </button>
@@ -129,27 +119,32 @@ const MyAccount = () => {
             </div>
 
             <form className="userdetails">
-              <div className="flex">
-                <span>
-                  <label htmlFor="fname">Full Name</label>
-                  <input
-                    id="name"
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    value={formData.name}
-                    type="text"
-                    placeholder="Name"
-                    required
-                    disabled={formInputStatus}
-                  />
-                </span>
+              <div className="form-inputs">
+                <label className="form-inputs__label" htmlFor="name">
+                  Full Name
+                </label>
+                <input
+                  className="form-inputs__input"
+                  id="name"
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  value={formData.name}
+                  type="text"
+                  placeholder="Name"
+                  required
+                  disabled={formInputStatus}
+                />
               </div>
 
-              <div className="flex">
-                <span>
-                  <label for="gender">Gender</label>
+              <div className="flex split-input">
+                {/* Select Gender Input */}
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="gender">
+                    Gender
+                  </label>
                   <select
+                    className="form-inputs__select"
                     value={formData.gender}
                     name="gender"
                     id="gender"
@@ -164,11 +159,16 @@ const MyAccount = () => {
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
-                </span>
+                </div>
 
-                <span>
-                  <label htmlFor="dob">Date of Birth</label>
+                {/* Select Gender Input */}
+
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="dob">
+                    Date of Birth
+                  </label>
                   <input
+                    className="form-inputs__input"
                     value={formData.dob}
                     type="date"
                     name="dob"
@@ -179,28 +179,34 @@ const MyAccount = () => {
                     required
                     disabled={formInputStatus}
                   />
-                </span>
+                </div>
               </div>
 
-              <div className="flex">
-                <span>
-                  <label htmlFor="email">Email</label>
+              <div className="flex split-input">
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="email">
+                    Email
+                  </label>
                   <input
+                    className="form-inputs__input"
+                    placeholder="Email"
+                    id="email"
+                    disabled={formInputStatus}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
                     type="email"
                     value={formData.email}
-                    id="email"
-                    placeholder="Email"
                     required
-                    disabled={formInputStatus}
                   />
-                </span>
+                </div>
 
-                <span>
-                  <label htmlFor="phone">Phone Number</label>
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="phone">
+                    Phone Number
+                  </label>
                   <input
+                    className="form-inputs__input"
                     value={formData.phone}
                     type="number"
                     onChange={(e) =>
@@ -211,7 +217,19 @@ const MyAccount = () => {
                     id="phone"
                     maxLength="15"
                   />
-                </span>
+                </div>
+              </div>
+              <div className="form-footer flex">
+                <button
+                  style={{
+                    display: "none",
+                  }}
+                  type="submit"
+                  id="save"
+                  className="submit-button"
+                >
+                  Save
+                </button>
               </div>
             </form>
           </div>

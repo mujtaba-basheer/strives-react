@@ -46,46 +46,66 @@
 
     .userdetails {
       margin-bottom: 2rem;
-      div {
-        margin: 25px 0;
-      }
 
-      span {
-        width: 40%;
-        margin-right: 20px;
-      }
-      span label {
-        display: block;
+      .form-inputs {
+        margin-bottom: 0.5rem;
         width: 100%;
-        margin-bottom: 10px;
+
+        &__label {
+          display: inline-block;
+          font-size: 16px;
+          margin-bottom: 6px;
+        }
+
+        &__input {
+          display: block;
+          padding-left: 10px;
+          outline: none;
+          border-radius: 2px;
+          height: 40px;
+          width: 100%;
+          border: 1px solid rgba(44, 61, 80, 0.2);
+          border-radius: 2px;
+        }
+
+        &__select {
+          display: block;
+          padding-left: 10px;
+          outline: none;
+          border-radius: 2px;
+          height: 40px;
+          width: 100%;
+          border: 1px solid rgba(44, 61, 80, 0.2);
+          border-radius: 2px;
+        }
       }
 
-      span input,
-      select {
-        display: block;
-        width: 95%;
-        outline: none;
+      .split-input {
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .form-inputs {
+          width: 48%;
+        }
+      }
+
+      .form-footer {
         height: 40px;
-        font-size: 16px;
-        line-height: 19px;
-        color: #696969;
-      }
+        justify-content: center;
+        margin-top: 15px;
 
-      span input {
-        padding: 15px 5px;
-      }
-    }
+        .submit-button {
+          width: 100px;
+          height: 32px;
+          background: #222b32;
+          color: #fff;
+          font-size: 16px;
+          line-height: 21px;
 
-    .changepassword {
-      margin: 0 auto;
-      width: 95%;
-
-      span {
-        width: 100%;
-      }
-
-      div {
-        margin: 20px 0;
+          outline: none;
+          border: none;
+          border-radius: 2px;
+        }
       }
     }
   }
@@ -112,46 +132,25 @@
           line-height: 130%;
         }
       }
-
-      .userdetails {
-        span {
-          width: 100%;
-          margin: 5px 0;
-        }
-        div {
-          flex-wrap: wrap;
-          margin: 10px 0;
-        }
-
-        input {
-          width: 100%;
-        }
-
-        span label {
-          margin-bottom: 15px;
-        }
-      }
-
-      .changepassword {
-        div {
-          margin: 20px 0;
-        }
-      }
     }
   }
 }
 
-@media screen and (max-width: 450px) {
-  .myaccount__right {
-    .userdetails {
-      div {
-        margin: 11px 0;
-      }
-    }
+@media screen and (max-width: 530px) {
+  .userprofile {
+    .myaccount__right {
+      .userdetails {
+        .split-input {
+          .form-inputs {
+            width: 100%;
+          }
+        }
 
-    .changepassword {
-      input {
-        height: 30px;
+        .form-footer {
+          .submit-button {
+            width: 100%;
+          }
+        }
       }
     }
   }
