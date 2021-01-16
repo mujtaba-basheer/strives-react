@@ -33,6 +33,7 @@ import { ORDER_LIST_RESET } from "../constants/orderConstants";
 
 export const login = ({ email, password }) => async (dispatch) => {
   try {
+    dispatch(logout());
     dispatch({ type: USER_LOGIN_REQUEST });
 
     const config = {
@@ -139,7 +140,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
   }
 };
 
-export const updateUserProfile = (user) => async (dispatch, getState) => {
+export const updateUserProfile = (data) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_UPDATE_PROFILE_REQUEST });
     const {
@@ -152,12 +153,13 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
+    console.log(config);
 
-    const { data } = await apiCall.put(`/api/users/profile`, user, config);
+    await apiCall.put(`update-details`, data, config);
 
-    dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
+    dispatch({ type: USER_UPDATE_PROFILE_SUCCESS });
 
-    dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+    dispatch(getUserDetails());
   } catch (error) {
     dispatch({
       type: USER_UPDATE_PROFILE_FAIL,

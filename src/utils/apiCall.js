@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
-/* import { getToken } from "./store"; */
 
 let api_url;
 if (process.env.NODE_ENV === "development")

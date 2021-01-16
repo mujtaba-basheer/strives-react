@@ -18,7 +18,7 @@ const MyAccount = () => {
   const [formData, setFormData] = useState({
     name: "",
     gender: "",
-    number: "",
+    phone: undefined,
     dob: "",
     email: "",
   });
@@ -28,6 +28,11 @@ const MyAccount = () => {
   const dispatch = useDispatch();
 
   const { loading, error, user } = useSelector((state) => state.userDetails);
+  const {
+    loading: updateLoading,
+    error: updateError,
+    success: updateSuccess,
+  } = useSelector((state) => state.userUpdateProfile);
   const { loading: loadingLogin, error: errorLogin, userInfo } = useSelector(
     (state) => state.userLogin
   );
@@ -36,15 +41,17 @@ const MyAccount = () => {
     if (!userInfo) history.push("/login");
 
     if (user) {
-      console.log(user);
-      // set user details to state
-      //   {
-      //   _id: '5ff992d324303e1808b8ebbd',
-      //   name: 'Richard Rozario',
-      //   email: 'richardrozario.rr@gmail.com'
-      // }
+      setFormData({
+        name: user.name,
+        gender: user.gender,
+        phone: user.phone,
+        dob: user.dob,
+        email: user.email,
+      });
     } else dispatch(getUserDetails());
-  }, [userInfo, history, user, dispatch]);
+
+    if (updateSuccess) setFormInputStatus("disabled");
+  }, [userInfo, history, user, dispatch, updateSuccess]);
 
   function formEdit() {
     document.getElementsByClassName("header__btn--edit")[0].style.display =
@@ -77,12 +84,10 @@ const MyAccount = () => {
       email.style.border = "1px solid black";
       dob.style.border = "1px solid black";
       phone.style.border = "1px solid black";
-      
     }
 
-    if(formValid) {
-
-      console.log("Api Call goes here")
+    if (formValid) {
+      dispatch(updateUserProfile(formData));
     }
   }
 
@@ -103,6 +108,10 @@ const MyAccount = () => {
           <div className="myaccount__right">
             <div className="header flex">
               <p className="header__text">Personal Information</p>
+              {updateSuccess && (
+                <h3 style={{ color: "green" }}>Updated Successfully</h3>
+              )}
+              {updateError && <h3 style={{ color: "red" }}>{updateError}</h3>}
               <span className="header__btns">
                 <button
                   className="header__btn--save"
@@ -125,7 +134,10 @@ const MyAccount = () => {
                   <label htmlFor="fname">Full Name</label>
                   <input
                     id="name"
-                    onChange={(e) => e.target.value}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    value={formData.name}
                     type="text"
                     placeholder="Name"
                     required
@@ -137,19 +149,33 @@ const MyAccount = () => {
               <div className="flex">
                 <span>
                   <label for="gender">Gender</label>
-                  <select name="gender" id="gender" disabled={formInputStatus}>
-                    <option value="male">male</option>
-                    <option value="female">female</option>
+                  <select
+                    value={formData.gender}
+                    name="gender"
+                    id="gender"
+                    disabled={formInputStatus}
+                    onChange={(e) =>
+                      setFormData({ ...formData, gender: e.target.value })
+                    }
+                  >
+                    <option value="" defaultChecked disabled>
+                      Select Gender
+                    </option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                   </select>
                 </span>
 
                 <span>
                   <label htmlFor="dob">Date of Birth</label>
                   <input
-                    onChange={(e) => e.target.value}
+                    value={formData.dob}
                     type="date"
                     name="dob"
                     id="dob"
+                    onChange={(e) =>
+                      setFormData({ ...formData, dob: e.target.value })
+                    }
                     required
                     disabled={formInputStatus}
                   />
@@ -160,8 +186,11 @@ const MyAccount = () => {
                 <span>
                   <label htmlFor="email">Email</label>
                   <input
-                    onChange={(e) => e.target.value}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     type="email"
+                    value={formData.email}
                     id="email"
                     placeholder="Email"
                     required
@@ -172,8 +201,11 @@ const MyAccount = () => {
                 <span>
                   <label htmlFor="phone">Phone Number</label>
                   <input
+                    value={formData.phone}
                     type="number"
-                    onChange={(e) => e.target.value}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
                     placeholder="Phone"
                     disabled={formInputStatus}
                     id="phone"
