@@ -6,10 +6,8 @@ const Account = () => {
     const accordianItemHeaders = document.querySelectorAll(
       ".accordian-item-header"
     );
-    /* console.log(accordianItemHeaders); */
     accordianItemHeaders.forEach((accordianItemHeader) => {
       accordianItemHeader.addEventListener("click", () => {
-        /* console.log("clicked"); */
         accordianItemHeader.classList.toggle("active");
       });
     });

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import logo from "../../assets/images/logo.png";
 import navbar1 from "../../assets/images/navbar/navbar1.png";
@@ -16,8 +16,8 @@ import Account from "./Sidebar/Account";
 
 const Index = () => {
   const history = useHistory();
-  const [hoverarray, setHoverarray] = useState([]);
   const userLogin = useSelector((state) => state.userLogin);
+  const [hoverarray, setHoverarray] = useState([]);
 
   const [currentSidebarScreen, setCurrentSidebarScreen] = useState("home");
 
@@ -75,6 +75,7 @@ const Index = () => {
   }
 
   function closeSideMenu() {
+    setCurrentSidebarScreen("home");
     document.getElementById("menu").style.width = "0%";
   }
 
@@ -92,7 +93,7 @@ const Index = () => {
     searchdiv.classList.add("hide");
   }
 
-  console.log(currentSidebarScreen);
+  /* console.log(currentSidebarScreen); */
 
   return (
     <>
@@ -287,12 +288,9 @@ const Index = () => {
         {/* Top Area of the Sidebar */}
         <ul className="flex top-area">
           <li>
-            <img
-              onClick={closeSideMenu}
-              className="logo"
-              src={logo}
-              alt="logo"
-            />
+            <Link onClick={closeSideMenu}>
+              <img className="logo" src={logo} alt="logo" />
+            </Link>
           </li>
           <li>
             <img

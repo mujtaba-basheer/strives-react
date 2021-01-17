@@ -6,7 +6,7 @@ import { logout } from "../../redux/actions/userActions";
 const UserSidebar = ({ selected }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(selected);
+  /* console.log(selected); */
 
   return (
     <div className="usersidebarbackground">

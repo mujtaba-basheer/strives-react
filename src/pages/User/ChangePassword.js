@@ -36,22 +36,7 @@ const ChangePassword = () => {
     if (!userInfo) history.push("/login");
   }, [userInfo, history, dispatch]);
 
-  /* function formEdit() {
-    document.getElementsByClassName("header__btn--edit")[0].style.display =
-      "none";
-    document.getElementsByClassName("header__btn--save")[0].style.display =
-      "block  ";
-    setFormInputStatus("");
-  } */
-
-  /* function formEdit() {
-    document.getElementsByClassName("header__btn--edit")[0].style.display =
-      "none";
-    document.getElementsByClassName("submit-button")[0].style.display = "block";
-    setFormInputStatus("");
-  }
- */
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
     dispatch(
       changePassword({
         currentPass: data.currentpass,
@@ -59,14 +44,14 @@ const ChangePassword = () => {
       })
     );
     setShowMessage(true);
-    setFormData({ currentpass: "", password: "", password_repeat: "" });
+    e.target.reset();
   };
 
   return (
     <>
       <Navbar />
 
-      <section className="content container mt-1 mb-2">
+      <section className="content container mb-2">
         <div className="userprofile flex">
           <div className="myaccount__left">
             <Link className="backlink" to="/">

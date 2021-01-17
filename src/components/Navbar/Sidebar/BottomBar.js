@@ -1,18 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BottomBar = ({ setCurrentSidebarScreen }) => {
-  
+  const history = useHistory();
+  const userLogin = useSelector((state) => state.userLogin);
 
   return (
     <ul className="flex bottom-area">
-      <li onClick={() => setCurrentSidebarScreen("cart")}>
+      <li>
         <Link>
           <i className="fas fa-shopping-cart"></i>
         </Link>
       </li>
-      <li>
-        <Link to="login">
+      <li
+        onClick={() => {
+          userLogin.userInfo
+            ? setCurrentSidebarScreen("cart")
+            : history.push("/login");
+        }}
+      >
+        <Link>
           <i className="far fa-user-circle"></i>
         </Link>
       </li>

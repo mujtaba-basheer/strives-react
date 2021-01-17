@@ -5,10 +5,10 @@ const Home = () => {
     const accordianItemHeaders = document.querySelectorAll(
       ".accordian-item-header"
     );
-    console.log(accordianItemHeaders);
+    /* console.log(accordianItemHeaders); */
     accordianItemHeaders.forEach((accordianItemHeader) => {
-      accordianItemHeader.addEventListener("click", (event) => {
-        console.log("clicked");
+      accordianItemHeader.addEventListener("click", () => {
+        /* console.log("clicked"); */
         accordianItemHeader.classList.toggle("active");
       });
     });

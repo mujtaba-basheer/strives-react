@@ -53,7 +53,14 @@ const MyAccount = () => {
       });
     } else dispatch(getUserDetails());
 
-    if (updateSuccess) setFormInputStatus("disabled");
+    if (updateSuccess) {
+      document.getElementsByClassName("header__btn--edit")[0].style.display =
+        "block";
+      document.getElementsByClassName("submit-button")[0].style.display =
+        "none";
+
+      setFormInputStatus("disabled");
+    }
   }, [userInfo, history, user, dispatch, updateSuccess]);
 
   function formEdit() {
@@ -166,7 +173,6 @@ const MyAccount = () => {
                   </label>
                   <select
                     className="form-inputs__select"
-                    defaultValue={formData.gender}
                     name="gender"
                     disabled={formInputStatus}
                     ref={register({
@@ -176,11 +182,21 @@ const MyAccount = () => {
                       },
                     })}
                   >
-                    <option value="" defaultChecked disabled>
+                    <option value="" disabled>
                       Select Gender
                     </option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option
+                      selected={formData.gender === "Male" ? "selected" : ""}
+                      value="Male"
+                    >
+                      Male
+                    </option>
+                    <option
+                      selected={formData.gender === "Female" ? "selected" : ""}
+                      value="Female"
+                    >
+                      Female
+                    </option>
                   </select>
                   {errors.gender && (
                     <div className="alert error">{errors.gender.message}</div>

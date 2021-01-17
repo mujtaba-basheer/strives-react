@@ -22,7 +22,7 @@ const ChangePassword = () => {
 
   const history = useHistory();
 
-  const { register, handleSubmit, errors, watch } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const dispatch = useDispatch();
 
@@ -60,7 +60,7 @@ const ChangePassword = () => {
     <>
       <Navbar />
 
-      <section className="content container mt-1 mb-2">
+      <section className="content container mb-2">
         <div className="userprofile flex">
           <div className="myaccount__left">
             <Link className="backlink" to="/">
@@ -262,6 +262,7 @@ const ChangePassword = () => {
                     /* defaultValue={formData.gender} */
                     name="type"
                     disabled={formInputStatus}
+                    
                     ref={register({
                       required: {
                         value: true,
