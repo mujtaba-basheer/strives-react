@@ -16,7 +16,7 @@ const BottomBar = ({ setCurrentSidebarScreen }) => {
       <li
         onClick={() => {
           userLogin.userInfo
-            ? setCurrentSidebarScreen("cart")
+            ? setCurrentSidebarScreen("sidebaraccount")
             : history.push("/login");
         }}
       >

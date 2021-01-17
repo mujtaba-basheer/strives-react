@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../redux/actions/userActions";
 
-const Account = () => {
+const Account = ({ closeSideMenu }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   useEffect(() => {
     const accordianItemHeaders = document.querySelectorAll(
       ".accordian-item-header"
@@ -46,7 +51,17 @@ const Account = () => {
         </li>
 
         <li>
-          <Link>Logout</Link>
+          <Link
+            onClick={(e) => {
+              e.preventDefault();
+              console.log("hi");
+              dispatch(logout());
+              history.push("/");
+              closeSideMenu();
+            }}
+          >
+            Logout
+          </Link>
         </li>
       </ul>
     </>

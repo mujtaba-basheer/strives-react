@@ -70,7 +70,6 @@ const UserSidebar = ({ selected }) => {
         </div>
         <div className="logout">
           <Link
-            to="/"
             onClick={(e) => {
               e.preventDefault();
               dispatch(logout());

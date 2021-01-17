@@ -69,7 +69,6 @@ function LoginArea() {
       phone: userdata.phone,
     };
 
-    console.log(otpObj);
 
     ApiCall.post("resend-otp", otpObj)
       .then((res) => {
@@ -92,8 +91,6 @@ function LoginArea() {
         email: userdata.email,
         otp: parseInt(otp),
       };
-
-      console.log(otpObj);
 
       ApiCall.post("verify-otp", otpObj)
         .then((res) => {
@@ -251,7 +248,7 @@ function LoginArea() {
                 </div>
 
                 <Link to="/login" className="logindetails__signuplink">
-                Have an account? Click here to Sign in
+                  Have an account? Click here to Sign in
                 </Link>
               </div>
             </div>

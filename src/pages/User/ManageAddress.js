@@ -14,10 +14,14 @@ const ChangePassword = () => {
   const [formInputStatus, setFormInputStatus] = useState("disabled");
   const [formData, setFormData] = useState({
     name: "",
-    gender: "",
-    number: "",
-    dob: "",
-    email: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    landmark: "",
+    pincode: "",
+    phone: "",
+    type: "",
   });
 
   const history = useHistory();
@@ -218,6 +222,60 @@ const ChangePassword = () => {
               </div>
 
               <div className="flex split-input">
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="landmark">
+                    Landmark
+                  </label>
+                  <input
+                    className="form-inputs__input"
+                    id="landmark"
+                    placeholder="Landmark"
+                    name="landmark"
+                    /* defaultValue={formData.name} */
+                    disabled={formInputStatus}
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Landmark is required",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Landmark name must not exceed 50 characters",
+                      },
+                    })}
+                  />
+                  {errors.landmark && (
+                    <div className="alert error">{errors.landmark.message}</div>
+                  )}
+                </div>
+
+                {/* Select phone Input */}
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="pincode">
+                    Pincode
+                  </label>
+                  <input
+                    className="form-inputs__input"
+                    type="number"
+                    placeholder="Pincode"
+                    id="pincode"
+                    defaultValue={formData.pincode}
+                    disabled={formInputStatus}
+                    name="pincode"
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Pincode is required",
+                      },
+                    })}
+                  />
+                  {errors.pincode && (
+                    <div class="alert error">{errors.pincode.message}</div>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex split-input">
                 {/* Select phone Input */}
                 <div className="form-inputs">
                   <label className="form-inputs__label" htmlFor="phone">
@@ -262,7 +320,6 @@ const ChangePassword = () => {
                     /* defaultValue={formData.gender} */
                     name="type"
                     disabled={formInputStatus}
-                    
                     ref={register({
                       required: {
                         value: true,

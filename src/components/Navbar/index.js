@@ -308,7 +308,9 @@ const Index = () => {
 
         {/* Account */}
 
-        {currentSidebarScreen === "cart" && <Account />}
+        {currentSidebarScreen === "sidebaraccount" && (
+          <Account closeSideMenu={closeSideMenu} />
+        )}
 
         {/* Search */}
 

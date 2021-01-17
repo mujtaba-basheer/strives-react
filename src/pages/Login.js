@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { Link, useHistory } from "react-router-dom";
+
 import { useSelector, useDispatch } from "react-redux";
+import { login } from "../redux/actions/userActions";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link, useHistory } from "react-router-dom";
-
-import { login } from "../redux/actions/userActions";
+import Alert from "../components/Alert/Alert";
 
 const Login = () => {
   let history = useHistory();
@@ -24,9 +25,6 @@ const Login = () => {
 
   const onSubmit = (data) => {
     dispatch(login(data));
-    if (userInfo) {
-      history.push("/");
-    }
   };
 
   return (
@@ -44,6 +42,9 @@ const Login = () => {
                     <br />
                     please Sign In
                   </p>
+                </div>
+                <div>
+                  {loginError && <Alert type="danger" text={loginError} />}
                 </div>
                 <div className="user-details">
                   <form onSubmit={handleSubmit(onSubmit)}>
