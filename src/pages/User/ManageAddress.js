@@ -140,20 +140,16 @@ const ChangePassword = () => {
 
               <div className="form-inputs">
                 <label className="form-inputs__label" htmlFor="address2">
-                  Address Line 2
+                  Address Line 2 [Optional]
                 </label>
                 <input
                   className="form-inputs__input"
                   id="address2"
-                  placeholder="Address"
+                  placeholder="Address Line 2"
                   name="address2"
                   /* defaultValue={formData.name} */
                   disabled={formInputStatus}
                   ref={register({
-                    required: {
-                      value: true,
-                      message: "Address is required",
-                    },
                     maxLength: {
                       value: 200,
                       message: "Your Name must not exceed 200 characters",

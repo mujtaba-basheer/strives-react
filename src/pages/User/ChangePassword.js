@@ -14,13 +14,10 @@ import Footer from "../../components/Footer";
 import UserSidebar from "../../components/layout/UserSidebar";
 
 const ChangePassword = () => {
-  const [formInputStatus, setFormInputStatus] = useState("disabled");
   const [formData, setFormData] = useState({
-    name: "",
-    gender: "",
-    number: "",
-    dob: "",
-    email: "",
+    currentpass: "",
+    password: "",
+    password_repeat: "",
   });
 
   const history = useHistory();
@@ -50,21 +47,21 @@ const ChangePassword = () => {
     } else dispatch(getUserDetails());
   }, [userInfo, history, user, dispatch]);
 
-  function formEdit() {
+  /* function formEdit() {
     document.getElementsByClassName("header__btn--edit")[0].style.display =
       "none";
     document.getElementsByClassName("header__btn--save")[0].style.display =
       "block  ";
     setFormInputStatus("");
-  }
+  } */
 
-  function formEdit() {
+  /* function formEdit() {
     document.getElementsByClassName("header__btn--edit")[0].style.display =
       "none";
     document.getElementsByClassName("submit-button")[0].style.display = "block";
     setFormInputStatus("");
   }
-
+ */
   const onSubmit = (data) => {
     console.log(data);
     /* dispatch(updateUserProfile(data)); */
@@ -87,11 +84,11 @@ const ChangePassword = () => {
           <div className="myaccount__right">
             <div className="header flex">
               <p className="header__text">Change Password</p>
-              <span className="header__btns">
+              {/* <span className="header__btns">
                 <button className="header__btn--edit" onClick={formEdit}>
                   Edit
                 </button>
-              </span>
+              </span> */}
             </div>
 
             <form className="userdetails" onSubmit={handleSubmit(onSubmit)}>
@@ -103,7 +100,7 @@ const ChangePassword = () => {
                 <input
                   className="form-inputs__input"
                   /* defaultValue={formData.email} */
-                  disabled={formInputStatus}
+
                   type="password"
                   placeholder="Cuurent Password"
                   name="currentpass"
@@ -131,7 +128,7 @@ const ChangePassword = () => {
                 <input
                   className="form-inputs__input"
                   /* defaultValue={formData.email} */
-                  disabled={formInputStatus}
+
                   type="password"
                   placeholder="New Password"
                   name="password"
@@ -159,7 +156,7 @@ const ChangePassword = () => {
                 <input
                   className="form-inputs__input"
                   /* defaultValue={formData.email} */
-                  disabled={formInputStatus}
+
                   type="password"
                   placeholder="Confirm New Password"
                   name="password_repeat"
@@ -177,14 +174,7 @@ const ChangePassword = () => {
               </div>
 
               <div className="form-footer flex">
-                <button
-                  style={{
-                    display: "none",
-                  }}
-                  type="submit"
-                  id="save"
-                  className="submit-button"
-                >
+                <button type="submit" id="save" className="submit-button">
                   Save
                 </button>
               </div>

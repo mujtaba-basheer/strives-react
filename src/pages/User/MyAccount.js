@@ -96,31 +96,60 @@ const MyAccount = () => {
             </div>
 
             <form className="userdetails" onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-inputs">
-                <label className="form-inputs__label" htmlFor="name">
-                  Full Name
-                </label>
-                <input
-                  className="form-inputs__input"
-                  id="name"
-                  placeholder="Name"
-                  name="name"
-                  defaultValue={formData.name}
-                  disabled={formInputStatus}
-                  ref={register({
-                    required: {
-                      value: true,
-                      message: "Name is required",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Your Name must not exceed 50 characters",
-                    },
-                  })}
-                />
-                {errors.name && (
-                  <div className="alert error">{errors.name.message}</div>
-                )}
+              <div className="flex split-input">
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="fname">
+                    First Name
+                  </label>
+                  <input
+                    className="form-inputs__input"
+                    id="fname"
+                    placeholder="First Name"
+                    name="firstname"
+                    defaultValue={formData.name}
+                    disabled={formInputStatus}
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Name is required",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Your Name must not exceed 50 characters",
+                      },
+                    })}
+                  />
+                  {errors.firstname && (
+                    <div className="alert error">{errors.firstname.message}</div>
+                  )}
+                </div>
+
+                <div className="form-inputs">
+                  <label className="form-inputs__label" htmlFor="lname">
+                    Last Name
+                  </label>
+                  <input
+                    className="form-inputs__input"
+                    id="lname"
+                    placeholder="Last Name"
+                    name="lastname"
+                    defaultValue={formData.name}
+                    disabled={formInputStatus}
+                    ref={register({
+                      required: {
+                        value: true,
+                        message: "Name is required",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Your Name must not exceed 50 characters",
+                      },
+                    })}
+                  />
+                  {errors.lastname && (
+                    <div className="alert error">{errors.lastname.message}</div>
+                  )}
+                </div>
               </div>
 
               <div className="flex split-input">

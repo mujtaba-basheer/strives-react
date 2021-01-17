@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
 import navbar1 from "../../assets/images/navbar/navbar1.png";
@@ -7,10 +8,16 @@ import navbar3 from "../../assets/images/navbar/navbar3.png";
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";
 import { desk_home_data } from "./NavbarData";
-import { Link } from "react-router-dom";
+import Home from "./Sidebar/Home";
+import BottomBar from "./Sidebar/BottomBar";
+import Search from "./Sidebar/Search";
+import Account from "./Sidebar/Account";
 
 const Index = () => {
+  const history = useHistory();
   const [hoverarray, setHoverarray] = useState([]);
+
+  const [currentSidebarScreen, setCurrentSidebarScreen] = useState("home");
 
   const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
@@ -83,19 +90,20 @@ const Index = () => {
     searchdiv.classList.add("hide");
   }
 
+  console.log(currentSidebarScreen);
+
   return (
     <>
       <div className="navbar flex">
-        <Link to="/">
-          <img
-            className="logo mobile"
-            style={{
-              display: "none",
-            }}
-            src={logo}
-            alt="strides"
-          />
-        </Link>
+        <img
+          className="logo mobile"
+          style={{
+            display: "none",
+          }}
+          onClick={() => history.push("/")}
+          src={logo}
+          alt="strides"
+        />
 
         <div className="main-nav flex">
           <Link to="/">
@@ -297,90 +305,20 @@ const Index = () => {
 
         {/* Accordian */}
 
-        <div className="accordian">
-          <div className="accordian-item">
-            <div className="accordian-item-header active">Home</div>
-            <div className="accordian-item-body">
-              <ul className="flex">
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-              </ul>
-            </div>
-          </div>
-          <div className="accordian-item">
-            <div className="accordian-item-header">Shop</div>
-            <div className="accordian-item-body">
-              <ul className="flex">
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-              </ul>
-            </div>
-          </div>
-          <div className="accordian-item">
-            <div className="accordian-item-header">Brands</div>
-            <div className="accordian-item-body">
-              <ul className="flex">
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-              </ul>
-            </div>
-          </div>
-          <div className="accordian-item">
-            <div className="accordian-item-header">Collections</div>
-            <div className="accordian-item-body">
-              <ul className="flex">
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        {currentSidebarScreen === "home" && <Home />}
 
-        <div className="flex sidebar__searchdiv hide">
-          <img
-            className="closeIcon"
-            onClick={toggleSidebarSearchClose}
-            src={closeicon}
-            alt="closeicon"
-          />
-          <input type="text" placeholder="Search Items" />
-        </div>
+        {/* Account */}
+
+        {currentSidebarScreen === "cart" && <Account />}
+
+        {/* Search */}
+
+        {currentSidebarScreen === "search" && (
+          <Search setCurrentSidebarScreen={setCurrentSidebarScreen} />
+        )}
 
         {/* Bottom Area of the Sidebar */}
-        <ul className="flex bottom-area">
-          <li>
-            <Link to="/">
-              <i className="fas fa-shopping-cart"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="login">
-              <i className="far fa-user-circle"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <i className="fas fa-heart"></i>
-            </Link>
-          </li>
-          <li onClick={toggleSidebarSearch}>
-            <Link to="/">
-              <i class="fas fa-search"></i>
-            </Link>
-          </li>
-        </ul>
+        <BottomBar setCurrentSidebarScreen={setCurrentSidebarScreen} />
       </div>
     </>
   );
