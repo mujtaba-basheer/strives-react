@@ -4,14 +4,12 @@ import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  getUserDetails,
-  updateUserProfile,
-} from "../../redux/actions/userActions";
+import { changePassword } from "../../redux/actions/userActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import UserSidebar from "../../components/layout/UserSidebar";
+import Alert from "../../components/Alert/Alert";
 
 const ChangePassword = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +17,7 @@ const ChangePassword = () => {
     password: "",
     password_repeat: "",
   });
+  const [showMessage, setShowMessage] = useState(false);
 
   const history = useHistory();
 
@@ -28,24 +27,14 @@ const ChangePassword = () => {
 
   const dispatch = useDispatch();
 
-  const { loading, error, user } = useSelector((state) => state.userDetails);
-  const { loading: loadingLogin, error: errorLogin, userInfo } = useSelector(
-    (state) => state.userLogin
+  const { userInfo } = useSelector((state) => state.userLogin);
+  const { error: changeError, success: changeSuccess } = useSelector(
+    (state) => state.userChangePassword
   );
 
   useEffect(() => {
     if (!userInfo) history.push("/login");
-
-    if (user) {
-      console.log(user);
-      // set user details to state
-      //   {
-      //   _id: '5ff992d324303e1808b8ebbd',
-      //   name: 'Richard Rozario',
-      //   email: 'richardrozario.rr@gmail.com'
-      // }
-    } else dispatch(getUserDetails());
-  }, [userInfo, history, user, dispatch]);
+  }, [userInfo, history, dispatch]);
 
   /* function formEdit() {
     document.getElementsByClassName("header__btn--edit")[0].style.display =
@@ -63,8 +52,14 @@ const ChangePassword = () => {
   }
  */
   const onSubmit = (data) => {
-    console.log(data);
-    /* dispatch(updateUserProfile(data)); */
+    dispatch(
+      changePassword({
+        currentPass: data.currentpass,
+        newPassword: data.password,
+      })
+    );
+    setShowMessage(true);
+    setFormData({ currentpass: "", password: "", password_repeat: "" });
   };
 
   return (
@@ -91,6 +86,13 @@ const ChangePassword = () => {
               </span> */}
             </div>
 
+            {showMessage && (
+              <div>
+                {changeSuccess && <Alert type="success" text={changeSuccess} />}
+                {changeError && <Alert type="danger" text={changeError} />}
+              </div>
+            )}
+
             <form className="userdetails" onSubmit={handleSubmit(onSubmit)}>
               {/* Current Password */}
               <div className="form-inputs">
@@ -99,10 +101,9 @@ const ChangePassword = () => {
                 </label>
                 <input
                   className="form-inputs__input"
-                  /* defaultValue={formData.email} */
-
+                  defaultValue={formData.currentpass}
                   type="password"
-                  placeholder="Cuurent Password"
+                  placeholder="Current Password"
                   name="currentpass"
                   ref={register({
                     required: {
@@ -127,8 +128,7 @@ const ChangePassword = () => {
                 </label>
                 <input
                   className="form-inputs__input"
-                  /* defaultValue={formData.email} */
-
+                  defaultValue={formData.password}
                   type="password"
                   placeholder="New Password"
                   name="password"
@@ -155,8 +155,7 @@ const ChangePassword = () => {
                 </label>
                 <input
                   className="form-inputs__input"
-                  /* defaultValue={formData.email} */
-
+                  defaultValue={formData.password_repeat}
                   type="password"
                   placeholder="Confirm New Password"
                   name="password_repeat"
@@ -174,7 +173,12 @@ const ChangePassword = () => {
               </div>
 
               <div className="form-footer flex">
-                <button type="submit" id="save" className="submit-button">
+                <button
+                  style={{ cursor: "pointer" }}
+                  type="submit"
+                  id="save"
+                  className="submit-button"
+                >
                   Save
                 </button>
               </div>

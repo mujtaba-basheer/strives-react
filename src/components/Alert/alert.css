@@ -1,0 +1,30 @@
+.custom-alert {
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.75em 0;
+  padding: 0.5em 5em;
+  max-width: max-content;
+}
+
+.custom-alert--success {
+  background: rgb(169, 255, 169);
+  border: 3px solid rgb(78, 211, 78);
+  color: green;
+}
+
+.custom-alert--danger {
+  background: rgb(248, 187, 187);
+  border: 3px solid rgb(255, 57, 100);
+  color: rgb(194, 0, 0);
+}
+
+.custom-alert--close {
+  visibility: hidden;
+  display: none;
+}
+
+.custom-alert__text {
+  font-size: 1em;
+  font-weight: 400;
+}

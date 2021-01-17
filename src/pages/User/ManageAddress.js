@@ -4,10 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  getUserDetails,
-  updateUserProfile,
-} from "../../redux/actions/userActions";
+import { updateAddress, getAddress } from "../../redux/actions/userActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -29,24 +26,23 @@ const ChangePassword = () => {
 
   const dispatch = useDispatch();
 
-  const { loading, error, user } = useSelector((state) => state.userDetails);
   const { loading: loadingLogin, error: errorLogin, userInfo } = useSelector(
     (state) => state.userLogin
   );
+  const {
+    loading: addressLoading,
+    error: addressError,
+    address: addressData,
+  } = useSelector((state) => state.userAddress);
 
   useEffect(() => {
     if (!userInfo) history.push("/login");
 
-    if (user) {
-      console.log(user);
-      // set user details to state
-      //   {
-      //   _id: '5ff992d324303e1808b8ebbd',
-      //   name: 'Richard Rozario',
-      //   email: 'richardrozario.rr@gmail.com'
-      // }
-    } else dispatch(getUserDetails());
-  }, [userInfo, history, user, dispatch]);
+    if (addressData) {
+      console.log(addressData);
+      // fill state with addressData
+    } else dispatch(getAddress());
+  }, [userInfo, history, dispatch, addressData]);
 
   function formEdit() {
     document.getElementsByClassName("header__btn--edit")[0].style.display =
@@ -57,6 +53,7 @@ const ChangePassword = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(updateAddress(data));
   };
 
   return (
@@ -140,7 +137,7 @@ const ChangePassword = () => {
 
               <div className="form-inputs">
                 <label className="form-inputs__label" htmlFor="address2">
-                  Address Line 2 [Optional]
+                  Address Line 2 (Optional)
                 </label>
                 <input
                   className="form-inputs__input"

@@ -14,6 +14,9 @@ import {
   USER_UPDATE_PROFILE_SUCCESS,
   USER_UPDATE_PROFILE_FAIL,
   USER_UPDATE_PROFILE_RESET,
+  USER_CHANGE_PASSWORD_REQUEST,
+  USER_CHANGE_PASSWORD_SUCCESS,
+  USER_CHANGE_PASSWORD_FAIL,
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
@@ -29,6 +32,12 @@ import {
   USER_GET_SUCCESS,
   USER_GET_FAIL,
   USER_GET_RESET,
+  USER_ADDRESS_REQUEST,
+  USER_ADDRESS_SUCCESS,
+  USER_ADDRESS_FAIL,
+  USER_UPDATE_ADDRESS_REQUEST,
+  USER_UPDATE_ADDRESS_SUCCESS,
+  USER_UPDATE_ADDRESS_FAIL,
 } from "../constants/userConstants";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -84,6 +93,45 @@ export const userUpdateProfileReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case USER_UPDATE_PROFILE_RESET:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userChangePasswordReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_CHANGE_PASSWORD_REQUEST:
+      return { loading: true };
+    case USER_CHANGE_PASSWORD_SUCCESS:
+      return { loading: false, success: action.payload };
+    case USER_CHANGE_PASSWORD_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userAddressReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_ADDRESS_REQUEST:
+      return { loading: true };
+    case USER_ADDRESS_SUCCESS:
+      return { loading: false, address: action.payload };
+    case USER_ADDRESS_FAIL:
+      return { loading: false, address: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userUpdateAddressReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_UPDATE_ADDRESS_REQUEST:
+      return { loading: true };
+    case USER_UPDATE_ADDRESS_SUCCESS:
+      return { loading: false, success: action.payload };
+    case USER_UPDATE_ADDRESS_FAIL:
+      return { loading: false, address: action.payload };
     default:
       return state;
   }

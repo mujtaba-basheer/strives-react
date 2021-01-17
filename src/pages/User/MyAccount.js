@@ -12,6 +12,7 @@ import {
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import UserSidebar from "../../components/layout/UserSidebar";
+import Alert from "../../components/Alert/Alert";
 
 const MyAccount = () => {
   const [formInputStatus, setFormInputStatus] = useState("disabled");
@@ -84,15 +85,18 @@ const MyAccount = () => {
           <div className="myaccount__right">
             <div className="header flex">
               <p className="header__text">Personal Information</p>
-              {updateSuccess && (
-                <h3 style={{ color: "green" }}>Updated Successfully</h3>
-              )}
-              {updateError && <h3 style={{ color: "red" }}>{updateError}</h3>}
               <span className="header__btns">
                 <button className="header__btn--edit" onClick={formEdit}>
                   Edit
                 </button>
               </span>
+            </div>
+
+            <div>
+              {updateSuccess && (
+                <Alert type="success" text="Updated Successfully" />
+              )}
+              {updateError && <Alert type="danger" text={updateError} />}
             </div>
 
             <form className="userdetails" onSubmit={handleSubmit(onSubmit)}>
@@ -120,7 +124,9 @@ const MyAccount = () => {
                     })}
                   />
                   {errors.firstname && (
-                    <div className="alert error">{errors.firstname.message}</div>
+                    <div className="alert error">
+                      {errors.firstname.message}
+                    </div>
                   )}
                 </div>
 

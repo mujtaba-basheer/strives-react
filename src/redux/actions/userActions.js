@@ -27,6 +27,15 @@ import {
   USER_GET_REQUEST,
   USER_GET_SUCCESS,
   USER_GET_FAIL,
+  USER_CHANGE_PASSWORD_REQUEST,
+  USER_CHANGE_PASSWORD_SUCCESS,
+  USER_CHANGE_PASSWORD_FAIL,
+  USER_ADDRESS_REQUEST,
+  USER_ADDRESS_SUCCESS,
+  USER_ADDRESS_FAIL,
+  USER_UPDATE_ADDRESS_REQUEST,
+  USER_UPDATE_ADDRESS_SUCCESS,
+  USER_UPDATE_ADDRESS_FAIL,
 } from "../constants/userConstants";
 
 import { ORDER_LIST_RESET } from "../constants/orderConstants";
@@ -163,6 +172,98 @@ export const updateUserProfile = (data) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_UPDATE_PROFILE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const changePassword = (data) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_CHANGE_PASSWORD_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data: res } = await apiCall.post("reset-pass", data, config);
+
+    dispatch({ type: USER_CHANGE_PASSWORD_SUCCESS, payload: res.message });
+  } catch (error) {
+    dispatch({
+      type: USER_CHANGE_PASSWORD_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getAddress = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_ADDRESS_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const {
+      data: { data },
+    } = await apiCall.get("get-address", config);
+
+    dispatch({ type: USER_ADDRESS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: USER_ADDRESS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateAddress = (address) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_UPDATE_ADDRESS_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const {
+      data: { message },
+    } = await apiCall.put("update-address", address, config);
+
+    dispatch({ type: USER_UPDATE_ADDRESS_SUCCESS, payload: message });
+    dispatch(getAddress());
+  } catch (error) {
+    dispatch({
+      type: USER_UPDATE_ADDRESS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

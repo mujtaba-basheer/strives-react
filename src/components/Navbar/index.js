@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import logo from "../../assets/images/logo.png";
 import navbar1 from "../../assets/images/navbar/navbar1.png";
@@ -16,6 +17,7 @@ import Account from "./Sidebar/Account";
 const Index = () => {
   const history = useHistory();
   const [hoverarray, setHoverarray] = useState([]);
+  const userLogin = useSelector((state) => state.userLogin);
 
   const [currentSidebarScreen, setCurrentSidebarScreen] = useState("home");
 
@@ -142,7 +144,7 @@ const Index = () => {
         <div className="extra-options">
           <ul className="flex">
             <li>
-              <Link to="/login">
+              <Link to={userLogin.userInfo ? "/my-account" : "/login"}>
                 <i className="far fa-user-circle"></i>
               </Link>
             </li>
@@ -288,7 +290,6 @@ const Index = () => {
             <img
               onClick={closeSideMenu}
               className="logo"
-              onClick={closeSideMenu}
               src={logo}
               alt="logo"
             />
