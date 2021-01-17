@@ -186,7 +186,6 @@
   .accordian {
     width: 90%;
     margin: 0 auto;
-    overflow-y: auto;
 
     &-item {
       margin: 0;
@@ -253,6 +252,36 @@
       line-height: 22px;
       color: #2c3d50;
     }
+  }
+
+  .sidebar-account {
+    width: 90%;
+    margin: 50px auto;
+
+    .accordian {
+      width: 90%;
+      transition: 0.2s all;
+      margin: 0;
+    }
+
+    li {
+      margin: 20px 0;
+    }
+
+    .accordian-item-header {
+      padding-top: 0;
+      font-size: 17px;
+    }
+
+    .accordian-item-body {
+      padding: 0.5rem 0;
+
+      li {
+        margin: 10px 15px;
+      }
+    }
+
+    
   }
 }
 
