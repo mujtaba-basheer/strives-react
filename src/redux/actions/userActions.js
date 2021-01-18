@@ -36,6 +36,9 @@ import {
   USER_UPDATE_ADDRESS_REQUEST,
   USER_UPDATE_ADDRESS_SUCCESS,
   USER_UPDATE_ADDRESS_FAIL,
+  USER_ADD_ADDRESS_REQUEST,
+  USER_ADD_ADDRESS_SUCCESS,
+  USER_ADD_ADDRESS_FAIL,
 } from "../constants/userConstants";
 
 import { ORDER_LIST_RESET } from "../constants/orderConstants";
@@ -79,8 +82,8 @@ export const logout = () => (dispatch) => {
 
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
-  // dispatch({ type: ORDER_LIST_RESET });
-  // dispatch({ type: USER_LIST_RESET });
+  dispatch({ type: ORDER_LIST_RESET });
+  dispatch({ type: USER_LIST_RESET });
 };
 
 export const register = (name, email, password) => async (dispatch) => {
@@ -264,6 +267,38 @@ export const updateAddress = (address) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_UPDATE_ADDRESS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const addAddress = (address) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_ADD_ADDRESS_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const {
+      data: { message },
+    } = await apiCall.post("add-address", address, config);
+
+    dispatch({ type: USER_ADD_ADDRESS_SUCCESS, payload: message });
+    dispatch(getAddress());
+  } catch (error) {
+    dispatch({
+      type: USER_ADD_ADDRESS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
