@@ -38,9 +38,11 @@ const ChangePassword = () => {
   const dispatch = useDispatch();
 
   const { userInfo } = useSelector((state) => state.userLogin);
-  const { error: addressError, address: addressData, success: addressSuccess } = useSelector(
-    (state) => state.userAddress
-  );
+  const {
+    error: addressError,
+    address: addressData,
+    success: addressSuccess,
+  } = useSelector((state) => state.userAddress);
 
   useEffect(() => {
     if (!userInfo) history.push("/login");
@@ -72,9 +74,19 @@ const ChangePassword = () => {
     if (addressData === "Address Not Found") {
       dispatch(addAddress(data));
       setShowMessage(true);
+      document.getElementsByClassName("header__btn--edit")[0].style.display =
+        "block";
+      document.getElementsByClassName("submit-button")[0].style.display =
+        "none";
+      setFormInputStatus("disabled");
     } else {
       dispatch(updateAddress(data));
       setShowMessage(true);
+      document.getElementsByClassName("header__btn--edit")[0].style.display =
+        "block";
+      document.getElementsByClassName("submit-button")[0].style.display =
+        "none";
+      setFormInputStatus("disabled");
     }
   };
 
@@ -104,7 +116,9 @@ const ChangePassword = () => {
 
             {showMessage && (
               <div>
-                {addressSuccess && <Alert type="success" text={addressSuccess} />}
+                {addressSuccess && (
+                  <Alert type="success" text={addressSuccess} />
+                )}
                 {addressError && <Alert type="danger" text={addressError} />}
               </div>
             )}
@@ -355,8 +369,18 @@ const ChangePassword = () => {
                     <option value="" defaultChecked disabled>
                       Select Address Type
                     </option>
-                    <option selected={formData.type === "Work" ? "selected" : ""} value="Work">Work</option>
-                    <option selected={formData.type === "Home" ? "selected" : ""} value="Home">Home</option>
+                    <option
+                      selected={formData.type === "Work" ? "selected" : ""}
+                      value="Work"
+                    >
+                      Work
+                    </option>
+                    <option
+                      selected={formData.type === "Home" ? "selected" : ""}
+                      value="Home"
+                    >
+                      Home
+                    </option>
                   </select>
                   {errors.type && (
                     <div className="alert error">{errors.type.message}</div>
