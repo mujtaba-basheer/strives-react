@@ -10,7 +10,7 @@
   position: fixed;
   width: 100%;
   height: 75px;
-  z-index: 2;
+  z-index: 10;
 
   .logo {
     width: 46px;
@@ -20,17 +20,27 @@
 
   .nav {
     margin: 0 auto;
+    height: 100%;
+
+    ul {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   .main-nav {
     width: 100%;
-
+    height: 100%;
     align-items: center;
     justify-content: center;
   }
 
   .main-nav li {
     margin: 0 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .main-nav ul li a {
@@ -52,13 +62,21 @@
   .scrolled {
     width: 100%;
   }
+
+  .dropdown-shop{
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .navbar__hovermenu {
+  display: none;
   position: fixed;
   width: 100%;
   height: 421px;
-  z-index: 2;
+  z-index: 10;
+  right: 0;
   top: 75px;
   background-color: #fff;
   justify-content: space-between;
@@ -280,8 +298,12 @@
         margin: 10px 15px;
       }
     }
+  }
+}
 
-    
+.main-nav {
+  .dropdown-shop:hover  .shop {
+    display: flex;
   }
 }
 

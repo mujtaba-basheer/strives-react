@@ -3,21 +3,18 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import logo from "../../assets/images/logo.png";
-import navbar1 from "../../assets/images/navbar/navbar1.png";
-import navbar2 from "../../assets/images/navbar/navbar2.png";
-import navbar3 from "../../assets/images/navbar/navbar3.png";
+
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";
-import { desk_home_data } from "./NavbarData";
 import Home from "./Sidebar/Home";
 import BottomBar from "./Sidebar/BottomBar";
 import Search from "./Sidebar/Search";
 import Account from "./Sidebar/Account";
+import Shop from "./NavbarData/Shop";
 
 const Index = () => {
   const history = useHistory();
   const userLogin = useSelector((state) => state.userLogin);
-  const [hoverarray, setHoverarray] = useState([]);
 
   const [currentSidebarScreen, setCurrentSidebarScreen] = useState("home");
 
@@ -38,9 +35,9 @@ const Index = () => {
 
   window.addEventListener("scroll", changeNavbar);
 
-  function showHoverMenu(e) {
+  /* function showHoverMenu(e) {
     const name = e.target.innerHTML;
-    /* console.log(e.target.innerHTML); */
+    console.log(e.target.innerHTML);
     if (name === "Home") {
       setHoverarray(desk_home_data);
     }
@@ -56,7 +53,7 @@ const Index = () => {
         .getElementsByClassName("navbar__hovermenu")[0]
         .classList.add("hide");
     }, 2000);
-  }
+  } */
 
   function opensearchdiv() {
     document
@@ -115,17 +112,15 @@ const Index = () => {
           <nav className="nav">
             <ul className="flex">
               <li>
-                <Link
-                  onMouseOver={showHoverMenu}
-                  onMouseLeave={removeHoverMenu}
-                  className="hovermenu__listitems__home"
-                  to="/"
-                >
+                <Link className="hovermenu__listitems__home" to="/">
                   Home
                 </Link>
               </li>
-              <li>
-                <Link to="/my-account">Shop</Link>
+              <li className="hovermenu__listitems--shop">
+                <div className="dropdown-shop">
+                  <Link to="/my-account">Shop</Link>
+                  <Shop />
+                </div>
               </li>
               <li>
                 <Link to="/">Brands</Link>
@@ -173,100 +168,9 @@ const Index = () => {
           <img onClick={openSideMenu} src={hamburger} alt="hamburger" />
         </button>
       </div>
-      <div className="navbar__hovermenu flex hide">
-        <div className="navbar__hovermenu__options flex">
-          <div className="hovermenu__listitems">
-            <h3>Explore Collections</h3>
-            <ul>
-              <li>
-                <Link>Bridal Lehengas</Link>
-              </li>
-              <li>
-                <Link>Drape Lehengas</Link>
-              </li>
-              <li>
-                <Link>Printed lehengas</Link>
-              </li>
-              <li>
-                <Link>Bridesmaid Lehengas</Link>
-              </li>
-              <li>
-                <Link>Jacket Lehengas</Link>
-              </li>
-              <li>
-                <Link>Jacket Lehengas</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="hovermenu__listitems">
-            <h3>New Arrivals</h3>
-            <div className="hovermenu_listitems--split flex">
-              <ul className="mr-2">
-                <li>
-                  <Link>Silk</Link>
-                </li>
-                <li>
-                  <Link>Raw Silk</Link>
-                </li>
-                <li>
-                  <Link>Velvet</Link>
-                </li>
-                <li>
-                  <Link>Cotton</Link>
-                </li>
-                <li>
-                  <Link>Georgette</Link>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <Link>Silk</Link>
-                </li>
-                <li>
-                  <Link>Raw Silk</Link>
-                </li>
-                <li>
-                  <Link>Velvet</Link>
-                </li>
-                <li>
-                  <Link>Cotton</Link>
-                </li>
-                <li>
-                  <Link>Georgette</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="hovermenu__listitems">
-            <h3>Explore Collections</h3>
-            <ul>
-              <li>
-                <Link>Bridal Lehengas</Link>
-              </li>
-              <li>
-                <Link>Drape Lehengas</Link>
-              </li>
-              <li>
-                <Link>Printed lehengas</Link>
-              </li>
-              <li>
-                <Link>Bridesmaid Lehengas</Link>
-              </li>
-              <li>
-                <Link>Jacket Lehengas</Link>
-              </li>
-              <li>
-                <Link>Jacket Lehengas</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="hovermenu__image">
-          <img src={navbar1} alt="nav img" />
-          <img src={navbar2} alt="nav img" />
-          <img src={navbar3} alt="nav img" />
-        </div>
-      </div>
+
+      
+
       <div className="navbar__searchdiv hide">
         <div className="search__div flex">
           <input type="text" placeholder="Search Items" />
