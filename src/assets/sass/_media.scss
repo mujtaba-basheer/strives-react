@@ -6,6 +6,27 @@
   }
 } */
 
+@media screen and (max-width: 1350px) {
+  .navbar__hovermenu {
+    .navbar__hovermenu__options {
+      width: auto;
+    }
+
+    .hovermenu__image img:first-child {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .navbar__hovermenu {
+    
+    .hovermenu__image img:nth-child(2) {
+      display: none;
+    }
+  }
+}
+
 @media screen and (max-width: 1030px) {
   .navbar {
     justify-content: space-between;

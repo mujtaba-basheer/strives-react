@@ -63,7 +63,13 @@
     width: 100%;
   }
 
-  .dropdown-shop{
+  .dropdown-shop {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-brand {
     height: 100%;
     display: flex;
     align-items: center;
@@ -111,6 +117,10 @@
       line-height: 20px;
       color: rgba(44, 61, 80, 0.8);
     }
+  }
+
+  .hovermenu__image {
+    height: 100%;
   }
 }
 
@@ -302,7 +312,13 @@
 }
 
 .main-nav {
-  .dropdown-shop:hover  .shop {
+  .dropdown-shop:hover .shop {
+    display: flex;
+  }
+}
+
+.main-nav {
+  .dropdown-brand:hover .brand {
     display: flex;
   }
 }

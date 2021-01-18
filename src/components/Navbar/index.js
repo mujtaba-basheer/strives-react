@@ -10,7 +10,11 @@ import Home from "./Sidebar/Home";
 import BottomBar from "./Sidebar/BottomBar";
 import Search from "./Sidebar/Search";
 import Account from "./Sidebar/Account";
+
+
+/* Navbar Hovermenu DIVS */
 import Shop from "./NavbarData/Shop";
+import Brand from "./NavbarData/Brand";
 
 const Index = () => {
   const history = useHistory();
@@ -35,25 +39,6 @@ const Index = () => {
 
   window.addEventListener("scroll", changeNavbar);
 
-  /* function showHoverMenu(e) {
-    const name = e.target.innerHTML;
-    console.log(e.target.innerHTML);
-    if (name === "Home") {
-      setHoverarray(desk_home_data);
-    }
-
-    document
-      .getElementsByClassName("navbar__hovermenu")[0]
-      .classList.remove("hide");
-  }
-
-  function removeHoverMenu() {
-    setTimeout(() => {
-      document
-        .getElementsByClassName("navbar__hovermenu")[0]
-        .classList.add("hide");
-    }, 2000);
-  } */
 
   function opensearchdiv() {
     document
@@ -122,8 +107,11 @@ const Index = () => {
                   <Shop />
                 </div>
               </li>
-              <li>
+              <li className="hovermenu__listitems--brand">
+                <div className="dropdown-brand">
                 <Link to="/">Brands</Link>
+                <Brand />
+                </div>
               </li>
               <li>
                 <Link to="/">Collections</Link>
