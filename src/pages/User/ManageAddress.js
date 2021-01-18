@@ -4,11 +4,16 @@ import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { updateAddress, getAddress } from "../../redux/actions/userActions";
+import {
+  updateAddress,
+  getAddress,
+  addAddress,
+} from "../../redux/actions/userActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import UserSidebar from "../../components/layout/UserSidebar";
+import Alert from "../../components/Alert/Alert";
 
 const ChangePassword = () => {
   const [formInputStatus, setFormInputStatus] = useState("disabled");
@@ -24,27 +29,34 @@ const ChangePassword = () => {
     type: "",
   });
 
+  const [showMessage, setShowMessage] = useState(false);
+
   const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm();
 
   const dispatch = useDispatch();
 
-  const { loading: loadingLogin, error: errorLogin, userInfo } = useSelector(
-    (state) => state.userLogin
+  const { userInfo } = useSelector((state) => state.userLogin);
+  const { error: addressError, address: addressData, success: addressSuccess } = useSelector(
+    (state) => state.userAddress
   );
-  const {
-    loading: addressLoading,
-    error: addressError,
-    address: addressData,
-  } = useSelector((state) => state.userAddress);
 
   useEffect(() => {
     if (!userInfo) history.push("/login");
 
     if (addressData) {
-      console.log(addressData);
-      // fill state with addressData
+      setFormData({
+        name: addressData.name,
+        address1: addressData.address1,
+        address2: addressData.address2,
+        city: addressData.city,
+        state: addressData.state,
+        landmark: addressData.landmark,
+        pincode: addressData.pincode,
+        phone: addressData.phone,
+        type: addressData.type,
+      });
     } else dispatch(getAddress());
   }, [userInfo, history, dispatch, addressData]);
 
@@ -57,7 +69,13 @@ const ChangePassword = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    dispatch(updateAddress(data));
+    if (addressData === "Address Not Found") {
+      dispatch(addAddress(data));
+      setShowMessage(true);
+    } else {
+      dispatch(updateAddress(data));
+      setShowMessage(true);
+    }
   };
 
   return (
@@ -83,6 +101,13 @@ const ChangePassword = () => {
                 </button>
               </span>
             </div>
+
+            {showMessage && (
+              <div>
+                {addressSuccess && <Alert type="success" text={addressSuccess} />}
+                {addressError && <Alert type="danger" text={addressError} />}
+              </div>
+            )}
 
             <form className="userdetails" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-inputs">
@@ -121,7 +146,7 @@ const ChangePassword = () => {
                   id="address1"
                   placeholder="Address"
                   name="address1"
-                  /* defaultValue={formData.name} */
+                  defaultValue={formData.address1}
                   disabled={formInputStatus}
                   ref={register({
                     required: {
@@ -148,7 +173,7 @@ const ChangePassword = () => {
                   id="address2"
                   placeholder="Address Line 2"
                   name="address2"
-                  /* defaultValue={formData.name} */
+                  defaultValue={formData.address2}
                   disabled={formInputStatus}
                   ref={register({
                     maxLength: {
@@ -173,7 +198,7 @@ const ChangePassword = () => {
                     id="city"
                     placeholder="City"
                     name="city"
-                    /* defaultValue={formData.city} */
+                    defaultValue={formData.city}
                     disabled={formInputStatus}
                     ref={register({
                       required: {
@@ -202,7 +227,7 @@ const ChangePassword = () => {
                     id="state"
                     placeholder="State"
                     name="state"
-                    /* defaultValue={formData.name} */
+                    defaultValue={formData.state}
                     disabled={formInputStatus}
                     ref={register({
                       required: {
@@ -231,7 +256,7 @@ const ChangePassword = () => {
                     id="landmark"
                     placeholder="Landmark"
                     name="landmark"
-                    /* defaultValue={formData.name} */
+                    defaultValue={formData.landmark}
                     disabled={formInputStatus}
                     ref={register({
                       required: {
@@ -286,7 +311,7 @@ const ChangePassword = () => {
                     type="number"
                     placeholder="Phone"
                     id="phone"
-                    /* defaultValue={formData.phone} */
+                    defaultValue={formData.phone}
                     disabled={formInputStatus}
                     name="phone"
                     ref={register({
@@ -317,7 +342,7 @@ const ChangePassword = () => {
                   </label>
                   <select
                     className="form-inputs__select"
-                    /* defaultValue={formData.gender} */
+                    defaultValue={formData.type}
                     name="type"
                     disabled={formInputStatus}
                     ref={register({
@@ -330,8 +355,8 @@ const ChangePassword = () => {
                     <option value="" defaultChecked disabled>
                       Select Address Type
                     </option>
-                    <option value="Work">Work</option>
-                    <option value="Home">Home</option>
+                    <option selected={formData.type === "Work" ? "selected" : ""} value="Work">Work</option>
+                    <option selected={formData.type === "Home" ? "selected" : ""} value="Home">Home</option>
                   </select>
                   {errors.type && (
                     <div className="alert error">{errors.type.message}</div>

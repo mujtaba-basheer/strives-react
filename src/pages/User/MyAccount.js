@@ -117,7 +117,10 @@ const MyAccount = () => {
                     id="fname"
                     placeholder="First Name"
                     name="firstname"
-                    defaultValue={formData.name}
+                    defaultValue={formData.name.substring(
+                      0,
+                      formData.name.lastIndexOf(" ")
+                    )}
                     disabled={formInputStatus}
                     ref={register({
                       required: {
@@ -146,7 +149,10 @@ const MyAccount = () => {
                     id="lname"
                     placeholder="Last Name"
                     name="lastname"
-                    defaultValue={formData.name}
+                    defaultValue={formData.name.substring(
+                      formData.name.lastIndexOf(" ") + 1,
+                      formData.name.length
+                    )}
                     disabled={formInputStatus}
                     ref={register({
                       required: {
