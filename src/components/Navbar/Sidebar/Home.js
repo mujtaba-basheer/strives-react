@@ -5,10 +5,13 @@ const Home = () => {
     const accordianItemHeaders = document.querySelectorAll(
       ".accordian-item-header"
     );
-    /* console.log(accordianItemHeaders); */
     accordianItemHeaders.forEach((accordianItemHeader) => {
       accordianItemHeader.addEventListener("click", () => {
-        /* console.log("clicked"); */
+        accordianItemHeaders.forEach((accordianItemHeader) => {
+          if (accordianItemHeader.classList.contains("active")) {
+            accordianItemHeader.classList.remove("active");
+          }
+        });
         accordianItemHeader.classList.toggle("active");
       });
     });
