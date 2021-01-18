@@ -8,6 +8,7 @@ import Feature from "./Feature";
 import Themes from "./Themes";
 import BestSeller from "./BestSeller";
 import Newsletter from "./Newsletter";
+import Customize from "./Customize";
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
       <LatestCollections />
       <Feature />
       <Themes />
+      <Customize />
       <BestSeller />
       <Newsletter />
       <Footer />
