@@ -121,7 +121,7 @@ export const userAddressReducer = (state = {}, action) => {
     case USER_ADDRESS_SUCCESS:
       return { loading: false, address: action.payload };
     case USER_ADDRESS_FAIL:
-      return { loading: false, address: action.payload };
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

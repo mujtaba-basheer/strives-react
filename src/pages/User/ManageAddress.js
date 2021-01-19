@@ -41,7 +41,7 @@ const ChangePassword = () => {
   const {
     error: addressError,
     address: addressData,
-    success: addressSuccess,
+    // loading: addressLoading,
   } = useSelector((state) => state.userAddress);
 
   useEffect(() => {
@@ -116,9 +116,6 @@ const ChangePassword = () => {
 
             {showMessage && (
               <div>
-                {addressSuccess && (
-                  <Alert type="success" text={addressSuccess} />
-                )}
                 {addressError && <Alert type="danger" text={addressError} />}
               </div>
             )}
