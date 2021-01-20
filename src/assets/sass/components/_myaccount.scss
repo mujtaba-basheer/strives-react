@@ -48,24 +48,26 @@
       margin-bottom: 2rem;
 
       .form-inputs {
-        margin-bottom: 0.5rem;
+        margin-bottom: 26px;
         width: 100%;
 
         &__label {
           display: inline-block;
-          font-size: 16px;
-          margin-bottom: 6px;
+          font-size: 18px;
+          margin-bottom: 13px;
+          line-height: 24px;
         }
 
         &__input {
           display: block;
-          padding-left: 10px;
+          padding-left: 26px;
           outline: none;
           border-radius: 2px;
-          height: 40px;
+          height: 56px;
           width: 100%;
           border: 1px solid rgba(44, 61, 80, 0.2);
           border-radius: 2px;
+          line-height: 20px;
         }
 
         &__select {
@@ -73,7 +75,7 @@
           padding-left: 10px;
           outline: none;
           border-radius: 2px;
-          height: 40px;
+          height: 56px;
           width: 100%;
           border: 1px solid rgba(44, 61, 80, 0.2);
           border-radius: 2px;

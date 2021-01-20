@@ -14,6 +14,8 @@ import Footer from "../../components/Footer";
 import UserSidebar from "../../components/layout/UserSidebar";
 import Alert from "../../components/Alert/Alert";
 
+import pencilicon from "../../assets/images/icons/pencil.png";
+
 const MyAccount = () => {
   const [formInputStatus, setFormInputStatus] = useState("disabled");
   const [formData, setFormData] = useState({
@@ -94,6 +96,14 @@ const MyAccount = () => {
               <p className="header__text">Personal Information</p>
               <span className="header__btns">
                 <button className="header__btn--edit" onClick={formEdit}>
+                  <img
+                    src={pencilicon}
+                    style={{
+                      height: "14px",
+                      width: "14px",
+                    }}
+                    alt="pencil"
+                  /> {" "}
                   Edit
                 </button>
               </span>

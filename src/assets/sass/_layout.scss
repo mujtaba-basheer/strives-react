@@ -6,6 +6,7 @@
   line-height: 21.53px;
   color: #2c3d50;
   transition: all 1s;
+  border-bottom: 1px solid rgba(44, 61, 80, 0.08);
 
   position: fixed;
   width: 100%;
@@ -110,7 +111,7 @@
       padding-top: 26px;
     }
 
-    .hovermenu__listitems ul  li{
+    .hovermenu__listitems ul li {
       margin: 0;
       display: block;
     }
@@ -328,6 +329,7 @@
   }
 }
 
+
 .accordian-item-header.active + .accordian-item-body {
   display: block;
 }
@@ -336,7 +338,7 @@
   position: relative;
   background-image: url(../images/background.png);
   width: 100%;
-  height: 100vh;
+  height: 840px;
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
