@@ -1,13 +1,19 @@
 .loginbox {
   width: 100%;
-  height: 680px;
+  height: 100%;
+  justify-content: space-between;
 
-  .loginbox > div {
-    flex: 1;
+  .yellow-design {
+    position: absolute;
+    background: rgba(202, 162, 110, 0.08);
+    height: 330px;
+    width: 475px;
+    z-index: -1;
   }
 
   &__left {
     margin-right: 136px;
+    margin-left: 93px;
     color: var(--text-color-dark);
 
     .logindetails {
@@ -34,7 +40,8 @@
 
       &__signuplink {
         display: block;
-        margin: 14px 0;
+        margin-top: 15px;
+        margin-bottom: 25px;
         text-align: center;
       }
 
@@ -42,6 +49,7 @@
         width: 205px;
         height: 72px;
         margin-bottom: 40px;
+        margin-top: 64px;
 
         &--headertext {
           font-size: 28px;
@@ -52,33 +60,12 @@
       .registerdetails__header {
         width: 100%;
         height: 64px;
-        margin-top: 5px;
+        margin-top: 31px;
+        margin-bottom: 30px;
 
-        &--header {
+        &--headertext {
           font-size: 24px;
           line-height: 32px;
-        }
-      }
-
-      .forgotpass__header {
-        width: 352px;
-        height: 72px;
-        margin-bottom: 19px;
-
-        &--headertext {
-          font-size: 28px;
-          line-height: 36px;
-        }
-      }
-
-      .otp__header {
-        width: 352px;
-        height: 72px;
-        margin-bottom: 19px;
-
-        &--headertext {
-          font-size: 28px;
-          line-height: 36px;
         }
       }
 
@@ -197,15 +184,42 @@
       }
     }
 
+    .otp {
+      height: 505px;
+
+      .otp__header {
+        width: 352px;
+        height: 72px;
+        margin-top: 136px;
+        margin-bottom: 45px;
+
+        &--headertext {
+          font-size: 28px;
+          line-height: 36px;
+        }
+      }
+    }
+
     .forgotpass {
-      display: flex;
-      justify-content: center;
+      height: 507px;
+
+      .forgotpass__header {
+        width: 352px;
+        height: 72px;
+        margin-top: 133px;
+        margin-bottom: 20px;
+
+        &--headertext {
+          font-size: 28px;
+          line-height: 36px;
+        }
+      }
     }
   }
 
   &__right {
-    width: 100%;
-    height: 100%;
+    width: 735px;
+    height: 851px;
     background-image: url(../images/login/loginbg.png);
     background-position: top;
     background-repeat: no-repeat;
@@ -217,6 +231,7 @@
   .loginbox {
     height: auto;
     margin-bottom: 2rem;
+    margin-top: 36px;
   }
 
   .loginbox__right {
@@ -229,9 +244,9 @@
 
     .logindetails__header {
       width: 100%;
-      height: 72px;
       margin-bottom: 27px;
       text-align: center;
+      margin-top: 23px;
 
       &--header {
         font-size: 22px;
@@ -239,27 +254,59 @@
       }
     }
 
-    .registerdetails__header {
-      width: 100%;
-      margin-top: 5px;
-      text-align: center;
+    .logindetails {
+      .registerdetails__header {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        text-align: center;
+
+        &--headertext {
+          font-size: 22px;
+          line-height: 29px;
+        }
+      }
     }
 
-    .forgotpass__header {
-      width: 100%;
-      margin-top: 5px;
-      text-align: center;
+    .otp {
+      .otp__header {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: 48px;
+
+        &--headertext {
+          font-size: 22px;
+          line-height: 29px;
+        }
+      }
     }
 
-    .otp__header {
-      width: 100%;
-      height: auto;
-      text-align: center;
+    .forgotpass {
+      height: 564px;
+      .forgotpass__header {
+        width: 100%;
+        text-align: center;
+        margin-top: 133px;
+        margin-bottom: 25px;
+
+        &--headertext {
+          font-size: 22px;
+          line-height: 29px;
+        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 500px) {
+  .loginbox {
+    .yellow-design {
+      display: none;
+    }
+  }
+
   .loginbox__left {
     .logindetails {
       width: 90%;
@@ -282,28 +329,6 @@
           span {
             margin-bottom: 5px;
           }
-        }
-      }
-
-      .forgotpass__header {
-        width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-        text-align: center;
-
-        &--headertext {
-          font-size: 17px;
-          line-height: 28px;
-        }
-      }
-
-      .otp__header {
-        width: 100%;
-        height: auto;
-
-        &--headertext {
-          font-size: 17px;
-          line-height: 28px;
         }
       }
 

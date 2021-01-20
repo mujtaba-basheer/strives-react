@@ -15,6 +15,7 @@ import UserSidebar from "../../components/layout/UserSidebar";
 import Alert from "../../components/Alert/Alert";
 
 import pencilicon from "../../assets/images/icons/pencil.png";
+import backicon from "../../assets/images/icons/back.png";
 
 const MyAccount = () => {
   const [formInputStatus, setFormInputStatus] = useState("disabled");
@@ -84,8 +85,16 @@ const MyAccount = () => {
       <section className="content container">
         <div className="userprofile flex">
           <div className="myaccount__left">
-            <Link className="backlink" to="/">
-              {" "}
+            <Link className="backlink flex" to="/">
+              <img
+                src={backicon}
+                alt="back"
+                style={{
+                  width: "8px",
+                  height: "10px",
+                  marginRight: "8px",
+                }}
+              />{" "}
               Back to shopping
             </Link>
             <UserSidebar selected="MyAccount" />
@@ -103,7 +112,7 @@ const MyAccount = () => {
                       width: "14px",
                     }}
                     alt="pencil"
-                  /> {" "}
+                  />{" "}
                   Edit
                 </button>
               </span>

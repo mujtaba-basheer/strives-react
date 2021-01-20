@@ -27,6 +27,8 @@ const Index = () => {
 
   const [currentSidebarScreen, setCurrentSidebarScreen] = useState("home");
 
+  const [navbarHeigt, setnavbarHeigt] = useState(100);
+
   const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
     var mainNav = document.getElementsByClassName("main-nav")[0];
@@ -38,10 +40,12 @@ const Index = () => {
         navbar.style.backgroundColor = "transparent";
         navbar.style.backdropFilter = "blur(0px)";
         mainNav.classList.remove("scrolled");
+        setnavbarHeigt(98);
       } else {
         navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
         navbar.style.backdropFilter = "blur(20px)";
         mainNav.classList.add("scrolled");
+        setnavbarHeigt(71);
       }
     }
   };
@@ -50,13 +54,13 @@ const Index = () => {
     const urlLocation = window.location.pathname;
 
     if (urlLocation !== "/") {
-      console.log("make navbar white");
       var navbar = document.getElementsByClassName("navbar")[0];
       navbar.style.backgroundColor = "#fff";
+      setnavbarHeigt(71);
     } else {
-      console.log("else");
       document.getElementsByClassName("navbar")[0].style.border = "none";
       window.addEventListener("scroll", changeNavbar);
+      setnavbarHeigt(98);
     }
   }, [window.location.pathname]);
 
@@ -109,7 +113,12 @@ const Index = () => {
 
   return (
     <>
-      <div className="navbar flex">
+      <div
+        style={{
+          height: navbarHeigt + "px",
+        }}
+        className="navbar flex"
+      >
         <img
           className="logo mobile"
           style={{
@@ -122,42 +131,62 @@ const Index = () => {
 
         <div className="main-nav flex">
           <Link to="/">
-            <img className="logo" src={logo} alt="strides" />
+            <img
+              className={navbarHeigt > 80 ? "logo-large" : "logo"}
+              src={logo}
+              alt="strides"
+            />
           </Link>
           <nav className="nav">
             <ul className="flex">
-              <li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <Link className="hovermenu__listitems__home" to="/">
                   Home
                 </Link>
               </li>
-              <li className="hovermenu__listitems--shop">
+              <li className="main-nav--listitem">
                 <div
                   className="dropdown-shop"
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
                   <Link to="/my-account">Shop</Link>
-                  <Shop />
+                  <Shop height={navbarHeigt} />
                 </div>
               </li>
-              <li className="hovermenu__listitems--brand">
+              <li className="main-nav--listitem">
                 <div
                   className="dropdown-brand"
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
                   <Link to="/">Brands</Link>
-                  <Brand />
+                  <Brand height={navbarHeigt} />
                 </div>
               </li>
-              <li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <Link to="/">Collections</Link>
               </li>
-              <li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <Link to="/">Discover</Link>
               </li>
-              <li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <Link to="/">Ethnic</Link>
               </li>
             </ul>

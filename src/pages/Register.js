@@ -69,7 +69,6 @@ function LoginArea() {
       phone: userdata.phone,
     };
 
-
     ApiCall.post("resend-otp", otpObj)
       .then((res) => {
         console.log(res);
@@ -123,8 +122,9 @@ function LoginArea() {
   }
 
   return (
-    <section className="content container">
+    <section className="content">
       <div className="loginbox flex">
+        <div className="yellow-design"></div>
         <div className="loginbox__left">
           {registerstatus === "register" && (
             <div className="logindetails">
@@ -255,7 +255,7 @@ function LoginArea() {
           )}
 
           {registerstatus === "otp" && (
-            <div className="logindetails forgotpass">
+            <div className="logindetails otp">
               <div className="login-container">
                 <div className="otp__header">
                   <p className="otp__header--headertext">

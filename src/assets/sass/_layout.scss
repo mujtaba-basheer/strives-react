@@ -19,6 +19,12 @@
     margin-left: 97px;
   }
 
+  .logo-large {
+    width: 82px;
+    height: 80px;
+    margin-left: 97px;
+  }
+
   .nav {
     margin: 0 auto;
     height: 100%;
@@ -34,6 +40,10 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+
+    &--listitem:hover {
+      border-bottom: 2px solid #bf9b65;
+    }
   }
 
   .main-nav li {
@@ -328,7 +338,6 @@
     display: flex;
   }
 }
-
 
 .accordian-item-header.active + .accordian-item-body {
   display: block;
