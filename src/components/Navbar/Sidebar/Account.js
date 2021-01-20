@@ -13,7 +13,6 @@ const Account = ({ closeSideMenu }) => {
     );
     accordianItemHeaders.forEach((accordianItemHeader) => {
       accordianItemHeader.addEventListener("click", () => {
-        
         accordianItemHeader.classList.toggle("active");
       });
     });

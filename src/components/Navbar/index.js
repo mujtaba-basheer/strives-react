@@ -252,7 +252,12 @@ const Index = () => {
         </button>
       </div>
 
-      <div className="navbar__searchdiv hide">
+      <div
+        style={{
+          top: navbarHeigt + "px",
+        }}
+        className="navbar__searchdiv hide"
+      >
         <div className="search__div flex">
           <input type="text" placeholder="Search Items" />
           <div className="searchIcon">
