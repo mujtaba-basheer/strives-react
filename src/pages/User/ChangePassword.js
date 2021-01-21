@@ -11,6 +11,8 @@ import Footer from "../../components/Footer";
 import UserSidebar from "../../components/layout/UserSidebar";
 import Alert from "../../components/Alert/Alert";
 
+import backicon from "../../assets/images/icons/back.png";
+
 const ChangePassword = () => {
   const [formData, setFormData] = useState({
     currentpass: "",
@@ -55,7 +57,15 @@ const ChangePassword = () => {
         <div className="userprofile flex">
           <div className="myaccount__left">
             <Link className="backlink" to="/">
-              {" "}
+              <img
+                src={backicon}
+                alt="back"
+                style={{
+                  width: "8px",
+                  height: "10px",
+                  marginRight: "8px",
+                }}
+              />{" "}
               Back to shopping
             </Link>
             <UserSidebar selected="ChangePassword" />

@@ -3,7 +3,6 @@
   height: 1090px;
   align-items: flex-start;
   margin-top: 45px;
-  font-family: var(--ff-c);
 
   .myaccount__left {
     .backlink {
@@ -13,6 +12,7 @@
       font-size: 18px;
       line-height: 22px;
       color: var(--text-color-dark);
+      font-family: var(--ff-c);
     }
   }
 
@@ -72,6 +72,7 @@
           border: 1px solid rgba(44, 61, 80, 0.2);
           border-radius: 2px;
           line-height: 20px;
+          font-family: var(--ff-c);
         }
 
         &__select {
@@ -119,6 +120,7 @@
 
 @media screen and (max-width: 1030px) {
   .userprofile {
+    height: auto;
     flex-direction: column;
     margin-top: 2rem;
 
