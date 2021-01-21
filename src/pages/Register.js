@@ -44,8 +44,6 @@ function LoginArea() {
       phone: data.phone,
     };
 
-    console.log(otpObj);
-
     ApiCall.post("send-otp", otpObj)
       .then((res) => {
         setRegisterstatus("otp");

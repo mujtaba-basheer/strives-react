@@ -31,7 +31,7 @@ const BottomBar = ({ setCurrentSidebarScreen }) => {
       </li>
       <li onClick={() => setCurrentSidebarScreen("search")}>
         <Link>
-          <i class="fas fa-search"></i>
+          <i className="fas fa-search"></i>
         </Link>
       </li>
     </ul>

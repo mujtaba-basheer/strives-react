@@ -284,11 +284,12 @@
     }
 
     .forgotpass {
-      height: 564px;
+      
       .forgotpass__header {
         width: 100%;
+        height: auto;
         text-align: center;
-        margin-top: 133px;
+        margin-top: 100px;
         margin-bottom: 25px;
 
         &--headertext {
