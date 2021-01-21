@@ -1,9 +1,13 @@
 .userprofile {
   width: 100%;
+  height: 1090px;
   align-items: flex-start;
+  margin-top: 45px;
+  font-family: var(--ff-c);
 
   .myaccount__left {
     .backlink {
+      margin-bottom: 20px;
       font-style: normal;
       font-weight: normal;
       font-size: 18px;
@@ -120,7 +124,7 @@
 
     .myaccount__left {
       a {
-        margin-left: 2rem;
+        margin-left: 1rem;
       }
     }
 

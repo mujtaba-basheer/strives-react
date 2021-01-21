@@ -67,8 +67,6 @@ const Index = () => {
   function changeNavbarColor() {
     var navbar = document.getElementsByClassName("navbar")[0];
     navbar.style.backgroundColor = "#fff";
-
-    document.body.style.opacity = "0.3";
   }
 
   function resetNavbarColor() {
