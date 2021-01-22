@@ -1,0 +1,205 @@
+.otpbox {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .yellow-design {
+    position: absolute;
+    background: rgba(202, 162, 110, 0.08);
+    height: 330px;
+    width: 475px;
+    z-index: -1;
+    margin-top: 156px;
+  }
+
+  &__left {
+    margin-right: 132px;
+    margin-left: 97px;
+    margin-top: 82px;
+    color: var(--text-color-dark);
+
+    .otpdetails {
+      padding: 10px 35px;
+      width: 476px;
+      height: 507px;
+      background: #ffffff;
+      border: 1px solid rgba(44, 61, 80, 0.2);
+      border-radius: 2px;
+      flex-direction: column;
+
+      &--button {
+        border: none;
+        outline: none;
+        padding: 14px 0;
+        width: 100%;
+        background: #2c3d50;
+        border-radius: 2px;
+        font-size: 16px;
+        line-height: 21px;
+        text-transform: uppercase;
+        color: #ffffff;
+      }
+
+      &__signuplink {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 25px;
+        text-align: center;
+        color: #43bde3;
+      }
+
+      &__header {
+        width: 205px;
+        height: 72px;
+        margin-bottom: 40px;
+        margin-top: 64px;
+
+        &--headertext {
+          font-size: 24px;
+          line-height: 32px;
+          font-weight: 400;
+        }
+      }
+
+      .otpdetails__header {
+        width: 100%;
+        height: 64px;
+        margin-top: 136px;
+        margin-bottom: 30px;
+
+        &--headertext {
+          font-size: 24px;
+          line-height: 32px;
+        }
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+
+      .user-details {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="email"] {
+          width: 100%;
+          border: 1px solid rgba(44, 61, 80, 0.2);
+          border-radius: 2px;
+          outline: none;
+          font-size: 14px;
+          line-height: 130%;
+          color: #2c3d50;
+          padding: 15px 21px;
+          margin-bottom: 15px;
+          height: 40px;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder,
+        input[type="number"]::placeholder,
+        input[type="email"]::placeholder {
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+
+  &__right {
+    width: 735px;
+    height: 851px;
+    background-image: url(../images/login/loginbg.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .otpbox {
+    height: auto;
+    margin-bottom: 2rem;
+    margin-top: 36px;
+  }
+
+  .otpbox__right {
+    display: none;
+  }
+
+  .otpbox__left {
+    margin-right: 0;
+    margin: 0 auto;
+    
+
+    .otpdetails__header {
+      width: 100%;
+      margin-bottom: 27px;
+      text-align: center;
+      margin-top: 23px;
+
+      &--header {
+        font-size: 22px;
+        line-height: 28px;
+      }
+    }
+
+    .otpdetails {
+      .otpdetails__header {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        text-align: center;
+
+        &--headertext {
+          font-size: 22px;
+          line-height: 29px;
+        }
+      }
+    }
+
+    .otp {
+      .otp__header {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: 48px;
+
+        &--headertext {
+          font-size: 22px;
+          line-height: 29px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .otpbox {
+    .yellow-design {
+      display: none;
+    }
+  }
+
+  .otpbox__left {
+    .otpdetails {
+      width: 90%;
+      height: 100%;
+      margin: 16px;
+      padding: 25px 10px;
+
+      .user-details {
+        .extra-options {
+          flex-direction: row;
+          span {
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <LoginArea />
+      <RegisterArea />
       <Footer />
     </>
   );
@@ -19,7 +19,7 @@ const Register = () => {
 
 export default Register;
 
-function LoginArea() {
+function RegisterArea() {
   let history = useHistory();
 
   const [registerstatus, setRegisterstatus] = useState("register");
@@ -43,6 +43,8 @@ function LoginArea() {
       email: data.email,
       phone: data.phone,
     };
+
+    console.log(otpObj);
 
     ApiCall.post("send-otp", otpObj)
       .then((res) => {
@@ -121,12 +123,12 @@ function LoginArea() {
 
   return (
     <section className="content">
-      <div className="loginbox flex">
-        <div className="yellow-design"></div>
-        <div className="loginbox__left">
-          {registerstatus === "register" && (
-            <div className="logindetails">
-              <div className="login-container">
+      {registerstatus === "register" && (
+        <div className="registerbox flex">
+          <div className="yellow-design"></div>
+          <div className="registerbox__left">
+            <div className="registerdetails">
+              <div className="register-container">
                 <div className="registerdetails__header">
                   <p className="registerdetails__header--headertext">
                     Welcome to The Strives
@@ -239,24 +241,30 @@ function LoginArea() {
                         {errors.password_repeat.message}
                       </div>
                     )}
-                    <button type="submit" className="logindetails--button">
+                    <button type="submit" className="registerdetails--button">
                       SIGN UP
                     </button>
                   </form>
                 </div>
 
-                <Link to="/login" className="logindetails__signuplink">
+                <Link to="/login" className="registerdetails__signuplink">
                   Have an account? Click here to Sign in
                 </Link>
               </div>
             </div>
-          )}
+          </div>
+          <div className="registerbox__right"></div>
+        </div>
+      )}
 
-          {registerstatus === "otp" && (
-            <div className="logindetails otp">
-              <div className="login-container">
-                <div className="otp__header">
-                  <p className="otp__header--headertext">
+      {registerstatus === "otp" && (
+        <div className="otpbox flex">
+          <div className="yellow-design"></div>
+          <div className="otpbox__left">
+            <div className="otpdetails">
+              <div className="otp-container">
+                <div className="otpdetails__header">
+                  <p className="otpdetails__header--headertext">
                     Please enter the OTP that <br /> came to you on mobile
                   </p>
                 </div>
@@ -277,7 +285,7 @@ function LoginArea() {
                     <button
                       type="submit"
                       onClick={onSubmitOtp}
-                      className="logindetails--button"
+                      className="otpdetails--button"
                     >
                       VERIFY OTP
                     </button>
@@ -287,17 +295,16 @@ function LoginArea() {
                 <Link
                   onClick={onResendOtp}
                   to="/"
-                  className="logindetails__signuplink"
+                  className="otpdetails__signuplink"
                 >
                   Resend OTP
                 </Link>
               </div>
             </div>
-          )}
+          </div>
+          <div className="registerbox__right"></div>
         </div>
-
-        <div className="loginbox__right"></div>
-      </div>
+      )}
     </section>
   );
 }
