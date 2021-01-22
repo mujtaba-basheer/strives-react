@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   justify-content: space-between;
+  align-items: flex-start;
 
   .yellow-design {
     position: absolute;
@@ -9,12 +10,14 @@
     height: 330px;
     width: 475px;
     z-index: -1;
+    margin-top: 174px;
   }
 
   &__left {
     margin-right: 136px;
     margin-left: 93px;
     color: var(--text-color-dark);
+    margin-top: 100px;
 
     .logindetails {
       padding: 10px 35px;
