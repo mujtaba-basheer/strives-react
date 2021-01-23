@@ -1,14 +1,18 @@
 .userprofile {
   width: 100%;
+  height: 1090px;
   align-items: flex-start;
+  margin-top: 45px;
 
   .myaccount__left {
     .backlink {
+      margin-bottom: 20px;
       font-style: normal;
       font-weight: normal;
       font-size: 18px;
       line-height: 22px;
       color: var(--text-color-dark);
+      font-family: var(--ff-c);
     }
   }
 
@@ -48,24 +52,27 @@
       margin-bottom: 2rem;
 
       .form-inputs {
-        margin-bottom: 0.5rem;
+        margin-bottom: 26px;
         width: 100%;
 
         &__label {
           display: inline-block;
-          font-size: 16px;
-          margin-bottom: 6px;
+          font-size: 18px;
+          margin-bottom: 13px;
+          line-height: 24px;
         }
 
         &__input {
           display: block;
-          padding-left: 10px;
+          padding-left: 26px;
           outline: none;
           border-radius: 2px;
-          height: 40px;
+          height: 56px;
           width: 100%;
           border: 1px solid rgba(44, 61, 80, 0.2);
           border-radius: 2px;
+          line-height: 20px;
+          font-family: var(--ff-c);
         }
 
         &__select {
@@ -73,7 +80,7 @@
           padding-left: 10px;
           outline: none;
           border-radius: 2px;
-          height: 40px;
+          height: 56px;
           width: 100%;
           border: 1px solid rgba(44, 61, 80, 0.2);
           border-radius: 2px;
@@ -113,12 +120,13 @@
 
 @media screen and (max-width: 1030px) {
   .userprofile {
+    height: auto;
     flex-direction: column;
     margin-top: 2rem;
 
     .myaccount__left {
       a {
-        margin-left: 2rem;
+        margin-left: 1rem;
       }
     }
 

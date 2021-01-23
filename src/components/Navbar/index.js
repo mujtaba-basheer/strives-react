@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -6,11 +6,16 @@ import logo from "../../assets/images/logo.png";
 
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";
+import searchicon from "../../assets/images/navbar/navbar-icons/search.png";
+import hearticon from "../../assets/images/navbar/navbar-icons/heart.png";
+import carticon from "../../assets/images/navbar/navbar-icons/cart.png";
+import usericon from "../../assets/images/navbar/navbar-icons/user.png";
+
+/* Sidebar Imports */
 import Home from "./Sidebar/Home";
 import BottomBar from "./Sidebar/BottomBar";
 import Search from "./Sidebar/Search";
 import Account from "./Sidebar/Account";
-
 
 /* Navbar Hovermenu DIVS */
 import Shop from "./NavbarData/Shop";
@@ -22,34 +27,81 @@ const Index = () => {
 
   const [currentSidebarScreen, setCurrentSidebarScreen] = useState("home");
 
+  const [navbarHeigt, setnavbarHeigt] = useState(100);
+
   const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
     var mainNav = document.getElementsByClassName("main-nav")[0];
 
-    if (window.pageYOffset < 80) {
-      navbar.style.backgroundColor = "transparent";
-      navbar.style.backdropFilter = "blur(0px)";
-      mainNav.classList.remove("scrolled");
-    } else {
-      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
-      navbar.style.backdropFilter = "blur(20px)";
-      mainNav.classList.add("scrolled");
+    const urlLocation = window.location.pathname;
+
+    if (urlLocation === "/") {
+      if (window.pageYOffset < 80) {
+        navbar.style.backgroundColor = "transparent";
+        navbar.style.backdropFilter = "blur(0px)";
+        mainNav.classList.remove("scrolled");
+        setnavbarHeigt(98);
+      } else {
+        navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+        navbar.style.backdropFilter = "blur(20px)";
+        mainNav.classList.add("scrolled");
+        setnavbarHeigt(71);
+      }
     }
   };
 
-  window.addEventListener("scroll", changeNavbar);
+  useEffect(() => {
+    const urlLocation = window.location.pathname;
 
+    if (urlLocation !== "/") {
+      var navbar = document.getElementsByClassName("navbar")[0];
+      navbar.style.backgroundColor = "#fff";
+      setnavbarHeigt(71);
+    } else {
+      document.getElementsByClassName("navbar")[0].style.border = "none";
+      window.addEventListener("scroll", changeNavbar);
+      setnavbarHeigt(98);
+    }
+  }, [window.location.pathname]);
+
+  function changeNavbarColor() {
+    var navbar = document.getElementsByClassName("navbar")[0];
+    navbar.style.backgroundColor = "#fff";
+  }
+
+  function resetNavbarColor() {
+    var navbar = document.getElementsByClassName("navbar")[0];
+
+    if (window.location.pathname !== "/") {
+      var navbar = document.getElementsByClassName("navbar")[0];
+      navbar.style.backgroundColor = "#fff";
+      document.body.style.opacity = "none";
+    } else {
+      navbar.style.backgroundColor = "inherit";
+      document.body.style.opacity = "none";
+    }
+  }
 
   function opensearchdiv() {
     document
       .getElementsByClassName("navbar__searchdiv")[0]
       .classList.remove("hide");
+
+    var navbar = document.getElementsByClassName("navbar")[0];
+    navbar.style.backgroundColor = "#fff";
   }
 
   function closesearchdiv() {
     document
       .getElementsByClassName("navbar__searchdiv")[0]
       .classList.add("hide");
+
+    var navbar = document.getElementsByClassName("navbar")[0];
+    if (window.location.pathname !== "/") {
+      navbar.style.backgroundColor = "#fff";
+    } else {
+      navbar.style.backgroundColor = "inherit";
+    }
   }
 
   function openSideMenu() {
@@ -61,25 +113,14 @@ const Index = () => {
     document.getElementById("menu").style.width = "0%";
   }
 
-  function toggleSidebarSearch() {
-    var accordian = document.getElementsByClassName("accordian")[0];
-    var searchdiv = document.getElementsByClassName("sidebar__searchdiv")[0];
-    accordian.classList.add("hide");
-    searchdiv.classList.remove("hide");
-  }
-
-  function toggleSidebarSearchClose() {
-    var accordian = document.getElementsByClassName("accordian")[0];
-    var searchdiv = document.getElementsByClassName("sidebar__searchdiv")[0];
-    accordian.classList.remove("hide");
-    searchdiv.classList.add("hide");
-  }
-
-  /* console.log(currentSidebarScreen); */
-
   return (
     <>
-      <div className="navbar flex">
+      <div
+        style={{
+          height: navbarHeigt + "px",
+        }}
+        className="navbar flex"
+      >
         <img
           className="logo mobile"
           style={{
@@ -92,34 +133,62 @@ const Index = () => {
 
         <div className="main-nav flex">
           <Link to="/">
-            <img className="logo" src={logo} alt="strides" />
+            <img
+              className={navbarHeigt > 80 ? "logo-large" : "logo"}
+              src={logo}
+              alt="strides"
+            />
           </Link>
           <nav className="nav">
             <ul className="flex">
-              <li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <Link className="hovermenu__listitems__home" to="/">
                   Home
                 </Link>
               </li>
-              <li className="hovermenu__listitems--shop">
-                <div className="dropdown-shop">
+              <li className="main-nav--listitem">
+                <div
+                  className="dropdown-shop"
+                  onMouseOver={changeNavbarColor}
+                  onMouseLeave={resetNavbarColor}
+                >
                   <Link to="/my-account">Shop</Link>
-                  <Shop />
+                  <Shop height={navbarHeigt} />
                 </div>
               </li>
-              <li className="hovermenu__listitems--brand">
-                <div className="dropdown-brand">
-                <Link to="/">Brands</Link>
-                <Brand />
+              <li className="main-nav--listitem">
+                <div
+                  className="dropdown-brand"
+                  onMouseOver={changeNavbarColor}
+                  onMouseLeave={resetNavbarColor}
+                >
+                  <Link to="/">Brands</Link>
+                  <Brand height={navbarHeigt} />
                 </div>
               </li>
-              <li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <Link to="/">Collections</Link>
               </li>
-              <li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <Link to="/">Discover</Link>
               </li>
-              <li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <Link to="/">Ethnic</Link>
               </li>
             </ul>
@@ -129,21 +198,49 @@ const Index = () => {
           <ul className="flex">
             <li>
               <Link to={userLogin.userInfo ? "/my-account" : "/login"}>
-                <i className="far fa-user-circle"></i>
+                <img
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                  }}
+                  src={usericon}
+                  alt="user"
+                />
               </Link>
             </li>
             <li>
               <Link to="/">
-                <i className="fas fa-heart"></i>
+                <img
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                  }}
+                  src={hearticon}
+                  alt="heart"
+                />
               </Link>
             </li>
             <li>
               <Link to="/">
-                <i className="fas fa-shopping-cart"></i>
+                <img
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                  }}
+                  src={carticon}
+                  alt="cart"
+                />
               </Link>
             </li>
             <li onClick={opensearchdiv}>
-              <i class="fas fa-search"></i>
+              <img
+                style={{
+                  width: "15px",
+                  height: "15px",
+                }}
+                src={searchicon}
+                alt="search"
+              />
             </li>
           </ul>
         </div>
@@ -157,9 +254,12 @@ const Index = () => {
         </button>
       </div>
 
-      
-
-      <div className="navbar__searchdiv hide">
+      <div
+        style={{
+          top: navbarHeigt + "px",
+        }}
+        className="navbar__searchdiv hide"
+      >
         <div className="search__div flex">
           <input type="text" placeholder="Search Items" />
           <div className="searchIcon">

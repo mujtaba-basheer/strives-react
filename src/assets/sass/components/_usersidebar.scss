@@ -1,65 +1,158 @@
 .usersidebarbackground {
   width: 325px;
+  height: auto;
   background: #f6f9fc;
   padding: 10px 18px;
   margin: 1rem 0;
   margin-right: 50px;
 
   .usersidebar {
+    height: auto;
     background: #fff;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: flex-start;
 
     &__heading {
-      margin: 20px 0 10px;
-      justify-content: center;
+      margin: 28px 0 27px;
+      margin-left: 29px;
     }
 
     &__heading--text {
       font-style: normal;
       font-weight: normal;
       font-size: 18px;
-      line-height: 150%;
+      line-height: 27px;
       text-transform: uppercase;
       color: var(--text-color-dark);
     }
 
-    &__heading--icon {
-      height: 18px;
-      width: 26px;
+    &__heading--text--margin {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 27px;
+      text-transform: uppercase;
       color: var(--text-color-dark);
+      margin-left: 10px;
     }
 
-    .myorders,
+    .myorders {
+      border-bottom: 1px solid rgba(44, 61, 80, 0.2);
+    }
+
+    .accountsettings {
+      border-bottom: 1px solid rgba(44, 61, 80, 0.2);
+      padding-bottom: 25px;
+
+      .usersidebar__heading {
+        margin: 28px 0 11px;
+        margin-left: 29px;
+      }
+
+      ul li {
+        width: 100%;
+        padding: 10px 0;
+        color: var(--text-color-dark);
+        background: #fff;
+        font-size: 16px;
+
+        line-height: 150%;
+      }
+
+      ul li.active {
+        background: #222b32;
+      }
+
+      ul li.active a {
+        color: #fff;
+      }
+
+      ul li:hover {
+        background: #222b32;
+      }
+
+      ul li:hover a {
+        color: #fff;
+      }
+
+      ul li a {
+        margin-left: 68px;
+        font-family: var(--ff-c);
+      }
+    }
+
+    .mystuff {
+      border-bottom: 1px solid rgba(44, 61, 80, 0.2);
+      padding-bottom: 25px;
+
+      .usersidebar__heading {
+        margin: 26px 0 17px;
+        margin-left: 68px;
+      }
+
+      ul li {
+        width: 100%;
+        padding: 10px 0;
+        color: var(--text-color-dark);
+        background: #fff;
+        font-size: 16px;
+        font-family: var(--ff-c);
+        line-height: 150%;
+      }
+
+      ul li:hover {
+        background: #222b32;
+      }
+
+      ul li:hover a {
+        color: #fff;
+      }
+
+      ul li a {
+        margin-left: 68px;
+        font-family: var(--ff-c);
+      }
+    }
+
+    .logout {
+      padding-bottom: 20px;
+
+      .usersidebar__heading {
+        margin: 26px 0 0px;
+        margin-left: 68px;
+      }
+    }
+
+    /* .myorders,
     .mystuff,
     .accountsettings,
     .logout {
       width: 100%;
       border-bottom: 1px solid rgba(44, 61, 80, 0.2);
-    }
+    } */
 
-    ul li a {
+    /* ul li a {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       padding: 10px 0;
       color: var(--text-color-dark);
+    } */
+
+    /* ul li:hover {
+      background-color: #222b32;
+
+      color: #fff;
     }
 
     ul li a:hover {
-      background-color: var(--text-color-dark);
-      color: #fff;
-    }
+    } */
 
-    ul li a.active {
-      background-color: var(--text-color-dark);
+    /* ul li a.active {
+      background-color: #222b32;
       color: #fff;
-    }
+    } */
   }
 }
 

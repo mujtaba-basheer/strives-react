@@ -5,9 +5,14 @@ import navbar1 from "../../../assets/images/navbar/navbar1.png";
 import navbar2 from "../../../assets/images/navbar/navbar2.png";
 import navbar3 from "../../../assets/images/navbar/navbar3.png";
 
-const Shop = () => {
+const Shop = ({ height }) => {
   return (
-    <div className="navbar__hovermenu shop flex">
+    <div
+      style={{
+        top: height + "px",
+      }}
+      className="navbar__hovermenu shop flex"
+    >
       <div className="navbar__hovermenu__options flex">
         <div className="hovermenu__listitems">
           <h3>Explore Collections</h3>

@@ -15,6 +15,9 @@ import Footer from "../../components/Footer";
 import UserSidebar from "../../components/layout/UserSidebar";
 import Alert from "../../components/Alert/Alert";
 
+import pencilicon from "../../assets/images/icons/pencil.png";
+import backicon from "../../assets/images/icons/back.png";
+
 const ChangePassword = () => {
   const [formInputStatus, setFormInputStatus] = useState("disabled");
   const [formData, setFormData] = useState({
@@ -98,7 +101,15 @@ const ChangePassword = () => {
         <div className="userprofile flex">
           <div className="myaccount__left">
             <Link className="backlink" to="/">
-              {" "}
+              <img
+                src={backicon}
+                alt="back"
+                style={{
+                  width: "8px",
+                  height: "10px",
+                  marginRight: "8px",
+                }}
+              />{" "}
               Back to shopping
             </Link>
             <UserSidebar selected="ManageAddress" />
@@ -109,6 +120,14 @@ const ChangePassword = () => {
               <p className="header__text">Manage Address</p>
               <span className="header__btns">
                 <button className="header__btn--edit" onClick={formEdit}>
+                  <img
+                    src={pencilicon}
+                    style={{
+                      height: "14px",
+                      width: "14px",
+                    }}
+                    alt="pencil"
+                  />{" "}
                   Edit
                 </button>
               </span>

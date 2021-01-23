@@ -31,8 +31,9 @@ const Login = () => {
     <>
       <Navbar />
 
-      <section className="content container">
+      <section className="content">
         <div className="loginbox flex">
+          <div className="yellow-design"></div>
           <div className="loginbox__left">
             <div className="logindetails">
               <div className="login-container">

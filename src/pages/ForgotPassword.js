@@ -7,11 +7,13 @@ import { Link } from "react-router-dom";
 
 import ApiCall from "../utils/apiCall";
 
+import forgotpassicon from "../assets/images/icons/forgotpassicon.png";
+
 const ForgotPassword = () => {
   return (
     <>
       <Navbar />
-      <LoginArea />
+      <ForgotPassArea />
       <Footer />
     </>
   );
@@ -19,7 +21,7 @@ const ForgotPassword = () => {
 
 export default ForgotPassword;
 
-function LoginArea() {
+function ForgotPassArea() {
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
   const { register, handleSubmit, errors } = useForm();
@@ -38,11 +40,12 @@ function LoginArea() {
   };
 
   return (
-    <section className="content container">
-      <div className="loginbox flex">
-        <div className="loginbox__left">
-          <div className="logindetails forgotpass">
-            <div className="login-container">
+    <section className="content">
+      <div className="forgotpassbox flex">
+        <div className="yellow-design"></div>
+        <div className="forgotpassbox__left">
+          <div className="forgotpassdetails">
+            <div className="forgotpass-container">
               <div className="forgotpass__header">
                 <p className="forgotpass__header--headertext">
                   Please enter your email to <br /> retreive your password
@@ -77,18 +80,28 @@ function LoginArea() {
                   {formSuccess && (
                     <div className="alert success mb-1">{formSuccess}</div>
                   )}
-                  <button className="logindetails--button">SEND EMAIL</button>
+                  <button className="forgotpassdetails--button">
+                    SEND EMAIL
+                  </button>
                 </div>
               </form>
 
-              <Link to="/login" className="logindetails__signuplink">
+              <Link to="/forgotpass" className="forgotpassdetails__signuplink">
+                <img
+                  style={{
+                    width: "7px",
+                    height: "7px",
+                  }}
+                  src={forgotpassicon}
+                  alt="forgotpass"
+                />{" "}
                 Return to login screen
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="loginbox__right"></div>
+        <div className="forgotpassbox__right"></div>
       </div>
     </section>
   );

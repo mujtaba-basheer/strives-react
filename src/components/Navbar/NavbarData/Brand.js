@@ -5,9 +5,14 @@ import navbar1 from "../../../assets/images/navbar/brands/navbar1.png";
 import navbar2 from "../../../assets/images/navbar/brands/navbar2.png";
 import navbar3 from "../../../assets/images/navbar/brands/navbar3.png";
 
-const Brand = () => {
+const Brand = ({ height }) => {
   return (
-    <div className="navbar__hovermenu brand flex">
+    <div
+      style={{
+        top: height + "px",
+      }}
+      className="navbar__hovermenu brand flex"
+    >
       <div className="navbar__hovermenu__options flex">
         <div className="hovermenu__listitems">
           <h3>Explore Collections</h3>
