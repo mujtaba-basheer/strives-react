@@ -528,6 +528,14 @@ function CheckoutArea() {
                 </div>
               </div>
             </div>
+
+            <button
+              type="submit"
+              id="placeorder"
+              className="checkoutbox_submit--button"
+            >
+              Place your order
+            </button>
           </div>
 
           <div className="checkoutbox__right">
