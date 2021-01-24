@@ -20,6 +20,7 @@ export default Checkout;
 
 function CheckoutArea() {
   const [paymentType, setPaymentType] = useState("cod");
+  const [shipmentType, setShipmentType] = useState("normal");
 
   return (
     <section className="content">
@@ -51,18 +52,20 @@ function CheckoutArea() {
                   <div className="form-inputs">
                     <input
                       className="form-inputs__input"
-                      id="fname"
-                      placeholder="First Name"
-                      name="firstname"
+                      id="email"
+                      type="email"
+                      placeholder="Email"
+                      name="email"
                     />
                   </div>
 
                   <div className="form-inputs">
                     <input
                       className="form-inputs__input"
-                      id="lname"
-                      placeholder="Last Name"
-                      name="lastname"
+                      id="number"
+                      type="number"
+                      placeholder="Phone Number"
+                      name="number"
                     />
                   </div>
                 </div>
@@ -95,19 +98,72 @@ function CheckoutArea() {
                   <div className="form-inputs">
                     <input
                       className="form-inputs__input"
-                      id="fname"
-                      placeholder="First Name"
-                      name="firstname"
+                      id="email"
+                      type="email"
+                      placeholder="Email"
+                      name="email"
                     />
                   </div>
 
                   <div className="form-inputs">
                     <input
                       className="form-inputs__input"
-                      id="lname"
-                      placeholder="Last Name"
-                      name="lastname"
+                      id="number"
+                      type="number"
+                      placeholder="Phone Number"
+                      name="number"
                     />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="shipment">
+            <div className="shipment__flex flex">
+              {/* Left Side Number  */}
+              <div className="number">
+                <div className="number__flex">
+                  <div className="dot flex">
+                    <p className="dot__text">3</p>
+                  </div>
+                  <div className="line"></div>
+                </div>
+              </div>
+
+              <div className="shipment__details">
+                <p className="shipment__details__heading">Shipment</p>
+
+                <div className="shipment__type">
+                  <div className="shipment__type--normal">
+                    <div className="flex radio">
+                      <input
+                        type="radio"
+                        className="radio-input"
+                        name="normal"
+                        id="normal"
+                        onChange={() => setShipmentType("normal")}
+                        checked={shipmentType === "normal"}
+                      />
+                      <label htmlFor="normal" className="radio-label">
+                        Normal: 5-7 days delivery
+                      </label>
+                    </div>
+                  </div>
+                  <div className="shipment__type--express">
+                    <div className="flex radio">
+                      <input
+                        type="radio"
+                        className="radio-input"
+                        name="express"
+                        id="express"
+                        checked={shipmentType === "express"}
+                        onChange={() => setShipmentType("express")}
+                      />
+                      <label htmlFor="express" className="radio-label">
+                        Express delivery: 1 day delivery
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -120,7 +176,7 @@ function CheckoutArea() {
               <div className="number">
                 <div className="number__flex">
                   <div className="dot flex">
-                    <p className="dot__text">3</p>
+                    <p className="dot__text">4</p>
                   </div>
                   <div className="line"></div>
                 </div>
@@ -227,7 +283,11 @@ function CheckoutArea() {
           </div>
 
           <div className="couponbox">
-            <input className="couponbox-input" type="text" placeholder="Have a coupon?" />
+            <input
+              className="couponbox-input"
+              type="text"
+              placeholder="Have a coupon?"
+            />
           </div>
         </div>
       </div>

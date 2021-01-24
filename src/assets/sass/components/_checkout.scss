@@ -160,6 +160,46 @@
       }
     }
 
+    .shipment {
+      &__flex {
+        align-items: flex-start;
+      }
+      .number {
+        height: 0px;
+      }
+
+      &__details {
+        width: 100%;
+        padding-top: 4px;
+        &__heading {
+          margin-bottom: 25px;
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+
+      .radio {
+        &-label {
+          font-size: 18px;
+          line-height: 22px;
+          font-family: var(--ff-c);
+        }
+
+        &-input {
+          margin-right: 7px;
+        }
+      }
+
+      &__type--normal {
+        padding-bottom: 21px;
+        border-bottom: 1px solid rgba(44, 61, 80, 0.1);
+      }
+
+      &__type--express {
+        margin: 21px 0;
+      }
+    }
+
     .payment {
       &__flex {
         align-items: flex-start;
