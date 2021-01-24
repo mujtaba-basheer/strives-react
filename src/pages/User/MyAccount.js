@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
+  deleteUser,
   getUserDetails,
   updateUserProfile,
 } from "../../redux/actions/userActions";
@@ -20,7 +21,9 @@ import backicon from "../../assets/images/icons/back.png";
 const MyAccount = () => {
   const [formInputStatus, setFormInputStatus] = useState("disabled");
   const [formData, setFormData] = useState({
-    name: "",
+    // name: "",
+    firstname: "",
+    lastname: "",
     gender: "",
     phone: undefined,
     dob: "",
@@ -47,12 +50,20 @@ const MyAccount = () => {
     if (!userInfo) history.push("/login");
 
     if (user) {
+      let spIndex = user.name.indexOf(" ");
+      spIndex = spIndex === -1 ? false : spIndex;
       setFormData({
-        name: user.name,
+        // name: user.name,
+        firstname: spIndex ? user.name.substring(0, spIndex) : user.name,
+        lastname: spIndex ? user.name.substring(spIndex + 1) : "",
         gender: user.gender,
         phone: user.phone,
         dob: user.dob,
         email: user.email,
+      });
+      console.log({
+        firstname: spIndex ? user.name.substring(0, spIndex) : user.name,
+        lastname: spIndex ? user.name.substring(spIndex + 1) : "",
       });
     } else dispatch(getUserDetails());
 
@@ -136,10 +147,7 @@ const MyAccount = () => {
                     id="fname"
                     placeholder="First Name"
                     name="firstname"
-                    defaultValue={formData.name.substring(
-                      0,
-                      formData.name.lastIndexOf(" ")
-                    )}
+                    defaultValue={formData.firstname}
                     disabled={formInputStatus}
                     ref={register({
                       required: {
@@ -168,10 +176,7 @@ const MyAccount = () => {
                     id="lname"
                     placeholder="Last Name"
                     name="lastname"
-                    defaultValue={formData.name.substring(
-                      formData.name.lastIndexOf(" ") + 1,
-                      formData.name.length
-                    )}
+                    defaultValue={formData.lastname}
                     disabled={formInputStatus}
                     ref={register({
                       required: {
