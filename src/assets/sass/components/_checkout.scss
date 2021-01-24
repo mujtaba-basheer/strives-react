@@ -1,6 +1,7 @@
 .checkoutbox {
   margin-bottom: 4rem;
   align-items: flex-start;
+  justify-content: space-between;
   &__left {
     margin-top: 85px;
     margin-left: 179px;
@@ -282,6 +283,7 @@
 
   &__right {
     margin-top: 111px;
+    margin-right: 178px;
 
     .ordersummarybox {
       border: 1px solid rgba(44, 61, 80, 0.2);
