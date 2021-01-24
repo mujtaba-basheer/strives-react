@@ -1,0 +1,356 @@
+.checkoutbox {
+  margin-bottom: 4rem;
+  align-items: flex-start;
+  &__left {
+    margin-top: 85px;
+    margin-left: 179px;
+    width: 582px;
+    margin-right: 48px;
+
+    /* Heading */
+    .heading {
+      margin-bottom: 35px;
+
+      &__main {
+        font-size: 28px;
+        line-height: 37px;
+        margin-bottom: 5px;
+      }
+
+      &__subheading {
+        font-family: Cormorant Garamond;
+        font-size: 18px;
+        line-height: 22px;
+
+        .span {
+          font-weight: 700;
+          font-family: Cormorant Garamond;
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+    }
+
+    .form-inputs {
+      margin-bottom: 26px;
+      width: 100%;
+
+      &__label {
+        display: inline-block;
+        font-size: 18px;
+        margin-bottom: 13px;
+        line-height: 24px;
+      }
+
+      &__input {
+        display: block;
+        padding-left: 26px;
+        outline: none;
+        border-radius: 2px;
+        height: 56px;
+        width: 100%;
+        border: 1px solid rgba(44, 61, 80, 0.2);
+        border-radius: 2px;
+        line-height: 20px;
+        font-family: var(--ff-c);
+      }
+    }
+
+    .split-input {
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .form-inputs {
+        width: 48%;
+      }
+    }
+
+    .number {
+      width: 10px;
+      display: inline-block;
+      height: 105px;
+      margin-right: 24px;
+
+      &__flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100%;
+
+        .dot {
+          width: 2rem;
+          height: 2em;
+          line-height: 2em;
+          border-radius: 1em;
+          background: #fff;
+          color: var(--text-color-dark);
+          border: 1px solid rgba(44, 61, 80, 0.2);
+          justify-content: center;
+
+          &__text {
+            justify-content: center;
+            font-size: 10px;
+          }
+        }
+
+        .line {
+          width: 1px;
+          height: 100%;
+          background-color: rgba(44, 61, 80, 0.2);
+        }
+      }
+    }
+
+    .contactinformation {
+      height: 166px;
+
+      &__flex {
+        align-items: flex-start;
+        height: 100%;
+      }
+
+      .number {
+        height: 100%;
+      }
+
+      &__details {
+        width: 90%;
+        &__heading {
+          font-size: 18px;
+          line-height: 24px;
+          margin-bottom: 8px;
+          padding-top: 5px;
+        }
+      }
+
+      .form-inputs {
+        &__input {
+          font-size: 16px;
+          padding-left: 24px;
+          height: 51px;
+          margin-bottom: 0px;
+        }
+      }
+    }
+
+    .shippingaddress {
+      &__flex {
+        align-items: flex-start;
+      }
+
+      .number {
+        height: 283px;
+      }
+
+      &__details {
+        &__heading {
+          padding-top: 5px;
+          margin-bottom: 30px;
+          &__main {
+            font-size: 18px;
+            line-height: 24px;
+          }
+          &__sub {
+            font-size: 15px;
+            line-height: 18px;
+            font-family: var(--ff-c);
+          }
+        }
+      }
+    }
+
+    .payment {
+      &__flex {
+        align-items: flex-start;
+      }
+      .number {
+        height: 0px;
+      }
+
+      &__details {
+        width: 100%;
+        padding-top: 4px;
+        &__heading {
+          margin-bottom: 25px;
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+
+      .radio {
+        &-label {
+          font-size: 18px;
+          line-height: 22px;
+          font-family: var(--ff-c);
+        }
+
+        &-input {
+          margin-right: 7px;
+        }
+      }
+
+      &__type--cash {
+        padding-bottom: 21px;
+        border-bottom: 1px solid rgba(44, 61, 80, 0.1);
+      }
+
+      &__type--razorpay {
+        margin: 21px 0;
+
+        &__banner {
+          width: 400px;
+          height: 46px;
+          margin-top: 21px;
+        }
+      }
+    }
+  }
+
+  &__right {
+    margin-top: 111px;
+
+    .ordersummarybox {
+      border: 1px solid rgba(44, 61, 80, 0.2);
+      width: 400px;
+      height: 498px;
+      padding: 46px 30px 60px 32px;
+
+      .ordersummary {
+        &__heading {
+          font-size: 18px;
+          line-height: 24px;
+          margin-bottom: 32px;
+        }
+
+        &__items {
+          &__list {
+            padding-bottom: 31px;
+            border-bottom: 1px solid rgba(44, 61, 80, 0.1);
+            &--item {
+              align-items: flex-start;
+              padding-top: 4px;
+              &--image {
+                width: 72px;
+                height: 79px;
+                margin-right: 10px;
+              }
+
+              &--productdetails {
+                width: 100%;
+                justify-content: space-between;
+                &--name {
+                  &--main {
+                    font-size: 16px;
+                    line-height: 21px;
+                  }
+
+                  &--description {
+                    font-size: 14px;
+                    line-height: 17px;
+                    font-family: var(--ff-c);
+
+                    span {
+                      font-size: 14px;
+                      line-height: 17px;
+                      font-weight: 700;
+                      font-family: var(--ff-c);
+                    }
+                  }
+                }
+
+                &--price {
+                  font-size: 16px;
+                  line-height: 19px;
+                  font-family: var(--ff-c);
+                }
+              }
+            }
+          }
+        }
+
+        .total {
+          margin-top: 10px;
+          padding-bottom: 12px;
+          border-bottom: 1px solid rgba(44, 61, 80, 0.1);
+
+          &-gst {
+            justify-content: space-between;
+
+            &--text {
+              font-size: 14px;
+              line-height: 17px;
+              font-family: var(--ff-c);
+            }
+
+            &--amount {
+              font-size: 14px;
+              line-height: 17px;
+              font-family: var(--ff-c);
+            }
+          }
+
+          &-shipping {
+            justify-content: space-between;
+
+            &--text {
+              font-size: 14px;
+              line-height: 17px;
+              font-family: var(--ff-c);
+            }
+
+            &--amount {
+              font-size: 14px;
+              line-height: 17px;
+              font-family: var(--ff-c);
+            }
+          }
+        }
+
+        .subtotal {
+          margin-top: 10px;
+          &__heading {
+            justify-content: space-between;
+
+            &--text {
+              font-size: 16px;
+              line-height: 21px;
+            }
+
+            &--amount {
+              font-size: 16px;
+              line-height: 19px;
+              font-family: var(--ff-c);
+            }
+          }
+
+          ul {
+            li {
+              font-size: 14px;
+              line-height: 21px;
+              opacity: 0.6;
+              list-style: disc;
+              margin-left: 20px;
+              font-family: var(--ff-c);
+            }
+          }
+        }
+      }
+    }
+
+    .couponbox {
+      margin-top: 35px;
+
+      &-input {
+        width: 100%;
+        height: 52px;
+        border: none;
+        outline: none;
+        border: 1px solid rgba(44, 61, 80, 0.2);
+        padding-left: 28px;
+        font-size: 18px;
+        line-height: 24px;
+      }
+    }
+  }
+}

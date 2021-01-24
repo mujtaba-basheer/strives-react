@@ -13,6 +13,8 @@ import MyAccount from "./pages/User/MyAccount";
 import ChangePassword from "./pages/User/ChangePassword";
 import ManageAddress from "./pages/User/ManageAddress";
 
+import Checkout from "./pages/Checkout";
+
 const App = () => {
   return (
     <Router>
@@ -40,6 +42,10 @@ const App = () => {
 
         <Route exact path="/manage-address">
           <ManageAddress />
+        </Route>
+
+        <Route exact path="/checkout">
+          <Checkout />
         </Route>
       </Switch>
     </Router>
