@@ -454,6 +454,60 @@
       &-input:hover {
         cursor: pointer;
       }
+
+      .applycoupon {
+        width: 100%;
+
+        border: 1px solid rgba(44, 61, 80, 0.2);
+        padding-left: 31px;
+        font-size: 18px;
+        line-height: 24px;
+        background: #fff;
+
+        &__heading {
+          margin-top: 15px;
+          margin-bottom: 12px;
+          &--text {
+            font-size: 18px;
+            line-height: 24px;
+          }
+        }
+
+        &__input {
+          margin-bottom: 24px;
+          &--input {
+            outline: none;
+            border: none;
+            width: 152px;
+            border-bottom: 1px solid rgba(44, 61, 80, 0.2);
+            text-transform: capitalize;
+          }
+
+          &--input::placeholder {
+            font-size: 10px;
+            line-height: 13px;
+            font-family: var(--ff-c);
+          }
+
+          &--button {
+            outline: none;
+            border: none;
+            border: 1px solid rgba(44, 61, 80, 0.2);
+            margin-left: 17px;
+            font-size: 10px;
+            line-height: 13px;
+            background: var(--text-color-dark);
+            border-radius: 1px;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 5px 13px;
+          }
+
+          &--button:hover {
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
 }

@@ -24,6 +24,11 @@ export default Checkout;
 function CheckoutArea() {
   const [paymentType, setPaymentType] = useState("cod");
   const [shipmentType, setShipmentType] = useState("normal");
+  const [applyCouponDetails, setApplyCouponDetails] = useState({
+    name: "",
+    inputState: "",
+    couponApplied: false,
+  });
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -44,6 +49,28 @@ function CheckoutArea() {
   const onSubmit = (data) => {
     console.log(data);
   };
+
+  function showApplyCoupon() {
+    document.querySelector(".couponbox-input").style.display = "none";
+    document.querySelector(".applycoupon").style.display = "block";
+  }
+
+  function removeCoupon() {
+    setApplyCouponDetails({
+      ...applyCouponDetails,
+      inputState: "",
+      couponApplied: false,
+    });
+  }
+
+  function applyCoupon() {
+    console.log(applyCouponDetails.name);
+    setApplyCouponDetails({
+      ...applyCouponDetails,
+      inputState: "disabled",
+      couponApplied: true,
+    });
+  }
 
   return (
     <section className="content">
@@ -604,7 +631,11 @@ function CheckoutArea() {
             </div>
 
             <div className="couponbox">
-              <button className="couponbox-input flex" type="button">
+              <button
+                onClick={showApplyCoupon}
+                className="couponbox-input flex"
+                type="button"
+              >
                 <p>Have a coupon?</p>
                 <img
                   src={coupon}
@@ -616,6 +647,58 @@ function CheckoutArea() {
                   alt="coupon"
                 />
               </button>
+
+              <div
+                className="applycoupon"
+                style={{
+                  display: "none",
+                }}
+              >
+                <div className="applycoupon__heading flex">
+                  <p className="applycoupon__heading--text">Have a coupon?</p>
+                  <img
+                    src={coupon}
+                    style={{
+                      width: "15px",
+                      height: "15px",
+                      marginLeft: "10px",
+                    }}
+                    alt="coupon"
+                  />
+                </div>
+
+                <div className="applycoupon__input">
+                  <input
+                    className="applycoupon__input--input"
+                    placeholder="Enter Coupon"
+                    type="text"
+                    disabled={applyCouponDetails.inputState}
+                    onChange={(e) =>
+                      setApplyCouponDetails({
+                        ...applyCouponDetails,
+                        name: e.target.value,
+                      })
+                    }
+                  />
+                  {applyCouponDetails.couponApplied ? (
+                    <button
+                      onClick={removeCoupon}
+                      type="button"
+                      className="applycoupon__input--button"
+                    >
+                      Remove coupon
+                    </button>
+                  ) : (
+                    <button
+                      onClick={applyCoupon}
+                      type="button"
+                      className="applycoupon__input--button"
+                    >
+                      Apply coupon
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
