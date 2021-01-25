@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 
 import razorpayBanner from "../assets/images/checkout/razorpay.png";
 import image from "../assets/images/checkout/image.png";
+import coupon from "../assets/images/checkout/coupon.png";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
@@ -603,11 +604,18 @@ function CheckoutArea() {
             </div>
 
             <div className="couponbox">
-              <input
-                className="couponbox-input"
-                type="text"
-                placeholder="Have a coupon?"
-              />
+              <button className="couponbox-input flex" type="button">
+                <p>Have a coupon?</p>
+                <img
+                  src={coupon}
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                    marginLeft: "10px",
+                  }}
+                  alt="coupon"
+                />
+              </button>
             </div>
           </div>
         </div>
