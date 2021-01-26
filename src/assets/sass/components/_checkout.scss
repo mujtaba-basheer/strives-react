@@ -432,6 +432,7 @@
           line-height: 21px;
           text-transform: uppercase;
           font-family: var(--ff-c);
+          cursor: pointer;
         }
       }
     }
@@ -501,6 +502,7 @@
             text-transform: uppercase;
             color: #fff;
             padding: 5px 13px;
+            cursor: pointer;
           }
 
           &--button:hover {

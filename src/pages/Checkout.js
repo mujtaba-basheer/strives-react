@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -8,6 +9,8 @@ import razorpayBanner from "../assets/images/checkout/razorpay.png";
 import image from "../assets/images/checkout/image.png";
 import coupon from "../assets/images/checkout/coupon.png";
 import { Link } from "react-router-dom";
+import { getUserDetails } from "../redux/actions/userActions";
+import { payOrder } from "../redux/actions/orderActions";
 
 const Checkout = () => {
   return (
@@ -22,7 +25,14 @@ const Checkout = () => {
 export default Checkout;
 
 function CheckoutArea() {
+  const dispatch = useDispatch();
+  const { user, error } = useSelector((state) => state.userDetails);
+  const { order: orderResult, error: orderError } = useSelector(
+    (state) => state.orderPay
+  );
+
   const [paymentType, setPaymentType] = useState("cod");
+  const [sdkReady, setSdkReady] = useState(false);
   const [shipmentType, setShipmentType] = useState("normal");
   const [applyCouponDetails, setApplyCouponDetails] = useState({
     name: "",
@@ -46,8 +56,63 @@ function CheckoutArea() {
     custphone: "",
   });
 
+  useEffect(() => {
+    if (user || error) {
+      console.log(user);
+      /* TODO: Fill formData with details
+        user: {
+        _id: '5ffd33fb07514500040f39f9',
+        name: 'Mujtaba Basheer',
+        email: 'mujtaba.fleapo@gmail.com',
+        phone: '07686886489',
+        address: [
+          {
+            _id: '6002875d2a285224fd633da7',
+            address: '26 A, North Range',
+            state: 'West Bengal',
+            city: 'Kolkata',
+            pincode: '700017',
+            landmark: 'Asian/Vaishali Paints',
+            address1: '26 A, North Range',
+            address2: '',
+            name: 'Mujtaba Basheer',
+            phone: '7686886489',
+            type: 'Home'
+          }
+        ],
+        dob: '1999-12-24',
+        gender: 'Male',
+        firstname: 'Mujtaba',
+        lastname: 'fghi'
+      }
+      */
+    } else dispatch(getUserDetails());
+
+    const addRzpScript = async () => {
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `https://checkout.razorpay.com/v1/checkout.js`;
+      script.async = true;
+      script.crossorigin = `anonymous`;
+      script.onload = () => setSdkReady(true);
+
+      document.body.appendChild(script);
+    };
+
+    if (!window.Razorpay) addRzpScript();
+    else setSdkReady(true);
+  }, [user, dispatch, error]);
+
   const onSubmit = (data) => {
     console.log(data);
+  };
+
+  const testRazorpay = () => {
+    dispatch(payOrder(100));
+    setImmediate(() => {
+      if (orderResult) alert("payment successfull");
+      else if (orderError) alert("payment failed");
+    });
   };
 
   function showApplyCoupon() {
@@ -624,6 +689,10 @@ function CheckoutArea() {
                   type="submit"
                   id="placeorder"
                   className="ordersummarybox__footer--button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    testRazorpay();
+                  }}
                 >
                   Place your order
                 </button>
