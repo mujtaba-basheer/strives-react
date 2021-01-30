@@ -40,7 +40,7 @@ const Index = () => {
         navbar.style.backgroundColor = "transparent";
         navbar.style.backdropFilter = "blur(0px)";
         mainNav.classList.remove("scrolled");
-        setnavbarHeigt(98);
+        setnavbarHeigt(110);
       } else {
         navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
         navbar.style.backdropFilter = "blur(20px)";
@@ -60,7 +60,7 @@ const Index = () => {
     } else {
       document.getElementsByClassName("navbar")[0].style.border = "none";
       window.addEventListener("scroll", changeNavbar);
-      setnavbarHeigt(98);
+      setnavbarHeigt(110);
     }
   }, [window.location.pathname]);
 
