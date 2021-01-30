@@ -1,18 +1,28 @@
-@import "base";
-@import "utilities";
-@import "layout";
-@import "components";
 
-@import "./components/homepage";
-@import "./components/footer";
-@import "./components/login";
-@import "./components/register";
-@import "./components/otp";
-@import "./components/forgotpassword";
+/* Base Styles */
+@import "base/base";
+@import "base/utilities";
+@import "base/layout";
 
-@import "./components/checkout";
+/* Global Pages */
+@import "pages/homepage";
 
-@import "./components/usersidebar";
-@import "./components/myaccount";
+/* Login & Register */
+@import "pages/Login/login";
+@import "pages/Login/register";
+@import "pages/Login/otp";
+@import "pages/Login/forgotpassword";
+
+/* User Account */
+@import "pages/User/checkout";
+@import "pages/User/myaccount";
+
+
+/* Components */
+@import "components/usersidebar";
+@import "layout/footer";
 @import "./components/util/index";
+
+
+/* To be replaced later in its appropirate place */
 @import "media";
