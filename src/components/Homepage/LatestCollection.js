@@ -8,56 +8,27 @@ const LatestCollection = () => {
         <div className="latest-collection__title section-title">
           The Latest Collection
         </div>
-        <div className="latest-collection__container">
-          <div className="latest-collection__section latest-collection--1">
-            <figure className="latest-collection__image">
-              <img
-                className="latest-collection__image--img"
-                alt="collection 1"
-                src={collection_image}
-              />
-            </figure>
-            <div className="latest-collection__text">
-              <h3 className="latest-collection__text--head">Lorem Ipsum</h3>
-              <p className="latest-collection__text--p">
-                Lorem Ipsum dolor sit amet
-              </p>
+        <div className="latest-collection__wrapper-grid">
+          <div className="latest-collection__container">
+            <div className="latest-collection__container__text">
+              <div className="latest-collection__container__text--heading">
+                lorem Ipsum
+              </div>
+              <div className="latest-collection__container__text--text">
+                lorem Ipsum
+              </div>
             </div>
           </div>
-          <div className="latest-collection__section latest-collection--2">
-            <figure className="latest-collection__image">
-              <img
-                className="latest-collection__image--img"
-                alt="collection 2"
-                src={collection_image}
-              />
-            </figure>
-            <div className="latest-collection__text">
-              <h3 className="latest-collection__text--head">Lorem Ipsum</h3>
-              <p className="latest-collection__text--p">
-                Lorem Ipsum dolor sit amet
-              </p>
-            </div>
-          </div>
-          <div className="latest-collection__section latest-collection--3">
-            <figure className="latest-collection__image">
-              <img
-                className="latest-collection__image--img"
-                alt="collection 2"
-                src={collection_image}
-              />
-            </figure>
-            <div className="latest-collection__text">
-              <h3 className="latest-collection__text--head">Lorem Ipsum</h3>
-              <p className="latest-collection__text--p">
-                Lorem Ipsum dolor sit amet
-              </p>
-            </div>
-          </div>
+
+          <div className="latest-collection__container"></div>
+
+          <div className="latest-collection__container"></div>
         </div>
-        <button className="latest-collection__btn">
-          explore all our products
-        </button>
+        <div className="latest-collection__button-area flex">
+          <button className="latest-collection__btn">
+            explore all our products
+          </button>
+        </div>
       </section>
     </div>
   );
