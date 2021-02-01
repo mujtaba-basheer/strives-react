@@ -9,6 +9,9 @@ import theme_img_6 from "../../assets/images/homepage/theme_6.png";
 import theme_img_7 from "../../assets/images/homepage/theme_7.png";
 import theme_img_8 from "../../assets/images/homepage/theme_8.png";
 
+import carticon from "../../assets/images/homepage/icons/cart.png";
+import wishlisticon from "../../assets/images/homepage/icons/heart.png";
+
 const BestSeller = () => {
   const [current, setCurrent] = useState(0);
   const bestSellers = [
@@ -70,13 +73,18 @@ const BestSeller = () => {
               ></i>
             </span>
             <span>
-              <i
+              <img
                 onClick={(e) => {
                   e.preventDefault();
                   slide("next");
                 }}
-                className="best-seller__nav--icon fas fa-angle-right"
-              ></i>
+                style={{
+                  width: "5px",
+                  height: "5px",
+                }}
+                src={carticon}
+                alt="cart"
+              />
             </span>
           </div>
           <div className="best-seller__image">
@@ -110,11 +118,36 @@ const BestSeller = () => {
                 />
                 <div className="best-seller__image--actions">
                   <span className="best-seller__image--actions--icon">
-                    <i className="fas fa-cart-plus"></i>
+                    <img
+                      onClick={(e) => {
+                        e.preventDefault();
+                        slide("next");
+                      }}
+                      style={{
+                        width: "27px",
+                        height: "23px",
+                      }}
+                      src={carticon}
+                      alt="cart"
+                    />
                   </span>
                   <span className="best-seller__image--actions--icon">
-                    <i className="fas fa-heart"></i>
+                    <img
+                      onClick={(e) => {
+                        e.preventDefault();
+                        slide("next");
+                      }}
+                      style={{
+                        width: "27px",
+                        height: "23px",
+                      }}
+                      src={wishlisticon}
+                      alt="wishlist"
+                    />
                   </span>
+                </div>
+                <div className="best-seller__image--quick-view">
+                      Quick View
                 </div>
               </div>
               <div className="best-seller__details">

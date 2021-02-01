@@ -20,9 +20,27 @@ const LatestCollection = () => {
             </div>
           </div>
 
-          <div className="latest-collection__container"></div>
+          <div className="latest-collection__container">
+            <div className="latest-collection__container__text">
+              <div className="latest-collection__container__text--heading">
+                lorem Ipsum
+              </div>
+              <div className="latest-collection__container__text--text">
+                lorem Ipsum
+              </div>
+            </div>
+          </div>
 
-          <div className="latest-collection__container"></div>
+          <div className="latest-collection__container">
+            <div className="latest-collection__container__text">
+              <div className="latest-collection__container__text--heading">
+                lorem Ipsum
+              </div>
+              <div className="latest-collection__container__text--text">
+                lorem Ipsum
+              </div>
+            </div>
+          </div>
         </div>
         <div className="latest-collection__button-area flex">
           <button className="latest-collection__btn">
