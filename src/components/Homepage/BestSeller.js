@@ -11,6 +11,7 @@ import theme_img_8 from "../../assets/images/homepage/theme_8.png";
 
 import carticon from "../../assets/images/homepage/icons/cart.png";
 import wishlisticon from "../../assets/images/homepage/icons/heart.png";
+import QuickView from "../layout/QuickView";
 
 const BestSeller = () => {
   const [current, setCurrent] = useState(0);
@@ -55,8 +56,15 @@ const BestSeller = () => {
     }
   };
 
+  function showQuickView() {
+    console.log("clicked");
+    var quickviewmodal = document.getElementById("quickviewmodal");
+    quickviewmodal.style.display = "block";
+  }
+
   return (
-    <div>
+    <>
+      <QuickView />
       <section className="best-seller">
         <div className="best-seller__title section-title">
           Best Seller Products
@@ -146,8 +154,11 @@ const BestSeller = () => {
                     />
                   </span>
                 </div>
-                <div className="best-seller__image--quick-view">
-                      Quick View
+                <div
+                  onClick={showQuickView}
+                  className="best-seller__image--quick-view"
+                >
+                  Quick View
                 </div>
               </div>
               <div className="best-seller__details">
@@ -163,7 +174,7 @@ const BestSeller = () => {
           ))}
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,89 @@
+.quickviewmodal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding: 85px 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 680px;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &__content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 100%;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+
+    .productimages {
+      flex: 50%;
+
+      display: flex;
+      justify-content: space-around;
+
+      &__main {
+        flex: 70% 0;
+        transition: all 0.2s linear;
+      }
+
+      &__thumbs {
+        flex: 15%;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: column;
+        div {
+          flex: 25%;
+          flex-grow: 0;
+          cursor: pointer;
+
+          &:nth-child(2) {
+            margin: 20px 0;
+          }
+        }
+      }
+    }
+
+    .productdetails {
+      flex: 50%;
+    }
+  }
+
+  @keyframes zoom {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 85px;
+    right: 175px;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+
+    &:hover,
+    &:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    &__content {
+      width: 100%;
+    }
+  }
+}
