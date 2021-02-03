@@ -20,6 +20,8 @@ const Login = () => {
   const { userInfo, error: loginError } = userLogin;
 
   useEffect(() => {
+    document.title = "Login";
+
     if (userInfo) history.push("/");
   }, [userInfo, history]);
 

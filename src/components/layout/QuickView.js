@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import quick1 from "./images/quick1.png";
 import quick2 from "./images/quick2.png";
 import quick3 from "./images/quick3.png";
-import quick4 from "./images/quick4.png";
 
 const QuickView = () => {
   function hideQuickView() {
@@ -16,6 +15,14 @@ const QuickView = () => {
     const mainImage = document.getElementById("quickview-mainimage");
     mainImage.src = src;
   }
+
+  function escFunction() {
+    console.log("esc");
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+  }, []);
 
   return (
     <div id="quickviewmodal" className="quickviewmodal">

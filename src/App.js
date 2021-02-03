@@ -15,6 +15,9 @@ import ManageAddress from "./pages/User/ManageAddress";
 
 import Checkout from "./pages/Checkout";
 
+/* Product Pages */
+import AllProduct from "./pages/Product/AllProduct";
+
 const App = () => {
   return (
     <Router>
@@ -46,6 +49,10 @@ const App = () => {
 
         <Route exact path="/checkout">
           <Checkout />
+        </Route>
+
+        <Route exact path="/allproduct">
+          <AllProduct />
         </Route>
       </Switch>
     </Router>

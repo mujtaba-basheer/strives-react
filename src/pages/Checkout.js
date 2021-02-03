@@ -57,8 +57,11 @@ function CheckoutArea() {
   });
 
   useEffect(() => {
+    document.title = "Checkout";
+
     if (user || error) {
       console.log(user);
+
       /* TODO: Fill formData with details
         user: {
         _id: '5ffd33fb07514500040f39f9',

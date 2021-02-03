@@ -6,7 +6,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 680px;
+  height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
 
@@ -34,13 +34,15 @@
       }
 
       &__thumbs {
-        flex: 15%;
+        flex: 15% 1;
         flex-grow: 0;
+        flex-shrink: 1;
         display: flex;
         flex-direction: column;
         div {
-          flex: 25%;
+          
           flex-grow: 0;
+          flex-shrink: 1;
           cursor: pointer;
 
           &:nth-child(2) {
