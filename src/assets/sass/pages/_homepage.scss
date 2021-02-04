@@ -56,13 +56,31 @@
       color: #fff;
       margin: 0 auto;
       display: none;
-      transition: display 2000ms linear;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+
+      &--heading {
+        font-size: 36px;
+        line-height: 43px;
+        font-family: var(--font-secondary);
+      }
+
+      &--text {
+        font-size: 18px;
+        line-height: 23px;
+        font-family: var(--font-secondary);
+      }
     }
   }
 
+  
+
   &__wrapper-grid {
     .latest-collection__container:hover .latest-collection__container__text {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
   }
 

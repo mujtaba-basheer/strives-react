@@ -145,7 +145,7 @@ function AllProductArea() {
             </div>
 
             <div className="price">
-              <p className="price__heading">price</p>
+              <p className="price__heading">Price</p>
 
               <ProductSlider />
             </div>

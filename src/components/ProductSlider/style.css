@@ -1,3 +1,38 @@
 .MuiSlider-root {
-  color: #808b96;
+  color: #808b96 !important;
+}
+
+.MuiSlider-thumb {
+  color: #fff !important;
+}
+
+.productslider-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productslider-details .min {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productslider-details .min__heading,
+.min__value {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  line-height: 21px;
+}
+
+.productslider-details .max {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productslider-details .max__heading,
+.max__value {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  line-height: 21px;
 }

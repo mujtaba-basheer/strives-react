@@ -40,6 +40,18 @@ export default function RangeSlider() {
         aria-labelledby="range-slider"
         getAriaValueText={valuetext}
       />
+
+      <div className="productslider-details">
+        <div className="min">
+          <p className="min__value">{value[0]}</p>
+          <p className="min__heading">Min</p>
+        </div>
+
+        <div className="max">
+          <p className="max__value">{value[1]}</p>
+          <p className="max__heading">Max</p>
+        </div>
+      </div>
     </div>
   );
 }

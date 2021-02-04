@@ -15,7 +15,7 @@ const LatestCollection = () => {
                 lorem Ipsum
               </div>
               <div className="latest-collection__container__text--text">
-                lorem Ipsum
+                Lorem Ipsum dolor sit amet
               </div>
             </div>
           </div>
@@ -26,7 +26,7 @@ const LatestCollection = () => {
                 lorem Ipsum
               </div>
               <div className="latest-collection__container__text--text">
-                lorem Ipsum
+                Lorem Ipsum dolor sit amet
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@ const LatestCollection = () => {
                 lorem Ipsum
               </div>
               <div className="latest-collection__container__text--text">
-                lorem Ipsum
+                Lorem Ipsum dolor sit amet
               </div>
             </div>
           </div>
