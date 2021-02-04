@@ -36,51 +36,49 @@ const Themes = () => {
   };
 
   return (
-    <div>
-      <section className="theme">
-        <div className="theme__title section-title">Theme &amp; Occasions</div>
-        <div className="theme__section theme__mobile">
-          <div className="theme__nav">
-            <span>
-              <i
-                onClick={(e) => {
-                  e.preventDefault();
-                  slide("prev");
-                }}
-                className="theme__nav--icon fas fa-angle-left"
-              ></i>
-            </span>
-            <span>
-              <i
-                onClick={(e) => {
-                  e.preventDefault();
-                  slide("next");
-                }}
-                className="theme__nav--icon fas fa-angle-right"
-              ></i>
-            </span>
-          </div>
-          <div className="theme__image">
-            <img
-              className="theme__image--img"
-              alt="theme 1"
-              src={themes[current]["url"]}
-            />
-          </div>
-          <h3 className="theme__text">{themes[current]["text"]}</h3>
+    <section className="theme">
+      <div className="theme__title section-title">Theme &amp; Occasions</div>
+      <div className="theme__section theme__mobile">
+        <div className="theme__nav">
+          <span>
+            <i
+              onClick={(e) => {
+                e.preventDefault();
+                slide("prev");
+              }}
+              className="theme__nav--icon fas fa-angle-left"
+            ></i>
+          </span>
+          <span>
+            <i
+              onClick={(e) => {
+                e.preventDefault();
+                slide("next");
+              }}
+              className="theme__nav--icon fas fa-angle-right"
+            ></i>
+          </span>
         </div>
-        <div className="theme__section theme__desktop">
-          {themes.map(({ url, text }, index) => (
-            <div key={index}>
-              <div className="theme__image">
-                <img className="theme__image--img" alt="theme 1" src={url} />
-              </div>
-              <h3 className="theme__text">{text}</h3>
+        <div className="theme__image">
+          <img
+            className="theme__image--img"
+            alt="theme 1"
+            src={themes[current]["url"]}
+          />
+        </div>
+        <h3 className="theme__text">{themes[current]["text"]}</h3>
+      </div>
+      <div className="theme__section theme__desktop">
+        {themes.map(({ url, text }, index) => (
+          <div key={index}>
+            <div className="theme__image">
+              <img className="theme__image--img" alt="theme 1" src={url} />
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+            <h3 className="theme__text">{text}</h3>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
