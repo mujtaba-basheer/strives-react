@@ -16,12 +16,20 @@ const QuickView = () => {
     mainImage.src = src;
   }
 
-  function escFunction() {
-    console.log("esc");
+  function escFunction(e) {
+    if (e.keyCode === 27) hideQuickView();
+  }
+
+  function handleClickOutside() {
+    hideQuickView();
   }
 
   useEffect(() => {
     document.addEventListener("keydown", escFunction, false);
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
   }, []);
 
   return (

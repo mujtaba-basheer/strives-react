@@ -3,6 +3,8 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
+import ProductSlider from "../../components/ProductSlider";
+
 import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.png";
 import productimage from "./images/image.png";
 import previous from "./images/previous.png";
@@ -144,35 +146,8 @@ function AllProductArea() {
 
             <div className="price">
               <p className="price__heading">price</p>
-              <ul className="price__list">
-                <li className="price__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-                <li className="price__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-                <li className="price__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-              </ul>
+
+              <ProductSlider />
             </div>
 
             {/* <div className="colour">
@@ -366,8 +341,6 @@ function AllProductArea() {
               <p className="product-item__details--price">$190</p>
             </div>
           </div>
-          
-          
         </div>
       </div>
     </section>
