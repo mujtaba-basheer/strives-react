@@ -1,4 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getProducts } from "../../redux/actions/productActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -21,6 +25,10 @@ const AllProduct = () => {
 };
 
 function AllProductArea() {
+  const { loading, products, error } = useSelector((state) => state.productGet);
+
+  const dispatch = useDispatch();
+
   return (
     <section className="content">
       <div className="allproducts-breadcrumbs flex">
