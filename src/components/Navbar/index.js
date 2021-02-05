@@ -27,7 +27,7 @@ const Index = () => {
 
   const [currentSidebarScreen, setCurrentSidebarScreen] = useState("home");
 
-  const [navbarHeigt, setnavbarHeigt] = useState(100);
+  const [navbarHeigt, setnavbarHeigt] = useState(110);
 
   const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
@@ -41,11 +41,27 @@ const Index = () => {
         navbar.style.backdropFilter = "blur(0px)";
         mainNav.classList.remove("scrolled");
         setnavbarHeigt(110);
+
+        if (
+          !document
+            .getElementsByClassName("navbar__searchdiv")[0]
+            .classList.contains("hide")
+        ) {
+          navbar.style.backgroundColor = "#fff";
+        }
       } else {
-        navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
-        navbar.style.backdropFilter = "blur(20px)";
-        mainNav.classList.add("scrolled");
-        setnavbarHeigt(71);
+        if (
+          document
+            .getElementsByClassName("navbar__searchdiv")[0]
+            .classList.contains("hide")
+        ) {
+          navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+          navbar.style.backdropFilter = "blur(20px)";
+          mainNav.classList.add("scrolled");
+          setnavbarHeigt(71);
+        } else {
+          navbar.style.backgroundColor = "#fff";
+        }
       }
     }
   };
@@ -77,7 +93,8 @@ const Index = () => {
       navbar.style.backgroundColor = "#fff";
       document.body.style.opacity = "none";
     } else {
-      navbar.style.backgroundColor = "inherit";
+      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+      navbar.style.backdropFilter = "blur(20px)";
       document.body.style.opacity = "none";
     }
   }
@@ -197,7 +214,11 @@ const Index = () => {
         <div className="extra-options">
           <ul className="flex">
             <li>
-              <Link to={userLogin.userInfo ? "/my-account" : "/login"}>
+              <Link
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+                to={userLogin.userInfo ? "/my-account" : "/login"}
+              >
                 <img
                   style={{
                     width: "15px",
@@ -209,7 +230,11 @@ const Index = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link
+                to="/"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <img
                   style={{
                     width: "15px",
@@ -221,7 +246,11 @@ const Index = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link
+                to="/"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
                 <img
                   style={{
                     width: "15px",
@@ -233,14 +262,19 @@ const Index = () => {
               </Link>
             </li>
             <li onClick={opensearchdiv}>
-              <img
-                style={{
-                  width: "15px",
-                  height: "15px",
-                }}
-                src={searchicon}
-                alt="search"
-              />
+              <Link
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
+                <img
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                  }}
+                  src={searchicon}
+                  alt="search"
+                />
+              </Link>
             </li>
           </ul>
         </div>
