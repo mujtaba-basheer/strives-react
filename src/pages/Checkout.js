@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
+import { getUserDetails } from "../redux/actions/userActions";
+import { payOrder } from "../redux/actions/orderActions";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -8,9 +12,6 @@ import Footer from "../components/Footer";
 import razorpayBanner from "../assets/images/checkout/razorpay.png";
 import image from "../assets/images/checkout/image.png";
 import coupon from "../assets/images/checkout/coupon.png";
-import { Link } from "react-router-dom";
-import { getUserDetails } from "../redux/actions/userActions";
-import { payOrder } from "../redux/actions/orderActions";
 
 const Checkout = () => {
   return (
@@ -26,11 +27,13 @@ export default Checkout;
 
 function CheckoutArea() {
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userLogin);
   const { user, error } = useSelector((state) => state.userDetails);
   const { order: orderResult, error: orderError } = useSelector(
     (state) => state.orderPay
   );
 
+  const history = useHistory();
   const [paymentType, setPaymentType] = useState("cod");
   const [sdkReady, setSdkReady] = useState(false);
   const [shipmentType, setShipmentType] = useState("normal");
@@ -58,6 +61,8 @@ function CheckoutArea() {
 
   useEffect(() => {
     document.title = "Checkout";
+
+    if (!userInfo) history.push("/login");
 
     if (user || error) {
       console.log(user);
@@ -89,6 +94,23 @@ function CheckoutArea() {
         lastname: 'fghi'
       }
       */
+
+      setFormData({
+        email: user.email,
+        custphone: user.phone,
+        name: user.address[0].name,
+        address1: user.address[0].address1,
+        address2: user.address[0].address2,
+        state: user.address[0].state,
+        city: user.address[0].city,
+        pincode: user.address[0].pincode,
+        landmark: user.address[0].landmark,
+        state: user.address[0].state,
+        phone: user.address[0].phone,
+        type: user.address[0].type,
+        state: user.address.state,
+        
+      })
     } else dispatch(getUserDetails());
 
     const addRzpScript = async () => {
