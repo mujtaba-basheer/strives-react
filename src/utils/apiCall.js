@@ -49,7 +49,7 @@ class ApiCall {
   get = (url, headers) =>
     new Promise((resolve, reject) => {
       axios
-        .get(api_url + url, headers)
+        .get(api_url + url, headers || { headers: {} })
         .then(function (response) {
           resolve(response);
         })
