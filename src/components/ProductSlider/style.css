@@ -3,7 +3,7 @@
 }
 
 .MuiSlider-thumb {
-  color: #fff !important;
+  color: var(--text-color-dark) !important;
 }
 
 .productslider-details {
