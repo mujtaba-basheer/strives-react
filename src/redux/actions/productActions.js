@@ -28,7 +28,7 @@ import {
 } from "../constants/productConstants";
 import { stringify } from "querystring";
 
-export const listProducts = (filters = {}) => async (dispatch) => {
+export const getProducts = (filters = {}) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_GET_REQUEST });
 
@@ -48,7 +48,7 @@ export const listProducts = (filters = {}) => async (dispatch) => {
   }
 };
 
-export const getProducts = (keyword = "", page = "") => async (dispatch) => {
+export const listProducts = (keyword = "", page = "") => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
