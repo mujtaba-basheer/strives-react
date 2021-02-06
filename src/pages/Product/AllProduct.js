@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
@@ -25,9 +26,38 @@ const AllProduct = () => {
 };
 
 function AllProductArea() {
-  const { loading, products, error } = useSelector((state) => state.productGet);
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  let query = useQuery();
+  const queryString = query.get("search");
+
+  console.log(queryString);
 
   const dispatch = useDispatch();
+
+  const [productslidervalue, setProductslidervalue] = useState([]);
+  const { loading, products, error } = useSelector((state) => state.productGet);
+
+  function clickfilter(e) {
+    console.log(e.target.value);
+  }
+
+  function handleChange(event) {
+    console.log(event);
+  }
+
+  useEffect(() => {
+    console.log(productslidervalue);
+    dispatch(
+      getProducts({
+        keyword: queryString,
+        min: productslidervalue[0],
+        max: productslidervalue[1],
+      })
+    );
+  }, [productslidervalue, queryString]);
 
   return (
     <section className="content">
@@ -53,6 +83,7 @@ function AllProductArea() {
                     name="material1"
                     id="material1"
                     value="polyster"
+                    onClick={clickfilter}
                   />
                   <label for="material1">Polyster</label> <br />
                 </li>
@@ -61,7 +92,8 @@ function AllProductArea() {
                     type="checkbox"
                     name="material2"
                     id="material2"
-                    value="polyster"
+                    value="polyster1"
+                    onChange={handleChange}
                   />
                   <label for="material2">Polyster</label> <br />
                 </li>
@@ -155,10 +187,10 @@ function AllProductArea() {
             <div className="price">
               <p className="price__heading">Price</p>
 
-              <ProductSlider />
+              <ProductSlider setProductslidervalue={setProductslidervalue} />
             </div>
 
-            {/* <div className="colour">
+            <div className="colour">
               <p className="colour__heading">colour</p>
               <ul className="colour__list">
                 <li className="colour__list--item">
@@ -168,7 +200,7 @@ function AllProductArea() {
                     id="material2"
                     value="polyster"
                   />
-                  <label for="material2">Polyster</label> <br />
+                  <label for="material2">Red</label> <br />
                 </li>
                 <li className="colour__list--item">
                   <input
@@ -177,7 +209,7 @@ function AllProductArea() {
                     id="material2"
                     value="polyster"
                   />
-                  <label for="material2">Polyster</label> <br />
+                  <label for="material2">Blue</label> <br />
                 </li>
                 <li className="colour__list--item">
                   <input
@@ -186,10 +218,10 @@ function AllProductArea() {
                     id="material2"
                     value="polyster"
                   />
-                  <label for="material2">Polyster</label> <br />
+                  <label for="material2">Green</label> <br />
                 </li>
               </ul>
-            </div> */}
+            </div>
           </div>
         </div>
 
@@ -213,66 +245,25 @@ function AllProductArea() {
           </div>
 
           <div className="product-container">
-            <div className="product-item">
-              <div className="product-item__image">
-                <img src={productimage} alt="image" />
-                <div className="quick-view flex">
-                  <p className="quick-view__text">Quick View</p>
+            {products &&
+              products.map((product) => (
+                <div className="product-item">
+                  <div className="product-item__image">
+                    <img src={product.gallery.main[0]} alt={product.name} />
+                    <div className="quick-view flex">
+                      <p className="quick-view__text">Quick View</p>
+                    </div>
+                  </div>
+                  <div className="product-item__details">
+                    <a className="product-item__details--heading">
+                      {product.name}
+                    </a>
+                    <p className="product-item__details--price">
+                      ₹ {product.sp}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="product-item__details">
-                <p className="product-item__details--heading">Colar T-shirt</p>
-                <p className="product-item__details--price">$190</p>
-              </div>
-            </div>
-            <div className="product-item">
-              <div className="product-item__image">
-                <img src={productimage} alt="image" />
-                <div className="quick-view flex">
-                  <p className="quick-view__text">Quick View</p>
-                </div>
-              </div>
-              <div className="product-item__details">
-                <p className="product-item__details--heading">Colar T-shirt</p>
-                <p className="product-item__details--price">$190</p>
-              </div>
-            </div>
-            <div className="product-item">
-              <div className="product-item__image">
-                <img src={productimage} alt="image" />
-              </div>
-              <div className="product-item__details">
-                <p className="product-item__details--heading">Colar T-shirt</p>
-                <p className="product-item__details--price">$190</p>
-              </div>
-            </div>
-            <div className="product-item">
-              <div className="product-item__image">
-                <img src={productimage} alt="image" />
-              </div>
-              <div className="product-item__details">
-                <p className="product-item__details--heading">Colar T-shirt</p>
-                <p className="product-item__details--price">$190</p>
-              </div>
-            </div>
-            <div className="product-item">
-              <div className="product-item__image">
-                <img src={productimage} alt="image" />
-              </div>
-              <div className="product-item__details">
-                <p className="product-item__details--heading">Colar T-shirt</p>
-                <p className="product-item__details--price">$190</p>
-              </div>
-            </div>
-            <div className="product-item">
-              <div className="product-item__image">
-                <img src={productimage} alt="image" />
-              </div>
-              <div className="product-item__details">
-                <p className="product-item__details--heading">Colar T-shirt</p>
-                <p className="product-item__details--price">$190</p>
-              </div>
-            </div>
+              ))}
           </div>
 
           <div className="navigation flex">

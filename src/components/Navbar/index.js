@@ -29,6 +29,8 @@ const Index = () => {
 
   const [navbarHeigt, setnavbarHeigt] = useState(110);
 
+  const [searchText, setSearchText] = useState("");
+
   const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
     var mainNav = document.getElementsByClassName("main-nav")[0];
@@ -93,9 +95,15 @@ const Index = () => {
       navbar.style.backgroundColor = "#fff";
       document.body.style.opacity = "none";
     } else {
-      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
-      navbar.style.backdropFilter = "blur(20px)";
-      document.body.style.opacity = "none";
+      if (window.pageYOffset > 80) {
+        navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+        navbar.style.backdropFilter = "blur(20px)";
+        document.body.style.opacity = "none";
+      } else {
+        navbar.style.backgroundColor = "transparent";
+        navbar.style.backdropFilter = "transperent";
+        document.body.style.opacity = "none";
+      }
     }
   }
 
@@ -128,6 +136,18 @@ const Index = () => {
   function closeSideMenu() {
     setCurrentSidebarScreen("home");
     document.getElementById("menu").style.width = "0%";
+  }
+
+  function searchProducts(e) {
+    e.preventDefault();
+    history.push({
+      pathname: "/products",
+      search: `?search=${searchText}`,
+    });
+
+    setSearchText("");
+
+    closesearchdiv();
   }
 
   return (
@@ -294,15 +314,22 @@ const Index = () => {
         }}
         className="navbar__searchdiv hide"
       >
-        <div className="search__div flex">
-          <input type="text" placeholder="Search Items" />
-          <div className="searchIcon">
-            <button>Search</button>
+        <form onSubmit={searchProducts}>
+          <div className="search__div flex">
+            <input
+              type="text"
+              placeholder="Search Items"
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <div className="searchIcon">
+              <button onClick={searchProducts}>Search</button>
+            </div>
+
+            <div className="closeIcon">
+              <i onClick={closesearchdiv} className="fas fa-times"></i>
+            </div>
           </div>
-          <div className="closeIcon">
-            <i onClick={closesearchdiv} className="fas fa-times"></i>
-          </div>
-        </div>
+        </form>
       </div>
       <div
         id="menu"
@@ -341,7 +368,7 @@ const Index = () => {
         {/* Search */}
 
         {currentSidebarScreen === "search" && (
-          <Search setCurrentSidebarScreen={setCurrentSidebarScreen} />
+          <Search closeSideMenu={closeSideMenu} setCurrentSidebarScreen={setCurrentSidebarScreen} />
         )}
 
         {/* Bottom Area of the Sidebar */}

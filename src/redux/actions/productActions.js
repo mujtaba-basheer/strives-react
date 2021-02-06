@@ -36,7 +36,7 @@ export const getProducts = (filters = {}) => async (dispatch) => {
 
     const { data } = await apiCall.get(`products?${query_string}`);
 
-    dispatch({ type: PRODUCT_GET_SUCCESS, payload: data });
+    dispatch({ type: PRODUCT_GET_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
       type: PRODUCT_GET_FAIL,

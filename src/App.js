@@ -51,7 +51,7 @@ const App = () => {
           <Checkout />
         </Route>
 
-        <Route exact path="/allproduct">
+        <Route exact path="/products">
           <AllProduct />
         </Route>
       </Switch>
