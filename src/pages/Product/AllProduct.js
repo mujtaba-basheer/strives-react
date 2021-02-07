@@ -249,7 +249,14 @@ function AllProductArea() {
               products.map((product) => (
                 <div className="product-item">
                   <div className="product-item__image">
-                    <img src={product.gallery.main[0]} alt={product.name} />
+                    <img
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                      }}
+                      src={product.gallery.main[0].src}
+                      alt={product.name}
+                    />
                     <div className="quick-view flex">
                       <p className="quick-view__text">Quick View</p>
                     </div>
@@ -258,9 +265,14 @@ function AllProductArea() {
                     <a className="product-item__details--heading">
                       {product.name}
                     </a>
-                    <p className="product-item__details--price">
-                      ₹ {product.sp}
-                    </p>
+                    <span className="flex">
+                      <p className="product-item__details--price">
+                        ₹ {product.sp}
+                      </p>
+                      <p className="product-item__details--price--mrp">
+                        ₹ {product.mrp}
+                      </p>
+                    </span>
                   </div>
                 </div>
               ))}

@@ -252,6 +252,12 @@
             font-size: 16px;
             line-height: 21px;
             font-family: var(--font-secondary);
+
+            &--mrp {
+              color: #bdcbdb;
+              text-decoration: line-through;
+              margin-left: 3px;
+            }
           }
         }
 
