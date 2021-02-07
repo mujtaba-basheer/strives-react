@@ -26,6 +26,8 @@ const AllProduct = () => {
 };
 
 function AllProductArea() {
+  const [sortbyValue, setSortbyValue] = useState("latest");
+
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -46,6 +48,11 @@ function AllProductArea() {
 
   function handleChange(event) {
     console.log(event);
+  }
+
+  function selectSortBy(e) {
+    console.log(e.target.value);
+    setSortbyValue(e.target.value);
   }
 
   useEffect(() => {
@@ -233,12 +240,13 @@ function AllProductArea() {
                 Displaying 6 out of 20 results
               </p>
               <div className="header__right--dropdown">
-                <select id="sortby" name="sortby">
-                  <option value="latest">Sort By: Latest</option>
-                  <option value="latest">Sort By: Latest</option>
-                  <option value="latest">Sort By: Latest</option>
-                  <option value="latest">Sort By: Latest</option>
-                  <option value="latest">Sort By: Latest</option>
+                Sort By:
+                <select onChange={selectSortBy} id="sortby" name="sortby">
+                  <option value="latest">Latest</option>
+                  <option value="new">New Arrivals</option>
+                  <option value="htol">Price High to Low</option>
+                  <option value="ltoh">Price Low to High</option>
+                  <option value="discount">Disount</option>
                 </select>
               </div>
             </div>

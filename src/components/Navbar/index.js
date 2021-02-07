@@ -100,7 +100,7 @@ const Index = () => {
         document.body.style.opacity = "none";
       } else {
         if (
-          document
+          !document
             .getElementsByClassName("search__div")[0]
             .classList.contains("hide")
         ) {
