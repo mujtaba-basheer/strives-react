@@ -98,16 +98,14 @@ const Index = () => {
         navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
         navbar.style.backdropFilter = "blur(20px)";
         document.body.style.opacity = "none";
-      } else {
-        if (
-          !document
-            .getElementsByClassName("search__div")[0]
-            .classList.contains("hide")
-        ) {
-          navbar.style.backgroundColor = "transparent";
-          navbar.style.backdropFilter = "transperent";
-          document.body.style.opacity = "none";
-        }
+      }
+
+      if (
+        !document
+          .getElementsByClassName("navbar__searchdiv")[0]
+          .classList.contains("hide")
+      ) {
+        navbar.style.backgroundColor = "#fff";
       }
     }
   }
@@ -131,6 +129,29 @@ const Index = () => {
       navbar.style.backgroundColor = "#fff";
     } else {
       navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+
+      if (window.pageYOffset < 80) {
+        navbar.style.backgroundColor = "transparent";
+        navbar.style.backdropFilter = "blur(0px)";
+
+        if (
+          !document
+            .getElementsByClassName("navbar__searchdiv")[0]
+            .classList.contains("hide")
+        ) {
+          navbar.style.backgroundColor = "#fff";
+        }
+      } else {
+        if (
+          document
+            .getElementsByClassName("navbar__searchdiv")[0]
+            .classList.contains("hide")
+        ) {
+          navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+        } else {
+          navbar.style.backgroundColor = "#fff";
+        }
+      }
     }
   }
 
