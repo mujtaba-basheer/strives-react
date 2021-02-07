@@ -106,6 +106,9 @@ const Index = () => {
           .classList.contains("hide")
       ) {
         navbar.style.backgroundColor = "#fff";
+      } else {
+        navbar.style.backgroundColor = "transparent";
+        navbar.style.backdropFilter = "blur(0px)";
       }
     }
   }

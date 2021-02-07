@@ -15,7 +15,6 @@ import productimage from "./images/image.png";
 import previous from "./images/previous.png";
 import next from "./images/next.png";
 
-import loadinggif from "./images/loading.gif";
 import Loader from "../../components/Loader/Loader";
 
 const AllProduct = () => {
@@ -38,8 +37,6 @@ function AllProductArea() {
 
   let query = useQuery();
   const queryString = query.get("search");
-
-  console.log(queryString);
 
   const dispatch = useDispatch();
 
