@@ -15,6 +15,9 @@ import productimage from "./images/image.png";
 import previous from "./images/previous.png";
 import next from "./images/next.png";
 
+import loadinggif from "./images/loading.gif";
+import Loader from "../../components/Loader/Loader";
+
 const AllProduct = () => {
   return (
     <>
@@ -26,7 +29,8 @@ const AllProduct = () => {
 };
 
 function AllProductArea() {
-  const [sortbyValue, setSortbyValue] = useState("latest");
+  /* const [sortbyValue, setSortbyValue] = useState("latest"); */
+  const [sortValue, setSortValue] = useState(["date", "-1"]);
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -51,20 +55,27 @@ function AllProductArea() {
   }
 
   function selectSortBy(e) {
-    console.log(e.target.value);
-    setSortbyValue(e.target.value);
+    const value = e.target.value;
+
+    if (value === "ltoh") {
+      setSortValue(["sp", "1"]);
+    } else if (value === "htol") {
+      setSortValue(["sp", "-1"]);
+    } else if (value === "new") {
+      setSortValue(["date", "1"]);
+    }
   }
 
   useEffect(() => {
-    console.log(productslidervalue);
     dispatch(
       getProducts({
         keyword: queryString,
         min: productslidervalue[0],
         max: productslidervalue[1],
+        sort: sortValue,
       })
     );
-  }, [productslidervalue, queryString]);
+  }, [productslidervalue, queryString, sortValue]);
 
   return (
     <section className="content">
@@ -252,7 +263,9 @@ function AllProductArea() {
             </div>
           </div>
 
-          {products.length === 0 && (
+          {loading && <Loader height={100} />}
+
+          {!loading && products.length === 0 && (
             <h1
               style={{
                 textAlign: "center",
