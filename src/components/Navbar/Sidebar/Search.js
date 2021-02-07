@@ -22,8 +22,8 @@ const Search = ({ setCurrentSidebarScreen, closeSideMenu }) => {
   return (
     <div className="flex sidebar__searchdiv">
       <img
-        className="closeIcon"
         onClick={() => setCurrentSidebarScreen("home")}
+        className="closeIcon"
         src={closeicon}
         alt="closeicon"
       />

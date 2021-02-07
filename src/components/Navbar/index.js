@@ -91,7 +91,6 @@ const Index = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
 
     if (window.location.pathname !== "/") {
-      var navbar = document.getElementsByClassName("navbar")[0];
       navbar.style.backgroundColor = "#fff";
       document.body.style.opacity = "none";
     } else {
@@ -100,9 +99,15 @@ const Index = () => {
         navbar.style.backdropFilter = "blur(20px)";
         document.body.style.opacity = "none";
       } else {
-        navbar.style.backgroundColor = "transparent";
-        navbar.style.backdropFilter = "transperent";
-        document.body.style.opacity = "none";
+        if (
+          document
+            .getElementsByClassName("search__div")[0]
+            .classList.contains("hide")
+        ) {
+          navbar.style.backgroundColor = "transparent";
+          navbar.style.backdropFilter = "transperent";
+          document.body.style.opacity = "none";
+        }
       }
     }
   }
@@ -125,7 +130,7 @@ const Index = () => {
     if (window.location.pathname !== "/") {
       navbar.style.backgroundColor = "#fff";
     } else {
-      navbar.style.backgroundColor = "inherit";
+      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
     }
   }
 
@@ -326,7 +331,12 @@ const Index = () => {
             </div>
 
             <div className="closeIcon">
-              <i onClick={closesearchdiv} className="fas fa-times"></i>
+              <img
+                onClick={closesearchdiv}
+                className="closeIcon"
+                src={closeicon}
+                alt="closeicon"
+              />
             </div>
           </div>
         </form>
@@ -368,7 +378,10 @@ const Index = () => {
         {/* Search */}
 
         {currentSidebarScreen === "search" && (
-          <Search closeSideMenu={closeSideMenu} setCurrentSidebarScreen={setCurrentSidebarScreen} />
+          <Search
+            closeSideMenu={closeSideMenu}
+            setCurrentSidebarScreen={setCurrentSidebarScreen}
+          />
         )}
 
         {/* Bottom Area of the Sidebar */}

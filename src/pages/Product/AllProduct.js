@@ -244,6 +244,15 @@ function AllProductArea() {
             </div>
           </div>
 
+          {products.length === 0 && (
+            <h1
+              style={{
+                textAlign: "center",
+              }}
+            >
+              No Products to display
+            </h1>
+          )}
           <div className="product-container">
             {products &&
               products.map((product) => (
@@ -277,33 +286,34 @@ function AllProductArea() {
                 </div>
               ))}
           </div>
-
-          <div className="navigation flex">
-            <a className="navigation__button previous">
-              <img
-                style={{
-                  height: "10px",
-                  width: "6px",
-                  marginRight: "8px",
-                }}
-                src={previous}
-                alt="previous"
-              />{" "}
-              previous
-            </a>
-            <a className="navigation__button next">
-              next{" "}
-              <img
-                style={{
-                  height: "10px",
-                  width: "6px",
-                  marginLeft: "8px",
-                }}
-                src={next}
-                alt="next"
-              />
-            </a>
-          </div>
+          {products.length > 9 && (
+            <div className="navigation flex">
+              <a className="navigation__button previous">
+                <img
+                  style={{
+                    height: "10px",
+                    width: "6px",
+                    marginRight: "8px",
+                  }}
+                  src={previous}
+                  alt="previous"
+                />{" "}
+                previous
+              </a>
+              <a className="navigation__button next">
+                next{" "}
+                <img
+                  style={{
+                    height: "10px",
+                    width: "6px",
+                    marginLeft: "8px",
+                  }}
+                  src={next}
+                  alt="next"
+                />
+              </a>
+            </div>
+          )}
         </div>
       </div>
       <div className="allproducts__divider"></div>
