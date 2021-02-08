@@ -25,6 +25,9 @@ import {
   PRODUCT_GET_REQUEST,
   PRODUCT_GET_SUCCESS,
   PRODUCT_GET_FAIL,
+  PRODUCT_SINGLE_GET_REQUEST,
+  PRODUCT_SINGLE_GET_SUCCESS,
+  PRODUCT_SINGLE_GET_FAIL,
 } from "../constants/productConstants";
 import { stringify } from "querystring";
 
@@ -40,6 +43,24 @@ export const getProducts = (filters = {}) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_GET_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getSingleProduct = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_SINGLE_GET_REQUEST });
+
+    const { data } = await apiCall.get(`product/${id}`);
+
+    dispatch({ type: PRODUCT_SINGLE_GET_SUCCESS, payload: data.data });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_SINGLE_GET_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
