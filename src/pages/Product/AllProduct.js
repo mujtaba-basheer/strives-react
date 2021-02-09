@@ -16,6 +16,7 @@ import previous from "./images/previous.png";
 import next from "./images/next.png";
 
 import Loader from "../../components/Loader/Loader";
+import BottomBar from "./components/BottomBar";
 
 const AllProduct = () => {
   return (
@@ -304,7 +305,7 @@ function AllProductArea() {
                 </div>
               ))}
           </div>
-          {products.length > 9 && (
+          {products.length > 0 && (
             <div className="navigation flex">
               <a className="navigation__button previous">
                 <img
@@ -335,7 +336,12 @@ function AllProductArea() {
         </div>
       </div>
       <div className="allproducts__divider"></div>
-      <div className="allproducts__popularproducts">
+      <div
+        className="allproducts__popularproducts"
+        style={{
+          display: "none",
+        }}
+      >
         <p className="heading">Propular Products</p>
         <div className="product-container">
           <div className="product-item">
@@ -382,6 +388,8 @@ function AllProductArea() {
           </div>
         </div>
       </div>
+
+      <BottomBar />
     </section>
   );
 }
