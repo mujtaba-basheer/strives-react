@@ -59,7 +59,7 @@ const BestSeller = () => {
   function showQuickView() {
     console.log("clicked");
     var quickviewmodal = document.getElementById("quickviewmodal");
-    quickviewmodal.style.display = "block";
+    quickviewmodal.style.display = "flex";
   }
 
   return (

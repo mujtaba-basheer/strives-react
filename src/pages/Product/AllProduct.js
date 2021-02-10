@@ -9,6 +9,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 import ProductSlider from "../../components/ProductSlider";
+import QuickView from "../../components/layout/QuickView";
 
 import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.png";
 import productimage from "./images/image.png";
@@ -64,6 +65,12 @@ function AllProductArea() {
     }
   }
 
+  function showQuickView() {
+    console.log("clicked");
+    var quickviewmodal = document.getElementById("quickviewmodal");
+    quickviewmodal.style.display = "flex";
+  }
+
   useEffect(() => {
     dispatch(
       getProducts({
@@ -77,6 +84,7 @@ function AllProductArea() {
 
   return (
     <section className="content">
+      <QuickView />
       <div className="allproducts-breadcrumbs flex">
         <p className="category">fashion</p>
         <img src={breadcrumbsArrow} alt="arrow" />
@@ -285,7 +293,7 @@ function AllProductArea() {
                       src={product.gallery.main[0].src}
                       alt={product.name}
                     />
-                    <div className="quick-view flex">
+                    <div className="quick-view flex" onClick={showQuickView}>
                       <p className="quick-view__text">Quick View</p>
                     </div>
                   </div>
@@ -305,7 +313,7 @@ function AllProductArea() {
                 </div>
               ))}
           </div>
-          {products.length > 0 && (
+          {products.length > 9 && (
             <div className="navigation flex">
               <a className="navigation__button previous">
                 <img

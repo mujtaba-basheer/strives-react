@@ -217,7 +217,7 @@
           transition: visibility 500ms;
           .quick-view {
             position: absolute;
-            visibility: hidden;
+            /* visibility: hidden; */
 
             bottom: 0;
             background: #caa26e;
@@ -267,7 +267,7 @@
         }
 
         &:hover .quick-view {
-          visibility: visible;
+          /* visibility: visible; */
           transition: visibility 500ms;
         }
       }
