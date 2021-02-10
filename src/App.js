@@ -17,6 +17,7 @@ import Checkout from "./pages/Checkout";
 
 /* Product Pages */
 import AllProduct from "./pages/Product/AllProduct";
+import SingleProduct from "./pages/Product/SingleProduct";
 
 const App = () => {
   return (
@@ -53,6 +54,10 @@ const App = () => {
 
         <Route exact path="/products">
           <AllProduct />
+        </Route>
+
+        <Route exact path="/single">
+          <SingleProduct />
         </Route>
       </Switch>
     </Router>
