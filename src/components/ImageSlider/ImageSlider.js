@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
@@ -13,6 +13,13 @@ import thumb from "./images/thumb.png";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const ImageSlider = () => {
+  useEffect(() => {
+    SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+    return () => {
+      SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+    };
+  });
+
   return (
     <Swiper
       spaceBetween={50}
