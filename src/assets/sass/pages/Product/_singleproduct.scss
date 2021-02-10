@@ -396,7 +396,13 @@
 
     .thirdline {
       margin-left: 40px;
-      
+
+      width: 80%;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    &__description {
       width: 80%;
     }
   }
