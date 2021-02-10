@@ -296,6 +296,11 @@
   }
 
   @media only screen and (max-width: 1100px) {
+
+    &__close {
+      top: 0px;
+    }
+
     &__content {
       flex-direction: column;
 
@@ -304,6 +309,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-top: 47px;
 
         .mobileproductimages {
           display: block;
@@ -322,6 +328,7 @@
       }
 
       .productdetails {
+        margin-top: 35px;
         &__container {
           width: 90%;
 
