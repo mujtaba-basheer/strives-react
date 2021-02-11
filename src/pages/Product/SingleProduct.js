@@ -15,6 +15,17 @@ import thumb from "./images/thumb.png";
 import main from "./images/main.png";
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/scrollbar/scrollbar.scss";
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
 const SingleProduct = () => {
   return (
     <>
@@ -58,11 +69,50 @@ function SingleProductArea() {
 
       <div className="singleproduct__content flex">
         <div className="productdetails__left">
+          <div className="mobileproductimages">
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+            >
+              <SwiperSlide>
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  src={thumb}
+                  alt=""
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  src={thumb}
+                  alt=""
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  src={thumb}
+                  alt=""
+                />
+              </SwiperSlide>
+              <SwiperSlide>Slide 4</SwiperSlide>
+            </Swiper>
+          </div>
           <div className="productimages">
             <div className="yellow-box"></div>
-            <div className="mobileproductimages">
-              <ImageSlider />
-            </div>
+            {/* <div className="mobileproductimages"></div> */}
             <div className="productimages__thumbs">
               <div>
                 <img
