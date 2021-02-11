@@ -17,7 +17,7 @@ import previous from "./images/previous.png";
 import next from "./images/next.png";
 
 import Loader from "../../components/Loader/Loader";
-import BottomBar from "./components/BottomBar";
+import BottomBar from "./components/BottomBar/BottomBar";
 
 const AllProduct = () => {
   return (

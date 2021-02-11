@@ -418,6 +418,19 @@
     &__products {
       margin: 0 16px;
 
+      &__products {
+        .product-container {
+
+          .product-item {
+            height: auto;
+
+            &__image {
+              height: auto;
+            }
+          }
+        }
+      }
+
       .header {
         &__right {
           display: none;
@@ -456,7 +469,15 @@
   .allproducts {
     &__products {
       .product-container {
-        grid-template-columns: repeat(auto-fit, minmax(167px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+
+        .product-item {
+          height: auto;
+
+          &__image {
+            height: auto;
+          }
+        }
       }
     }
   }
@@ -465,7 +486,6 @@
 @media only screen and (max-width: 500px) {
   .allproducts {
     &__products {
-
       .product-container {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       }

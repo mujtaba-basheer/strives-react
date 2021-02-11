@@ -7,6 +7,7 @@ import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.p
 import facebook from "./images/facebook.png";
 import instagram from "./images/instagram.png";
 import twitter from "./images/twitter.png";
+import usp from "./images/usp.png";
 
 import quick2 from "./images/quick2.png";
 import quick3 from "./images/quick3.png";
@@ -210,6 +211,10 @@ function SingleProductArea() {
               <a className="addtocart btn flex" href="">
                 add to cart
               </a>
+            </div>
+
+            <div className="usp">
+              <img src={usp} alt="usp" />
             </div>
           </div>
         </div>

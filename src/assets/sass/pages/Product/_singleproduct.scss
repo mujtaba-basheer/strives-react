@@ -44,7 +44,7 @@
         left: 0;
         width: 334px;
         height: 331px;
-        background: rgba(94, 93, 93, 0.08);
+        background: rgba(202, 162, 110, 0.08);
       }
 
       .mobileproductimages {
@@ -261,6 +261,15 @@
             border: 1px solid #2c3d50;
           }
         }
+
+        .usp {
+          width: 100%;
+          margin-top: 15px;
+
+          img {
+            width: 100%;
+          }
+        }
       }
     }
   }
@@ -328,7 +337,7 @@
   @media only screen and (max-width: 1100px) {
     &-breadcrumbs {
       margin-left: 40px;
-      margin-top: 60px;
+      margin-top: 20px;
       margin-bottom: 16px;
     }
 
@@ -343,7 +352,7 @@
         margin-top: 47px;
 
         .mobileproductimages {
-          display: none;
+          display: block;
           width: 80%;
         }
         &__thumbs {
