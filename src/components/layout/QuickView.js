@@ -65,11 +65,13 @@ const QuickView = () => {
           &times;
         </span>
 
+        <div className="mobileproductimages">
+          <ImageSlider />
+        </div>
+
         <div className="productimages">
           <div className="yellow-box"></div>
-          <div className="mobileproductimages">
-            <ImageSlider />
-          </div>
+
           <div className="productimages__thumbs">
             <div>
               <img
