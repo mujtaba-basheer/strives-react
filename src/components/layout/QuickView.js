@@ -7,8 +7,35 @@ import thumb from "./images/thumb.png";
 import main from "./images/main.png";
 import ImageSlider from "../ImageSlider/ImageSlider";
 
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+  DotGroup
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
+
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/scrollbar/scrollbar.scss";
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
 const QuickView = () => {
+  const [, forceUpdate] = useState();
   const [quantity, setQuantity] = useState(1);
+
+  const [shwo, setShwo] = useState("0");
 
   function hideQuickView() {
     var quickviewmodal = document.getElementById("quickviewmodal");
@@ -33,7 +60,25 @@ const QuickView = () => {
     hideQuickView(); */
   }
 
+  const handleDragStart = (e) => e.preventDefault();
+  const items = [
+    <img
+      src="https://the-strives.s3.us-east-2.amazonaws.com/assets/theme_2.png"
+      onDragStart={handleDragStart}
+    />,
+    <img
+      src="https://the-strives.s3.us-east-2.amazonaws.com/assets/theme_2.png"
+      onDragStart={handleDragStart}
+    />,
+    <img
+      src="https://the-strives.s3.us-east-2.amazonaws.com/assets/theme_1.png"
+      onDragStart={handleDragStart}
+    />,
+  ];
+
   useEffect(() => {
+    setTimeout(forceUpdate, 2000);
+
     document.addEventListener("keydown", escFunction, false);
     document.addEventListener("click", handleClickOutside, true);
     if (document.getElementById("quickviewmodal").display === "flex") {
@@ -60,13 +105,34 @@ const QuickView = () => {
 
   return (
     <div id="quickviewmodal" className="quickviewmodal">
+      {console.log(Date.now())}
       <div className="quickviewmodal__content flex">
         <span onClick={hideQuickView} className="quickviewmodal__close">
           &times;
         </span>
 
         <div className="mobileproductimages">
-          <ImageSlider />
+          <CarouselProvider
+            naturalSlideWidth={100}
+            naturalSlideHeight={125}
+            totalSlides={3}
+          >
+            <Slider>
+              <Slide index={0}>
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  src={thumb}
+                  alt=""
+                />{" "}
+              </Slide>
+              <Slide index={1}>I am the second Slide.</Slide>
+              <Slide index={2}>I am the third Slide.</Slide>
+            </Slider>
+            <DotGroup />
+          </CarouselProvider>
         </div>
 
         <div className="productimages">
