@@ -1,5 +1,5 @@
 .quickviewmodal {
-  display: none;
+  display: flex;
   position: fixed;
   z-index: 20;
   padding-top: 85px;
@@ -34,6 +34,7 @@
         width: 228px;
         height: 331px;
         background: rgba(202, 162, 110, 0.08);
+        z-index: -1;
       }
 
       flex: 1;
@@ -103,8 +104,8 @@
 
           .selectsize {
             div {
-              width: 30px;
-              height: 30px;
+              width: 40px;
+              height: 40px;
               border-radius: 50%;
               border: 1px solid #2c3d50;
               margin-top: 11px;
@@ -114,7 +115,7 @@
               margin-right: 5px;
 
               p {
-                font-size: 15px;
+                font-size: 12px;
                 line-height: 12px;
                 font-weight: 700;
                 font-family: var(--font-secondary);
@@ -288,7 +289,7 @@
         width: 80%;
 
         /* width: 400px; */
-        margin-top: 35px;
+        margin-top: 50px;
         /* height: 300px; */
       }
 
@@ -298,8 +299,6 @@
         align-items: center;
         margin-top: 20px;
       }
-
-
 
       .productimages {
         width: 100%;

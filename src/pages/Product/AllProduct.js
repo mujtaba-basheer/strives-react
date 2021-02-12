@@ -33,6 +33,10 @@ function AllProductArea() {
   /* const [sortbyValue, setSortbyValue] = useState("latest"); */
   const [sortValue, setSortValue] = useState(["date", "-1"]);
 
+  const [productdetails, setProductdetails] = useState({});
+
+  const [showModal, setShowModal] = useState("false");
+
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -66,7 +70,7 @@ function AllProductArea() {
   }
 
   function showQuickView() {
-    console.log("clicked");
+    /* console.log("clicked"); */
     var quickviewmodal = document.getElementById("quickviewmodal");
     quickviewmodal.style.display = "flex";
   }
@@ -84,7 +88,6 @@ function AllProductArea() {
 
   return (
     <section className="content">
-      <QuickView />
       <div className="allproducts-breadcrumbs flex">
         <p className="category">fashion</p>
         <img src={breadcrumbsArrow} alt="arrow" />
@@ -280,6 +283,11 @@ function AllProductArea() {
               No Products to display
             </h1>
           )}
+
+          {showModal === "true" && (
+            <QuickView product={productdetails} setShowModal={setShowModal} />
+          )}
+
           <div className="product-container">
             {products &&
               products.map((product) => (
@@ -293,7 +301,17 @@ function AllProductArea() {
                       src={product.gallery.main[0].src}
                       alt={product.name}
                     />
-                    <div className="quick-view flex" onClick={showQuickView}>
+                    <div
+                      className="quick-view flex"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        console.log("clicked");
+                        setProductdetails(product);
+                        setShowModal("true");
+
+                        /* showQuickView(); */
+                      }}
+                    >
                       <p className="quick-view__text">Quick View</p>
                     </div>
                   </div>

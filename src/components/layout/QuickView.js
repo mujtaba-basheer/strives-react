@@ -1,45 +1,20 @@
 import React, { useEffect, useState } from "react";
 
-import cross from "./images/cross.png";
 import quick2 from "./images/quick2.png";
 import quick3 from "./images/quick3.png";
 import thumb from "./images/thumb.png";
 import main from "./images/main.png";
-import ImageSlider from "../ImageSlider/ImageSlider";
 
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-  DotGroup
-} from "pure-react-carousel";
+import { CarouselProvider, Slider, Slide, DotGroup } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
-import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/scrollbar/scrollbar.scss";
-
-// install Swiper modules
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-
-const QuickView = () => {
-  const [, forceUpdate] = useState();
+const QuickView = ({ product, setShowModal }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const [shwo, setShwo] = useState("0");
+  console.log(product);
 
   function hideQuickView() {
-    var quickviewmodal = document.getElementById("quickviewmodal");
-    quickviewmodal.style.display = "none";
+    setShowModal("false");
     document.getElementsByTagName("body")[0].style.overflow = "auto";
   }
 
@@ -56,29 +31,15 @@ const QuickView = () => {
   function handleClickOutside(e) {
     console.log(e.target.className);
 
-    /* 
-    hideQuickView(); */
+    if (e.target.className === "quickviewmodal") {
+      hideQuickView();
+    }
   }
 
-  const handleDragStart = (e) => e.preventDefault();
-  const items = [
-    <img
-      src="https://the-strives.s3.us-east-2.amazonaws.com/assets/theme_2.png"
-      onDragStart={handleDragStart}
-    />,
-    <img
-      src="https://the-strives.s3.us-east-2.amazonaws.com/assets/theme_2.png"
-      onDragStart={handleDragStart}
-    />,
-    <img
-      src="https://the-strives.s3.us-east-2.amazonaws.com/assets/theme_1.png"
-      onDragStart={handleDragStart}
-    />,
-  ];
+  const images = [];
+  if (product) product.gallery.main.map((image) => images.push(image.src));
 
   useEffect(() => {
-    setTimeout(forceUpdate, 2000);
-
     document.addEventListener("keydown", escFunction, false);
     document.addEventListener("click", handleClickOutside, true);
     if (document.getElementById("quickviewmodal").display === "flex") {
@@ -105,184 +66,153 @@ const QuickView = () => {
 
   return (
     <div id="quickviewmodal" className="quickviewmodal">
-      {console.log(Date.now())}
-      <div className="quickviewmodal__content flex">
-        <span onClick={hideQuickView} className="quickviewmodal__close">
-          &times;
-        </span>
+      {console.log(images)}
+      {product && (
+        <div className="quickviewmodal__content flex">
+          <span onClick={hideQuickView} className="quickviewmodal__close">
+            &times;
+          </span>
 
-        <div className="mobileproductimages">
-          <CarouselProvider
-            naturalSlideWidth={100}
-            naturalSlideHeight={125}
-            totalSlides={3}
-          >
-            <Slider>
-              <Slide index={0}>
-                <img
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                  }}
-                  src={thumb}
-                  alt=""
-                />{" "}
-              </Slide>
-              <Slide index={1}>I am the second Slide.</Slide>
-              <Slide index={2}>I am the third Slide.</Slide>
-            </Slider>
-            <DotGroup />
-          </CarouselProvider>
-        </div>
+          <div className="mobileproductimages">
+            <CarouselProvider
+              naturalSlideWidth={100}
+              naturalSlideHeight={125}
+              totalSlides={3}
+            >
+              <Slider>
+                {images.map((image) => (
+                  <Slide index={0}>
+                    <img
+                      src={image}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      alt=""
+                    />
+                  </Slide>
+                ))}
+              </Slider>
+              <DotGroup />
+            </CarouselProvider>
+          </div>
 
-        <div className="productimages">
-          <div className="yellow-box"></div>
+          <div className="productimages">
+            <div className="yellow-box"></div>
 
-          <div className="productimages__thumbs">
-            <div>
-              <img
-                onClick={(e) => {
-                  swapMainImage(e);
-                }}
-                src={thumb}
-                alt="quick"
-                width="100%"
-                height="100%"
-              />
+            <div className="productimages__thumbs">
+              {images.map((image) => (
+                <div>
+                  <img
+                    onClick={(e) => {
+                      swapMainImage(e);
+                    }}
+                    src={image}
+                    alt="quick"
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+              ))}
             </div>
-            <div>
+            <div className="productimages__main">
               <img
-                onClick={(e) => {
-                  swapMainImage(e);
-                }}
-                src={quick2}
-                alt="quick"
-                width="100%"
-                height="100%"
-              />
-            </div>
-            <div>
-              <img
-                onClick={(e) => {
-                  swapMainImage(e);
-                }}
-                src={quick3}
+                id="quickview-mainimage"
+                src={images[0]}
                 alt="quick"
                 width="100%"
                 height="100%"
               />
             </div>
           </div>
-          <div className="productimages__main">
-            <img
-              id="quickview-mainimage"
-              src={main}
-              alt="quick"
-              width="100%"
-              height="100%"
-            />
-          </div>
-        </div>
 
-        <div className="productdetails">
-          <div className="productdetails__container">
-            <p className="mainheading">MALIHA BY ANAR AND ANOLI</p>
+          <div className="productdetails">
+            <div className="productdetails__container">
+              <p className="mainheading">{product.name}</p>
 
-            <span className="line"></span>
+              <span className="line"></span>
 
-            <p className="productdetailstext">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-              quibusdam. Eos odit officiis praesentium quae dolor odio, ullam
-              eum consequatur fugit, dignissimos mollitia tempore a nemo
-              temporibus earum repellendus totam.
-            </p>
+              <p className="productdetailstext">{product.short_description}</p>
 
-            <div className="size">
-              <div className="size__header flex">
-                <p className="select">Select Size</p>
-                <p className="view">View Size Chart</p>
-              </div>
-              <div className="selectsize flex">
-                <div className="selectsize-circle">
-                  <p>xs</p>
+              <div className="size">
+                <div className="size__header flex">
+                  <p className="select">Select Size</p>
+                  <p className="view">View Size Chart</p>
                 </div>
-                <div className="selectsize-circle">
-                  <p>xs</p>
-                </div>
-                <div className="selectsize-circle">
-                  <p>xs</p>
-                </div>
-                <div className="selectsize-circle">
-                  <p>xs</p>
-                </div>
-                <div className="selectsize-circle">
-                  <p>xs</p>
+                <div className="selectsize flex">
+                  {product.available_sizes.map((size) => (
+                    <div className="selectsize-circle">
+                      <p>{size}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
 
-            <div className="selectquantity">
-              <p className="heading">Select Quantity</p>
+              <div className="selectquantity">
+                <p className="heading">Select Quantity</p>
 
-              <div className="inputs flex">
-                <div className="input-group">
-                  <input
-                    type="button"
-                    value="-"
-                    onClick={() => changeQuantity("decrease")}
-                    className="button minus"
-                  />
-                  <input
-                    type="number"
-                    step="1"
-                    max=""
-                    value={quantity}
-                    name="quantity"
-                    className="quantity-field"
-                  />
-                  <input
-                    type="button"
-                    value="+"
-                    onClick={() => changeQuantity("increase")}
-                    className="button plus"
-                  />
-                </div>
+                <div className="inputs flex">
+                  <div className="input-group">
+                    <input
+                      type="button"
+                      value="-"
+                      onClick={() => changeQuantity("decrease")}
+                      className="button minus"
+                    />
+                    <input
+                      type="number"
+                      step="1"
+                      max=""
+                      value={quantity}
+                      name="quantity"
+                      className="quantity-field"
+                    />
+                    <input
+                      type="button"
+                      value="+"
+                      onClick={() => changeQuantity("increase")}
+                      className="button plus"
+                    />
+                  </div>
 
-                <div className="savingsinfo flex">
-                  <p>You are saving ₹1,800</p>
+                  <div className="savingsinfo flex">
+                    <p>You are saving ₹{product.discount}</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <span className="secondline"></span>
+              <span className="secondline"></span>
 
-            <div className="subtotal flex">
-              <p className="subtotal__heading">Subtotal</p>
-              <p className="subtotal__price">₹ 2,357</p>
-            </div>
+              <div className="subtotal flex">
+                <p className="subtotal__heading">Subtotal</p>
+                <p className="subtotal__price">₹ {product.sp}</p>
+              </div>
 
-            <div className="subtotaldescription">
-              <ul className="subtotaldescription__list">
-                <li className="subtotaldescription__list--item">
-                  Free Delivery
-                </li>
-                <li className="subtotaldescription__list--item">
-                  Inclusive of GST
-                </li>
-              </ul>
-            </div>
+              <div className="subtotaldescription">
+                <ul className="subtotaldescription__list">
+                  {product.free_shipping && (
+                    <li className="subtotaldescription__list--item">
+                      Free Delivery
+                    </li>
+                  )}
+                  <li className="subtotaldescription__list--item">
+                    Inclusive of GST
+                  </li>
+                </ul>
+              </div>
 
-            <div className="cta">
-              <a className="checkout btn flex" href="">
-                proceed to checkout
-              </a>
-              <a className="addtocart btn flex" href="">
-                add to cart
-              </a>
+              <div className="cta">
+                <a className="checkout btn flex" href="">
+                  proceed to checkout
+                </a>
+                <a className="addtocart btn flex" href="">
+                  add to cart
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
