@@ -10,7 +10,12 @@ const Filter = () => {
   }
 
   return (
-    <div className="filterdiv flex">
+    <div
+      className="filterdiv flex"
+      style={{
+        display: "none",
+      }}
+    >
       <div className="header">Filter list</div>
       <div className="filterdiv__container">
         <div className="filterdiv__left">
@@ -27,28 +32,28 @@ const Filter = () => {
         </div>
         <div className="filterdiv__right">
           {bottombarfilter === "designer" && (
-            <ul className="designer__list designer">
-              <li className="designer__list--item">
+            <ul className="sortsub__list designer">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Designer</label>
               </li>
-              <li className="designer__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Designer</label>
               </li>
-              <li className="designer__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Designer</label>
               </li>
-              <li className="designer__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Designer</label>
               </li>
-              <li className="designer__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Designer</label>
               </li>
-              <li className="designer__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Designer</label>
               </li>
@@ -56,28 +61,28 @@ const Filter = () => {
           )}
 
           {bottombarfilter === "occasion" && (
-            <ul className="occasion__list occasion">
-              <li className="occasion__list--item">
+            <ul className="sortsub__list occasion">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">occasion</label>
               </li>
-              <li className="occasion__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">occasion</label>
               </li>
-              <li className="occasion__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">occasion</label>
               </li>
-              <li className="occasion__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">occasion</label>
               </li>
-              <li className="occasion__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">occasion</label>
               </li>
-              <li className="occasion__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">occasion</label>
               </li>
@@ -85,28 +90,28 @@ const Filter = () => {
           )}
 
           {bottombarfilter === "season" && (
-            <ul className="season__list season">
-              <li className="season__list--item">
+            <ul className="sortsub__list season">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Season</label>
               </li>
-              <li className="season__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Season</label>
               </li>
-              <li className="season__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Season</label>
               </li>
-              <li className="season__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Season</label>
               </li>
-              <li className="season__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Season</label>
               </li>
-              <li className="season__list--item">
+              <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Season</label>
               </li>
