@@ -33,6 +33,10 @@
     justify-content: space-between;
   }
 
+  &__bottombar {
+    display: none;
+  }
+
   &__filtersidebar {
     width: 294px;
     background: #f6f9fc;
@@ -215,6 +219,11 @@
           height: 386px;
           position: relative;
           transition: visibility 500ms;
+
+          :hover {
+            cursor: pointer;
+          }
+
           .quick-view {
             position: absolute;
             /* visibility: hidden; */
@@ -225,6 +234,7 @@
             height: 36px;
             width: 100%;
             justify-content: center;
+            z-index: 1;
 
             &__text {
               font-family: var(--font-secondary);
@@ -420,7 +430,6 @@
 
       &__products {
         .product-container {
-
           .product-item {
             height: auto;
 
@@ -441,13 +450,12 @@
     &__bottombar {
       position: fixed;
       bottom: 0;
-      display: flex;
+      display: none;
       width: 100%;
       height: 56px;
       background: #fff;
       border-top: 1px solid rgba(44, 61, 80, 0.2);
       z-index: 15;
-
       font-size: 16px;
       line-height: 24px;
       font-weight: 700;
@@ -455,13 +463,116 @@
         flex: 1;
         justify-content: center;
         border-right: 1px solid rgba(44, 61, 80, 0.2);
+        transition: all 0.3s ease-out;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &__background {
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          animation: slide-up-fade-in ease 0.2s;
+        }
+
+        &__list {
+          position: fixed;
+          display: block;
+          z-index: 20;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background: #fff;
+        }
       }
 
       .filter {
         flex: 1;
         justify-content: center;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        .category__list--item:hover{
+          cursor: pointer;
+        }
+      }
+
+      .filterdiv {
+        position: fixed;
+        display: flex;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        align-items: flex-start;
+        background: #fff;
+        flex-direction: column;
+
+        .header {
+          display: block;
+          width: 100%;
+        }
+
+        &__container {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &__left {
+          height: 100%;
+          flex: 1;
+          border-right: 1px solid rgba(44, 61, 80, 0.08);
+        }
+
+        &__right {
+          height: 100%;
+          flex: 2;
+        }
+
+        .cancelfilterdiv {
+          position: fixed;
+          background: antiquewhite;
+          bottom: 0;
+          width: 100%;
+          height: 60px;
+          z-index: 1;
+
+          .cancelfilter {
+            flex: 1;
+            z-index: 2;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          .applyfilter {
+            flex: 1;
+            z-index: 2;
+          }
+        }
       }
     }
+  }
+}
+
+@keyframes slide-up-fade-in {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
   }
 }
 

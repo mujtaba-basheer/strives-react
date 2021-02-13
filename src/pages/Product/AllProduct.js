@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
@@ -69,11 +69,22 @@ function AllProductArea() {
     }
   }
 
-  function showQuickView() {
-    /* console.log("clicked"); */
+  function changeMainImageHover(productImages, type, index) {
+    const images = [];
+    productImages.map((image) => images.push(image.src));
+    console.log(index);
+
+    if (type === "enter") {
+      document.getElementById("showcase-img" + index).src = images[1];
+    } else if (type === "leave") {
+      document.getElementById("showcase-img" + index).src = images[0];
+    }
+  }
+
+  /* function showQuickView() {
     var quickviewmodal = document.getElementById("quickviewmodal");
     quickviewmodal.style.display = "flex";
-  }
+  } */
 
   useEffect(() => {
     dispatch(
@@ -88,6 +99,7 @@ function AllProductArea() {
 
   return (
     <section className="content">
+      {console.log(productdetails)}
       <div className="allproducts-breadcrumbs flex">
         <p className="category">fashion</p>
         <img src={breadcrumbsArrow} alt="arrow" />
@@ -274,6 +286,16 @@ function AllProductArea() {
 
           {loading && <Loader height={100} />}
 
+          {error && (
+            <p
+              style={{
+                color: "red",
+              }}
+            >
+              error
+            </p>
+          )}
+
           {!loading && products.length === 0 && (
             <h1
               style={{
@@ -290,17 +312,28 @@ function AllProductArea() {
 
           <div className="product-container">
             {products &&
-              products.map((product) => (
+              products.map((product, index) => (
                 <div className="product-item">
-                  <div className="product-item__image">
-                    <img
-                      style={{
-                        height: "100%",
-                        width: "100%",
-                      }}
-                      src={product.gallery.main[0].src}
-                      alt={product.name}
-                    />
+                  <div
+                    className="product-item__image"
+                    onMouseEnter={() =>
+                      changeMainImageHover(product.gallery.main, "enter", index)
+                    }
+                    onMouseLeave={() =>
+                      changeMainImageHover(product.gallery.main, "leave", index)
+                    }
+                  >
+                    <Link to={`/products/${product._id}`}>
+                      <img
+                        id={`showcase-img` + index}
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                        }}
+                        src={product.gallery.main[0].src}
+                        alt={product.name}
+                      />
+                    </Link>
                     <div
                       className="quick-view flex"
                       onClick={(e) => {
@@ -316,9 +349,12 @@ function AllProductArea() {
                     </div>
                   </div>
                   <div className="product-item__details">
-                    <a className="product-item__details--heading">
+                    <Link
+                      to={`/products/${product._id}`}
+                      className="product-item__details--heading"
+                    >
                       {product.name}
-                    </a>
+                    </Link>
                     <span className="flex">
                       <p className="product-item__details--price">
                         ₹ {product.sp}

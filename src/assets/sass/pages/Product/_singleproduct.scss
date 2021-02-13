@@ -28,10 +28,7 @@
     }
   }
   &__content {
-    /* margin: auto;
-    width: 90%; */
     height: auto;
-    background-color: #fff;
     align-items: flex-start;
     position: relative;
     margin-bottom: 20px;
@@ -49,6 +46,7 @@
         width: 334px;
         height: 331px;
         background: rgba(202, 162, 110, 0.08);
+        z-index: -1;
       }
 
       flex: 1;
@@ -143,8 +141,8 @@
 
           .selectsize {
             div {
-              width: 30px;
-              height: 30px;
+              width: 40px;
+              height: 40px;
               border-radius: 50%;
               border: 1px solid #2c3d50;
               margin-top: 11px;
@@ -154,7 +152,7 @@
               margin-right: 5px;
 
               p {
-                font-size: 15px;
+                font-size: 12px;
                 line-height: 12px;
                 font-weight: 700;
                 font-family: var(--font-secondary);

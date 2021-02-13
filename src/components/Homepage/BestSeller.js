@@ -15,6 +15,7 @@ import QuickView from "../layout/QuickView";
 
 const BestSeller = () => {
   const [current, setCurrent] = useState(0);
+  const [showModal, setShowModal] = useState("false");
   const bestSellers = [
     { url: theme_img_1, text: "Diwali", rating: { value: 4.4, total: 1628 } },
     {
@@ -64,7 +65,9 @@ const BestSeller = () => {
 
   return (
     <>
-      <QuickView />
+      {showModal === "true" && (
+        <QuickView /* product={productdetails} */ setShowModal={setShowModal} />
+      )}
       <section className="best-seller">
         <div className="best-seller__title section-title">
           Best Seller Products
@@ -155,7 +158,14 @@ const BestSeller = () => {
                   </span>
                 </div>
                 <div
-                  onClick={showQuickView}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    console.log("clicked");
+                    /* setProductdetails(product); */
+                    setShowModal("true");
+
+                    /* showQuickView(); */
+                  }}
                   className="best-seller__image--quick-view"
                 >
                   Quick View

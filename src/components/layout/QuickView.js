@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-import quick2 from "./images/quick2.png";
+/* import quick2 from "./images/quick2.png";
 import quick3 from "./images/quick3.png";
 import thumb from "./images/thumb.png";
-import main from "./images/main.png";
+import main from "./images/main.png"; */
 
 import { CarouselProvider, Slider, Slide, DotGroup } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
 const QuickView = ({ product, setShowModal }) => {
   const [quantity, setQuantity] = useState(1);
-
-  console.log(product);
 
   function hideQuickView() {
     setShowModal("false");
@@ -51,7 +49,6 @@ const QuickView = ({ product, setShowModal }) => {
   }, []);
 
   function changeQuantity(type) {
-    console.log("clickkkk");
     let count = quantity;
 
     if (type === "increase") {
@@ -66,7 +63,6 @@ const QuickView = ({ product, setShowModal }) => {
 
   return (
     <div id="quickviewmodal" className="quickviewmodal">
-      {console.log(images)}
       {product && (
         <div className="quickviewmodal__content flex">
           <span onClick={hideQuickView} className="quickviewmodal__close">
@@ -88,7 +84,7 @@ const QuickView = ({ product, setShowModal }) => {
                         width: "100%",
                         height: "100%",
                       }}
-                      alt=""
+                      alt={product.name}
                     />
                   </Slide>
                 ))}
@@ -108,7 +104,7 @@ const QuickView = ({ product, setShowModal }) => {
                       swapMainImage(e);
                     }}
                     src={image}
-                    alt="quick"
+                    alt={product.name}
                     width="100%"
                     height="100%"
                   />
@@ -119,7 +115,7 @@ const QuickView = ({ product, setShowModal }) => {
               <img
                 id="quickview-mainimage"
                 src={images[0]}
-                alt="quick"
+                alt={product.name}
                 width="100%"
                 height="100%"
               />
@@ -162,7 +158,6 @@ const QuickView = ({ product, setShowModal }) => {
                     <input
                       type="number"
                       step="1"
-                      max=""
                       value={quantity}
                       name="quantity"
                       className="quantity-field"

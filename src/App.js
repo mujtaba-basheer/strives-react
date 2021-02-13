@@ -56,7 +56,7 @@ const App = () => {
           <AllProduct />
         </Route>
 
-        <Route exact path="/single">
+        <Route exact path="/products/:id">
           <SingleProduct />
         </Route>
       </Switch>
