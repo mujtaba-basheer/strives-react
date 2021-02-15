@@ -253,8 +253,11 @@
     .myaccount__right {
       .wishlist {
         box-shadow: none;
+        margin: 0;
         &__list {
           padding: 0;
+        margin: 0;
+
           &--item {
             margin-bottom: 20px;
             .line {

@@ -24,6 +24,14 @@ const Wishlist = () => {
   const { favItems } = useSelector((state) => state.fav);
   const { error, loading } = useSelector((state) => state.favGet);
 
+  function addToCart() {
+    console.log("clicked");
+  }
+
+  function removeFromWishlist(id) {
+    dispatch(removeItemFromFav(id));
+  }
+
   useEffect(() => {
     if (!userInfo) history.push("/login");
 
@@ -97,7 +105,10 @@ const Wishlist = () => {
                         <span className="mobileline"></span>
                         <div className="buttons__container flex">
                           <div className="buttons flex">
-                            <button className="buttons__remove flex">
+                            <button
+                              className="buttons__remove flex"
+                              onClick={() => removeFromWishlist(product._id)}
+                            >
                               <img
                                 src={trashicon}
                                 alt="trash"
@@ -110,11 +121,7 @@ const Wishlist = () => {
                               Remove Item
                             </button>
                             <button
-                              onClick={() =>
-                                dispatch(
-                                  removeItemFromFav("6023b9e5ac34151972c41045")
-                                )
-                              }
+                              onClick={addToCart}
                               className="buttons__addtocart"
                             >
                               Add to Cart
@@ -123,9 +130,7 @@ const Wishlist = () => {
                         </div>
                       </div>
 
-                      {console.log(index < favItems.length)}
-
-                      {index <= favItems.length-2 && (
+                      {index <= favItems.length - 2 && (
                         <span className="line"></span>
                       )}
                     </li>
