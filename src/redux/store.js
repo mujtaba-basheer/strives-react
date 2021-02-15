@@ -18,6 +18,10 @@ import {
   cartGetReducer,
   cartRemoveReducer,
   cartQtyUpdateReducer,
+  favReducer,
+  favAddReducer,
+  favGetReducer,
+  favRemoveReducer,
 } from "./reducers/cartReducers";
 import {
   userLoginReducer,
@@ -57,6 +61,10 @@ const reducer = combineReducers({
   cartGet: cartGetReducer,
   cartRemove: cartRemoveReducer,
   cartQtyUpdate: cartQtyUpdateReducer,
+  fav: favReducer,
+  favAdd: favAddReducer,
+  favGet: favGetReducer,
+  favRemove: favRemoveReducer,
   userLogin: userLoginReducer,
   userDetails: userDetailsReducer,
   userRegister: userRegisterReducer,
