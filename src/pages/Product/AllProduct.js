@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
+import { addItemToFav } from "../../redux/actions/cartActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -81,10 +82,6 @@ function AllProductArea() {
     }
   }
 
-  /* function showQuickView() {
-    var quickviewmodal = document.getElementById("quickviewmodal");
-    quickviewmodal.style.display = "flex";
-  } */
 
   useEffect(() => {
     dispatch(
@@ -363,6 +360,14 @@ function AllProductArea() {
                         ₹ {product.mrp}
                       </p>
                     </span>
+                    <button
+                      onClick={() => {
+                        console.log(product);
+                        dispatch(addItemToFav(product));
+                      }}
+                    >
+                      Add to wishlist
+                    </button>
                   </div>
                 </div>
               ))}

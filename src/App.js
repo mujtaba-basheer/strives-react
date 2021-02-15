@@ -12,6 +12,8 @@ import Register from "./pages/Register";
 import MyAccount from "./pages/User/MyAccount";
 import ChangePassword from "./pages/User/ChangePassword";
 import ManageAddress from "./pages/User/ManageAddress";
+import Wishlist from "./pages/User/Wishlist";
+
 
 import Checkout from "./pages/Checkout";
 
@@ -46,6 +48,10 @@ const App = () => {
 
         <Route exact path="/manage-address">
           <ManageAddress />
+        </Route>
+
+        <Route exact path="/wishlist">
+          <Wishlist />
         </Route>
 
         <Route exact path="/checkout">

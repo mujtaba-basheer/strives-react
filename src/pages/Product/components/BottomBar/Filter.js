@@ -63,28 +63,40 @@ const Filter = () => {
           {bottombarfilter === "occasion" && (
             <ul className="sortsub__list occasion">
               <li className="sortsub__list--item">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="">occasion</label>
+                <div className="input-group">
+                  <input type="checkbox" name="" id="" />
+                  <label htmlFor="">occasion</label>
+                </div>
               </li>
               <li className="sortsub__list--item">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="">occasion</label>
+                <div className="input-group">
+                  <input type="checkbox" name="" id="" />
+                  <label htmlFor="">occasion</label>
+                </div>
               </li>
               <li className="sortsub__list--item">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="">occasion</label>
+                <div className="input-group">
+                  <input type="checkbox" name="" id="" />
+                  <label htmlFor="">occasion</label>
+                </div>
               </li>
               <li className="sortsub__list--item">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="">occasion</label>
+                <div className="input-group">
+                  <input type="checkbox" name="" id="" />
+                  <label htmlFor="">occasion</label>
+                </div>
               </li>
               <li className="sortsub__list--item">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="">occasion</label>
+                <div className="input-group">
+                  <input type="checkbox" name="" id="" />
+                  <label htmlFor="">occasion</label>
+                </div>
               </li>
               <li className="sortsub__list--item">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="">occasion</label>
+                <div className="input-group">
+                  <input type="checkbox" name="" id="" />
+                  <label htmlFor="">occasion</label>
+                </div>
               </li>
             </ul>
           )}

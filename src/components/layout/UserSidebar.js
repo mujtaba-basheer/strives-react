@@ -66,8 +66,8 @@ const UserSidebar = ({ selected }) => {
             <li>
               <Link to="">All Notifications</Link>
             </li>
-            <li>
-              <Link to="">Wishlist</Link>
+            <li className={selected === "Wishlist" ? "active" : ""}>
+              <Link to="/wishlist">Wishlist</Link>
             </li>
           </ul>
         </div>

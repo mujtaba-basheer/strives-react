@@ -77,7 +77,7 @@ export const addItemToFav = (product) => async (dispatch, getState) => {
         },
       };
 
-      await apiCall.put(`favourites-product/${product}`, {}, config);
+      await apiCall.put(`favourites-product/${product._id}`, {}, config);
     }
 
     const { fav } = getState();
@@ -103,15 +103,15 @@ export const removeItemFromFav = (id) => async (dispatch, getState) => {
   } = getState();
 
   try {
-    // if (userInfo) {
-    //   const config = {
-    //     headers: {
-    //       Authorization: `Bearer ${userInfo.token}`,
-    //     },
-    //   };
+    if (userInfo) {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
 
-    //   await apiCall.delete(`cart-product/${id}`, config);
-    // }
+      await apiCall.delete(`favourites-product/${id}`, config);
+    }
 
     const {
       fav: { favItems },

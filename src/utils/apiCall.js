@@ -30,14 +30,10 @@ class ApiCall {
         });
     });
 
-  delete = (url, token) =>
+  delete = (url, headers) =>
     new Promise((resolve, reject) => {
-      var headers = {
-        Authorization: "Bearer " + token,
-      };
-
       axios
-        .delete(api_url + url, { headers })
+        .delete(api_url + url, headers)
         .then(function (response) {
           resolve(response);
         })
