@@ -18,7 +18,59 @@ import {
   CART_QTY_UPDATE_REQUEST,
   CART_QTY_UPDATE_SUCCESS,
   CART_QTY_UPDATE_FAIL,
+  FAV_GET_REQUEST,
+  FAV_GET_SUCCESS,
+  FAV_GET_FAIL,
+  FAV_ADD_REQUEST,
+  FAV_ADD_SUCCESS,
+  FAV_ADD_FAIL,
+  FAV_REMOVE_FAIL,
+  FAV_REMOVE_SUCCESS,
+  FAV_REMOVE_REQUEST,
+  FAV_SET,
+  FAV_CLEAR,
+  FAV_ADD_ITEM,
+  FAV_REMOVE_ITEM,
 } from "../constants/cartConstants";
+
+export const favGetReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FAV_GET_REQUEST:
+      return { ...state, loading: true };
+    case FAV_GET_SUCCESS:
+      return { loading: false, success: true, error: null };
+    case FAV_GET_FAIL:
+      return { loading: false, success: null, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const favAddReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FAV_ADD_REQUEST:
+      return { ...state, loading: true };
+    case FAV_ADD_SUCCESS:
+      return { loading: false, success: true, error: null };
+    case FAV_ADD_FAIL:
+      return { loading: false, success: null, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const favRemoveReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FAV_REMOVE_REQUEST:
+      return { ...state, loading: true };
+    case FAV_REMOVE_SUCCESS:
+      return { loading: false, success: true, error: null };
+    case FAV_REMOVE_FAIL:
+      return { loading: false, success: null, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const cartGetReducer = (state = {}, action) => {
   switch (action.type) {
@@ -67,6 +119,36 @@ export const cartQtyUpdateReducer = (state = {}, action) => {
       return { loading: false, success: true, error: null };
     case CART_QTY_UPDATE_FAIL:
       return { loading: false, success: null, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const favReducer = (state = { favItems: [] }, action) => {
+  switch (action.type) {
+    case FAV_SET:
+      return { favItems: action.payload };
+    case FAV_CLEAR:
+      return { favItems: [] };
+    case FAV_ADD_ITEM:
+      const item = action.payload;
+      const existItem = state.favItems.find((x) => x.product === item.product);
+
+      if (existItem) {
+        return {
+          ...state,
+          favItems: state.favItems.map((x) =>
+            x.product === existItem.product ? item : x
+          ),
+        };
+      } else {
+        return { ...state, favItems: [...state.favItems, item] };
+      }
+    case FAV_REMOVE_ITEM:
+      return {
+        ...state,
+        favItems: state.favItems.filter((x) => x.product !== action.payload),
+      };
     default:
       return state;
   }

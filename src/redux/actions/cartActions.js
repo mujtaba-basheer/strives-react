@@ -18,7 +18,118 @@ import {
   CART_QTY_UPDATE_REQUEST,
   CART_QTY_UPDATE_SUCCESS,
   CART_QTY_UPDATE_FAIL,
+  FAV_GET_SUCCESS,
+  FAV_ADD_REQUEST,
+  FAV_ADD_SUCCESS,
+  FAV_SET,
+  FAV_ADD_FAIL,
+  FAV_REMOVE_REQUEST,
+  FAV_REMOVE_SUCCESS,
+  FAV_REMOVE_FAIL,
 } from "../constants/cartConstants";
+
+export const getFav = () => async (dispatch, getState) => {
+  dispatch({ type: CART_GET_REQUEST });
+  const {
+    userLogin: { userInfo },
+  } = getState();
+
+  try {
+    if (userInfo) {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+      const { data } = await apiCall.get("favourites", config);
+      dispatch({ type: FAV_GET_SUCCESS });
+      dispatch({ type: FAV_SET, payload: data.data });
+    } else {
+      const { fav } = getState();
+      dispatch({
+        type: FAV_SET,
+        payload: fav && fav.favItems ? fav.favItems : [],
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: CART_GET_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const addItemToFav = (product) => async (dispatch, getState) => {
+  dispatch({ type: FAV_ADD_REQUEST });
+  const {
+    userLogin: { userInfo },
+  } = getState();
+
+  try {
+    if (userInfo) {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      await apiCall.put(`favourites-product/${product}`, {}, config);
+    }
+
+    const { fav } = getState();
+    fav.favItems.push(product);
+
+    dispatch({ type: FAV_ADD_SUCCESS });
+    dispatch({ type: FAV_SET, payload: fav.favItems });
+  } catch (error) {
+    dispatch({
+      type: FAV_ADD_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const removeItemFromFav = (id) => async (dispatch, getState) => {
+  dispatch({ type: FAV_REMOVE_REQUEST });
+  const {
+    userLogin: { userInfo },
+  } = getState();
+
+  try {
+    // if (userInfo) {
+    //   const config = {
+    //     headers: {
+    //       Authorization: `Bearer ${userInfo.token}`,
+    //     },
+    //   };
+
+    //   await apiCall.delete(`cart-product/${id}`, config);
+    // }
+
+    const {
+      fav: { favItems },
+    } = getState();
+    const updatedItems = favItems.filter(({ _id }) => _id !== id);
+
+    dispatch({ type: FAV_REMOVE_SUCCESS });
+    dispatch({ type: FAV_SET, payload: updatedItems });
+  } catch (error) {
+    dispatch({
+      type: FAV_REMOVE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 export const getCart = () => async (dispatch, getState) => {
   dispatch({ type: CART_GET_REQUEST });
