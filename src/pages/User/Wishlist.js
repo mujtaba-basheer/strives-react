@@ -43,7 +43,6 @@ const Wishlist = () => {
   return (
     <>
       <Navbar />
-      {console.log(favItems)}
       <section className="content container mb-2">
         <div className="userprofile flex">
           <div className="myaccount__left">

@@ -296,7 +296,7 @@ const Index = () => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/cart"
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >

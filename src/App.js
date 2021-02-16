@@ -20,6 +20,7 @@ import Checkout from "./pages/Checkout";
 /* Product Pages */
 import AllProduct from "./pages/Product/AllProduct";
 import SingleProduct from "./pages/Product/SingleProduct";
+import Cart from "./pages/Cart";
 
 const App = () => {
   return (
@@ -56,6 +57,10 @@ const App = () => {
 
         <Route exact path="/checkout">
           <Checkout />
+        </Route>
+
+        <Route exact path="/cart">
+          <Cart />
         </Route>
 
         <Route exact path="/products">

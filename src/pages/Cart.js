@@ -13,19 +13,19 @@ import razorpayBanner from "../assets/images/checkout/razorpay.png";
 import image from "../assets/images/checkout/image.png";
 import coupon from "../assets/images/checkout/coupon.png";
 
-const Checkout = () => {
+const Cart = () => {
   return (
     <>
       <Navbar />
-      <CheckoutArea />
+      <CartArea />
       <Footer />
     </>
   );
 };
 
-export default Checkout;
+export default Cart;
 
-function CheckoutArea() {
+function CartArea() {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
   const { user, error } = useSelector((state) => state.userDetails);
@@ -60,41 +60,12 @@ function CheckoutArea() {
   });
 
   useEffect(() => {
-    document.title = "Checkout";
+    document.title = "cart";
 
     if (!userInfo) history.push("/login");
 
     if (user || error) {
-      console.log(user);
-
-      /* TODO: Fill formData with details
-        user: {
-        _id: '5ffd33fb07514500040f39f9',
-        name: 'Mujtaba Basheer',
-        email: 'mujtaba.fleapo@gmail.com',
-        phone: '07686886489',
-        address: [
-          {
-            _id: '6002875d2a285224fd633da7',
-            address: '26 A, North Range',
-            state: 'West Bengal',
-            city: 'Kolkata',
-            pincode: '700017',
-            landmark: 'Asian/Vaishali Paints',
-            address1: '26 A, North Range',
-            address2: '',
-            name: 'Mujtaba Basheer',
-            phone: '7686886489',
-            type: 'Home'
-          }
-        ],
-        dob: '1999-12-24',
-        gender: 'Male',
-        firstname: 'Mujtaba',
-        lastname: 'fghi'
-      }
-      */
-
+      
       setFormData({
         email: user.email,
         custphone: user.phone,
@@ -115,7 +86,7 @@ function CheckoutArea() {
     const addRzpScript = async () => {
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = `https://checkout.razorpay.com/v1/checkout.js`;
+      script.src = `https://cart.razorpay.com/v1/cart.js`;
       script.async = true;
       script.crossorigin = `anonymous`;
       script.onload = () => setSdkReady(true);
@@ -164,8 +135,8 @@ function CheckoutArea() {
   return (
     <section className="content">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="checkoutbox flex">
-          <div className="checkoutbox__left">
+        <div className="cartbox flex">
+          <div className="cartbox__left">
             <div className="heading">
               <p className="heading__main">Billing Details</p>
               <p className="heading__subheading">
@@ -649,13 +620,13 @@ function CheckoutArea() {
             <button
               type="submit"
               id="placeorder"
-              className="checkoutbox_submit--button"
+              className="cartbox_submit--button"
             >
               Place your order
             </button>
           </div>
 
-          <div className="checkoutbox__right">
+          <div className="cartbox__right">
             <div className="ordersummarybox">
               <div className="ordersummary">
                 <p className="ordersummary__heading">Order Summary</p>
