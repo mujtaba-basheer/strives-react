@@ -166,7 +166,7 @@ export const getCart = () => async (dispatch, getState) => {
   }
 };
 
-export const addItemToCart = (product, qty = 1) => async (
+export const addItemToCart = (product, qty = 1, size) => async (
   dispatch,
   getState
 ) => {
@@ -186,13 +186,13 @@ export const addItemToCart = (product, qty = 1) => async (
 
       await apiCall.put(
         "cart-product",
-        { productId: product["_id"], quantity: qty },
+        { productId: product["_id"], quantity: qty, size },
         config
       );
     }
 
     const { cart } = getState();
-    cart.cartItems.push({ ...product, quantity: qty });
+    cart.cartItems.push({ ...product, quantity: qty, size });
 
     dispatch({ type: CART_ADD_SUCCESS });
     dispatch({ type: CART_SET, payload: cart.cartItems });
@@ -207,7 +207,7 @@ export const addItemToCart = (product, qty = 1) => async (
   }
 };
 
-export const removeItemFromCart = (id) => async (dispatch, getState) => {
+export const removeItemFromCart = (id, size) => async (dispatch, getState) => {
   dispatch({ type: CART_REMOVE_REQUEST });
   const {
     userLogin: { userInfo },
@@ -227,7 +227,9 @@ export const removeItemFromCart = (id) => async (dispatch, getState) => {
     const {
       cart: { cartItems },
     } = getState();
-    const updatedItems = cartItems.filter(({ _id }) => _id !== id);
+    const updatedItems = cartItems.filter(
+      ({ _id, size: product_size }) => !(_id === id && product_size === size)
+    );
 
     dispatch({ type: CART_REMOVE_SUCCESS });
     dispatch({ type: CART_SET, payload: updatedItems });
@@ -242,7 +244,10 @@ export const removeItemFromCart = (id) => async (dispatch, getState) => {
   }
 };
 
-export const updateItemQty = (id, qty = 1) => async (dispatch, getState) => {
+export const updateItemQty = (id, size, qty = 1) => async (
+  dispatch,
+  getState
+) => {
   dispatch({ type: CART_QTY_UPDATE_REQUEST });
   const {
     userLogin: { userInfo },
@@ -253,7 +258,7 @@ export const updateItemQty = (id, qty = 1) => async (dispatch, getState) => {
       cart: { cartItems },
     } = getState();
     const updatedItems = cartItems.map((item) => {
-      if (item["_id"] === id) item["quantity"] = qty;
+      if (item["_id"] === id && item["size"] === size) item["quantity"] = qty;
       return item;
     });
     dispatch({ type: CART_SET, payload: updatedItems });
@@ -271,6 +276,56 @@ export const updateItemQty = (id, qty = 1) => async (dispatch, getState) => {
 
     dispatch({ type: CART_QTY_UPDATE_SUCCESS });
     dispatch({ type: CART_SET, payload: updatedItems });
+  } catch (error) {
+    dispatch({
+      type: CART_QTY_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateItemSize = (id, size, prev_size, prev_qty) => async (
+  dispatch,
+  getState
+) => {
+  dispatch({ type: CART_QTY_UPDATE_REQUEST });
+  const {
+    userLogin: { userInfo },
+  } = getState();
+
+  try {
+    const {
+      cart: { cartItems },
+    } = getState();
+    const itemIndex = cartItems.findIndex(
+      ({ _id, size: product_size }) => _id === id && product_size === size
+    );
+    if (itemIndex > -1) {
+      cartItems[itemIndex]["quantity"] += prev_qty;
+      cartItems.splice(itemIndex, 1);
+    } else {
+      for (let item of cartItems)
+        if (item["_id"] === id && item["size"] === prev_size)
+          item["size"] = size;
+    }
+    dispatch({ type: CART_SET, payload: cartItems });
+
+    if (userInfo) {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      await apiCall.put("cart", cartItems, config);
+    }
+
+    dispatch({ type: CART_QTY_UPDATE_SUCCESS });
+    dispatch({ type: CART_SET, payload: cartItems });
   } catch (error) {
     dispatch({
       type: CART_QTY_UPDATE_FAIL,
