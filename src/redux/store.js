@@ -39,6 +39,7 @@ import {
 } from "./reducers/userReducers";
 import {
   orderCreateReducer,
+  orderCouponReducer,
   orderDetailsReducer,
   orderPayReducer,
   orderDeliverReducer,
@@ -78,12 +79,17 @@ const reducer = combineReducers({
   userGet: userGetReducer,
   userUpdate: userUpdateReducer,
   orderCreate: orderCreateReducer,
+  orderCoupon: orderCouponReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderDeliver: orderDeliverReducer,
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
 });
+
+const favItemsFromStorage = localStorage.getItem("favItems")
+  ? JSON.parse(localStorage.getItem("favItems"))
+  : [];
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -108,6 +114,9 @@ const initialState = {
   },
   userLogin: {
     userInfo: userInfoFromStorage,
+  },
+  fav: {
+    favItems: favItemsFromStorage,
   },
 };
 

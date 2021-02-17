@@ -21,7 +21,23 @@ import {
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_FAIL,
   ORDER_DELIVER_RESET,
+  ORDER_COUPON_REQUEST,
+  ORDER_COUPON_SUCCESS,
+  ORDER_COUPON_FAIL,
 } from "../constants/orderConstants";
+
+export const orderCouponReducer = (state = { loading: true }, action) => {
+  switch (action.type) {
+    case ORDER_COUPON_REQUEST:
+      return { loading: true };
+    case ORDER_COUPON_SUCCESS:
+      return { loading: false, coupon: action.payload };
+    case ORDER_COUPON_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const orderCreateReducer = (state = { loading: true }, action) => {
   switch (action.type) {

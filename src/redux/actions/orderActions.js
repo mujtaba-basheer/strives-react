@@ -18,7 +18,43 @@ import {
   ORDER_DELIVER_REQUEST,
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_FAIL,
+  ORDER_COUPON_REQUEST,
+  ORDER_COUPON_SUCCESS,
+  ORDER_COUPON_FAIL,
 } from "../constants/orderConstants";
+
+export const checkCoupon = (code, amount) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_COUPON_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo || userInfo.token}`,
+      },
+    };
+
+    const { data } = await apiCall.post(
+      "check-coupon",
+      { coupon_code: code, amount },
+      userInfo ? config : {}
+    );
+
+    dispatch({ type: ORDER_COUPON_SUCCESS, payload: data.data });
+  } catch (error) {
+    dispatch({
+      type: ORDER_COUPON_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {

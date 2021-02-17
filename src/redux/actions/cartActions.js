@@ -44,6 +44,7 @@ export const getFav = () => async (dispatch, getState) => {
       const { data } = await apiCall.get("favourites", config);
       dispatch({ type: FAV_GET_SUCCESS });
       dispatch({ type: FAV_SET, payload: data.data });
+      localStorage.setItem("favItems", data.data);
     } else {
       const { fav } = getState();
       dispatch({
