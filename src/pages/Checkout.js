@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getUserDetails } from "../redux/actions/userActions";
 import { payOrder } from "../redux/actions/orderActions";
+import { checkCoupon } from "../redux/actions/orderActions";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -154,6 +155,7 @@ function CheckoutArea() {
 
   function applyCoupon() {
     console.log(applyCouponDetails.name);
+    dispatch(checkCoupon(applyCouponDetails, "1500"));
     setApplyCouponDetails({
       ...applyCouponDetails,
       inputState: "disabled",

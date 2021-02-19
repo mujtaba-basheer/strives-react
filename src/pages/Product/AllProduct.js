@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
-import { addItemToFav } from "../../redux/actions/cartActions";
+import { addItemToFav, addItemToCart } from "../../redux/actions/cartActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -367,6 +367,15 @@ function AllProductArea() {
                       }}
                     >
                       Add to wishlist
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        console.log(product);
+                        dispatch(addItemToCart(product, "1", "M"));
+                      }}
+                    >
+                      Add to cart
                     </button>
                   </div>
                 </div>

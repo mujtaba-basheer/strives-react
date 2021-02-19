@@ -38,7 +38,7 @@ const Wishlist = () => {
     if (favItems.length === 0) {
       dispatch(getFav());
     }
-  }, [userInfo, history, dispatch]);
+  }, [userInfo, history, dispatch, favItems]);
 
   return (
     <>

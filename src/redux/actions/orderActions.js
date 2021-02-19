@@ -34,9 +34,11 @@ export const checkCoupon = (code, amount) => async (dispatch, getState) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo || userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
     };
+
+    console.log(config);
 
     const { data } = await apiCall.post(
       "check-coupon",
