@@ -143,7 +143,7 @@ export const placeOrder = (order) => async (dispatch, getState) => {
   }
 };
 
-export const payOrder = (amount) => async (dispatch, getState) => {
+export const payOrder = (amount, order = {}) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_PAY_REQUEST });
 
@@ -181,6 +181,7 @@ export const payOrder = (amount) => async (dispatch, getState) => {
           type: ORDER_PAY_SUCCESS,
           payload: { ...response, receipt },
         });
+        dispatch(createOrder(order));
       }
     };
 
