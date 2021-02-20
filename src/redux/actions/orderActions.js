@@ -111,6 +111,38 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 };
 
+export const placeOrder = (order) => async (dispatch, getState) => {
+  dispatch({ type: ORDER_CREATE_REQUEST });
+
+  const {
+    userLogin: { userInfo },
+    orderPay,
+  } = getState();
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    if (userInfo) config["Authorization"] = `Bearer ${userInfo.token}`;
+    if (order.paymentMethod === "rzp") order.paymentDetails = orderPay.order;
+
+    await apiCall.post("order", order, config);
+
+    dispatch({ type: ORDER_CREATE_SUCCESS });
+  } catch (error) {
+    console.error(error);
+    dispatch({
+      type: ORDER_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
 export const payOrder = (amount) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_PAY_REQUEST });
@@ -145,7 +177,10 @@ export const payOrder = (amount) => async (dispatch, getState) => {
         dispatch({ type: ORDER_PAY_FAIL, payload: response.error.description });
       } else {
         console.log(response);
-        dispatch({ type: ORDER_PAY_SUCCESS, payload: response });
+        dispatch({
+          type: ORDER_PAY_SUCCESS,
+          payload: { ...response, receipt },
+        });
       }
     };
 
