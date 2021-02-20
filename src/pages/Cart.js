@@ -26,7 +26,10 @@ export default Cart;
 
 function CartArea() {
   const dispatch = useDispatch();
-  const [totalCartValue, setTotalCartValue] = useState(0);
+  const [cartValue, setCartValue] = useState({
+    total: 0,
+    subtotal: 0,
+  });
   const { userInfo } = useSelector((state) => state.userLogin);
   const { user, error } = useSelector((state) => state.userDetails);
   const { cartItems } = useSelector((state) => state.cart);
@@ -53,7 +56,9 @@ function CartArea() {
         console.log(cart.sp);
         total += cart.sp;
       });
-      setTotalCartValue(total);
+      setCartValue({
+        total: total,
+      });
     }
   }, [error, cartItems]);
 
@@ -194,7 +199,7 @@ function CartArea() {
                   <div className="subtotal__heading flex">
                     <p className="subtotal__heading--text">Subtotal</p>
                     <p className="subtotal__heading--amount">
-                      ₹{totalCartValue}
+                      ₹{cartValue.total}
                     </p>
                   </div>
                   <ul>
@@ -213,6 +218,7 @@ function CartArea() {
                 onClick={(e) => {
                   e.preventDefault();
                   /* testRazorpay(); */
+                  history.push("/checkout")
                 }}
               >
                 Place your order

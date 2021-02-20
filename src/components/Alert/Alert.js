@@ -3,33 +3,47 @@
 import React, { useState, useEffect } from "react";
 import "./alert.css";
 
-const Alert = ({ type, text }) => {
+const Alert = ({ type, text, background, timer }) => {
   const [alertType, setAlertType] = useState("danger");
   const [isClose, setIsClose] = useState(null);
 
   useEffect(() => {
+    console.log(type)
     switch (type) {
       case "success":
-        setAlertType("success");
+        if (background === "true") {
+          setAlertType("success-bg");
+        } else {
+          setAlertType("success");
+        }
         break;
       case "danger":
-        setAlertType("danger");
+        if (background === "true") {
+          setAlertType("danger-bg");
+        } else {
+          setAlertType("danger");
+        }
         break;
       default:
         setAlertType("danger");
         break;
     }
 
-    setTimeout(() => {
-      setIsClose("close");
-    }, 3000);
-  }, [type]);
+    console.log(timer);
+
+    if (timer > 0) {
+      setTimeout(() => {
+        setIsClose("close");
+      }, timer);
+    }
+  }, [type, background]);
 
   return (
     <div
-      className={`custom-alert custom-alert--${alertType} custom-alert--${isClose}`}
+      className={`custom-alert custom-alert--${alertType} custom-alert--${isClose} flex`}
     >
       <h1 className="custom-alert__text">{text}</h1>
+      {timer === 0 && <span className="closeicon-alert">&times;</span>}
     </div>
   );
 };

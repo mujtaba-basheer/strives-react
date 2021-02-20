@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUserDetails } from "../redux/actions/userActions";
 import { payOrder } from "../redux/actions/orderActions";
 import { checkCoupon } from "../redux/actions/orderActions";
+import { getCart } from "../redux/actions/cartActions";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Alert from "../components/Alert/Alert";
 
 import razorpayBanner from "../assets/images/checkout/razorpay.png";
 import image from "../assets/images/checkout/image.png";
@@ -42,7 +44,12 @@ function CheckoutArea() {
     name: "",
     inputState: "",
     couponApplied: false,
+    text: "",
   });
+  const { cartItems } = useSelector((state) => state.cart);
+  const { coupon: couponData, error: couponError } = useSelector(
+    (state) => state.orderCoupon
+  );
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -62,40 +69,27 @@ function CheckoutArea() {
 
   useEffect(() => {
     document.title = "Checkout";
+    console.log(cartItems);
 
-    if (!userInfo) history.push("/login");
+    if (cartItems.length === 0) history.push("/");
+
+    /* if (cartItems.length === 0) {
+      dispatch(getCart());
+
+      if (cartItems.length === 0) history.push("/");
+    } */
+
+    if (cartItems.length > 0) {
+      let total = 0;
+      cartItems.forEach((cart) => {
+        console.log(cart.sp);
+        total += cart.sp;
+      });
+      /* setTotalCartValue(total); */
+    }
 
     if (user || error) {
       console.log(user);
-
-      /* TODO: Fill formData with details
-        user: {
-        _id: '5ffd33fb07514500040f39f9',
-        name: 'Mujtaba Basheer',
-        email: 'mujtaba.fleapo@gmail.com',
-        phone: '07686886489',
-        address: [
-          {
-            _id: '6002875d2a285224fd633da7',
-            address: '26 A, North Range',
-            state: 'West Bengal',
-            city: 'Kolkata',
-            pincode: '700017',
-            landmark: 'Asian/Vaishali Paints',
-            address1: '26 A, North Range',
-            address2: '',
-            name: 'Mujtaba Basheer',
-            phone: '7686886489',
-            type: 'Home'
-          }
-        ],
-        dob: '1999-12-24',
-        gender: 'Male',
-        firstname: 'Mujtaba',
-        lastname: 'fghi'
-      }
-      */
-
       setFormData({
         email: user.email,
         custphone: user.phone,
@@ -126,7 +120,7 @@ function CheckoutArea() {
 
     if (!window.Razorpay) addRzpScript();
     else setSdkReady(true);
-  }, [user, dispatch, error]);
+  }, [user, dispatch, error, cartItems]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -150,17 +144,32 @@ function CheckoutArea() {
       ...applyCouponDetails,
       inputState: "",
       couponApplied: false,
+      text: "",
     });
   }
 
   function applyCoupon() {
     console.log(applyCouponDetails.name);
-    dispatch(checkCoupon(applyCouponDetails, "1500"));
-    setApplyCouponDetails({
-      ...applyCouponDetails,
-      inputState: "disabled",
-      couponApplied: true,
-    });
+    dispatch(checkCoupon(applyCouponDetails.name, "1500"));
+    /* console.log(coupon); */
+    if (couponData) {
+      console.log(couponData);
+
+      setApplyCouponDetails({
+        ...applyCouponDetails,
+        inputState: "disabled",
+        couponApplied: true,
+        text: "Coupon Applied Successfully",
+      });
+    } else if (couponError) {
+      console.log(couponError);
+      setApplyCouponDetails({
+        ...applyCouponDetails,
+        inputState: "",
+        couponApplied: false,
+        text: couponError,
+      });
+    }
   }
 
   return (
@@ -791,6 +800,15 @@ function CheckoutArea() {
                     >
                       Apply coupon
                     </button>
+                  )}
+
+                  {applyCouponDetails.text && (
+                    <Alert
+                      text={applyCouponDetails.text}
+                      type={couponData ? "success" : "danger"}
+                      background="true"
+                      timer="5000"
+                    />
                   )}
                 </div>
               </div>
