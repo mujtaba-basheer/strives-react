@@ -114,6 +114,10 @@
               justify-content: center;
               margin-right: 5px;
 
+              &:hover {
+                cursor: pointer;
+              }
+
               p {
                 font-size: 12px;
                 line-height: 12px;
@@ -121,6 +125,11 @@
                 font-family: var(--font-secondary);
               }
             }
+          }
+
+          .selectsize .active {
+            color: #fff;
+            background: #2c3d50;
           }
         }
 
@@ -211,6 +220,10 @@
             border: none;
           }
 
+          .btn:hover {
+            cursor: pointer;
+          }
+
           .checkout {
             width: 100%;
             background: #2c3d50;
@@ -220,6 +233,9 @@
 
           .addtocart {
             border: 1px solid #2c3d50;
+            width: 100%;
+            background: #fff;
+            color: #2c3d50;
           }
         }
       }

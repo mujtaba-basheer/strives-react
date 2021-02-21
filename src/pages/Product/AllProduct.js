@@ -372,7 +372,7 @@ function AllProductArea() {
                     <button
                       onClick={() => {
                         console.log(product);
-                        dispatch(addItemToCart(product, "1", "M"));
+                        dispatch(addItemToCart(product, 1, "M"));
                       }}
                     >
                       Add to cart

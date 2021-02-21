@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 /* import quick2 from "./images/quick2.png";
 import quick3 from "./images/quick3.png";
@@ -7,9 +8,18 @@ import main from "./images/main.png"; */
 
 import { CarouselProvider, Slider, Slide, DotGroup } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
+import Alert from "../Alert/Alert";
+
+import { addItemToFav, addItemToCart } from "../../redux/actions/cartActions";
 
 const QuickView = ({ product, setShowModal }) => {
-  const [quantity, setQuantity] = useState(1);
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [productSize, setProductSize] = useState({
+    size: "",
+    error: "",
+  });
+
+  const dispatch = useDispatch();
 
   function hideQuickView() {
     setShowModal("false");
@@ -49,15 +59,56 @@ const QuickView = ({ product, setShowModal }) => {
   }, []);
 
   function changeQuantity(type) {
-    let count = quantity;
+    let count = productQuantity;
 
     if (type === "increase") {
       count++;
-      setQuantity(count);
+      setProductQuantity(count);
     } else if (type === "decrease") {
       count--;
       if (count < 1) count = 1;
-      setQuantity(count);
+      setProductQuantity(count);
+    }
+  }
+
+  function selectProductSize(e) {
+    e.preventDefault();
+    console.log(e.target.innerText);
+
+    const name = e.target.innerText.toLowerCase();
+
+    const selectSizeCircles = document.getElementsByClassName(
+      "selectsize-circle"
+    );
+
+    for (let item of selectSizeCircles) {
+      /* console.log(item); */
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+      }
+    }
+
+    console.log(name);
+
+    setProductSize({
+      ...productSize,
+      size: name,
+      error: "",
+    });
+
+    document.getElementById(name).classList.add("active");
+  }
+
+  function addToCart() {
+    console.log("clicked");
+    if (productSize.size === "") {
+      setProductSize({
+        ...productSize,
+        error: "Please Select a size",
+      });
+    } else {
+      console.log(productSize);
+      dispatch(addItemToCart(product, productQuantity, productSize.size));
     }
   }
 
@@ -136,12 +187,25 @@ const QuickView = ({ product, setShowModal }) => {
                   <p className="view">View Size Chart</p>
                 </div>
                 <div className="selectsize flex">
-                  {product.available_sizes.map((size) => (
-                    <div className="selectsize-circle">
+                  {product.available_sizes.map((size, index) => (
+                    <div
+                      key={index}
+                      onClick={selectProductSize}
+                      id={size.toLowerCase()}
+                      className="selectsize-circle"
+                    >
                       <p>{size}</p>
                     </div>
                   ))}
                 </div>
+
+                {productSize.error && (
+                  <Alert
+                    text={productSize.error}
+                    type="danger"
+                    /* background="true" */
+                  />
+                )}
               </div>
 
               <div className="selectquantity">
@@ -158,7 +222,7 @@ const QuickView = ({ product, setShowModal }) => {
                     <input
                       type="number"
                       step="1"
-                      value={quantity}
+                      value={productQuantity}
                       name="quantity"
                       className="quantity-field"
                     />
@@ -197,12 +261,18 @@ const QuickView = ({ product, setShowModal }) => {
               </div>
 
               <div className="cta">
-                <a className="checkout btn flex" href="">
-                  proceed to checkout
-                </a>
-                <a className="addtocart btn flex" href="">
-                  add to cart
-                </a>
+                <button className="checkout btn flex" onClick={addToCart}>
+                  Add to Cart
+                </button>
+                <button
+                  onClick={() => {
+                    console.log(product);
+                    dispatch(addItemToFav(product));
+                  }}
+                  className="addtocart btn flex"
+                >
+                  add to Wishlist
+                </button>
               </div>
             </div>
           </div>
