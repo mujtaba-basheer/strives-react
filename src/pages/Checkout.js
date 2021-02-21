@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getUserDetails } from "../redux/actions/userActions";
 import { payOrder } from "../redux/actions/orderActions";
-import { checkCoupon } from "../redux/actions/orderActions";
+import { checkCoupon, placeOrder } from "../redux/actions/orderActions";
 import { getCart } from "../redux/actions/cartActions";
 
 import Navbar from "../components/Navbar";
@@ -36,6 +36,12 @@ function CheckoutArea() {
     (state) => state.orderPay
   );
 
+  const [cartValue, setCartValue] = useState({
+    total: 0,
+    subtotal: 0,
+    discount: 0,
+  });
+
   const history = useHistory();
   const [paymentType, setPaymentType] = useState("cod");
   const [sdkReady, setSdkReady] = useState(false);
@@ -47,9 +53,11 @@ function CheckoutArea() {
     text: "",
   });
   const { cartItems } = useSelector((state) => state.cart);
-  const { coupon: couponData, error: couponError } = useSelector(
-    (state) => state.orderCoupon
-  );
+  const {
+    coupon: couponData,
+    error: couponError,
+    loading: couponLoading,
+  } = useSelector((state) => state.orderCoupon);
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -79,13 +87,27 @@ function CheckoutArea() {
       if (cartItems.length === 0) history.push("/");
     } */
 
-    if (cartItems.length > 0) {
+    /* if (cartItems.length > 0) {
       let total = 0;
       cartItems.forEach((cart) => {
         console.log(cart.sp);
         total += cart.sp;
       });
-      /* setTotalCartValue(total); */
+      setTotalCartValue(total);
+    } */
+
+    if (cartItems.length > 0) {
+      let subtotal = 0,
+        total = 0;
+      cartItems.forEach((cart) => {
+        console.log(cart);
+        total += cart.mrp;
+        subtotal += cart.sp;
+      });
+      setCartValue({
+        subtotal: subtotal,
+        total: total,
+      });
     }
 
     if (user || error) {
@@ -124,6 +146,36 @@ function CheckoutArea() {
 
   const onSubmit = (data) => {
     console.log(data);
+    const orderObj = {
+      userDetails: {
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+      },
+      totalMP: cartValue.subtotal,
+      totalSP: cartValue.subtotal,
+
+      items: cartItems,
+
+      address: {
+        address1: data.address1,
+        address2: data.address2,
+        city: data.city,
+        state: data.state,
+        landmark: data.landmark,
+        pincode: data.pincode,
+      },
+      paymentMethod: paymentType,
+      coupon: couponData || "",
+    };
+
+    console.log(orderObj);
+
+    if (paymentType === "cod") {
+      dispatch(placeOrder(orderObj));
+    } else if (paymentType === "rzp") {
+      dispatch(payOrder(cartValue.total, orderObj));
+    }
   };
 
   const testRazorpay = () => {
@@ -151,7 +203,6 @@ function CheckoutArea() {
   function applyCoupon() {
     console.log(applyCouponDetails.name);
     dispatch(checkCoupon(applyCouponDetails.name, "1500"));
-    /* console.log(coupon); */
     if (couponData) {
       console.log(couponData);
 
@@ -638,8 +689,8 @@ function CheckoutArea() {
                           className="radio-input"
                           name="razorpay"
                           id="razorpay"
-                          checked={paymentType === "razorpay"}
-                          onChange={() => setPaymentType("razorpay")}
+                          checked={paymentType === "rzp"}
+                          onChange={() => setPaymentType("rzp")}
                         />
                         <label htmlFor="razorpay" className="radio-label">
                           Razorpay
@@ -672,33 +723,10 @@ function CheckoutArea() {
                 <p className="ordersummary__heading">Order Summary</p>
 
                 <div className="ordersummary__items">
-                  <ul className="ordersummary__items__list">
-                    <li className="ordersummary__items__list--item flex">
-                      <img
-                        className="ordersummary__items__list--item--image"
-                        src={image}
-                        alt="image"
-                      />
-                      <div className="ordersummary__items__list--item--productdetails flex">
-                        <div className="ordersummary__items__list--item--productdetails--name">
-                          <p className="ordersummary__items__list--item--productdetails--name--main">
-                            Collar T-shirt
-                          </p>
-                          <p className="ordersummary__items__list--item--productdetails--name--description">
-                            Gery <span>x2</span>{" "}
-                          </p>
-                        </div>
-                        <div className="ordersummary__items__list--item--productdetails--price">
-                          ₹900
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-
                   <div className="total">
                     <div className="total-gst flex">
                       <p className="total-gst--text">Total Price (Inc GST)</p>
-                      <p className="total-gst--amount">₹900</p>
+                      <p className="total-gst--amount">₹{cartValue.total}</p>
                     </div>
                     <div className="total-shipping flex">
                       <p className="total-shipping--text">Estimated Shipping</p>
@@ -707,9 +735,21 @@ function CheckoutArea() {
                   </div>
 
                   <div className="subtotal">
-                    <div className="subtotal__heading flex">
-                      <p className="subtotal__heading--text">Subtotal</p>
-                      <p className="subtotal__heading--amount">₹1800</p>
+                    <div className="subtotal__heading">
+                      {couponData && (
+                        <div className="discount flex">
+                          <p className="subtotal__heading--text">Discount</p>
+                          <p className="subtotal__heading--amount">
+                            ₹{cartValue.subtotal}
+                          </p>
+                        </div>
+                      )}
+                      <div className="flex">
+                        <p className="subtotal__heading--text">Subtotal</p>
+                        <p className="subtotal__heading--amount">
+                          ₹{cartValue.subtotal}
+                        </p>
+                      </div>
                     </div>
                     <ul>
                       <li>Free Delivery</li>
@@ -724,10 +764,10 @@ function CheckoutArea() {
                   type="submit"
                   id="placeorder"
                   className="ordersummarybox__footer--button"
-                  onClick={(e) => {
+                  /* onClick={(e) => {
                     e.preventDefault();
                     testRazorpay();
-                  }}
+                  }} */
                 >
                   Place your order
                 </button>

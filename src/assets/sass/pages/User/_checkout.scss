@@ -292,7 +292,8 @@
     .ordersummarybox {
       border: 1px solid rgba(44, 61, 80, 0.2);
       width: 400px;
-      height: 498px;
+      /* height: 498px; */
+      height: auto;
       padding: 46px 30px 60px 32px;
 
       .ordersummary {
@@ -390,6 +391,10 @@
           margin-top: 10px;
           &__heading {
             justify-content: space-between;
+
+            div {
+              justify-content: space-between;
+            }
 
             &--text {
               font-size: 16px;

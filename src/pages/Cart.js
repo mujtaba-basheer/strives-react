@@ -62,7 +62,7 @@ function CartArea() {
     }
   }, [error, cartItems]);
 
-  function showApplyCoupon() {
+  /* function showApplyCoupon() {
     document.querySelector(".couponbox-input").style.display = "none";
     document.querySelector(".applycoupon").style.display = "block";
   }
@@ -82,7 +82,7 @@ function CartArea() {
       inputState: "disabled",
       couponApplied: true,
     });
-  }
+  } */
 
   return (
     <section className="content cart">
@@ -226,7 +226,7 @@ function CartArea() {
             </div>
           </div>
 
-          <div className="couponbox">
+          {/* <div className="couponbox">
             <button
               onClick={showApplyCoupon}
               className="couponbox-input flex"
@@ -295,18 +295,18 @@ function CartArea() {
                 )}
               </div>
             </div>
-          </div>
-          <button
+          </div> */}
+          {/* <button
             type="submit"
             id="placeorder"
             className="mobile__placeorder--button"
             onClick={(e) => {
               e.preventDefault();
-              /* testRazorpay(); */
+              testRazorpay();
             }}
           >
             Place your order
-          </button>
+          </button> */}
         </div>
       </div>
     </section>
