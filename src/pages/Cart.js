@@ -11,6 +11,8 @@ import Footer from "../components/Footer";
 import coupon from "../assets/images/checkout/coupon.png";
 import trashicon from "./User/images/trash.png";
 import hearticon from "../assets/images/icons/heart.png";
+import Alert from "../components/Alert/Alert";
+import Loader from "../components/Loader/Loader";
 
 const Cart = () => {
   return (
@@ -32,7 +34,7 @@ function CartArea() {
   });
   const { userInfo } = useSelector((state) => state.userLogin);
   const { user, error } = useSelector((state) => state.userDetails);
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems, loading } = useSelector((state) => state.cart);
 
   const history = useHistory();
   const [paymentType, setPaymentType] = useState("cod");
@@ -90,68 +92,90 @@ function CartArea() {
       <div className="heading">
         <p className="heading__text">Cart</p>
       </div>
+
+      {error && <Alert type="danger" text={error} />}
+
+      {loading && <Loader height={100} />}
+
+      {!loading && cartItems.length === 0 && (
+        <h1
+          style={{
+            textAlign: "center",
+          }}
+        >
+          No Products has been added to the wishlist
+        </h1>
+      )}
       <div className="cartbox flex">
         <div className="cartbox__left">
           <div className="cartlist">
-            <ul className="cartlist__list">
-              {cartItems.map((product, index) => (
-                <li className="cartlist__list--item" key={index}>
-                  <div className="cartlist__list--itemcontainer flex">
-                    <div className="productdetails flex">
-                      <div className="image">
-                        <img src={product.gallery.small[0].src} alt="thumb" />
+            {cartItems.length > 0 && (
+              <ul className="cartlist__list">
+                {cartItems.map((product, index) => (
+                  <li className="cartlist__list--item" key={index}>
+                    <div className="cartlist__list--itemcontainer flex">
+                      <div className="productdetails flex">
+                        <div className="image">
+                          <img src={product.gallery.small[0].src} alt="thumb" />
+                        </div>
+                        <div className="productdetails__subdetails">
+                          <p className="name">{product.name}</p>
+                          {product.size && (
+                            <p className="size">
+                              Size: {product.size.toUpperCase()}
+                            </p>
+                          )}
+                          <p className="quantity">
+                            Quantity: {product.quantity}
+                          </p>
+                          <p className="color">Color: Grey</p>
+                          <p className="price">Price: ₹{product.sp}</p>
+                        </div>
                       </div>
-                      <div className="productdetails__subdetails">
-                        <p className="name">{product.name}</p>
-                        <p className="size">Size: M</p>
-                        <p className="quantity">Quantity: 10</p>
-                        <p className="color">Color: Grey</p>
-                        <p className="price">Price: ₹{product.sp}</p>
+                      <span className="mobileline"></span>
+                      <div className="buttons__container flex">
+                        <div className="buttons flex">
+                          <button
+                            className="buttons__remove flex"
+                            /*  onClick={() => removeFromWishlist(product._id)} */
+                          >
+                            <img
+                              src={trashicon}
+                              alt="trash"
+                              style={{
+                                width: "11px",
+                                height: "14px",
+                                marginRight: "4px",
+                              }}
+                            />
+                            Remove Item
+                          </button>
+                          <button
+                            /* onClick={addToCart} */
+                            className="buttons__wishlist flex"
+                          >
+                            <img
+                              style={{
+                                width: "14px",
+                                height: "13px",
+                                marginRight: "5px",
+                              }}
+                              src={hearticon}
+                              alt="heart"
+                            />
+                            Move to Wishlist
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <span className="mobileline"></span>
-                    <div className="buttons__container flex">
-                      <div className="buttons flex">
-                        <button
-                          className="buttons__remove flex"
-                          /*  onClick={() => removeFromWishlist(product._id)} */
-                        >
-                          <img
-                            src={trashicon}
-                            alt="trash"
-                            style={{
-                              width: "11px",
-                              height: "14px",
-                              marginRight: "4px",
-                            }}
-                          />
-                          Remove Item
-                        </button>
-                        <button
-                          /* onClick={addToCart} */
-                          className="buttons__wishlist flex"
-                        >
-                          <img
-                            style={{
-                              width: "14px",
-                              height: "13px",
-                              marginRight: "5px",
-                            }}
-                            src={hearticon}
-                            alt="heart"
-                          />
-                          Move to Wishlist
-                        </button>
-                      </div>
-                    </div>
-                  </div>
 
-                  {index <= cartItems.length - 2 && (
-                    <span className="line"></span>
-                  )}
-                </li>
-              ))}
-            </ul>
+                    {index <= cartItems.length - 2 && (
+                      <span className="line"></span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
 
@@ -218,7 +242,7 @@ function CartArea() {
                 onClick={(e) => {
                   e.preventDefault();
                   /* testRazorpay(); */
-                  history.push("/checkout")
+                  history.push("/checkout");
                 }}
               >
                 Place your order

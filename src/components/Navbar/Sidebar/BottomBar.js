@@ -8,7 +8,7 @@ const BottomBar = ({ setCurrentSidebarScreen }) => {
 
   return (
     <ul className="flex bottom-area">
-      <li>
+      <li onClick= {() => history.push("/cart")}>
         <Link>
           <i className="fas fa-shopping-cart"></i>
         </Link>
@@ -25,7 +25,7 @@ const BottomBar = ({ setCurrentSidebarScreen }) => {
         </Link>
       </li>
       <li onClick={() => setCurrentSidebarScreen("home")}>
-        <Link>
+        <Link to="/wishlist">
           <i className="fas fa-heart"></i>
         </Link>
       </li>

@@ -33,7 +33,9 @@ const Wishlist = () => {
   }
 
   useEffect(() => {
-    if (!userInfo) history.push("/login");
+    /* if (!userInfo) history.push("/login"); */
+
+    document.title = "Wishlist";
 
     if (favItems.length === 0) {
       dispatch(getFav());
@@ -95,8 +97,15 @@ const Wishlist = () => {
                           </div>
                           <div className="productdetails__subdetails">
                             <p className="name">{product.name}</p>
-                            <p className="size">Size: M</p>
-                            <p className="quantity">Quantity: 10</p>
+
+                            {product.quantity && (
+                              <p className="size">Size: M</p>
+                            )}
+                            {product.quantity && (
+                              <p className="quantity">
+                                Quantity: {product.quantity}
+                              </p>
+                            )}
                             <p className="color">Color: Grey</p>
                             <p className="price">Price: ₹{product.sp}</p>
                           </div>

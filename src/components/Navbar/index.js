@@ -280,7 +280,7 @@ const Index = () => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/wishlist"
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >

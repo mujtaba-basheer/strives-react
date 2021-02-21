@@ -16,9 +16,12 @@ import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.p
 import productimage from "./images/image.png";
 import previous from "./images/previous.png";
 import next from "./images/next.png";
+import heart from "./images/heart.png";
+import heartfill from "./images/heartfill.png";
 
 import Loader from "../../components/Loader/Loader";
 import BottomBar from "./components/BottomBar/BottomBar";
+import Wishlist from "../User/Wishlist";
 
 const AllProduct = () => {
   return (
@@ -49,6 +52,7 @@ function AllProductArea() {
 
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
+  const { favItems } = useSelector((state) => state.fav);
 
   function clickfilter(e) {
     console.log(e.target.value);
@@ -81,7 +85,6 @@ function AllProductArea() {
       document.getElementById("showcase-img" + index).src = images[0];
     }
   }
-
 
   useEffect(() => {
     dispatch(
@@ -311,6 +314,22 @@ function AllProductArea() {
             {products &&
               products.map((product, index) => (
                 <div className="product-item">
+                  <p
+                    className="heart"
+                    onClick={() => {
+                      console.log(product);
+                      dispatch(addItemToFav(product));
+                    }}
+                  >
+                    <img
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                      }}
+                      src={heart}
+                      alt="heart"
+                    />
+                  </p>
                   <div
                     className="product-item__image"
                     onMouseEnter={() =>
@@ -360,7 +379,7 @@ function AllProductArea() {
                         ₹ {product.mrp}
                       </p>
                     </span>
-                    <button
+                    {/* <button
                       onClick={() => {
                         console.log(product);
                         dispatch(addItemToFav(product));
@@ -376,7 +395,7 @@ function AllProductArea() {
                       }}
                     >
                       Add to cart
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               ))}

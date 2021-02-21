@@ -218,6 +218,18 @@
 
       .product-item {
         height: 515px;
+        position: relative;
+
+        .heart {
+          position: absolute;
+          z-index: 1;
+          top: 25px;
+          right: 25px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
 
         &__image {
           height: 386px;
