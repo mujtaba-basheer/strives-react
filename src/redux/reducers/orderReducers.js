@@ -24,6 +24,7 @@ import {
   ORDER_COUPON_REQUEST,
   ORDER_COUPON_SUCCESS,
   ORDER_COUPON_FAIL,
+  ORDER_COUPON_RESET,
 } from "../constants/orderConstants";
 
 export const orderCouponReducer = (state = { loading: true }, action) => {
@@ -34,6 +35,8 @@ export const orderCouponReducer = (state = { loading: true }, action) => {
       return { loading: false, coupon: action.payload };
     case ORDER_COUPON_FAIL:
       return { loading: false, error: action.payload };
+    case ORDER_COUPON_RESET:
+      return { loading: false };
     default:
       return state;
   }

@@ -21,6 +21,7 @@ import {
   ORDER_COUPON_REQUEST,
   ORDER_COUPON_SUCCESS,
   ORDER_COUPON_FAIL,
+  ORDER_COUPON_RESET,
 } from "../constants/orderConstants";
 
 export const checkCoupon = (code, amount) => async (dispatch, getState) => {
@@ -50,6 +51,10 @@ export const checkCoupon = (code, amount) => async (dispatch, getState) => {
           : error.message,
     });
   }
+};
+
+export const resetCoupon = () => async (dispatch) => {
+  dispatch({ type: ORDER_COUPON_RESET });
 };
 
 export const getOrderDetails = (id) => async (dispatch, getState) => {
