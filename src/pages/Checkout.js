@@ -79,7 +79,7 @@ function CheckoutArea() {
     document.title = "Checkout";
     console.log(cartItems);
 
-    if (cartItems.length === 0) history.push("/");
+    if (cartItems.length === 0) history.push("/cart");
 
     /* if (cartItems.length === 0) {
       dispatch(getCart());
@@ -212,6 +212,22 @@ function CheckoutArea() {
         couponApplied: true,
         text: "Coupon Applied Successfully",
       });
+
+      if (couponData.discount_type === "percent") {
+        let discountValue = couponData.amount,
+          subtotal = 0,
+          discount = 0;
+
+        discount = (discountValue / 100) * cartValue.subtotal;
+        subtotal = cartValue.subtotal - discount;
+        setCartValue({
+          ...cartValue,
+          total: cartValue.subtotal,
+          subtotal: subtotal,
+          discount: discount,
+        });
+        cartValue.discount = cartValue.subtotal;
+      }
     } else if (couponError) {
       console.log(couponError);
       setApplyCouponDetails({
@@ -740,7 +756,7 @@ function CheckoutArea() {
                         <div className="discount flex">
                           <p className="subtotal__heading--text">Discount</p>
                           <p className="subtotal__heading--amount">
-                            ₹{cartValue.subtotal}
+                            ₹{cartValue.discount}
                           </p>
                         </div>
                       )}
@@ -776,7 +792,10 @@ function CheckoutArea() {
 
             <div className="couponbox">
               <button
-                onClick={showApplyCoupon}
+                onClick={(e) => {
+                  e.preventDefault();
+                  showApplyCoupon();
+                }}
                 className="couponbox-input flex"
                 type="button"
               >
@@ -816,7 +835,8 @@ function CheckoutArea() {
                     className="applycoupon__input--input"
                     placeholder="Enter Coupon"
                     type="text"
-                    disabled={applyCouponDetails.inputState}
+                    /* disabled={applyCouponDetails.inputState} */
+                    disabled={couponData ? "true" : ""}
                     onChange={(e) =>
                       setApplyCouponDetails({
                         ...applyCouponDetails,
@@ -824,9 +844,12 @@ function CheckoutArea() {
                       })
                     }
                   />
-                  {applyCouponDetails.couponApplied ? (
+                  {couponData ? (
                     <button
-                      onClick={removeCoupon}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        removeCoupon();
+                      }}
                       type="button"
                       className="applycoupon__input--button"
                     >
@@ -834,7 +857,10 @@ function CheckoutArea() {
                     </button>
                   ) : (
                     <button
-                      onClick={applyCoupon}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        applyCoupon();
+                      }}
                       type="button"
                       className="applycoupon__input--button"
                     >
@@ -842,10 +868,28 @@ function CheckoutArea() {
                     </button>
                   )}
 
-                  {applyCouponDetails.text && (
+                  {/* {applyCouponDetails.text && (
                     <Alert
                       text={applyCouponDetails.text}
                       type={couponData ? "success" : "danger"}
+                      background="true"
+                      timer="5000"
+                    />
+                  )} */}
+
+                  {couponData && (
+                    <Alert
+                      text="Coupon Applied Successfully"
+                      type="success"
+                      background="true"
+                      timer="5000"
+                    />
+                  )}
+
+                  {couponError && (
+                    <Alert
+                      text={couponError}
+                      type="danger"
                       background="true"
                       timer="5000"
                     />

@@ -379,23 +379,6 @@ function AllProductArea() {
                         ₹ {product.mrp}
                       </p>
                     </span>
-                    {/* <button
-                      onClick={() => {
-                        console.log(product);
-                        dispatch(addItemToFav(product));
-                      }}
-                    >
-                      Add to wishlist
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        console.log(product);
-                        dispatch(addItemToCart(product, 1, "M"));
-                      }}
-                    >
-                      Add to cart
-                    </button> */}
                   </div>
                 </div>
               ))}

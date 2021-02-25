@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getCart } from "../redux/actions/cartActions";
+import { getCart, removeItemFromCart } from "../redux/actions/cartActions";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -88,7 +88,6 @@ function CartArea() {
 
   return (
     <section className="content cart">
-      {console.log(cartItems)}
       <div className="heading">
         <p className="heading__text">Cart</p>
       </div>
@@ -137,7 +136,9 @@ function CartArea() {
                         <div className="buttons flex">
                           <button
                             className="buttons__remove flex"
-                            /*  onClick={() => removeFromWishlist(product._id)} */
+                            onClick={() => {
+                              dispatch(removeItemFromCart(product._id, product.size));
+                            }}
                           >
                             <img
                               src={trashicon}

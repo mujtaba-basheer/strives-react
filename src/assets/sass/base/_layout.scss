@@ -63,11 +63,19 @@
   }
 
   .extra-options li {
-    margin: 0 12.5px;
+    margin: 0 16.5px;
   }
 
   .extra-options li a {
     color: #2c3d50;
+    position: relative;
+  }
+
+  .number {
+    margin-left: 2px;
+    position: absolute;
+    top: -14px;
+    right: -21px;
   }
 
   .scrolled {

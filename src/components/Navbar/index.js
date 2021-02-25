@@ -31,6 +31,47 @@ const Index = () => {
 
   const [searchText, setSearchText] = useState("");
 
+  const [cartLengthValue, setCartLengthValue] = useState(99);
+  const [wishlistLengthValue, setWishlistLengthValue] = useState(99);
+
+  const { cartItems } = useSelector((state) => state.cart);
+  const { favItems } = useSelector((state) => state.fav);
+
+  /* const [numberStyles, setNumberStyles] = useState({
+    top: "-18px",
+    right: "-21px",
+  }); */
+
+  /* const [singleNumberStyles, setSingleNumberStyles] = useState({
+    top: "-14px",
+    right: "-21px",
+  }); */
+
+  const [cartValueIconStyles, setCartValueIconStyles] = useState({
+    top: "-11px",
+    right: "-21px",
+  });
+
+  const [WishlistValueIconStyles, setWishlistValueIconStyles] = useState({
+    top: "-16px",
+    right: "-21px",
+  });
+
+  /* const singleNumberStyles = {
+    top: "-18px",
+    right: "-21px",
+  }; */
+
+  /* const [doubleNumberStyles, setDoubleNumberStyles] = useState({
+    top: "-14px",
+    right: "-21px",
+  }); */
+
+  /* const doubleNumberStyles = {
+    top: "-14px",
+    right: "-23px",
+  }; */
+
   const changeNavbar = () => {
     var navbar = document.getElementsByClassName("navbar")[0];
     var mainNav = document.getElementsByClassName("main-nav")[0];
@@ -71,6 +112,33 @@ const Index = () => {
   useEffect(() => {
     const urlLocation = window.location.pathname;
 
+    setCartLengthValue(cartItems.length);
+    setWishlistLengthValue(favItems.length);
+
+    if (cartLengthValue > 9) {
+      setCartValueIconStyles({
+        top: "-12px",
+        right: "-21px",
+      });
+    } else if (cartLengthValue < 10) {
+      setCartValueIconStyles({
+        top: "-11px",
+        right: "-16px",
+      });
+    }
+
+    if (wishlistLengthValue > 9) {
+      setWishlistValueIconStyles({
+        top: "-17px",
+        right: "-21px",
+      });
+    } else if (wishlistLengthValue < 10) {
+      setWishlistValueIconStyles({
+        top: "-15px",
+        right: "-15px",
+      });
+    }
+
     if (urlLocation !== "/") {
       var navbar = document.getElementsByClassName("navbar")[0];
       navbar.style.backgroundColor = "#fff";
@@ -80,7 +148,13 @@ const Index = () => {
       window.addEventListener("scroll", changeNavbar);
       setnavbarHeigt(110);
     }
-  }, [window.location.pathname]);
+  }, [
+    window.location.pathname,
+    cartLengthValue,
+    wishlistLengthValue,
+    cartItems.length,
+    favItems.length,
+  ]);
 
   function changeNavbarColor() {
     var navbar = document.getElementsByClassName("navbar")[0];
@@ -283,6 +357,7 @@ const Index = () => {
                 to="/wishlist"
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
+                className="flex"
               >
                 <img
                   style={{
@@ -292,6 +367,11 @@ const Index = () => {
                   src={hearticon}
                   alt="heart"
                 />
+                {wishlistLengthValue > 0 && (
+                  <p style={WishlistValueIconStyles} className="number">
+                    {wishlistLengthValue}
+                  </p>
+                )}
               </Link>
             </li>
             <li>
@@ -308,6 +388,11 @@ const Index = () => {
                   src={carticon}
                   alt="cart"
                 />
+                {cartLengthValue > 0 && (
+                  <p style={cartValueIconStyles} className="number">
+                    {cartLengthValue}
+                  </p>
+                )}
               </Link>
             </li>
             <li onClick={opensearchdiv}>

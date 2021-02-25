@@ -14,7 +14,6 @@ import ChangePassword from "./pages/User/ChangePassword";
 import ManageAddress from "./pages/User/ManageAddress";
 import Wishlist from "./pages/User/Wishlist";
 
-
 import Checkout from "./pages/Checkout";
 
 /* Product Pages */
@@ -26,9 +25,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
+        <Route exact path="/" component={Home} />
         <Route exact path="/login">
           <Login />
         </Route>
