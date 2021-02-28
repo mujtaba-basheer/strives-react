@@ -33,7 +33,7 @@ export const checkCoupon = (code, amount) => async (dispatch, getState) => {
     } = getState();
     const config = { headers: { "Content-Type": "application/json" } };
 
-    if (userInfo) config["Authorization"] = `Bearer ${userInfo.token}`;
+    if (userInfo) config.headers["Authorization"] = `Bearer ${userInfo.token}`;
 
     const { data } = await apiCall.post(
       "check-coupon",
@@ -101,7 +101,7 @@ export const placeOrder = (order) => async (dispatch, getState) => {
   };
 
   try {
-    if (userInfo) config["Authorization"] = `Bearer ${userInfo.token}`;
+    if (userInfo) config.headers["Authorization"] = `Bearer ${userInfo.token}`;
     if (order.paymentMethod === "rzp") order.paymentDetails = orderPay.order;
 
     await apiCall.post("order", order, config);
@@ -226,22 +226,21 @@ export const deliverOrder = (orderId) => async (dispatch, getState) => {
 };
 
 export const listMyOrders = () => async (dispatch, getState) => {
+  const {
+    userLogin: { userInfo },
+  } = getState();
+
+  const config = {
+    headers: {},
+  };
+
   try {
+    if (userInfo) config.headers["Authorization"] = `Bearer ${userInfo.token}`;
     dispatch({ type: ORDER_LIST_MY_REQUEST });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+    const { data } = await apiCall.get("orders", config);
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-
-    const { data } = await apiCall.get(`/api/orders/myorders`, config);
-
-    dispatch({ type: ORDER_LIST_MY_SUCCESS, payload: data });
+    dispatch({ type: ORDER_LIST_MY_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
       type: ORDER_LIST_MY_FAIL,

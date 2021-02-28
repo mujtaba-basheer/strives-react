@@ -149,6 +149,7 @@ export const getCart = () => async (dispatch, getState) => {
       const { data } = await apiCall.get("cart", config);
       dispatch({ type: CART_GET_SUCCESS });
       dispatch({ type: CART_SET, payload: data.data });
+      localStorage.setItem("cartItems", JSON.stringify(data.data));
     } else {
       const { cart } = getState();
       dispatch({
