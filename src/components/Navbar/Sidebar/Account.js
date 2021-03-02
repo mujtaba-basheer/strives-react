@@ -22,7 +22,7 @@ const Account = ({ closeSideMenu }) => {
     <>
       <ul className="sidebar-account">
         <li>
-          <Link>My Orders</Link>
+          <Link to="/my-orders">My Orders</Link>
         </li>
 
         <li>

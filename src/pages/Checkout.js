@@ -5,7 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getUserDetails } from "../redux/actions/userActions";
 import { payOrder } from "../redux/actions/orderActions";
-import { checkCoupon, placeOrder } from "../redux/actions/orderActions";
+import {
+  checkCoupon,
+  resetCoupon,
+  placeOrder,
+} from "../redux/actions/orderActions";
 import { getCart } from "../redux/actions/cartActions";
 
 import Navbar from "../components/Navbar";
@@ -127,7 +131,21 @@ function CheckoutArea() {
         type: user.address[0].type,
         state: user.address.state,
       });
-    } else dispatch(getUserDetails());
+    } /* else dispatch(getUserDetails()); */ else {
+      setFormData({
+        name: "",
+        address1: "",
+        address2: "",
+        city: "",
+        state: "",
+        landmark: "",
+        pincode: "",
+        phone: "",
+        type: "",
+        email: "",
+        custphone: "",
+      });
+    }
 
     const addRzpScript = async () => {
       const script = document.createElement("script");
@@ -848,7 +866,9 @@ function CheckoutArea() {
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        removeCoupon();
+                        console.log("ck");
+                        /* removeCoupon(); */
+                        dispatch(resetCoupon());
                       }}
                       type="button"
                       className="applycoupon__input--button"

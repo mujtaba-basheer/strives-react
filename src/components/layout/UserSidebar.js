@@ -14,7 +14,7 @@ const UserSidebar = ({ selected }) => {
     <div className="usersidebarbackground">
       <div className="usersidebar">
         <div className="myorders">
-          <Link className="flex usersidebar__heading">
+          <Link to="my-orders" className="flex usersidebar__heading">
             <img
               src={myordersicon}
               style={{

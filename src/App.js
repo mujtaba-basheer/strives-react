@@ -20,53 +20,38 @@ import Checkout from "./pages/Checkout";
 import AllProduct from "./pages/Product/AllProduct";
 import SingleProduct from "./pages/Product/SingleProduct";
 import Cart from "./pages/Cart";
+import MyOrders from "./pages/User/MyOrders";
 
 const App = () => {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
-        </Route>
-        <Route exact path="/forgot">
-          <ForgotPassword />
-        </Route>
 
-        <Route exact path="/my-account">
-          <MyAccount />
-        </Route>
+        <Route exact path="/login" component={Login} />
 
-        <Route exact path="/change-password">
-          <ChangePassword />
-        </Route>
+        <Route exact path="/register" component={Register} />
 
-        <Route exact path="/manage-address">
-          <ManageAddress />
-        </Route>
+        <Route exact path="/forgot" component={ForgotPassword} />
 
-        <Route exact path="/wishlist">
-          <Wishlist />
-        </Route>
+        <Route exact path="/my-account" component={MyAccount} />
 
-        <Route exact path="/checkout">
-          <Checkout />
-        </Route>
+        <Route exact path="/my-orders" component={MyOrders} />
 
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
+        <Route exact path="/change-password" component={ChangePassword} />
 
-        <Route exact path="/products">
-          <AllProduct />
-        </Route>
+        <Route exact path="/manage-address" component={ManageAddress} />
 
-        <Route exact path="/products/:id">
-          <SingleProduct />
-        </Route>
+        <Route exact path="/wishlist" component={Wishlist} />
+
+        <Route exact path="/checkout" component={Checkout} />
+
+        <Route exact path="/cart" component={Cart} />
+
+        <Route exact path="/products" component={AllProduct} />
+
+        <Route exact path="/products/:id" component={SingleProduct} />
+
       </Switch>
     </Router>
   );

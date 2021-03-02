@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getFav, removeItemFromFav } from "../../redux/actions/cartActions";
 
+import { listMyOrders } from "../../redux/actions/orderActions";
+
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import UserSidebar from "../../components/layout/UserSidebar";
@@ -15,7 +17,7 @@ import trashicon from "./images/trash.png";
 import thumb from "./images/thumb.png";
 import backicon from "../../assets/images/icons/back.png";
 
-const Wishlist = () => {
+const MyOrders = () => {
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ const Wishlist = () => {
   const { userInfo } = useSelector((state) => state.userLogin);
   const { favItems } = useSelector((state) => state.fav);
   const { error, loading } = useSelector((state) => state.favGet);
+
+  const { orders } = useSelector((state) => state.orderListMy);
 
   function addToCart() {
     console.log("clicked");
@@ -35,11 +39,15 @@ const Wishlist = () => {
   useEffect(() => {
     /* if (!userInfo) history.push("/login"); */
 
-    document.title = "Wishlist";
+    document.title = "Orders";
 
     if (favItems.length === 0) {
       dispatch(getFav());
     }
+
+    console.log(orders);
+
+    dispatch(listMyOrders());
   }, [userInfo, history, dispatch, favItems]);
 
   return (
@@ -60,12 +68,12 @@ const Wishlist = () => {
               />{" "}
               Back to shopping
             </Link>
-            <UserSidebar selected="Wishlist" />
+            <UserSidebar selected="MyOrders" />
           </div>
 
           <div className="myaccount__right">
             <div className="header flex">
-              <p className="header__text">Wishlist</p>
+              <p className="header__text">My Orders</p>
             </div>
 
             {error && <Alert type="danger" text={error} />}
@@ -162,4 +170,4 @@ const Wishlist = () => {
   );
 };
 
-export default Wishlist;
+export default MyOrders;
