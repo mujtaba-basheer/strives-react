@@ -1,5 +1,5 @@
 import React from "react";
-import { policies, social, contact } from "./data";
+import { policies, social, contact, myaccount, followuson } from "./data";
 
 import logo from "../../assets/images/footer/logo.png";
 import logo_big from "../../assets/images/footer/logo_big.png";
@@ -7,16 +7,37 @@ import logo_big from "../../assets/images/footer/logo_big.png";
 const Index = () => {
   return (
     <footer className="footer">
+      <div className="footer__policies about">
+        <div className="footer__policies--heading">About The Strives</div>
+        <p className="footer-text">
+          At The Strives we sell amazing products, Our Hand Picked Products are
+          Best In Market. Need Anything Cool, Start Shopping with Us. We are
+          Best Online Store in the market.
+        </p>
+      </div>
+
       <div className="footer__policies">
-        <div className="footer__policies--heading">Policies</div>
+        <div className="footer__policies--heading">My Account</div>
         <ul className="footer__policies--list">
-          {policies.map(({ text, url }, index) => (
+          {myaccount.map(({ text, url }, index) => (
             <li className="footer__policies--list-item" key={index}>
               {text}
             </li>
           ))}
         </ul>
       </div>
+
+      <div className="footer__policies">
+        <div className="footer__policies--heading">Follow us on</div>
+        <ul className="footer__policies--list">
+          {followuson.map(({ text, url }, index) => (
+            <li className="footer__policies--list-item" key={index}>
+              {text}
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="footer__social">
         <div className="footer__social--heading">Follow us on</div>
         <ul className="footer__social--list">
@@ -34,7 +55,7 @@ const Index = () => {
         </ul>
       </div>
       <div className="footer__contact">
-        <div className="footer__contact--heading">Customer support</div>
+        <div className="footer__contact--heading heading">Customer support</div>
         <ul className="footer__contact--list">
           {contact.map(({ icon, text, color, subtext, type, href }, index) => (
             <li className="footer__contact--list-item" key={index}>
@@ -57,6 +78,13 @@ const Index = () => {
         <source srcset={logo} />
         <img className="feature__logo--img" alt="footer logo" src={logo} />
       </picture>
+
+      {/* <div className="copyright">
+        <p>
+          Copyright 2021. All rights reserved by The Strives a unit of C.S
+          venture PVT LTD.
+        </p>
+      </div> */}
     </footer>
   );
 };

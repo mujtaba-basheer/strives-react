@@ -7,6 +7,22 @@ export const policies = [
   { text: "About Us", url: "" },
 ];
 
+export const myaccount = [
+  { text: "My Account", url: "" },
+  { text: "My Orders", url: "" },
+  { text: "My Wishlist", url: "" },
+  { text: "My Address", url: "" },
+  { text: "My Coupons", url: "" },
+];
+
+export const followuson = [
+  { text: "Returns & Refund", url: "" },
+  { text: "FAQs", url: "" },
+  { text: "Blog", url: "" },
+  { text: "Privacy policy", url: "" },
+  { text: "About us", url: "" },
+];
+
 export const social = [
   { icon: "twitter", title: "Twitter", color: "#1B91DA" },
   { icon: "instagram", title: "Instagram", color: "#E1306C" },
