@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getFav, removeItemFromFav } from "../../redux/actions/cartActions";
 
-import { listMyOrders } from "../../redux/actions/orderActions";
+import { listMyOrders, loading } from "../../redux/actions/orderActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -24,9 +24,9 @@ const MyOrders = () => {
 
   const { userInfo } = useSelector((state) => state.userLogin);
   const { favItems } = useSelector((state) => state.fav);
-  const { error, loading } = useSelector((state) => state.favGet);
+  /* const { error, loading } = useSelector((state) => state.favGet); */
 
-  const { orders } = useSelector((state) => state.orderListMy);
+  const { orders, loading } = useSelector((state) => state.orderListMy);
 
   function addToCart() {
     console.log("clicked");
@@ -45,13 +45,20 @@ const MyOrders = () => {
       dispatch(getFav());
     }
 
-    console.log(orders);
+    /* console.log(orders.length); */
 
-    dispatch(listMyOrders());
-  }, [userInfo, history, dispatch, favItems]);
+    /* dispatch(listMyOrders()); */
+
+    if (!loading) {
+      if (orders.length === 0) {
+        dispatch(listMyOrders());
+      }
+    }
+  }, [userInfo, history, dispatch, favItems, orders]);
 
   return (
     <>
+      {console.log(orders)}
       <Navbar />
       <section className="content container mb-2">
         <div className="userprofile flex">
@@ -76,89 +83,83 @@ const MyOrders = () => {
               <p className="header__text">My Orders</p>
             </div>
 
-            {error && <Alert type="danger" text={error} />}
+            {/* {error && <Alert type="danger" text={error} />} */}
 
             {loading && <Loader height={100} />}
 
-            {!loading && favItems.length === 0 && (
+            {!loading && orders && orders.length === 0 && (
               <h1
                 style={{
                   textAlign: "center",
                 }}
               >
-                No Products has been added to the wishlist
+                No previouud orders to show
               </h1>
             )}
 
-            {favItems.length > 0 && (
-              <div className="wishlist">
-                <ul className="wishlist__list">
-                  {favItems.map((product, index) => (
-                    <li className="wishlist__list--item" key={index}>
-                      <div className="wishlist__list--itemcontainer flex">
-                        <div className="productdetails flex">
-                          <div className="image">
-                            <Link to={`/products/${product._id}`}>
-                              <img
-                                src={product.gallery.small[0].src}
-                                alt="thumb"
-                              />
-                            </Link>
-                          </div>
-                          <div className="productdetails__subdetails">
-                            <Link
-                              to={`/products/${product._id}`}
-                              className="name"
-                            >
-                              {product.name}
-                            </Link>
+            {orders && orders.length > 0 && (
+              <div className="myorders">
+                {orders.map((order) => (
+                  <>
+                    <ul className="myorders__list" key={order._id}>
+                      {order.items.map((product, index) => (
+                        <li className="myorders__list--item" key={index}>
+                          <div className="myorders__list--itemcontainer flex">
+                            <div className="productdetails flex">
+                              <div className="image">
+                                <Link to={`/products/${product._id}`}>
+                                  <img
+                                    src={product.gallery.small[0].src}
+                                    alt={product.name}
+                                  />
+                                </Link>
+                              </div>
+                              <div className="productdetails__subdetails">
+                                <Link
+                                  to={`/products/${product._id}`}
+                                  className="name"
+                                >
+                                  {product.name}
+                                </Link>
 
-                            {product.quantity && (
-                              <p className="size">Size: M</p>
-                            )}
-                            {product.quantity && (
-                              <p className="quantity">
-                                Quantity: {product.quantity}
-                              </p>
-                            )}
-                            <p className="color">Color: Grey</p>
-                            <p className="price">Price: ₹{product.sp}</p>
+                                {product.quantity && (
+                                  <p className="size">Size: {product.size}</p>
+                                )}
+                                {product.quantity && (
+                                  <p className="quantity">
+                                    Quantity: {product.quantity}
+                                  </p>
+                                )}
+                                <p className="color">Color: Grey</p>
+                                <p className="price">Price: ₹{product.sp}</p>
+                              </div>
+                            </div>
+                            <span className="mobileline"></span>
+                            <div className="buttons__container flex">
+                              <div className="buttons flex">
+                                <button
+                                  className="buttons__remove flex"
+                                  /* onClick={() => removeFromWishlist(product._id)} */
+                                >
+                                  Order ID : {order._id}
+                                </button>
+                                {!order.isDelivered && (
+                                  <button
+                                    /* onClick={addToCart} */
+                                    className="buttons__addtocart"
+                                  >
+                                    Track Order
+                                  </button>
+                                )}
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <span className="mobileline"></span>
-                        <div className="buttons__container flex">
-                          <div className="buttons flex">
-                            <button
-                              className="buttons__remove flex"
-                              onClick={() => removeFromWishlist(product._id)}
-                            >
-                              <img
-                                src={trashicon}
-                                alt="trash"
-                                style={{
-                                  width: "11px",
-                                  height: "14px",
-                                  marginRight: "4px",
-                                }}
-                              />
-                              Remove Item
-                            </button>
-                            {/* <button
-                              onClick={addToCart}
-                              className="buttons__addtocart"
-                            >
-                              Add to Cart
-                            </button> */}
-                          </div>
-                        </div>
-                      </div>
-
-                      {index <= favItems.length - 2 && (
-                        <span className="line"></span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                        </li>
+                      ))}
+                    </ul>
+                    {1 && <span className="line"></span>}
+                  </>
+                ))}
               </div>
             )}
           </div>

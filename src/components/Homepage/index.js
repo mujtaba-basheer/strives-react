@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Navbar from "../Navbar/index";
 import Footer from "../Footer/index";
@@ -11,6 +11,10 @@ import Newsletter from "./Newsletter";
 import Customize from "./Customize";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "Welcome to the Strives";
+  });
+
   return (
     <>
       <Navbar />

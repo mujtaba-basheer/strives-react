@@ -31,8 +31,8 @@ const Index = () => {
 
   const [searchText, setSearchText] = useState("");
 
-  const [cartLengthValue, setCartLengthValue] = useState(99);
-  const [wishlistLengthValue, setWishlistLengthValue] = useState(99);
+  const [cartLengthValue, setCartLengthValue] = useState(0);
+  const [wishlistLengthValue, setWishlistLengthValue] = useState(0);
 
   const { cartItems } = useSelector((state) => state.cart);
   const { favItems } = useSelector((state) => state.fav);
