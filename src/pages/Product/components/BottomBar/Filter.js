@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { getProducts } from "../../../../redux/actions/productActions";
+
+import ProductSlider from "../../../../components/ProductSlider";
 
 const Filter = () => {
+  const dispatch = useDispatch();
+
   const [bottombarfilter, setBottombarfilter] = useState("designer");
 
   const categoryList = ["Designer", "Occasion", "Season", "Price", "Size"];
 
+  const [productslidervalue, setProductslidervalue] = useState([]);
+
   function closebottomfilter() {
     document.getElementsByClassName("filterdiv ")[0].style.display = "none";
   }
+
+  useEffect(() => {
+    console.log(productslidervalue);
+    dispatch(
+      getProducts({
+        min: productslidervalue[0],
+        max: productslidervalue[1],
+      })
+    );
+  }, [productslidervalue]);
 
   return (
     <div
@@ -126,6 +145,14 @@ const Filter = () => {
               <li className="sortsub__list--item">
                 <input type="checkbox" name="" id=" " />
                 <label htmlFor="">Season</label>
+              </li>
+            </ul>
+          )}
+
+          {bottombarfilter === "price" && (
+            <ul className="sortsub__list season">
+              <li className="sortsub__list--item">
+                <ProductSlider setProductslidervalue={setProductslidervalue} />
               </li>
             </ul>
           )}

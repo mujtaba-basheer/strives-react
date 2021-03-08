@@ -588,6 +588,7 @@
           height: 60px;
           z-index: 1;
           border-top: 1px solid rgba(44, 61, 80, 0.2);
+          background: #fff;
 
           .cancelfilter {
             flex: 1;
@@ -605,7 +606,7 @@
           }
 
           .applyfilter {
-            flex: 1;
+            flex: 2;
             z-index: 2;
 
             display: flex;
