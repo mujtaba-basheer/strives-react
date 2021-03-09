@@ -41,6 +41,8 @@ import {
   USER_ADD_ADDRESS_FAIL,
 } from "../constants/userConstants";
 
+import { FAV_CLEAR, CART_CLEAR } from "../constants/cartConstants";
+
 import { ORDER_LIST_RESET } from "../constants/orderConstants";
 
 export const login = ({ email, password }) => async (dispatch) => {
@@ -79,11 +81,15 @@ export const login = ({ email, password }) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
+  localStorage.removeItem("favItems");
+  localStorage.removeItem("cartItems");
 
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
   dispatch({ type: ORDER_LIST_RESET });
   dispatch({ type: USER_LIST_RESET });
+  dispatch({ type: FAV_CLEAR });
+  dispatch({ type: CART_CLEAR });
 };
 
 export const register = (name, email, password) => async (dispatch) => {

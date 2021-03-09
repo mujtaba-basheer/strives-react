@@ -129,7 +129,7 @@ export const favReducer = (state = { favItems: [] }, action) => {
     case FAV_SET:
       return { favItems: action.payload };
     case FAV_CLEAR:
-      return { favItems: [] };
+      return { favItems: null };
     case FAV_ADD_ITEM:
       const item = action.payload;
       const existItem = state.favItems.find((x) => x.product === item.product);
@@ -159,7 +159,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     case CART_SET:
       return { cartItems: action.payload };
     case CART_CLEAR:
-      return { cartItems: [] };
+      return { cartItems: null };
     case CART_ADD_ITEM:
       const item = action.payload;
       const existItem = state.cartItems.find((x) => x.product === item.product);

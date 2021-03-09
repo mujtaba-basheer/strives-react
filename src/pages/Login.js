@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../redux/actions/userActions";
+import { getCart, getFav } from "../redux/actions/cartActions";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -22,8 +23,12 @@ const Login = () => {
   useEffect(() => {
     document.title = "Login";
 
-    if (userInfo) history.push("/");
-  }, [userInfo, history]);
+    if (userInfo) {
+      dispatch(getCart());
+      dispatch(getFav());
+      history.push("/");
+    }
+  }, [userInfo, history, dispatch]);
 
   const onSubmit = (data) => {
     dispatch(login(data));
