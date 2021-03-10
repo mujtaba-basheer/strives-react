@@ -2,19 +2,29 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
+  font-family: "Noto Serif SC", serif;
 }
 
 :root {
-  --ff-c: "Cormorant Garamond", serif;
+  /* --ff-c: "Cormorant Garamond", serif;
   --ff-p: "Playfair Display", serif;
 
   --font-primary: "Playfair Display", serif;
-  --font-secondary: "Cormorant Garamond", serif;
+  --font-secondary: "Cormorant Garamond", serif; */
+
+  --ff-c: "Noto Serif SC", serif;
+  --ff-p: "Noto Serif SC", serif;
+
+  --font-primary: "Noto Serif SC", serif;
+  --font-secondary: "Noto Serif SC", serif;
+
   --text-color-dark: #2c3d50;
 }
 
