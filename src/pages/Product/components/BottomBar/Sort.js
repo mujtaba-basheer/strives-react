@@ -1,6 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { getProducts } from "../../../../redux/actions/productActions";
 
 const Sort = () => {
+  const dispatch = useDispatch();
+
+  const [sortValue, setSortValue] = useState(["date", "-1"]);
+  const [sortbyName, setSortbyName] = useState("");
+
+  useEffect(() => {
+    dispatch(
+      getProducts({
+        sort: sortValue,
+      })
+    );
+  }, [sortValue]);
+
+  function selectSortBy(e) {
+    const value = e.target.value;
+
+    console.log(value);
+
+    if (value === "ltoh") {
+      setSortValue(["sp", "1"]);
+      setSortbyName("ltoh");
+    } else if (value === "htol") {
+      setSortValue(["sp", "-1"]);
+      setSortbyName("htol");
+    } else if (value === "new") {
+      setSortValue(["date", "1"]);
+      setSortbyName("new");
+    } else if (value === "latest") {
+      setSortValue(["date", "1"]);
+      setSortbyName("latest");
+    } else if (value === "discount") {
+      setSortValue(["date", "1"]);
+      setSortbyName("discount");
+    }
+  }
+
   return (
     <div
       className="sort__background"
@@ -11,31 +50,74 @@ const Sort = () => {
       <ul className="sort__list">
         <li className="sort__list--item">
           <div className="form-group">
-            <input type="radio" id="male" name="sort" value="default" />
-            <label for="male">Default</label>
+            <label for="latest">
+              <input
+                onClick={selectSortBy}
+                checked={sortbyName === "latest"}
+                type="radio"
+                id="latest"
+                name="latest"
+                value="latest"
+              />
+              Latest
+            </label>
           </div>
         </li>
         <li className="sort__list--item">
           <div className="form-group">
-            <input type="radio" id="male" name="sort" value="ltoh" />
-            <label for="male">Price Low to High</label>
+            <label for="ltoh">
+              <input
+                onClick={selectSortBy}
+                checked={sortbyName === "ltoh"}
+                type="radio"
+                id="ltoh"
+                name="ltoh"
+                value="ltoh"
+              />
+              Price Low to High
+            </label>
           </div>
         </li>
         <li className="sort__list--item">
           <div className="form-group">
-            <input type="radio" id="male" name="sort" value="popularity" />
-            <label for="male">Popularity</label>
+            <label for="htol">
+              <input
+                onClick={selectSortBy}
+                checked={sortbyName === "htol"}
+                type="radio"
+                id="htol"
+                name="sort"
+                value="htol"
+              />
+              Price High to Low
+            </label>
           </div>
         </li>
         <li className="sort__list--item">
           <div className="form-group">
-            <input type="radio" id="male" name="sort" value="new" />
-            <label for="male">New Arrival</label>
+            <label for="new">
+              <input
+                onClick={selectSortBy}
+                checked={sortbyName === "new"}
+                type="radio"
+                id="new"
+                name="sort"
+                value="new"
+              />
+              New Arrival
+            </label>
           </div>
         </li>
         <li className="sort__list--item">
           <div className="form-group">
-            <input type="radio" id="male" name="sort" value="discount" />
+            <input
+              onClick={selectSortBy}
+              checked={sortbyName === "discount"}
+              type="radio"
+              id="male"
+              name="sort"
+              value="discount"
+            />
             <label for="male">Discount</label>
           </div>
         </li>

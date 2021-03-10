@@ -52,7 +52,7 @@ function AllProductArea() {
 
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
-  const { favItems } = useSelector((state) => state.fav);
+  /* const { favItems } = useSelector((state) => state.fav); */
 
   function clickfilter(e) {
     console.log(e.target.value);

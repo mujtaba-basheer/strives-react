@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getCart, removeItemFromCart } from "../redux/actions/cartActions";
@@ -8,7 +7,6 @@ import { getCart, removeItemFromCart } from "../redux/actions/cartActions";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-import coupon from "../assets/images/checkout/coupon.png";
 import trashicon from "./User/images/trash.png";
 import hearticon from "../assets/images/icons/heart.png";
 import Alert from "../components/Alert/Alert";
