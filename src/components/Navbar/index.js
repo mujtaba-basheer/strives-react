@@ -112,8 +112,8 @@ const Index = () => {
   useEffect(() => {
     const urlLocation = window.location.pathname;
 
-    setCartLengthValue(cartItems.length);
-    setWishlistLengthValue(favItems.length);
+    if (cartItems) setCartLengthValue(cartItems.length);
+    if (favItems) setWishlistLengthValue(favItems.length);
 
     if (cartLengthValue > 9) {
       setCartValueIconStyles({
@@ -148,13 +148,7 @@ const Index = () => {
       window.addEventListener("scroll", changeNavbar);
       setnavbarHeigt(110);
     }
-  }, [
-    window.location.pathname,
-    cartLengthValue,
-    wishlistLengthValue,
-    cartItems.length,
-    favItems.length,
-  ]);
+  }, [cartLengthValue, wishlistLengthValue, cartItems, favItems]);
 
   function changeNavbarColor() {
     var navbar = document.getElementsByClassName("navbar")[0];
