@@ -1,4 +1,7 @@
 import axios from "axios";
+import store from "../redux/store";
+
+import { logout } from "../redux/actions/userActions";
 
 let api_url;
 if (process.env.NODE_ENV === "development")
@@ -14,6 +17,10 @@ class ApiCall {
           resolve(response);
         })
         .catch(function (error) {
+          if (error.response.status === 401) {
+            alert("Session Expired");
+            store.dispatch(logout());
+          }
           reject(error);
         });
     });
@@ -26,6 +33,10 @@ class ApiCall {
           resolve(response);
         })
         .catch(function (error) {
+          if (error.response.status === 401) {
+            alert("Session Expired");
+            store.dispatch(logout());
+          }
           reject(error);
         });
     });
@@ -38,6 +49,10 @@ class ApiCall {
           resolve(response);
         })
         .catch(function (error) {
+          if (error.response.status === 401) {
+            alert("Session Expired");
+            store.dispatch(logout());
+          }
           reject(error);
         });
     });
@@ -50,6 +65,10 @@ class ApiCall {
           resolve(response);
         })
         .catch(function (error) {
+          if (error.response.status === 401) {
+            alert("Session Expired");
+            store.dispatch(logout());
+          }
           reject(error);
         });
     });

@@ -96,7 +96,7 @@ function CartArea() {
 
       {loading && <Loader height={100} />}
 
-      {!loading && cartItems.length === 0 && (
+      {!loading && (!cartItems || cartItems.length === 0) && (
         <h1
           style={{
             textAlign: "center",
@@ -325,7 +325,7 @@ function CartArea() {
                 </div>
               </div>
             </div> */}
-                        {/* <button
+            {/* <button
               type="submit"
               id="placeorder"
               className="mobile__placeorder--button"
