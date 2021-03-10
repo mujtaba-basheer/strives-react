@@ -33,7 +33,7 @@ const BottomBar = () => {
       <div className="sort flex" onClick={showSort}>
         Sort
       </div>
-      <Sort />
+      <Sort handleClickOutside={handleClickOutside} />
       <div className="filter flex" onClick={showFilter}>
         Filter
       </div>

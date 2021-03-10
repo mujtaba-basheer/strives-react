@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { getProducts } from "../../../../redux/actions/productActions";
 
-const Sort = () => {
+const Sort = ({ handleClickOutside }) => {
   const dispatch = useDispatch();
 
   const [sortValue, setSortValue] = useState(["date", "-1"]);
@@ -21,6 +21,9 @@ const Sort = () => {
     const value = e.target.value;
 
     console.log(value);
+
+    document.getElementsByClassName("sort__background")[0].style.display =
+      "none";
 
     if (value === "ltoh") {
       setSortValue(["sp", "1"]);
