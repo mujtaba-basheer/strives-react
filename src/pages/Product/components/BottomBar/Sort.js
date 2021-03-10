@@ -7,7 +7,7 @@ const Sort = () => {
   const dispatch = useDispatch();
 
   const [sortValue, setSortValue] = useState(["date", "-1"]);
-  const [sortbyName, setSortbyName] = useState("");
+  const [sortbyName, setSortbyName] = useState("latest");
 
   useEffect(() => {
     dispatch(
