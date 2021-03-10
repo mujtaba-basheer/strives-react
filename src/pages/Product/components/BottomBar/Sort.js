@@ -52,6 +52,7 @@ const Sort = () => {
           <div className="form-group">
             <label for="latest">
               <input
+                className="sort__radio"
                 onClick={selectSortBy}
                 checked={sortbyName === "latest"}
                 type="radio"
@@ -67,6 +68,7 @@ const Sort = () => {
           <div className="form-group">
             <label for="ltoh">
               <input
+                className="sort__radio"
                 onClick={selectSortBy}
                 checked={sortbyName === "ltoh"}
                 type="radio"
@@ -82,6 +84,7 @@ const Sort = () => {
           <div className="form-group">
             <label for="htol">
               <input
+                className="sort__radio"
                 onClick={selectSortBy}
                 checked={sortbyName === "htol"}
                 type="radio"
@@ -97,6 +100,7 @@ const Sort = () => {
           <div className="form-group">
             <label for="new">
               <input
+                className="sort__radio"
                 onClick={selectSortBy}
                 checked={sortbyName === "new"}
                 type="radio"
@@ -111,6 +115,7 @@ const Sort = () => {
         <li className="sort__list--item">
           <div className="form-group">
             <input
+              className="sort__radio"
               onClick={selectSortBy}
               checked={sortbyName === "discount"}
               type="radio"
