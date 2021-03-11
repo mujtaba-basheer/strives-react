@@ -1,4 +1,3 @@
-
 /* Base Styles */
 @import "base/base";
 @import "base/utilities";
@@ -22,14 +21,13 @@
 @import "pages/Product/allproduct";
 @import "pages/Product/singleproduct";
 
-
 /* Components */
 @import "components/quickview";
 @import "components/usersidebar";
+@import "components/navbar";
 @import "components/_allproduct-bottombar";
 @import "layout/footer";
 @import "./components/util/index";
-
 
 /* To be replaced later in its appropirate place */
 @import "media";
