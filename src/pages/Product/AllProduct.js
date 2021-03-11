@@ -59,7 +59,7 @@ function AllProductArea() {
   }
 
   function handleChange(event) {
-    console.log(event);
+    console.log(event.target.value);
   }
 
   function selectSortBy(e) {
@@ -117,33 +117,40 @@ function AllProductArea() {
               <p className="material__heading">Material</p>
               <ul className="material__list">
                 <li className="material__list--item">
-                  <input
-                    type="checkbox"
-                    name="material1"
-                    id="material1"
-                    value="polyster"
-                    onClick={clickfilter}
-                  />
-                  <label for="material1">Polyster</label> <br />
+                  <label for="polyster">
+                    <input
+                      type="checkbox"
+                      name="polyster"
+                      id="polyster"
+                      value="polyster"
+                      onClick={clickfilter}
+                    />
+                    Polyster
+                  </label>
                 </li>
                 <li className="material__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster1"
-                    onChange={handleChange}
-                  />
-                  <label for="material2">Polyster</label> <br />
+                  <label for="polyster1">
+                    <input
+                      type="checkbox"
+                      name="polyster1"
+                      id="polyster1"
+                      value="polyster1"
+                      onClick={clickfilter}
+                    />
+                    Polyster
+                  </label>
                 </li>
                 <li className="material__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
+                  <label for="polyster2">
+                    <input
+                      type="checkbox"
+                      name="polyster2"
+                      id="polyster2"
+                      value="polyster2"
+                      onClick={clickfilter}
+                    />
+                    Polyster
+                  </label>
                 </li>
               </ul>
               <a href="#" className="see-more">
@@ -155,22 +162,24 @@ function AllProductArea() {
               <p className="size__heading">Size</p>
               <ul className="size__list">
                 <li className="size__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
+                  <label for="size1">
+                    <input
+                      type="checkbox"
+                      name="size1"
+                      id="size1"
+                      value="size1"
+                    />
+                    size1
+                  </label>
                 </li>
                 <li className="size__list--item">
                   <input
                     type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
+                    name="size1"
+                    id="size1"
+                    value="size1"
                   />
-                  <label for="material2">Polyster</label> <br />
+                  <label for="size1">size1</label> <br />
                 </li>
                 <li className="size__list--item">
                   <input
