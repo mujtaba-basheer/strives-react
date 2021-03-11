@@ -362,7 +362,10 @@ const Index = () => {
                   alt="heart"
                 />
                 {wishlistLengthValue > 0 && (
-                  <p style={WishlistValueIconStyles} className="number">
+                  <p
+                    style={WishlistValueIconStyles}
+                    className="number superscript"
+                  >
                     {wishlistLengthValue}
                   </p>
                 )}
@@ -383,7 +386,7 @@ const Index = () => {
                   alt="cart"
                 />
                 {cartLengthValue > 0 && (
-                  <p style={cartValueIconStyles} className="number">
+                  <p style={cartValueIconStyles} className="number superscript">
                     {cartLengthValue}
                   </p>
                 )}
