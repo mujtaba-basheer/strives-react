@@ -52,7 +52,7 @@ const Login = () => {
                   </p>
                 </div>
                 <div>
-                  {loginError && <Alert type="danger" text={loginError} />}
+                  {loginError && <Alert type="danger" fullWidth background="true" text={loginError} />}
                 </div>
                 <div className="user-details">
                   <form onSubmit={handleSubmit(onSubmit)}>

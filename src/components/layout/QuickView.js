@@ -270,6 +270,7 @@ const QuickView = ({ product, setShowModal }) => {
                     dispatch(addItemToFav(product));
                   }}
                   className="addtocart btn flex"
+                  disabled="true"
                 >
                   add to Wishlist
                 </button>

@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from "react";
 import "./alert.css";
 
-const Alert = ({ type, text, background, timer }) => {
+const Alert = ({ type, text, background, timer, popup }) => {
   const [alertType, setAlertType] = useState("danger");
   const [isClose, setIsClose] = useState(null);
 
   useEffect(() => {
-    console.log(type)
+    /* console.log(type); */
     switch (type) {
       case "success":
         if (background === "true") {
@@ -24,6 +24,23 @@ const Alert = ({ type, text, background, timer }) => {
           setAlertType("danger");
         }
         break;
+
+      case "warning":
+        if (background === "true") {
+          setAlertType("warning-bg");
+        } else {
+          setAlertType("warning");
+        }
+        break;
+
+      case "secondary":
+        if (background === "true") {
+          setAlertType("secondary-bg");
+        } else {
+          setAlertType("secondary");
+        }
+        break;
+
       default:
         setAlertType("danger");
         break;
@@ -38,14 +55,25 @@ const Alert = ({ type, text, background, timer }) => {
     }
   }, [type, background]);
 
-  return (
-    <div
-      className={`custom-alert custom-alert--${alertType} custom-alert--${isClose} flex`}
-    >
-      <h1 className="custom-alert__text">{text}</h1>
-      {timer === 0 && <span className="closeicon-alert">&times;</span>}
-    </div>
-  );
+  if (popup) {
+    return (
+      <div
+        className={`custom-alert popup custom-alert--${alertType} custom-alert--${isClose} flex`}
+      >
+        <h1 className="custom-alert__text">{text}</h1>
+        {timer === 0 && <span className="closeicon-alert">&times;</span>}
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className={`custom-alert custom-alert--${alertType} custom-alert--${isClose} flex`}
+      >
+        <h1 className="custom-alert__text">{text}</h1>
+        {timer === 0 && <span className="closeicon-alert">&times;</span>}
+      </div>
+    );
+  }
 };
 
 export default Alert;

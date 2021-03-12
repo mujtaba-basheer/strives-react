@@ -12,7 +12,6 @@ import Alert from "../../components/Alert/Alert";
 import Loader from "../../components/Loader/Loader";
 
 import trashicon from "./images/trash.png";
-import thumb from "./images/thumb.png";
 import backicon from "../../assets/images/icons/back.png";
 
 const Wishlist = () => {
@@ -24,9 +23,9 @@ const Wishlist = () => {
   const { favItems } = useSelector((state) => state.fav);
   const { error, loading } = useSelector((state) => state.favGet);
 
-  function addToCart() {
+  /* function addToCart() {
     console.log("clicked");
-  }
+  } */
 
   function removeFromWishlist(id) {
     dispatch(removeItemFromFav(id));
@@ -68,6 +67,16 @@ const Wishlist = () => {
               <p className="header__text">Wishlist</p>
             </div>
 
+            {true && (
+              <Alert
+                type="secondary"
+                popup
+                background="true"
+                /* timer="5000" */
+                text={"Product removed from wishlist"}
+              />
+            )}
+
             {error && <Alert type="danger" text={error} />}
 
             {loading && <Loader height={100} />}
@@ -93,7 +102,7 @@ const Wishlist = () => {
                             <Link to={`/products/${product._id}`}>
                               <img
                                 src={product.gallery.small[0].src}
-                                alt="thumb"
+                                alt={product.name}
                               />
                             </Link>
                           </div>

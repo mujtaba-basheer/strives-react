@@ -57,6 +57,7 @@ function SingleProductArea() {
   const { loading, product, error } = useSelector(
     (state) => state.productSingleGet
   );
+  const { favItems } = useSelector((state) => state.fav);
 
   const images = [];
 
@@ -81,6 +82,24 @@ function SingleProductArea() {
       count--;
       if (count < 1) count = 1;
       setProductQuantity(count);
+    }
+  }
+
+  function addProductToWishlist(product) {
+    /* console.log(product); */
+
+    let isPresent = "false";
+
+    favItems.forEach((favProduct) => {
+      if (favProduct._id === product._id) {
+        isPresent = "true";
+      }
+    });
+
+    if (isPresent) {
+      console.log(product.name);
+    } else {
+      dispatch(addItemToFav(product));
     }
   }
 
@@ -306,8 +325,7 @@ function SingleProductArea() {
                   <button
                     className="addtocart btn flex"
                     onClick={() => {
-                      console.log(product);
-                      dispatch(addItemToFav(product));
+                      addProductToWishlist(product);
                     }}
                   >
                     add to Wishlist
