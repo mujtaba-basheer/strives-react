@@ -27,6 +27,11 @@ import heartfillsvg from "./images/heart-fill.svg";
 import Loader from "../../components/Loader/Loader";
 import BottomBar from "./components/BottomBar/BottomBar";
 
+import {
+  FAV_ADD_RESET,
+  FAV_REMOVE_RESET,
+} from "../../redux/constants/cartConstants";
+
 const AllProduct = () => {
   return (
     <>
@@ -57,8 +62,11 @@ function AllProductArea() {
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
   const { favItems } = useSelector((state) => state.fav);
-  const { error: favError, success: favSuccess } = useSelector(
+  const { error: favAddError, success: favAddSuccess } = useSelector(
     (state) => state.favAdd
+  );
+  const { error: favRemoveError, success: favRemoveSuccess } = useSelector(
+    (state) => state.favRemove
   );
 
   function clickfilter(e) {
@@ -82,35 +90,13 @@ function AllProductArea() {
   }
 
   function addToWishlist(product) {
-    /* console.log(product); */
     dispatch(addItemToFav(product));
-
-    // console.log("all product  ");
-
-    // let isPresent = false;
-
-    // console.log(favItems, product);
-
-    // if (favItems.length > 0) {
-    //   favItems.forEach((favProduct) => {
-    //     if (favProduct._id === product._id) {
-    //       isPresent = true;
-    //     }
-    //   });
-    // }
-
-    // if (isPresent) {
-    //   console.log(product.name);
-    //   alert("present");
-    // } else {
-    //   alert("sdfs");
-    //   console.log("all product add ");
-    //   dispatch(addItemToFav(product));
-    // }
+    setTimeout(() => dispatch({ type: FAV_ADD_RESET }), 3000);
   }
 
   function removeFromWishlist(id) {
     dispatch(removeItemFromFav(id));
+    setTimeout(() => dispatch({ type: FAV_REMOVE_RESET }), 3000);
   }
 
   function changeMainImageHover(productImages, type, index) {
@@ -138,17 +124,16 @@ function AllProductArea() {
 
   return (
     <section className="content">
-      {favError && (
+      {favAddError && (
         <Alert
           type="warning"
           popup
           background="true"
           timer="5000"
-          text={favError}
+          text={favAddError}
         />
       )}
-
-      {favSuccess && (
+      {favAddSuccess && (
         <Alert
           type="success"
           popup
@@ -157,6 +142,25 @@ function AllProductArea() {
           text={"Item Successfully added to wishlist"}
         />
       )}
+      {favRemoveError && (
+        <Alert
+          type="warning"
+          popup
+          background="true"
+          timer="5000"
+          text={favRemoveError}
+        />
+      )}
+      {favRemoveSuccess && (
+        <Alert
+          type="success"
+          popup
+          background="true"
+          timer="5000"
+          text={"Item Successfully removed from wishlist"}
+        />
+      )}
+
       <div className="allproducts-breadcrumbs flex">
         <p className="category">fashion</p>
         <img src={breadcrumbsArrow} alt="arrow" />

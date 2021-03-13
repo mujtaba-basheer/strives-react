@@ -31,6 +31,8 @@ import {
   FAV_CLEAR,
   FAV_ADD_ITEM,
   FAV_REMOVE_ITEM,
+  FAV_ADD_RESET,
+  FAV_REMOVE_RESET,
 } from "../constants/cartConstants";
 
 export const favGetReducer = (state = {}, action) => {
@@ -54,6 +56,8 @@ export const favAddReducer = (state = {}, action) => {
       return { loading: false, success: true, error: null };
     case FAV_ADD_FAIL:
       return { loading: false, success: null, error: action.payload };
+    case FAV_ADD_RESET:
+      return { loading: false };
     default:
       return state;
   }
@@ -67,6 +71,8 @@ export const favRemoveReducer = (state = {}, action) => {
       return { loading: false, success: true, error: null };
     case FAV_REMOVE_FAIL:
       return { loading: false, success: null, error: action.payload };
+    case FAV_REMOVE_RESET:
+      return { loading: false };
     default:
       return state;
   }
@@ -127,6 +133,7 @@ export const cartQtyUpdateReducer = (state = {}, action) => {
 export const favReducer = (state = { favItems: [] }, action) => {
   switch (action.type) {
     case FAV_SET:
+      localStorage.setItem("favItems", JSON.stringify(action.payload));
       return { favItems: action.payload };
     case FAV_CLEAR:
       return { favItems: null };

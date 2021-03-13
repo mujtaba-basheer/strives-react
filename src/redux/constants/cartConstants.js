@@ -36,8 +36,10 @@ export const FAV_GET_FAIL = "FAV_GET_FAIL";
 
 export const FAV_ADD_REQUEST = "FAV_ADD_REQUEST";
 export const FAV_ADD_SUCCESS = "FAV_ADD_SUCCESS";
+export const FAV_ADD_RESET = "FAV_ADD_RESET";
 export const FAV_ADD_FAIL = "FAV_ADD_FAIL";
 
 export const FAV_REMOVE_REQUEST = "FAV_REMOVE_REQUEST";
 export const FAV_REMOVE_SUCCESS = "FAV_REMOVE_SUCCESS";
+export const FAV_REMOVE_RESET = "FAV_REMOVE_RESET";
 export const FAV_REMOVE_FAIL = "FAV_REMOVE_FAIL";

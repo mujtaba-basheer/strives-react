@@ -51,7 +51,6 @@ const App = () => {
         <Route exact path="/products" component={AllProduct} />
 
         <Route exact path="/products/:id" component={SingleProduct} />
-
       </Switch>
     </Router>
   );

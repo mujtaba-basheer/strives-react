@@ -361,12 +361,12 @@ const Index = () => {
                   src={hearticon}
                   alt="heart"
                 />
-                {wishlistLengthValue > 0 && (
+                {favItems && favItems.length > 0 && (
                   <p
                     style={WishlistValueIconStyles}
                     className="number superscript"
                   >
-                    {favItems && favItems.length}
+                    {favItems.length}
                   </p>
                 )}
               </Link>
@@ -385,9 +385,9 @@ const Index = () => {
                   src={carticon}
                   alt="cart"
                 />
-                {cartLengthValue > 0 && (
+                {cartItems && cartItems.length > 0 && (
                   <p style={cartValueIconStyles} className="number superscript">
-                    {cartItems && cartItems.length}
+                    {cartItems.length}
                   </p>
                 )}
               </Link>

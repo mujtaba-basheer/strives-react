@@ -79,6 +79,9 @@ export const addItemToFav = (product) => async (dispatch, getState) => {
       return;
     } else fav.favItems.push(product);
 
+    dispatch({ type: FAV_ADD_SUCCESS });
+    dispatch({ type: FAV_SET, payload: fav.favItems });
+
     if (userInfo) {
       const config = {
         headers: {
@@ -89,9 +92,6 @@ export const addItemToFav = (product) => async (dispatch, getState) => {
 
       await apiCall.put(`favourites-product/${product._id}`, {}, config);
     }
-
-    dispatch({ type: FAV_ADD_SUCCESS });
-    dispatch({ type: FAV_SET, payload: fav.favItems });
   } catch (error) {
     dispatch({
       type: FAV_ADD_FAIL,
@@ -115,6 +115,9 @@ export const removeItemFromFav = (id) => async (dispatch, getState) => {
     } = getState();
     const updatedItems = favItems.filter(({ _id }) => _id !== id);
 
+    dispatch({ type: FAV_REMOVE_SUCCESS });
+    dispatch({ type: FAV_SET, payload: updatedItems });
+
     if (userInfo) {
       const config = {
         headers: {
@@ -124,9 +127,6 @@ export const removeItemFromFav = (id) => async (dispatch, getState) => {
 
       await apiCall.delete(`favourites-product/${id}`, config);
     }
-
-    dispatch({ type: FAV_REMOVE_SUCCESS });
-    dispatch({ type: FAV_SET, payload: updatedItems });
   } catch (error) {
     dispatch({
       type: FAV_REMOVE_FAIL,
@@ -184,6 +184,25 @@ export const addItemToCart = (product, qty = 1, size) => async (
   } = getState();
 
   try {
+    const {
+      cart: { cartItems },
+    } = getState();
+
+    if (cartItems) {
+      const itemIndex = cartItems.find(
+        ({ _id: id, size: itemSize }) =>
+          product["_id"] === id && size === itemSize
+      );
+      if (itemIndex !== 1) cartItems[itemIndex].quantity += qty;
+      else cartItems.push({ ...product, quantity: qty, size });
+
+      dispatch({ type: CART_ADD_SUCCESS });
+      dispatch({ type: CART_SET, payload: cartItems });
+    } else {
+      dispatch({ type: CART_ADD_FAIL, payload: "Error Adding Item to Cart" });
+      return;
+    }
+
     if (userInfo) {
       const config = {
         headers: {
@@ -198,12 +217,6 @@ export const addItemToCart = (product, qty = 1, size) => async (
         config
       );
     }
-
-    const { cart } = getState();
-    cart.cartItems.push({ ...product, quantity: qty, size });
-
-    dispatch({ type: CART_ADD_SUCCESS });
-    dispatch({ type: CART_SET, payload: cart.cartItems });
   } catch (error) {
     dispatch({
       type: CART_ADD_FAIL,
@@ -222,16 +235,6 @@ export const removeItemFromCart = (id, size) => async (dispatch, getState) => {
   } = getState();
 
   try {
-    if (userInfo) {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      };
-
-      await apiCall.delete(`cart-product/${id}`, config);
-    }
-
     const {
       cart: { cartItems },
     } = getState();
@@ -241,6 +244,16 @@ export const removeItemFromCart = (id, size) => async (dispatch, getState) => {
 
     dispatch({ type: CART_REMOVE_SUCCESS });
     dispatch({ type: CART_SET, payload: updatedItems });
+
+    if (userInfo) {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      await apiCall.delete(`cart-product/${id}`, config);
+    }
   } catch (error) {
     dispatch({
       type: CART_REMOVE_FAIL,

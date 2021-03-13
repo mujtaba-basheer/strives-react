@@ -14,6 +14,8 @@ import Loader from "../../components/Loader/Loader";
 import trashicon from "./images/trash.png";
 import backicon from "../../assets/images/icons/back.png";
 
+import { FAV_REMOVE_RESET } from "../../redux/constants/cartConstants";
+
 const Wishlist = () => {
   const history = useHistory();
 
@@ -22,6 +24,9 @@ const Wishlist = () => {
   const { userInfo } = useSelector((state) => state.userLogin);
   const { favItems } = useSelector((state) => state.fav);
   const { error, loading } = useSelector((state) => state.favGet);
+  const { error: favRemoveError, success: favRemoveSuccess } = useSelector(
+    (state) => state.favRemove
+  );
 
   /* function addToCart() {
     console.log("clicked");
@@ -29,6 +34,7 @@ const Wishlist = () => {
 
   function removeFromWishlist(id) {
     dispatch(removeItemFromFav(id));
+    setTimeout(() => dispatch({ type: FAV_REMOVE_RESET }), 3000);
   }
 
   useEffect(() => {
@@ -36,9 +42,7 @@ const Wishlist = () => {
 
     document.title = "Wishlist";
 
-    if (favItems.length === 0) {
-      dispatch(getFav());
-    }
+    if (!favItems) dispatch(getFav());
   }, [userInfo, history, dispatch, favItems]);
 
   return (
@@ -67,13 +71,22 @@ const Wishlist = () => {
               <p className="header__text">Wishlist</p>
             </div>
 
-            {true && (
+            {favRemoveError && (
               <Alert
-                type="secondary"
+                type="success"
                 popup
                 background="true"
                 /* timer="5000" */
-                text={"Product removed from wishlist"}
+                text={favRemoveError}
+              />
+            )}
+            {favRemoveSuccess && (
+              <Alert
+                type="success"
+                popup
+                background="true"
+                /* timer="5000" */
+                text={"Product Successfully removed from wishlist"}
               />
             )}
 
