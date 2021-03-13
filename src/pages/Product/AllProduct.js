@@ -4,7 +4,10 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
-import { addItemToFav, addItemToCart } from "../../redux/actions/cartActions";
+import {
+  addItemToFav,
+  removeItemFromFav,
+} from "../../redux/actions/cartActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -54,6 +57,7 @@ function AllProductArea() {
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
   const { favItems } = useSelector((state) => state.fav);
+  const { error: favError } = useSelector((state) => state.favAdd);
 
   function clickfilter(e) {
     console.log(e.target.value);
@@ -77,33 +81,40 @@ function AllProductArea() {
 
   function addToWishlist(product) {
     /* console.log(product); */
+    dispatch(addItemToFav(product));
 
-    console.log("all product  ");
+    // console.log("all product  ");
 
-    let isPresent = false;
+    // let isPresent = false;
 
-    console.log(favItems, product);
+    // console.log(favItems, product);
 
-    if (favItems.length > 0) {
-      favItems.forEach((favProduct) => {
-        if (favProduct._id === product._id) {
-          isPresent = true;
-        }
-      });
-    }
+    // if (favItems.length > 0) {
+    //   favItems.forEach((favProduct) => {
+    //     if (favProduct._id === product._id) {
+    //       isPresent = true;
+    //     }
+    //   });
+    // }
 
-    if (isPresent) {
-      console.log(product.name);
-    } else {
-      console.log("all product add ");
-      dispatch(addItemToFav(product));
-    }
+    // if (isPresent) {
+    //   console.log(product.name);
+    //   alert("present");
+    // } else {
+    //   alert("sdfs");
+    //   console.log("all product add ");
+    //   dispatch(addItemToFav(product));
+    // }
+  }
+
+  function removeFromWishlist(id) {
+    dispatch(removeItemFromFav(id));
   }
 
   function changeMainImageHover(productImages, type, index) {
     const images = [];
     productImages.map((image) => images.push(image.src));
-    console.log(index);
+    // console.log(index);
 
     if (type === "enter") {
       document.getElementById("showcase-img" + index).src = images[1];
@@ -125,8 +136,14 @@ function AllProductArea() {
 
   return (
     <section className="content">
-      {true && <Alert type="warning" popup background="true" /* timer="5000" */ text={"Product already added to wishlist"} />}
-      {console.log(productdetails)}
+      {true && (
+        <Alert
+          type="warning"
+          popup
+          background="true"
+          /* timer="5000" */ text={favError}
+        />
+      )}
       <div className="allproducts-breadcrumbs flex">
         <p className="category">fashion</p>
         <img src={breadcrumbsArrow} alt="arrow" />
@@ -352,7 +369,14 @@ function AllProductArea() {
                   <p
                     className="heart"
                     onClick={() => {
-                      addToWishlist(product);
+                      if (
+                        favItems &&
+                        favItems.find(
+                          (favProduct) => favProduct._id === product._id
+                        )
+                      )
+                        removeFromWishlist(product["_id"]);
+                      else addToWishlist(product);
                     }}
                   >
                     <img

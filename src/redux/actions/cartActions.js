@@ -67,9 +67,18 @@ export const addItemToFav = (product) => async (dispatch, getState) => {
   dispatch({ type: FAV_ADD_REQUEST });
   const {
     userLogin: { userInfo },
+    fav,
   } = getState();
 
   try {
+    if (
+      fav.favItems &&
+      fav.favItems.find(({ _id: id }) => id === product["_id"])
+    ) {
+      dispatch({ type: FAV_ADD_FAIL, payload: "Items Already Present" });
+      return;
+    } else fav.favItems.push(product);
+
     if (userInfo) {
       const config = {
         headers: {
@@ -80,9 +89,6 @@ export const addItemToFav = (product) => async (dispatch, getState) => {
 
       await apiCall.put(`favourites-product/${product._id}`, {}, config);
     }
-
-    const { fav } = getState();
-    fav.favItems.push(product);
 
     dispatch({ type: FAV_ADD_SUCCESS });
     dispatch({ type: FAV_SET, payload: fav.favItems });
@@ -104,6 +110,11 @@ export const removeItemFromFav = (id) => async (dispatch, getState) => {
   } = getState();
 
   try {
+    const {
+      fav: { favItems },
+    } = getState();
+    const updatedItems = favItems.filter(({ _id }) => _id !== id);
+
     if (userInfo) {
       const config = {
         headers: {
@@ -113,11 +124,6 @@ export const removeItemFromFav = (id) => async (dispatch, getState) => {
 
       await apiCall.delete(`favourites-product/${id}`, config);
     }
-
-    const {
-      fav: { favItems },
-    } = getState();
-    const updatedItems = favItems.filter(({ _id }) => _id !== id);
 
     dispatch({ type: FAV_REMOVE_SUCCESS });
     dispatch({ type: FAV_SET, payload: updatedItems });
