@@ -219,7 +219,7 @@ function CartArea() {
                   <div className="total">
                     <div className="total-gst flex">
                       <p className="total-gst--text">Total Price (Inc GST)</p>
-                      <p className="total-gst--amount">₹900</p>
+                      <p className="total-gst--amount">₹{cartValue.total}</p>
                     </div>
                     <div className="total-shipping flex">
                       <p className="total-shipping--text">Estimated Shipping</p>

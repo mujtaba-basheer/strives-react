@@ -110,6 +110,7 @@ const Index = () => {
   };
 
   useEffect(() => {
+    console.log("use effect");
     const urlLocation = window.location.pathname;
 
     if (cartItems) setCartLengthValue(cartItems.length);
@@ -150,7 +151,7 @@ const Index = () => {
     }
 
     console.log("navbar");
-  }, [cartLengthValue, wishlistLengthValue, cartItems, favItems]);
+  }, [cartItems, favItems]);
 
   function changeNavbarColor() {
     var navbar = document.getElementsByClassName("navbar")[0];
@@ -368,7 +369,7 @@ const Index = () => {
                     style={WishlistValueIconStyles}
                     className="number superscript"
                   >
-                    {wishlistLengthValue}
+                    {favItems && favItems.length}
                   </p>
                 )}
               </Link>
@@ -389,7 +390,7 @@ const Index = () => {
                 />
                 {cartLengthValue > 0 && (
                   <p style={cartValueIconStyles} className="number superscript">
-                    {cartLengthValue}
+                    {cartItems && cartItems.length}
                   </p>
                 )}
               </Link>

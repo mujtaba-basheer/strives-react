@@ -4,10 +4,14 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
-import { addItemToFav, addItemToCart } from "../../redux/actions/cartActions";
+import {
+  addItemToFav,
+  removeItemFromFav,
+} from "../../redux/actions/cartActions";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import Alert from "../../components/Alert/Alert";
 
 import ProductSlider from "../../components/ProductSlider";
 import QuickView from "../../components/layout/QuickView";
@@ -17,11 +21,11 @@ import productimage from "./images/image.png";
 import previous from "./images/previous.png";
 import next from "./images/next.png";
 import heart from "./images/heart.png";
-import heartfill from "./images/heartfill.png";
+/* import heartfill from "./images/heartfill.png"; */
+import heartfillsvg from "./images/heart-fill.svg";
 
 import Loader from "../../components/Loader/Loader";
 import BottomBar from "./components/BottomBar/BottomBar";
-import Wishlist from "../User/Wishlist";
 
 const AllProduct = () => {
   return (
@@ -52,7 +56,8 @@ function AllProductArea() {
 
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
-  /* const { favItems } = useSelector((state) => state.fav); */
+  const { favItems } = useSelector((state) => state.fav);
+  const { error: favError } = useSelector((state) => state.favAdd);
 
   function clickfilter(e) {
     console.log(e.target.value);
@@ -74,10 +79,42 @@ function AllProductArea() {
     }
   }
 
+  function addToWishlist(product) {
+    /* console.log(product); */
+    dispatch(addItemToFav(product));
+
+    // console.log("all product  ");
+
+    // let isPresent = false;
+
+    // console.log(favItems, product);
+
+    // if (favItems.length > 0) {
+    //   favItems.forEach((favProduct) => {
+    //     if (favProduct._id === product._id) {
+    //       isPresent = true;
+    //     }
+    //   });
+    // }
+
+    // if (isPresent) {
+    //   console.log(product.name);
+    //   alert("present");
+    // } else {
+    //   alert("sdfs");
+    //   console.log("all product add ");
+    //   dispatch(addItemToFav(product));
+    // }
+  }
+
+  function removeFromWishlist(id) {
+    dispatch(removeItemFromFav(id));
+  }
+
   function changeMainImageHover(productImages, type, index) {
     const images = [];
     productImages.map((image) => images.push(image.src));
-    console.log(index);
+    // console.log(index);
 
     if (type === "enter") {
       document.getElementById("showcase-img" + index).src = images[1];
@@ -99,13 +136,19 @@ function AllProductArea() {
 
   return (
     <section className="content">
-      {console.log(productdetails)}
+      {true && (
+        <Alert
+          type="warning"
+          popup
+          background="true"
+          /* timer="5000" */ text={favError}
+        />
+      )}
       <div className="allproducts-breadcrumbs flex">
         <p className="category">fashion</p>
         <img src={breadcrumbsArrow} alt="arrow" />
         <p className="classification">t-shirt</p>
       </div>
-
       <div className="allproducts-content flex">
         <div className="allproducts__filtersidebar">
           <a href="#" className="clear-all">
@@ -326,8 +369,14 @@ function AllProductArea() {
                   <p
                     className="heart"
                     onClick={() => {
-                      console.log(product);
-                      dispatch(addItemToFav(product));
+                      if (
+                        favItems &&
+                        favItems.find(
+                          (favProduct) => favProduct._id === product._id
+                        )
+                      )
+                        removeFromWishlist(product["_id"]);
+                      else addToWishlist(product);
                     }}
                   >
                     <img
@@ -335,7 +384,14 @@ function AllProductArea() {
                         width: "20px",
                         height: "20px",
                       }}
-                      src={heart}
+                      src={
+                        favItems &&
+                        favItems.find(
+                          (favProduct) => favProduct._id === product._id
+                        )
+                          ? heartfillsvg
+                          : heart
+                      }
                       alt="heart"
                     />
                   </p>
@@ -475,7 +531,6 @@ function AllProductArea() {
           </div>
         </div>
       </div>
-
       <BottomBar />
     </section>
   );

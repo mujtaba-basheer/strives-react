@@ -55,7 +55,7 @@
         margin-top: 64px;
 
         &--headertext {
-          font-size: 28px;
+          font-size: 26px;
           line-height: 36px;
         }
       }
@@ -328,7 +328,7 @@
 
       .user-details {
         .extra-options {
-          flex-direction: row;
+          flex-direction: column;
           span {
             margin-bottom: 5px;
           }
