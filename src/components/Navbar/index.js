@@ -148,6 +148,8 @@ const Index = () => {
       window.addEventListener("scroll", changeNavbar);
       setnavbarHeigt(110);
     }
+
+    console.log("navbar");
   }, [cartLengthValue, wishlistLengthValue, cartItems, favItems]);
 
   function changeNavbarColor() {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getCart, removeItemFromCart } from "../redux/actions/cartActions";
@@ -117,7 +117,12 @@ function CartArea() {
                           <img src={product.gallery.small[0].src} alt="thumb" />
                         </div>
                         <div className="productdetails__subdetails">
-                          <p className="name">{product.name}</p>
+                          <Link
+                            to={`/products/${product._id}`}
+                            className="name"
+                          >
+                            {product.name}
+                          </Link>
                           {product.size && (
                             <p className="size">
                               Size: {product.size.toUpperCase()}

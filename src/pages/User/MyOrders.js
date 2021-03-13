@@ -41,20 +41,18 @@ const MyOrders = () => {
 
     document.title = "Orders";
 
-    if (favItems.length === 0) {
+    /* if (favItems.length === 0) {
       dispatch(getFav());
-    }
+    } */
 
     /* console.log(orders.length); */
 
-    /* dispatch(listMyOrders()); */
+    dispatch(listMyOrders());
 
-    if (!loading) {
-      if (orders.length === 0) {
-        dispatch(listMyOrders());
-      }
-    }
-  }, [userInfo, history, dispatch, favItems, orders]);
+    /* if (!orders) {
+      dispatch(listMyOrders());
+    } */
+  }, [userInfo, history, dispatch]);
 
   return (
     <>
@@ -93,7 +91,7 @@ const MyOrders = () => {
                   textAlign: "center",
                 }}
               >
-                No previouud orders to show
+                No previous orders to show
               </h1>
             )}
 
