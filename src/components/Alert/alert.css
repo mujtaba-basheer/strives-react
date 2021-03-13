@@ -80,7 +80,7 @@
 }
 
 .popup {
-  position: absolute;
+  position: fixed;
   top: 85px;
   z-index: 20;
   width: 20%;

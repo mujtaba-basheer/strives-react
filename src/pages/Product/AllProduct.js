@@ -57,7 +57,9 @@ function AllProductArea() {
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
   const { favItems } = useSelector((state) => state.fav);
-  const { error: favError } = useSelector((state) => state.favAdd);
+  const { error: favError, success: favSuccess } = useSelector(
+    (state) => state.favAdd
+  );
 
   function clickfilter(e) {
     console.log(e.target.value);
@@ -136,12 +138,23 @@ function AllProductArea() {
 
   return (
     <section className="content">
-      {true && (
+      {favError && (
         <Alert
           type="warning"
           popup
           background="true"
-          /* timer="5000" */ text={favError}
+          timer="5000"
+          text={favError}
+        />
+      )}
+
+      {favSuccess && (
+        <Alert
+          type="success"
+          popup
+          background="true"
+          timer="5000"
+          text={"Item Successfully added to wishlist"}
         />
       )}
       <div className="allproducts-breadcrumbs flex">

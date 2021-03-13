@@ -5,7 +5,7 @@ import "./alert.css";
 
 const Alert = ({ type, text, background, timer, popup }) => {
   const [alertType, setAlertType] = useState("danger");
-  const [isClose, setIsClose] = useState(null);
+  const [isClose, setIsClose] = useState("open");
 
   useEffect(() => {
     /* console.log(type); */
@@ -57,12 +57,14 @@ const Alert = ({ type, text, background, timer, popup }) => {
 
   if (popup) {
     return (
-      <div
-        className={`custom-alert popup custom-alert--${alertType} custom-alert--${isClose} flex`}
-      >
-        <h1 className="custom-alert__text">{text}</h1>
-        {timer === 0 && <span className="closeicon-alert">&times;</span>}
-      </div>
+      isClose === "open" && (
+        <div
+          className={`custom-alert popup custom-alert--${alertType} custom-alert--${isClose} flex`}
+        >
+          <h1 className="custom-alert__text">{text}</h1>
+          {timer === 0 && <span className="closeicon-alert">&times;</span>}
+        </div>
+      )
     );
   } else {
     return (

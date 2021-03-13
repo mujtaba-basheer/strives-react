@@ -30,19 +30,19 @@ function CartArea() {
     total: 0,
     subtotal: 0,
   });
-  const { userInfo } = useSelector((state) => state.userLogin);
+  /* const { userInfo } = useSelector((state) => state.userLogin); */
   const { user, error } = useSelector((state) => state.userDetails);
   const { cartItems, loading } = useSelector((state) => state.cart);
 
   const history = useHistory();
-  const [paymentType, setPaymentType] = useState("cod");
+  /* const [paymentType, setPaymentType] = useState("cod");
   const [sdkReady, setSdkReady] = useState(false);
   const [shipmentType, setShipmentType] = useState("normal");
   const [applyCouponDetails, setApplyCouponDetails] = useState({
     name: "",
     inputState: "",
     couponApplied: false,
-  });
+  }); */
 
   useEffect(() => {
     document.title = "Cart";

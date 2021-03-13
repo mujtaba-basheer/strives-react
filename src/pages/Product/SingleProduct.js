@@ -58,6 +58,7 @@ function SingleProductArea() {
     (state) => state.productSingleGet
   );
   const { favItems } = useSelector((state) => state.fav);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const images = [];
 
@@ -98,6 +99,7 @@ function SingleProductArea() {
 
     if (isPresent) {
       console.log(product.name);
+      dispatch(addItemToFav(product));
     } else {
       dispatch(addItemToFav(product));
     }
@@ -243,9 +245,9 @@ function SingleProductArea() {
                     <p className="view">View Size Chart</p>
                   </div>
                   <div className="selectsize flex">
-                    {product.available_sizes.map((size, index) => (
+                    {product.available_sizes.map((size) => (
                       <div
-                        key={index}
+                        key={size}
                         onClick={selectProductSize}
                         id={size.toLowerCase()}
                         className="selectsize-circle"
@@ -259,7 +261,7 @@ function SingleProductArea() {
                     <Alert
                       text={productSize.error}
                       type="danger"
-                      /* background="true" */
+                      background="true"
                     />
                   )}
                 </div>
@@ -320,7 +322,12 @@ function SingleProductArea() {
 
                 <div className="cta">
                   <button className="checkout btn flex" onClick={addToCart}>
-                    Add to Cart
+                    {cartItems &&
+                    cartItems.find(
+                      (favProduct) => favProduct._id === product._id
+                    )
+                      ? "Remove from Cart"
+                      : "Add to Cart"}
                   </button>
                   <button
                     className="addtocart btn flex"
@@ -328,7 +335,12 @@ function SingleProductArea() {
                       addProductToWishlist(product);
                     }}
                   >
-                    add to Wishlist
+                    {favItems &&
+                    favItems.find(
+                      (favProduct) => favProduct._id === product._id
+                    )
+                      ? "Remove from Wishlist"
+                      : "add to Wishlist"}
                   </button>
                 </div>
 
