@@ -10,7 +10,16 @@ import { CarouselProvider, Slider, Slide, DotGroup } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Alert from "../Alert/Alert";
 
-import { addItemToFav, addItemToCart } from "../../redux/actions/cartActions";
+import {
+  addItemToFav,
+  addItemToCart,
+  removeItemFromFav,
+} from "../../redux/actions/cartActions";
+
+import {
+  FAV_ADD_RESET,
+  FAV_REMOVE_RESET,
+} from "../../redux/constants/cartConstants";
 
 const QuickView = ({ product, setShowModal }) => {
   const [productQuantity, setProductQuantity] = useState(1);
@@ -20,6 +29,15 @@ const QuickView = ({ product, setShowModal }) => {
   });
 
   const dispatch = useDispatch();
+
+  const { favItems } = useSelector((state) => state.fav);
+
+  const { error: favAddError, success: favAddSuccess } = useSelector(
+    (state) => state.favAdd
+  );
+  const { error: favRemoveError, success: favRemoveSuccess } = useSelector(
+    (state) => state.favRemove
+  );
 
   function hideQuickView() {
     setShowModal("false");
@@ -71,6 +89,16 @@ const QuickView = ({ product, setShowModal }) => {
     }
   }
 
+  function addToWishlist(product) {
+    dispatch(addItemToFav(product));
+    setTimeout(() => dispatch({ type: FAV_ADD_RESET }), 3000);
+  }
+
+  function removeFromWishlist(id) {
+    dispatch(removeItemFromFav(id));
+    setTimeout(() => dispatch({ type: FAV_REMOVE_RESET }), 3000);
+  }
+
   function selectProductSize(e) {
     e.preventDefault();
     console.log(e.target.innerText);
@@ -119,6 +147,43 @@ const QuickView = ({ product, setShowModal }) => {
           <span onClick={hideQuickView} className="quickviewmodal__close">
             &times;
           </span>
+
+          {favAddError && (
+            <Alert
+              type="danger"
+              popup
+              background="true"
+              timer="5000"
+              text={favAddError}
+            />
+          )}
+          {favAddSuccess && (
+            <Alert
+              type="success"
+              popup
+              background="true"
+              timer="5000"
+              text={"Added to wishlist"}
+            />
+          )}
+          {favRemoveError && (
+            <Alert
+              type="danger"
+              popup
+              background="true"
+              timer="5000"
+              text={favRemoveError}
+            />
+          )}
+          {favRemoveSuccess && (
+            <Alert
+              type="secondary"
+              popup
+              background="true"
+              timer="5000"
+              text={"Removed from wishlist"}
+            />
+          )}
 
           <div className="mobileproductimages">
             <CarouselProvider
@@ -203,7 +268,7 @@ const QuickView = ({ product, setShowModal }) => {
                   <Alert
                     text={productSize.error}
                     type="danger"
-                    /* background="true" */
+                    background="true"
                   />
                 )}
               </div>
@@ -266,13 +331,21 @@ const QuickView = ({ product, setShowModal }) => {
                 </button>
                 <button
                   onClick={() => {
-                    console.log(product);
-                    dispatch(addItemToFav(product));
+                    if (
+                      favItems &&
+                      favItems.find(
+                        (favProduct) => favProduct._id === product._id
+                      )
+                    )
+                      removeFromWishlist(product["_id"]);
+                    else addToWishlist(product);
                   }}
                   className="addtocart btn flex"
-                  disabled="true"
                 >
-                  add to Wishlist
+                  {favItems &&
+                  favItems.find((favProduct) => favProduct._id === product._id)
+                    ? "Remove from Wishlist"
+                    : "add to Wishlist"}
                 </button>
               </div>
             </div>
