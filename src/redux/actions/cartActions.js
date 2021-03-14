@@ -188,13 +188,22 @@ export const addItemToCart = (product, qty = 1, size) => async (
       cart: { cartItems },
     } = getState();
 
+    console.log(product, qty, size);
+
     if (cartItems) {
-      const itemIndex = cartItems.find(
+      const itemIndex = cartItems.findIndex(
         ({ _id: id, size: itemSize }) =>
           product["_id"] === id && size === itemSize
       );
-      if (itemIndex !== 1) cartItems[itemIndex].quantity += qty;
-      else cartItems.push({ ...product, quantity: qty, size });
+
+      console.log(itemIndex);
+      if (itemIndex !== -1) {
+        console.log("if");
+        cartItems[itemIndex].quantity += qty;
+      } else {
+        console.log("Else");
+        cartItems.push({ ...product, quantity: qty, size });
+      }
 
       dispatch({ type: CART_ADD_SUCCESS });
       dispatch({ type: CART_SET, payload: cartItems });

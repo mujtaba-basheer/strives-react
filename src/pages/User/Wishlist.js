@@ -82,11 +82,11 @@ const Wishlist = () => {
             )}
             {favRemoveSuccess && (
               <Alert
-                type="success"
+                type="secondary"
                 popup
                 background="true"
                 /* timer="5000" */
-                text={"Product Successfully removed from wishlist"}
+                text={"Removed from wishlist"}
               />
             )}
 

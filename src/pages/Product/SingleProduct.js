@@ -4,7 +4,16 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getSingleProduct } from "../../redux/actions/productActions";
-import { addItemToFav, addItemToCart } from "../../redux/actions/cartActions";
+import {
+  addItemToFav,
+  addItemToCart,
+  removeItemFromFav,
+} from "../../redux/actions/cartActions";
+
+import {
+  FAV_ADD_RESET,
+  FAV_REMOVE_RESET,
+} from "../../redux/constants/cartConstants";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -15,11 +24,6 @@ import facebook from "./images/facebook.png";
 import instagram from "./images/instagram.png";
 import twitter from "./images/twitter.png";
 import usp from "./images/usp.png";
-
-/* import quick2 from "./images/quick2.png";
-import quick3 from "./images/quick3.png";
-import thumb from "./images/thumb.png";
-import main from "./images/main.png"; */
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
@@ -60,6 +64,13 @@ function SingleProductArea() {
   const { favItems } = useSelector((state) => state.fav);
   const { cartItems } = useSelector((state) => state.cart);
 
+  const { error: favAddError, success: favAddSuccess } = useSelector(
+    (state) => state.favAdd
+  );
+  const { error: favRemoveError, success: favRemoveSuccess } = useSelector(
+    (state) => state.favRemove
+  );
+
   const images = [];
 
   useEffect(() => {
@@ -86,23 +97,14 @@ function SingleProductArea() {
     }
   }
 
-  function addProductToWishlist(product) {
-    /* console.log(product); */
+  function addToWishlist(product) {
+    dispatch(addItemToFav(product));
+    setTimeout(() => dispatch({ type: FAV_ADD_RESET }), 3000);
+  }
 
-    let isPresent = "false";
-
-    favItems.forEach((favProduct) => {
-      if (favProduct._id === product._id) {
-        isPresent = "true";
-      }
-    });
-
-    if (isPresent) {
-      console.log(product.name);
-      dispatch(addItemToFav(product));
-    } else {
-      dispatch(addItemToFav(product));
-    }
+  function removeFromWishlist(id) {
+    dispatch(removeItemFromFav(id));
+    setTimeout(() => dispatch({ type: FAV_REMOVE_RESET }), 3000);
   }
 
   function selectProductSize(e) {
@@ -138,11 +140,13 @@ function SingleProductArea() {
     if (productSize.size === "") {
       setProductSize({
         ...productSize,
-        error: "Please Select a size",
+        error: "Please select a size",
       });
     } else {
-      console.log(productSize);
-      dispatch(addItemToCart(product, productQuantity, productSize.size));
+      console.log(productSize, productQuantity);
+      dispatch(
+        addItemToCart(product, productQuantity, productSize.size.toUpperCase())
+      );
     }
   }
 
@@ -161,6 +165,43 @@ function SingleProductArea() {
         >
           error
         </p>
+      )}
+
+      {favAddError && (
+        <Alert
+          type="danger"
+          popup
+          background="true"
+          timer="5000"
+          text={favAddError}
+        />
+      )}
+      {favAddSuccess && (
+        <Alert
+          type="success"
+          popup
+          background="true"
+          timer="5000"
+          text={"Added to wishlist"}
+        />
+      )}
+      {favRemoveError && (
+        <Alert
+          type="danger"
+          popup
+          background="true"
+          timer="5000"
+          text={favRemoveError}
+        />
+      )}
+      {favRemoveSuccess && (
+        <Alert
+          type="secondary"
+          popup
+          background="true"
+          timer="5000"
+          text={"Removed from wishlist"}
+        />
       )}
 
       {product.name && (
@@ -322,17 +363,19 @@ function SingleProductArea() {
 
                 <div className="cta">
                   <button className="checkout btn flex" onClick={addToCart}>
-                    {cartItems &&
-                    cartItems.find(
-                      (favProduct) => favProduct._id === product._id
-                    )
-                      ? "Remove from Cart"
-                      : "Add to Cart"}
+                    Add to Cart
                   </button>
                   <button
                     className="addtocart btn flex"
                     onClick={() => {
-                      addProductToWishlist(product);
+                      if (
+                        favItems &&
+                        favItems.find(
+                          (favProduct) => favProduct._id === product._id
+                        )
+                      )
+                        removeFromWishlist(product["_id"]);
+                      else addToWishlist(product);
                     }}
                   >
                     {favItems &&

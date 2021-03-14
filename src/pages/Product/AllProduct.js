@@ -9,6 +9,11 @@ import {
   removeItemFromFav,
 } from "../../redux/actions/cartActions";
 
+import {
+  FAV_ADD_RESET,
+  FAV_REMOVE_RESET,
+} from "../../redux/constants/cartConstants";
+
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Alert from "../../components/Alert/Alert";
@@ -27,10 +32,7 @@ import heartfillsvg from "./images/heart-fill.svg";
 import Loader from "../../components/Loader/Loader";
 import BottomBar from "./components/BottomBar/BottomBar";
 
-import {
-  FAV_ADD_RESET,
-  FAV_REMOVE_RESET,
-} from "../../redux/constants/cartConstants";
+
 
 const AllProduct = () => {
   return (
@@ -73,9 +75,9 @@ function AllProductArea() {
     console.log(e.target.value);
   }
 
-  function handleChange(event) {
+  /* function handleChange(event) {
     console.log(event.target.value);
-  }
+  } */
 
   function selectSortBy(e) {
     const value = e.target.value;
