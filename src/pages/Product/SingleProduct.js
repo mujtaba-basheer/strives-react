@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { IconContext } from "react-icons";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -57,6 +60,7 @@ function SingleProductArea() {
   let { id } = useParams();
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { loading, product, error } = useSelector(
     (state) => state.productSingleGet
@@ -263,10 +267,29 @@ function SingleProductArea() {
                 </div>
               </div>
               <div className="productimages__share flex">
-                <p>share: </p>
-                <img src={facebook} alt="facebook" />
-                <img src={instagram} alt="instagram" />
-                <img src={twitter} alt="twitter" />
+                <p>share : </p>
+                <IconContext.Provider
+                  value={{ color: "#3b5998", size: "20px" }}
+                >
+                  <div
+                    onClick={() => {
+                      window.location.href = `https://www.facebook.com/sharer/sharer.php?u=https://www.websiteplanet.com`;
+                    }}
+                  >
+                    <FaFacebook />
+                  </div>
+                </IconContext.Provider>
+                <IconContext.Provider
+                  value={{ color: "#25D366", size: "20px" }}
+                >
+                  <FaWhatsapp />
+                </IconContext.Provider>
+                <IconContext.Provider
+                  value={{ color: "##8a3ab9", size: "20px" }}
+                >
+                  <FaInstagram />
+                </IconContext.Provider>
+                <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a>
               </div>
             </div>
 
@@ -390,11 +413,23 @@ function SingleProductArea() {
                 <div className="usp">
                   <img src={usp} alt="usp" />
                 </div>
+
+                <div className="productdescription1">
+                  <p className="heading">Product Details</p>
+
+                  <ul className="productdescription__list">
+                    {product.details.map((detail) => (
+                      <li className="productdescription__list--item">
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="singleproduct__description flex">
+          {/* <div className="singleproduct__description flex">
             <div className="productdescription1">
               <p className="heading">Product Details</p>
 
@@ -410,33 +445,9 @@ function SingleProductArea() {
                 <li className="productdescription__list--item">
                   Huge color selection
                 </li>
-
-                <li className="productdescription__list--item">
-                  Blend of polyster and cotton
-                </li>
               </ul>
             </div>
-            <div className="productdescription2">
-              <p className="heading">Product Details</p>
-              <ul className="productdescription__list">
-                <li className="productdescription__list--item">
-                  All colors are pre-shrunk poly/cotton blend
-                </li>
-
-                <li className="productdescription__list--item">
-                  Lightweight polo great for promotional work
-                </li>
-
-                <li className="productdescription__list--item">
-                  Huge color selection
-                </li>
-
-                <li className="productdescription__list--item">
-                  Blend of polyster and cotton
-                </li>
-              </ul>
-            </div>
-          </div>
+          </div> */}
           <span className="thirdline"></span>
         </section>
       )}

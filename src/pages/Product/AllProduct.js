@@ -141,7 +141,7 @@ function AllProductArea() {
           popup
           background="true"
           timer="5000"
-          text={"Item Successfully added to wishlist"}
+          text={"Added to wishlist"}
         />
       )}
       {favRemoveError && (
@@ -155,18 +155,18 @@ function AllProductArea() {
       )}
       {favRemoveSuccess && (
         <Alert
-          type="success"
+          type="secondary"
           popup
           background="true"
           timer="5000"
-          text={"Item Successfully removed from wishlist"}
+          text={"Removed from wishlist"}
         />
       )}
 
       <div className="allproducts-breadcrumbs flex">
-        <p className="category">fashion</p>
+        {/* <p className="category">fashion</p>
         <img src={breadcrumbsArrow} alt="arrow" />
-        <p className="classification">t-shirt</p>
+        <p className="classification">t-shirt</p> */}
       </div>
       <div className="allproducts-content flex">
         <div className="allproducts__filtersidebar">

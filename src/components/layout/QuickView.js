@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-/* import quick2 from "./images/quick2.png";
-import quick3 from "./images/quick3.png";
-import thumb from "./images/thumb.png";
-import main from "./images/main.png"; */
-
 import { CarouselProvider, Slider, Slide, DotGroup } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Alert from "../Alert/Alert";

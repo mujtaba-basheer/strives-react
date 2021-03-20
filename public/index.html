@@ -17,6 +17,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta
+      property="og:url"
+      content="https://main.d6agqspa0h3hf.amplifyapp.com/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Strives" />
+    <meta property="og:description" content="The Strives" />
+    <meta
+      property="og:image"
+      content="https://www.your-domain.com/path/image.jpg"
+    />
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src =
+          "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
 
     <title>The Strives</title>
   </head>
