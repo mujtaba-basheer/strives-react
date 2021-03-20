@@ -211,9 +211,9 @@ function SingleProductArea() {
       {product.name && (
         <section id="singleproduct" className="content singleproduct">
           <div className="singleproduct-breadcrumbs flex">
-            <p className="category">fashion</p>
+            {/* <p className="category">fashion</p>
             <img src={breadcrumbsArrow} alt="arrow" />
-            <p className="classification">{product.name}</p>
+            <p className="classification">{product.name}</p> */}
           </div>
 
           <div className="singleproduct__content flex">
@@ -241,7 +241,7 @@ function SingleProductArea() {
               <div className="productimages">
                 <div className="yellow-box"></div>
                 {/* <div className="mobileproductimages"></div> */}
-                <div className="productimages__thumbs">
+                <div className="productimages__thumbs flex">
                   {images.map((image) => (
                     <div>
                       <img
@@ -289,7 +289,12 @@ function SingleProductArea() {
                 >
                   <FaInstagram />
                 </IconContext.Provider>
-                <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a>
+                <a
+                  href="whatsapp://send?text=The text to share!"
+                  data-action="share/whatsapp/share"
+                >
+                  Share via Whatsapp
+                </a>
               </div>
             </div>
 

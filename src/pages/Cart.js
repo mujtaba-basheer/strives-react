@@ -110,11 +110,16 @@ function CartArea() {
             {cartItems.length > 0 && (
               <ul className="cartlist__list">
                 {cartItems.map((product, index) => (
-                  <li className="cartlist__list--item" key={index}>
+                  <li className="cartlist__list--item" key={product._id}>
                     <div className="cartlist__list--itemcontainer flex">
                       <div className="productdetails flex">
                         <div className="image">
-                          <img src={product.gallery.small[0].src} alt="thumb" />
+                          <Link to={`/products/${product._id}`}>
+                            <img
+                              src={product.gallery.small[0].src}
+                              alt={product.name}
+                            />
+                          </Link>
                         </div>
                         <div className="productdetails__subdetails">
                           <Link

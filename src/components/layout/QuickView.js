@@ -58,7 +58,10 @@ const QuickView = ({ product, setShowModal }) => {
   }
 
   const images = [];
-  if (product) product.gallery.main.map((image) => images.push(image.src));
+  if (product) {
+    product.gallery.main.map((image) => images.push(image.src));
+    console.log(images);
+  }
 
   useEffect(() => {
     document.addEventListener("keydown", escFunction, false);
@@ -184,7 +187,7 @@ const QuickView = ({ product, setShowModal }) => {
             <CarouselProvider
               naturalSlideWidth={100}
               naturalSlideHeight={125}
-              totalSlides={3}
+              totalSlides={images.length}
             >
               <Slider>
                 {images.map((image) => (
@@ -207,7 +210,7 @@ const QuickView = ({ product, setShowModal }) => {
           <div className="productimages">
             <div className="yellow-box"></div>
 
-            <div className="productimages__thumbs">
+            <div className="productimages__thumbs flex">
               {images.map((image) => (
                 <div>
                   <img

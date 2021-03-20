@@ -217,7 +217,7 @@
       margin-bottom: 40px;
 
       .product-item {
-        height: 515px;
+        /* height: 515px; */
         position: relative;
 
         .heart {
@@ -232,7 +232,7 @@
         }
 
         &__image {
-          height: 386px;
+          /* height: 386px; */
           position: relative;
           transition: visibility 500ms;
 
@@ -263,8 +263,9 @@
         }
 
         &__details {
-          margin-top: 44px;
-          margin-left: 17px;
+          /* margin-top: 44px;
+          margin-left: 17px; */
+          margin: 20px;
           &--heading {
             font-size: 18px;
             line-height: 24px;
