@@ -33,7 +33,7 @@ import heartfillsvg from "./images/heart-fill.svg";
 import Loader from "../../components/Loader/Loader";
 import BottomBar from "./components/BottomBar/BottomBar";
 
-import { material } from "./data";
+import { material, size, colour } from "./data";
 
 const AllProduct = () => {
   return (
@@ -73,8 +73,9 @@ function AllProductArea() {
     (state) => state.favRemove
   );
 
-  function clickfilter(e) {
-    console.log(e.target.value);
+  function clickfilter(data) {
+    /* console.log(e.target.value); */
+    console.log(data);
   }
 
   /* function handleChange(event) {
@@ -180,87 +181,54 @@ function AllProductArea() {
             <div className="material">
               <p className="material__heading">Material</p>
               <ul className="material__list">
-                <li className="material__list--item">
-                  <label for="polyster">
-                    <input
-                      type="checkbox"
-                      name="polyster"
-                      id="polyster"
-                      value="polyster"
-                      onClick={clickfilter}
-                    />
-                    Polyster
-                  </label>
-                </li>
-                <li className="material__list--item">
-                  <label for="polyster1">
-                    <input
-                      type="checkbox"
-                      name="polyster1"
-                      id="polyster1"
-                      value="polyster1"
-                      onClick={clickfilter}
-                    />
-                    Polyster
-                  </label>
-                </li>
-                <li className="material__list--item">
-                  <label for="polyster2">
-                    <input
-                      type="checkbox"
-                      name="polyster2"
-                      id="polyster2"
-                      value="polyster2"
-                      onClick={clickfilter}
-                    />
-                    Polyster
-                  </label>
-                </li>
+                {material.map((mat) => (
+                  <li className="material__list--item" key={mat}>
+                    <label for={mat}>
+                      <input
+                        type="checkbox"
+                        name={mat}
+                        id="polyster"
+                        value={mat}
+                        onClick={() => {
+                          clickfilter(mat);
+                        }}
+                      />
+                      {mat}
+                    </label>
+                  </li>
+                ))}
               </ul>
-              <a href="#" className="see-more">
+              {/* <a href="#" className="see-more">
                 See More
-              </a>
+              </a> */}
             </div>
 
             <div className="size">
               <p className="size__heading">Size</p>
               <ul className="size__list">
-                <li className="size__list--item">
-                  <label for="size1">
-                    <input
-                      type="checkbox"
-                      name="size1"
-                      id="size1"
-                      value="size1"
-                    />
-                    size1
-                  </label>
-                </li>
-                <li className="size__list--item">
-                  <input
-                    type="checkbox"
-                    name="size1"
-                    id="size1"
-                    value="size1"
-                  />
-                  <label for="size1">size1</label> <br />
-                </li>
-                <li className="size__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
+                {size.map((siz) => (
+                  <li className="size__list--item" key={siz}>
+                    <label for={siz}>
+                      <input
+                        type="checkbox"
+                        name={siz}
+                        id={siz}
+                        value={siz}
+                        onClick={() => {
+                          clickfilter(siz);
+                        }}
+                      />
+                      {siz}
+                    </label>
+                  </li>
+                ))}
               </ul>
-              <a href="#" className="see-more">
+              {/* <a href="#" className="see-more">
                 See More
-              </a>
+              </a> */}
             </div>
 
-            <div className="designer">
+            {/* <div className="designer">
               <p className="designer__heading">Designer</p>
               <ul className="designer__list">
                 <li className="designer__list--item">
@@ -294,45 +262,33 @@ function AllProductArea() {
               <a href="#" className="see-more">
                 See More
               </a>
+            </div> */}
+
+            <div className="colour">
+              <p className="colour__heading">Colour</p>
+              <ul className="colour__list">
+                {colour.map((col) => (
+                  <li className="size__list--item" key={col}>
+                    <label for={col}>
+                      <input
+                        type="checkbox"
+                        name={col}
+                        id={col}
+                        value={col}
+                        onClick={() => {
+                          clickfilter(col);
+                        }}
+                      />
+                      {col}
+                    </label>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div className="price">
               <p className="price__heading">Price</p>
-
               <ProductSlider setProductslidervalue={setProductslidervalue} />
-            </div>
-
-            <div className="colour">
-              <p className="colour__heading">colour</p>
-              <ul className="colour__list">
-                <li className="colour__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Red</label> <br />
-                </li>
-                <li className="colour__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Blue</label> <br />
-                </li>
-                <li className="colour__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Green</label> <br />
-                </li>
-              </ul>
             </div>
           </div>
         </div>

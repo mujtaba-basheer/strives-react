@@ -145,7 +145,7 @@ const SizeChart = ({ setShowSizeChart }) => {
             </table>
           </div>
 
-          <p className="secondary__heading mt-3">
+          <p className="secondary__heading">
             LOWERS - Pajamas / Ghararas / Skirts / Trousers
           </p>
 
