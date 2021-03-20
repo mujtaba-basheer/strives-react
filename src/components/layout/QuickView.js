@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { CarouselProvider, Slider, Slide, DotGroup } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Alert from "../Alert/Alert";
+import SizeChart from "./SizeChart";
 
 import {
   addItemToFav,
@@ -22,6 +23,7 @@ const QuickView = ({ product, setShowModal }) => {
     size: "",
     error: "",
   });
+  const [showSizeChart, setShowSizeChart] = useState("false");
 
   const dispatch = useDispatch();
 
@@ -138,8 +140,16 @@ const QuickView = ({ product, setShowModal }) => {
     }
   }
 
+  function openSizeChart() {
+    console.log("sizechart");
+    setShowSizeChart("true")
+  }
+
   return (
     <div id="quickviewmodal" className="quickviewmodal">
+      {showSizeChart === "true" && (
+        <SizeChart setShowSizeChart={setShowSizeChart} />
+      )}
       {product && (
         <div className="quickviewmodal__content flex">
           <span onClick={hideQuickView} className="quickviewmodal__close">
@@ -247,7 +257,9 @@ const QuickView = ({ product, setShowModal }) => {
               <div className="size">
                 <div className="size__header flex">
                   <p className="select">Select Size</p>
-                  <p className="view">View Size Chart</p>
+                  <p onClick={openSizeChart} className="view">
+                    View Size Chart
+                  </p>
                 </div>
                 <div className="selectsize flex">
                   {product.available_sizes.map((size, index) => (

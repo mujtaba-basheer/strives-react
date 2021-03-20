@@ -20,6 +20,7 @@ import Alert from "../../components/Alert/Alert";
 
 import ProductSlider from "../../components/ProductSlider";
 import QuickView from "../../components/layout/QuickView";
+import SizeChart from "../../components/layout/SizeChart";
 
 import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.png";
 import productimage from "./images/image.png";
@@ -32,7 +33,7 @@ import heartfillsvg from "./images/heart-fill.svg";
 import Loader from "../../components/Loader/Loader";
 import BottomBar from "./components/BottomBar/BottomBar";
 
-
+import { material } from "./data";
 
 const AllProduct = () => {
   return (
@@ -49,6 +50,7 @@ function AllProductArea() {
   const [sortValue, setSortValue] = useState(["date", "-1"]);
 
   const [productdetails, setProductdetails] = useState({});
+  console.log(material);
 
   const [showModal, setShowModal] = useState("false");
 
@@ -337,7 +339,7 @@ function AllProductArea() {
 
         <div className="allproducts__products">
           <div className="header flex">
-            <p className="header__heading">Anarkalis</p>
+            <p className="header__heading">{/* Anarkalis */}</p>
             <div className="header__right">
               <p className="header__right--display-results">
                 Displaying 6 out of 20 results

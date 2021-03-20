@@ -36,6 +36,7 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import Alert from "../../components/Alert/Alert";
+import SizeChart from "../../components/layout/SizeChart";
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -56,6 +57,7 @@ function SingleProductArea() {
     size: "",
     error: "",
   });
+  const [showSizeChart, setShowSizeChart] = useState("false");
 
   let { id } = useParams();
 
@@ -154,6 +156,11 @@ function SingleProductArea() {
     }
   }
 
+  function openSizeChart() {
+    console.log("sizechart");
+    setShowSizeChart("true");
+  }
+
   if (product.gallery)
     product.gallery.main.map((image) => images.push(image.src));
 
@@ -206,6 +213,10 @@ function SingleProductArea() {
           timer="5000"
           text={"Removed from wishlist"}
         />
+      )}
+
+      {showSizeChart === "true" && (
+        <SizeChart setShowSizeChart={setShowSizeChart} />
       )}
 
       {product.name && (
@@ -311,7 +322,9 @@ function SingleProductArea() {
                 <div className="size">
                   <div className="size__header flex">
                     <p className="select">Select Size</p>
-                    <p className="view">View Size Chart</p>
+                    <p onClick={openSizeChart} className="view">
+                      View Size Chart
+                    </p>
                   </div>
                   <div className="selectsize flex">
                     {product.available_sizes.map((size) => (
