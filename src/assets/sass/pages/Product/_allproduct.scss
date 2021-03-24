@@ -173,6 +173,7 @@
 
   &__products {
     margin-right: 96px;
+    flex: 2;
     .header {
       justify-content: space-between;
       align-items: flex-start;
@@ -217,8 +218,9 @@
     .product-container {
       display: grid;
       grid-gap: 27px 22px;
-      grid-template-columns: repeat(3, 294px);
+      grid-template-columns: repeat(auto-fit, 294px);
       margin-bottom: 40px;
+      justify-content: center;
 
       .product-item {
         /* height: 515px; */
