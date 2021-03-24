@@ -59,6 +59,10 @@
       margin-top: 31px;
       margin-right: 18px;
       margin-bottom: 15px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .filters {

@@ -35,7 +35,7 @@ export const getProducts = (filters = {}) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_GET_REQUEST });
 
-    const query_string = stringify(filters);
+    const query_string = stringify({filters});
 
     const { data } = await apiCall.get(`products?${query_string}`);
 

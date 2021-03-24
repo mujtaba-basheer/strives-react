@@ -1,5 +1,5 @@
-export const material = ["Cotton", "Polyster", "Silk"];
+export const materials = ["Cotton", "Polyster", "Silk"];
 
-export const size = ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "XXXXL"];
+export const sizes = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL"];
 
-export const colour = ["Red", "Blue", "Green"];
+export const colours = ["Red", "Blue", "Green"];

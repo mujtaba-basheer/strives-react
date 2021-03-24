@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
@@ -35,17 +35,17 @@ import BottomBar from "./components/BottomBar/BottomBar";
 
 import { materials, sizes, colours } from "./data";
 
-const AllProduct = () => {
+const SingleCategory = () => {
   return (
     <>
       <Navbar />
-      <AllProductArea />
+      <SingleCategoryArea />
       <Footer />
     </>
   );
 };
 
-function AllProductArea() {
+function SingleCategoryArea() {
   /* const [sortbyValue, setSortbyValue] = useState("latest"); */
   const [sortValue, setSortValue] = useState(["date", "-1"]);
 
@@ -59,12 +59,16 @@ function AllProductArea() {
     size: [],
   });
 
-  function useQuery() {
+  let { categoryid, subcategoryid } = useParams();
+
+  console.log(categoryid, subcategoryid);
+
+  /* function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
 
   let query = useQuery();
-  const queryString = query.get("search");
+  const queryString = query.get("search"); */
 
   const dispatch = useDispatch();
 
@@ -155,18 +159,18 @@ function AllProductArea() {
   useEffect(() => {
     dispatch(
       getProducts({
-        keyword: queryString,
+        /* keyword: queryString, */
         min: productslidervalue[0],
         max: productslidervalue[1],
         sort: sortValue,
         material: filter["material"],
         color: filter["color"],
         size: filter["size"],
-        /* "category": "60212edfff106c000451ba02",
-        "sub-category": "Cotton Salwar Kameez", */
+        category: categoryid,
+        "sub-category": subcategoryid,
       })
     );
-  }, [productslidervalue, queryString, sortValue]);
+  }, [productslidervalue, sortValue]);
 
   return (
     <section className="content">
@@ -559,4 +563,4 @@ function AllProductArea() {
   );
 }
 
-export default AllProduct;
+export default SingleCategory;

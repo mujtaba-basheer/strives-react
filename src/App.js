@@ -21,6 +21,8 @@ import AllProduct from "./pages/Product/AllProduct";
 import SingleProduct from "./pages/Product/SingleProduct";
 import Cart from "./pages/Cart";
 import MyOrders from "./pages/User/MyOrders";
+import Category from "./pages/Product/Category";
+import SingleCategory from "./pages/Product/SingleCategory";
 
 const App = () => {
   return (
@@ -51,6 +53,11 @@ const App = () => {
         <Route exact path="/products" component={AllProduct} />
 
         <Route exact path="/products/:id" component={SingleProduct} />
+
+        <Route exact path="/category/:categoryid" component={Category} />
+        
+        <Route exact path="/category/:categoryid/:subcategoryid" component={SingleCategory} />
+
       </Switch>
     </Router>
   );

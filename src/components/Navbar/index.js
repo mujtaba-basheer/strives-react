@@ -21,6 +21,11 @@ import Account from "./Sidebar/Account";
 import Shop from "./NavbarData/Shop";
 import Brand from "./NavbarData/Brand";
 
+import { nav_data } from "./NavbarData/data";
+import NavbarLink1 from "./NavbarData/NavbarLink1";
+import NavbarLink3 from "./NavbarData/NavbarLink3";
+import NavbarLink4 from "./NavbarData/NavbarLink4";
+
 const Index = () => {
   const history = useHistory();
   const userLogin = useSelector((state) => state.userLogin);
@@ -275,14 +280,27 @@ const Index = () => {
           </Link>
           <nav className="nav">
             <ul className="flex">
-              <li
+              {/* <li
                 className="main-nav--listitem"
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <Link className="hovermenu__listitems__home" to="/">
-                  Home
+                <Link
+                  className="hovermenu__listitems__home"
+                  to="/category/60212edfff106c000451ba02"
+                >
+                  Lehengas
                 </Link>
+              </li> */}
+              <li className="main-nav--listitem">
+                <div
+                  className="dropdown-shop"
+                  onMouseOver={changeNavbarColor}
+                  onMouseLeave={resetNavbarColor}
+                >
+                  <Link to="/category/60212edfff106c000451ba02">Lehengas</Link>
+                  <NavbarLink1 height={navbarHeigt} />
+                </div>
               </li>
               <li className="main-nav--listitem">
                 <div
@@ -290,26 +308,36 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link to="/my-account">Shop</Link>
+                  <Link to="/category/60212faaff106c000451ba03">Salwar Kameez</Link>
                   <Shop height={navbarHeigt} />
                 </div>
               </li>
               <li className="main-nav--listitem">
                 <div
-                  className="dropdown-brand"
+                  className="dropdown-shop"
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link to="/">Brands</Link>
-                  <Brand height={navbarHeigt} />
+                  <Link to="/category/6021307bff106c000451ba04">Gowns</Link>
+                  <NavbarLink3 height={navbarHeigt} />
                 </div>
               </li>
-              <li
+              {/* <li
                 className="main-nav--listitem"
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <Link to="/">Collections</Link>
+                <Link to="/">Sets</Link>
+              </li> */}
+              <li className="main-nav--listitem">
+                <div
+                  className="dropdown-shop"
+                  onMouseOver={changeNavbarColor}
+                  onMouseLeave={resetNavbarColor}
+                >
+                  <Link to="/category/602130d9ff106c000451ba05">Sets</Link>
+                  <NavbarLink4 height={navbarHeigt} />
+                </div>
               </li>
               <li
                 className="main-nav--listitem"

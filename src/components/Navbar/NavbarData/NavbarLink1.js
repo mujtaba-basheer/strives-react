@@ -9,7 +9,7 @@ import { nav_data } from "./data";
 
 /* console.log(nav_data[1]) */
 
-const Shop = ({ height }) => {
+const NavbarLink1 = ({ height }) => {
   return (
     <div
       style={{
@@ -18,13 +18,13 @@ const Shop = ({ height }) => {
       className="navbar__hovermenu shop flex"
     >
       <div className="navbar__hovermenu__options flex">
-        {nav_data[1].sub_categories.map((navdata) => (
+        {nav_data[0].sub_categories.map((navdata) => (
           <div className="hovermenu__listitems">
             <h3>{navdata.name}</h3>
             <ul>
               {navdata.values.map((subnavdata) => (
                 <li>
-                  <Link>{subnavdata}</Link>
+                  <Link to={`/category/${nav_data[0]._id}/${navdata._id}`}>{subnavdata}</Link>
                 </li>
               ))}
             </ul>
@@ -40,4 +40,4 @@ const Shop = ({ height }) => {
   );
 };
 
-export default Shop;
+export default NavbarLink1;
