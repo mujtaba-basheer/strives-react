@@ -131,8 +131,8 @@
           }
 
           .selectsize .active {
-            color: #fff;
-            background: #2c3d50;
+            background: var(--clr-primary);
+            color: var(--clr-secondary);
           }
         }
 

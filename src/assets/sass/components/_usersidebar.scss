@@ -60,19 +60,19 @@
       }
 
       ul li.active {
-        background: #222b32;
+        background: var(--clr-primary);
       }
 
       ul li.active a {
-        color: #fff;
+        color: var(--clr-secondary);
       }
 
       ul li:hover {
-        background: #222b32;
+        background: var(--clr-primary);
       }
 
       ul li:hover a {
-        color: #fff;
+        color: var(--clr-secondary);
       }
 
       ul li a {
@@ -101,19 +101,21 @@
       }
 
       ul li.active {
-        background: #222b32;
+        background: var(--clr-primary);
       }
 
       ul li.active a {
         color: #fff;
+        color: var(--clr-secondary);
       }
 
       ul li:hover {
-        background: #222b32;
+        background: var(--clr-primary);
       }
 
       ul li:hover a {
         color: #fff;
+        color: var(--clr-secondary);
       }
 
       ul li a {

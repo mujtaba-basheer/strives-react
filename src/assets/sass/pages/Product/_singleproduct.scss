@@ -121,6 +121,7 @@
           font-size: 28px;
           line-height: 37px;
           margin-bottom: 18px;
+          color: var(--clr-primary);
         }
 
         .line {
@@ -135,6 +136,7 @@
           line-height: 19px;
           font-family: var(--font-secondary);
           margin-bottom: 40px;
+          color: var(--clr-primary);
         }
 
         .size {
@@ -174,10 +176,15 @@
               }
             }
           }
+          .custom {
+            width: 59px !important;
+            height: 40px !important;
+            border-radius: 25px !important;
+          }
 
           .selectsize .active {
-            color: #fff;
-            background: #2c3d50;
+            background: var(--clr-primary);
+            color: var(--clr-secondary);
           }
         }
 
@@ -274,16 +281,17 @@
 
           .checkout {
             width: 100%;
-            background: #2c3d50;
-            color: #fff;
+            background: var(--clr-primary);
+            color: var(--clr-secondary);
             margin-bottom: 15px;
           }
 
           .addtocart {
-            border: 1px solid #2c3d50;
+            border: 1px solid var(--clr-primary);
             width: 100%;
             background: #fff;
             color: #2c3d50;
+            color: var(--clr-primary);
           }
         }
 
@@ -302,8 +310,7 @@
             margin: 20px 0;
             font-size: 28px;
             line-height: 37px;
-            
-            color: var(--text-color-dark);
+            color: var(--clr-primary)
           }
 
           .productdescription__list {

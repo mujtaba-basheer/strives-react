@@ -37,6 +37,7 @@ import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import Alert from "../../components/Alert/Alert";
 import SizeChart from "../../components/layout/SizeChart";
+import CustomSizeChart from "../../components/layout/CustomSizeChart";
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -58,6 +59,8 @@ function SingleProductArea() {
     error: "",
   });
   const [showSizeChart, setShowSizeChart] = useState("false");
+  const [showCustomSizeChart, setShowCustomSizeChart] = useState(false);
+  const [productCustomSizeInfo, setproductCustomSizeInfo] = useState([]);
 
   let { id } = useParams();
 
@@ -115,7 +118,7 @@ function SingleProductArea() {
 
   function selectProductSize(e) {
     e.preventDefault();
-    console.log(e.target.innerText);
+    /* console.log(e.target.innerText); */
 
     const name = e.target.innerText.toLowerCase();
 
@@ -130,7 +133,11 @@ function SingleProductArea() {
       }
     }
 
-    console.log(name);
+    /* console.log(name); */
+
+    if (name === "custom") {
+      openCustomSizeChartModal();
+    }
 
     setProductSize({
       ...productSize,
@@ -139,6 +146,11 @@ function SingleProductArea() {
     });
 
     document.getElementById(name).classList.add("active");
+  }
+
+  function openCustomSizeChartModal() {
+    console.log("custom modal");
+    setShowCustomSizeChart("true");
   }
 
   function addToCart() {
@@ -217,6 +229,13 @@ function SingleProductArea() {
 
       {showSizeChart === "true" && (
         <SizeChart setShowSizeChart={setShowSizeChart} />
+      )}
+
+      {showCustomSizeChart === "true" && (
+        <CustomSizeChart
+          setShowCustomSizeChart={setShowCustomSizeChart}
+          productCustomSizeInfo={productCustomSizeInfo}
+        />
       )}
 
       {product.name && (
@@ -337,6 +356,19 @@ function SingleProductArea() {
                         <p>{size}</p>
                       </div>
                     ))}
+
+                    <div
+                      onClick={(e) => {
+                        console.log(product.set);
+                        setproductCustomSizeInfo(product.set);
+
+                        selectProductSize(e);
+                      }}
+                      id="custom"
+                      className="selectsize-circle custom"
+                    >
+                      <p>custom</p>
+                    </div>
                   </div>
 
                   {productSize.error && (
