@@ -28,18 +28,18 @@
       border-radius: 2px;
       flex-direction: column;
 
-
       &--button {
         border: none;
         outline: none;
         padding: 14px 0;
         width: 100%;
-        background: #2c3d50;
+
         border-radius: 2px;
         font-size: 16px;
         line-height: 21px;
         text-transform: uppercase;
-        color: #ffffff;
+        background: var(--clr-primary);
+        color: var(--clr-secondary);
       }
 
       &__signuplink {

@@ -25,7 +25,7 @@ const NavbarLink3 = ({ height }) => {
             <ul>
               {navdata.values.map((subnavdata) => (
                 <li>
-                  <Link>{subnavdata}</Link>
+                  <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>{subnavdata}</Link>
                 </li>
               ))}
             </ul>

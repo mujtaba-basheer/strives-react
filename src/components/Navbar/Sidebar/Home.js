@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import { nav_data } from "../NavbarData/data";
 
 const Home = () => {
   useEffect(() => {
@@ -20,51 +23,79 @@ const Home = () => {
   return (
     <div className="accordian">
       <div className="accordian-item">
-        <div className="accordian-item-header active">Home</div>
+        <div className="accordian-item-header active">Lehengas</div>
         <div className="accordian-item-body">
-          <ul className="flex">
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-          </ul>
+          {nav_data[0].sub_categories.map((navdata) => (
+            <>
+              <h3>{navdata.name}</h3>
+              <ul className="flex">
+                {navdata.values.map((subnavdata) => (
+                  <li>
+                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                      {subnavdata}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
         </div>
       </div>
       <div className="accordian-item">
-        <div className="accordian-item-header">Shop</div>
+        <div className="accordian-item-header">Salwar Kameez</div>
         <div className="accordian-item-body">
-          <ul className="flex">
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-          </ul>
+          {nav_data[1].sub_categories.map((navdata) => (
+            <>
+              <h3>{navdata.name}</h3>
+              <ul className="flex">
+                {navdata.values.map((subnavdata) => (
+                  <li>
+                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                      {subnavdata}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
         </div>
       </div>
       <div className="accordian-item">
-        <div className="accordian-item-header">Brands</div>
+        <div className="accordian-item-header">Gowns</div>
         <div className="accordian-item-body">
-          <ul className="flex">
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-          </ul>
+          {nav_data[2].sub_categories.map((navdata) => (
+            <>
+              <h3>{navdata.name}</h3>
+              <ul className="flex">
+                {navdata.values.map((subnavdata) => (
+                  <li>
+                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                      {subnavdata}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
         </div>
       </div>
       <div className="accordian-item">
-        <div className="accordian-item-header">Collections</div>
+        <div className="accordian-item-header">Sets</div>
         <div className="accordian-item-body">
-          <ul className="flex">
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-          </ul>
+          {nav_data[3].sub_categories.map((navdata) => (
+            <>
+              <h3>{navdata.name}</h3>
+              <ul className="flex">
+                {navdata.values.map((subnavdata) => (
+                  <li>
+                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                      {subnavdata}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
         </div>
       </div>
     </div>
