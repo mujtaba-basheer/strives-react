@@ -30,6 +30,7 @@ import {
   PRODUCT_SINGLE_GET_REQUEST,
   PRODUCT_SINGLE_GET_SUCCESS,
   PRODUCT_SINGLE_GET_FAIL,
+  PRODUCT_SINGLE_SET,
 } from "../constants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -70,6 +71,8 @@ export const productGetReducer = (state = { products: [] }, action) => {
 
 export const productSingleGetReducer = (state = { product: {} }, action) => {
   switch (action.type) {
+    case PRODUCT_SINGLE_SET:
+      return { loading: true, product: action.payload };
     case PRODUCT_SINGLE_GET_REQUEST:
       return { loading: true, product: {} };
     case PRODUCT_SINGLE_GET_SUCCESS:

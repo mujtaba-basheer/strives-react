@@ -6,7 +6,10 @@ import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getSingleProduct } from "../../redux/actions/productActions";
+import {
+  getSingleProduct,
+  setCustomSize,
+} from "../../redux/actions/productActions";
 import {
   addItemToFav,
   addItemToCart,
@@ -86,6 +89,8 @@ function SingleProductArea() {
     dispatch(getSingleProduct(id));
     if (product.name) document.title = product.name;
   }, []);
+
+  const onCustomFormSubmit = (formData) => dispatch(setCustomSize(formData));
 
   function swapMainImage(event) {
     const src = event.target.src;
@@ -233,6 +238,7 @@ function SingleProductArea() {
         <CustomSizeChart
           setShowCustomSizeChart={setShowCustomSizeChart}
           productCustomSizeInfo={productCustomSizeInfo}
+          onCustomFormSubmit={onCustomFormSubmit}
         />
       )}
 
@@ -313,7 +319,7 @@ function SingleProductArea() {
                   <FaWhatsapp />
                 </IconContext.Provider>
                 <IconContext.Provider
-                  value={{ color: "##8a3ab9", size: "20px" }}
+                  value={{ color: "#8a3ab9", size: "20px" }}
                 >
                   <FaInstagram />
                 </IconContext.Provider>

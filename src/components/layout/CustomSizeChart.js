@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import { sizeInfo } from "./customsizemodaldata";
 
-const CustomSizeChart = ({ setShowCustomSizeChart, productCustomSizeInfo }) => {
+const CustomSizeChart = ({
+  setShowCustomSizeChart,
+  productCustomSizeInfo,
+  onCustomFormSubmit,
+}) => {
   const [sizeChartInputs, setSizeChartInputs] = useState([]);
   const [sizeChartValues, setSizeChartValues] = useState({});
 
@@ -51,13 +55,14 @@ const CustomSizeChart = ({ setShowCustomSizeChart, productCustomSizeInfo }) => {
     /* console.log(e.target.value); */
     setSizeChartValues({
       ...sizeChartValues,
-      [e.target.name]: e.target.value,
+      [e.target.name]: Number(e.target.value),
     });
   }
 
   function onSubmit(e) {
     e.preventDefault();
     console.log(sizeChartValues);
+    onCustomFormSubmit(sizeChartValues);
   }
 
   return (
@@ -80,16 +85,14 @@ const CustomSizeChart = ({ setShowCustomSizeChart, productCustomSizeInfo }) => {
             <div className="inputarea">
               {sizeChartInputs.map((sizeChartInput) => (
                 <div key={sizeChartInput} className="input">
-                  <label className="label">
-                    Enter {sizeChartInput}:
-                    <input
-                      type="number"
-                      id={sizeChartInput}
-                      name={sizeChartInput}
-                      onChange={(e) => setValue(e)}
-                      required
-                    />
-                  </label>
+                  <label className="label">Enter {sizeChartInput}:</label>
+                  <input
+                    type="number"
+                    id={sizeChartInput}
+                    name={sizeChartInput}
+                    onChange={(e) => setValue(e)}
+                    required
+                  />
                   cm
                 </div>
               ))}

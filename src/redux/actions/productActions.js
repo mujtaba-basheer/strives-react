@@ -28,6 +28,7 @@ import {
   PRODUCT_SINGLE_GET_REQUEST,
   PRODUCT_SINGLE_GET_SUCCESS,
   PRODUCT_SINGLE_GET_FAIL,
+  PRODUCT_SINGLE_SET,
 } from "../constants/productConstants";
 import { stringify } from "querystring";
 
@@ -35,7 +36,7 @@ export const getProducts = (filters = {}) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_GET_REQUEST });
 
-    const query_string = stringify({filters});
+    const query_string = stringify({ filters });
 
     const { data } = await apiCall.get(`products?${query_string}`);
 
@@ -67,6 +68,19 @@ export const getSingleProduct = (id) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const setCustomSize = (customSize) => async (dispatch, getState) => {
+  const {
+    productSingleGet: { product },
+  } = getState();
+
+  if (product) {
+    product.size = "C";
+    product.custom = customSize;
+
+    dispatch({ type: PRODUCT_SINGLE_SET, payload: product });
+  } else dispatch({ type: PRODUCT_SINGLE_SET, payload: {} });
 };
 
 export const listProducts = (keyword = "", page = "") => async (dispatch) => {
