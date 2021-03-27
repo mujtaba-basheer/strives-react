@@ -53,11 +53,19 @@ function AllProductArea() {
 
   const [showModal, setShowModal] = useState("false");
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [filter, setFilter] = useState({
     material: [],
     colour: [],
     size: [],
   });
+
+  let location = useLocation();
+
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  console.log(from, location);
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -152,6 +160,31 @@ function AllProductArea() {
     }
   }
 
+  function changeNavigation(value) {
+    console.log(value);
+
+    let currentPageValue = parseInt(currentPage);
+    if (value === "previous") {
+      if (currentPage === 1) {
+        setCurrentPage(1);
+      } else {
+        currentPageValue = currentPageValue - 1;
+        console.log(currentPageValue);
+        setCurrentPage(currentPageValue);
+      }
+    } else if (value === "next") {
+      if (currentPage === 50) {
+        setCurrentPage(50);
+      } else {
+        currentPageValue = currentPageValue + 1;
+        console.log(currentPageValue);
+        setCurrentPage(currentPageValue);
+      }
+    }
+
+    console.log(currentPage);
+  }
+
   useEffect(() => {
     dispatch(
       getProducts({
@@ -162,11 +195,10 @@ function AllProductArea() {
         material: filter["material"],
         color: filter["color"],
         size: filter["size"],
-        /* "category": "60212edfff106c000451ba02",
-        "sub-category": "Cotton Salwar Kameez", */
+        page: currentPage,
       })
     );
-  }, [productslidervalue, queryString, sortValue]);
+  }, [productslidervalue, queryString, sortValue, currentPage]);
 
   return (
     <section className="content">
@@ -341,7 +373,9 @@ function AllProductArea() {
 
         <div className="allproducts__products">
           <div className="header flex">
-            <p className="header__heading">{/* Anarkalis */}</p>
+            <p className="header__heading">
+              {queryString ? `Search Results for ${queryString}` : "Products"}
+            </p>
             <div className="header__right">
               <p className="header__right--display-results">
                 Displaying 6 out of 20 results
@@ -473,7 +507,12 @@ function AllProductArea() {
           </div>
           {products.length > 9 && (
             <div className="navigation flex">
-              <a className="navigation__button previous">
+              <p
+                className="navigation__button previous"
+                onClick={() => {
+                  changeNavigation("previous");
+                }}
+              >
                 <img
                   style={{
                     height: "10px",
@@ -484,8 +523,13 @@ function AllProductArea() {
                   alt="previous"
                 />{" "}
                 previous
-              </a>
-              <a className="navigation__button next">
+              </p>
+              <p
+                className="navigation__button next"
+                onClick={() => {
+                  changeNavigation("next");
+                }}
+              >
                 next{" "}
                 <img
                   style={{
@@ -496,7 +540,7 @@ function AllProductArea() {
                   src={next}
                   alt="next"
                 />
-              </a>
+              </p>
             </div>
           )}
         </div>

@@ -23,7 +23,7 @@
       font-size: 18px;
       line-height: 27px;
       text-transform: uppercase;
-      color: var(--text-color-dark);
+      color: var(--clr-primary);
     }
 
     &__heading--text--margin {
@@ -32,7 +32,7 @@
       font-size: 18px;
       line-height: 27px;
       text-transform: uppercase;
-      color: var(--text-color-dark);
+      color: var(--clr-primary);
       margin-left: 10px;
     }
 
@@ -53,10 +53,15 @@
         width: 100%;
         padding: 10px 0;
         color: var(--text-color-dark);
+        color: var(--clr-primary);
         background: #fff;
         font-size: 16px;
 
         line-height: 150%;
+      }
+
+      ul li a {
+        color: var(--clr-primary);
       }
 
       ul li.active {
@@ -93,11 +98,15 @@
       ul li {
         width: 100%;
         padding: 10px 0;
-        color: var(--text-color-dark);
+        color: var(--clr-primary);
         background: #fff;
         font-size: 16px;
         font-family: var(--ff-c);
         line-height: 150%;
+      }
+
+      ul li a {
+        color: var(--clr-primary);
       }
 
       ul li.active {
