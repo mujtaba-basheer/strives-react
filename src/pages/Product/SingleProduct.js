@@ -149,7 +149,6 @@ function SingleProductArea() {
   }
 
   function openCustomSizeChartModal() {
-    console.log("custom modal");
     setShowCustomSizeChart("true");
   }
 
@@ -169,7 +168,6 @@ function SingleProductArea() {
   }
 
   function openSizeChart() {
-    console.log("sizechart");
     setShowSizeChart("true");
   }
 
@@ -303,7 +301,7 @@ function SingleProductArea() {
                 >
                   <div
                     onClick={() => {
-                      window.location.href = `https://www.facebook.com/sharer/sharer.php?u=https://www.websiteplanet.com`;
+                      /* window.location.href = {`https://www.facebook.com/sharer/sharer.php?u=${}`}; */
                     }}
                   >
                     <FaFacebook />
@@ -367,7 +365,7 @@ function SingleProductArea() {
                       id="custom"
                       className="selectsize-circle custom"
                     >
-                      <p>custom</p>
+                      <p>CUSTOM</p>
                     </div>
                   </div>
 

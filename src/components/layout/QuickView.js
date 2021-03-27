@@ -16,6 +16,7 @@ import {
   FAV_ADD_RESET,
   FAV_REMOVE_RESET,
 } from "../../redux/constants/cartConstants";
+import CustomSizeChart from "./CustomSizeChart";
 
 const QuickView = ({ product, setShowModal }) => {
   const [productQuantity, setProductQuantity] = useState(1);
@@ -24,6 +25,8 @@ const QuickView = ({ product, setShowModal }) => {
     error: "",
   });
   const [showSizeChart, setShowSizeChart] = useState("false");
+  const [showCustomSizeChart, setShowCustomSizeChart] = useState(false);
+  const [productCustomSizeInfo, setproductCustomSizeInfo] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -116,7 +119,9 @@ const QuickView = ({ product, setShowModal }) => {
       }
     }
 
-    console.log(name);
+    if (name === "custom") {
+      openCustomSizeChartModal();
+    }
 
     setProductSize({
       ...productSize,
@@ -141,8 +146,11 @@ const QuickView = ({ product, setShowModal }) => {
   }
 
   function openSizeChart() {
-    console.log("sizechart");
-    setShowSizeChart("true")
+    setShowSizeChart("true");
+  }
+
+  function openCustomSizeChartModal() {
+    setShowCustomSizeChart("true");
   }
 
   return (
@@ -150,6 +158,14 @@ const QuickView = ({ product, setShowModal }) => {
       {showSizeChart === "true" && (
         <SizeChart setShowSizeChart={setShowSizeChart} />
       )}
+
+      {showCustomSizeChart === "true" && (
+        <CustomSizeChart
+          setShowCustomSizeChart={setShowCustomSizeChart}
+          productCustomSizeInfo={productCustomSizeInfo}
+        />
+      )}
+
       {product && (
         <div className="quickviewmodal__content flex">
           <span onClick={hideQuickView} className="quickviewmodal__close">
@@ -272,6 +288,19 @@ const QuickView = ({ product, setShowModal }) => {
                       <p>{size}</p>
                     </div>
                   ))}
+
+                  <div
+                    onClick={(e) => {
+                      console.log(product.set);
+                      setproductCustomSizeInfo(product.set);
+
+                      selectProductSize(e);
+                    }}
+                    id="custom"
+                    className="selectsize-circle custom"
+                  >
+                    <p>CUSTOM</p>
+                  </div>
                 </div>
 
                 {productSize.error && (

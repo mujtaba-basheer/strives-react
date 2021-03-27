@@ -76,6 +76,7 @@
           font-size: 28px;
           line-height: 37px;
           margin-bottom: 18px;
+          color: var(--clr-primary);
         }
 
         .line {
@@ -90,6 +91,7 @@
           line-height: 19px;
           font-family: var(--font-secondary);
           margin-bottom: 40px;
+          color: var(--clr-primary);
         }
 
         .size {
@@ -110,7 +112,7 @@
               width: 40px;
               height: 40px;
               border-radius: 50%;
-              border: 1px solid #2c3d50;
+              border: 1px solid var(--clr-primary);
               margin-top: 11px;
               display: flex;
               align-items: center;
@@ -130,8 +132,18 @@
             }
           }
 
+          .custom {
+            width: 70px !important;
+            height: 40px !important;
+            border-radius: 25px !important;
+          }
+
           .selectsize .active {
             background: var(--clr-primary);
+            color: var(--clr-secondary);
+          }
+
+          .selectsize .active p {
             color: var(--clr-secondary);
           }
         }
@@ -167,7 +179,7 @@
                 height: 40px;
                 margin: 0 12px;
                 text-align: center;
-                border: 1px solid #2c3d50;
+                border: 1px solid var(--clr-primary);
                 border-radius: 2px;
               }
             }
@@ -229,16 +241,16 @@
 
           .checkout {
             width: 100%;
-            background: #2c3d50;
+            background: var(--clr-primary);
             color: #fff;
             margin-bottom: 15px;
           }
 
           .addtocart {
-            border: 1px solid #2c3d50;
+            border: 1px solid var(--clr-primary);
             width: 100%;
             background: #fff;
-            color: #2c3d50;
+            color: var(--clr-primary);
           }
         }
       }
@@ -249,7 +261,7 @@
     position: absolute;
     top: 36px;
     right: 38px;
-    color: #2c3d50;
+    color: var(--clr-primary);
     font-size: 40px;
     /*  font-weight: bold; */
     transition: 0.3s;

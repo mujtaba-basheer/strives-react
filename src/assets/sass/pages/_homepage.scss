@@ -15,9 +15,9 @@
   &__btn {
     width: 335px;
     height: 53px;
-    background: #28303a;
+    background: var(--clr-primary);
     border-radius: 2px;
-    color: #fff;
+    color: var(--clr-secondary);
     font-family: var(--font-secondary);
     font-size: 16px;
     line-height: 21px;
@@ -25,6 +25,8 @@
     margin-top: 85px;
     text-transform: uppercase;
     cursor: pointer;
+    outline: none;
+    border: none;
   }
 
   &__wrapper-grid {
@@ -202,7 +204,6 @@
 .theme {
   margin: 3em 0;
   text-align: center;
-  font-family: "Lora", serif;
   width: 92vw;
   margin-left: auto;
   margin-right: auto;
@@ -262,7 +263,7 @@
   }
 
   &__text {
-    color: #2c3d50;
+    color: var(--clr-primary);
     font-weight: 400;
     margin: 1em 0;
     text-align: center;
@@ -272,7 +273,6 @@
 .best-seller {
   margin: 3em 0;
   text-align: center;
-  font-family: "Lora", serif;
   width: 92vw;
   margin-left: auto;
   margin-right: auto;
@@ -332,14 +332,15 @@
   }
 
   &__text {
-    color: #2c3d50;
+    color: var(--clr-primary);
+
     font-weight: 400;
     margin: 1em 0;
     text-align: center;
   }
 
   &__details {
-    font-family: var(--ff-l);
+    font-family: var(--font-secondary);
     text-align: start;
     margin-top: 1em;
     margin-left: 2em;
@@ -361,7 +362,7 @@
 
       p {
         font-size: 0.875em;
-        color: rgba($color: #2c3d50, $alpha: 0.6);
+        color: rgba($color: var(--clr-primary), $alpha: 0.6);
       }
     }
   }
@@ -402,7 +403,7 @@
     &--btn {
       display: inline-block;
       width: min-content;
-      background: #222b32;
+      background: var(--clr-secondary);
       color: #fff;
       padding: 0 1em;
       border: none;
@@ -413,7 +414,7 @@
 }
 
 .customize {
-  background: #28303a;
+  background: var(--clr-primary);
   margin-bottom: 5em;
   padding-top: 2.5em;
 
@@ -435,7 +436,7 @@
       justify-content: center;
       align-items: center;
       text-transform: uppercase;
-      font-family: var(--ff-l);
+      font-family: var(--font-primary);
       padding: 1em 2em;
       color: #2c3d50;
       margin-left: auto;
@@ -699,7 +700,7 @@
   }
 
   .customize {
-    background: #28303a;
+    background: var(--clr-primary);
     margin-bottom: 15em;
     padding-top: 5em;
 
