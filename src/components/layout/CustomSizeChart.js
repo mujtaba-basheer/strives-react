@@ -63,6 +63,7 @@ const CustomSizeChart = ({
     e.preventDefault();
     console.log(sizeChartValues);
     onCustomFormSubmit(sizeChartValues);
+    hideCustomSizeChart();
   }
 
   return (

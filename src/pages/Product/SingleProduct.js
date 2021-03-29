@@ -90,7 +90,10 @@ function SingleProductArea() {
     if (product.name) document.title = product.name;
   }, []);
 
-  const onCustomFormSubmit = (formData) => dispatch(setCustomSize(formData));
+  const onCustomFormSubmit = (formData) => {
+    dispatch(setCustomSize(formData));
+    document.querySelector(".customsizechart__container").click();
+  };
 
   function swapMainImage(event) {
     const src = event.target.src;
