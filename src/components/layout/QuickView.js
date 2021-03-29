@@ -278,29 +278,33 @@ const QuickView = ({ product, setShowModal }) => {
                   </p>
                 </div>
                 <div className="selectsize flex">
-                  {product.available_sizes.map((size, index) => (
-                    <div
-                      key={index}
-                      onClick={selectProductSize}
-                      id={size.toLowerCase()}
-                      className="selectsize-circle"
-                    >
-                      <p>{size}</p>
-                    </div>
-                  ))}
+                  {product.available_sizes.map((size) =>
+                    size.toLowerCase() !== "c" ? (
+                      <div
+                        key={size}
+                        onClick={selectProductSize}
+                        id={size.toLowerCase()}
+                        className="selectsize-circle"
+                      >
+                        <p>{size}</p>
+                      </div>
+                    ) : (
+                      size.toLowerCase() === "c" && (
+                        <div
+                          onClick={(e) => {
+                            console.log(product.set);
+                            setproductCustomSizeInfo(product.set);
 
-                  <div
-                    onClick={(e) => {
-                      console.log(product.set);
-                      setproductCustomSizeInfo(product.set);
-
-                      selectProductSize(e);
-                    }}
-                    id="custom"
-                    className="selectsize-circle custom"
-                  >
-                    <p>CUSTOM</p>
-                  </div>
+                            selectProductSize(e);
+                          }}
+                          id="custom"
+                          className="selectsize-circle custom"
+                        >
+                          <p>CUSTOM</p>
+                        </div>
+                      )
+                    )
+                  )}
                 </div>
 
                 {productSize.error && (

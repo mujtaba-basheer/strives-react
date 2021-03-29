@@ -58,6 +58,15 @@ export const getSingleProduct = (id) => async (dispatch) => {
 
     const { data } = await apiCall.get(`product/${id}`);
 
+    const preSorted = ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "XXXXL", "C"];
+
+    const toSort = data.data.available_sizes;
+
+    toSort.sort(
+      (a, b) =>
+        preSorted.findIndex((n) => n == a) - preSorted.findIndex((n) => n == b)
+    );
+
     dispatch({ type: PRODUCT_SINGLE_GET_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({

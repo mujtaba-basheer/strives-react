@@ -65,6 +65,8 @@ function SingleProductArea() {
   const [showCustomSizeChart, setShowCustomSizeChart] = useState(false);
   const [productCustomSizeInfo, setproductCustomSizeInfo] = useState([]);
 
+  const [sizeArray, setSizeArray] = useState([]);
+
   let { id } = useParams();
 
   const dispatch = useDispatch();
@@ -89,6 +91,7 @@ function SingleProductArea() {
     dispatch(getSingleProduct(id));
     if (product.name) document.title = product.name;
   }, []);
+
 
   const onCustomFormSubmit = (formData) => {
     dispatch(setCustomSize(formData));
@@ -308,13 +311,13 @@ function SingleProductArea() {
                 <IconContext.Provider
                   value={{ color: "#3b5998", size: "20px" }}
                 >
-                  <div
+                  {/* <div
                     onClick={() => {
-                      /* window.location.href = {`https://www.facebook.com/sharer/sharer.php?u=${}`}; */
+                      window.location.href = "https://www.facebook.com/sharer/sharer.php?u=${}";
                     }}
                   >
-                    <FaFacebook />
-                  </div>
+                  </div> */}
+                  <FaFacebook />
                 </IconContext.Provider>
                 <IconContext.Provider
                   value={{ color: "#25D366", size: "20px" }}
@@ -353,29 +356,33 @@ function SingleProductArea() {
                     </p>
                   </div>
                   <div className="selectsize flex">
-                    {product.available_sizes.map((size) => (
-                      <div
-                        key={size}
-                        onClick={selectProductSize}
-                        id={size.toLowerCase()}
-                        className="selectsize-circle"
-                      >
-                        <p>{size}</p>
-                      </div>
-                    ))}
+                    {product.available_sizes.map((size) =>
+                      size.toLowerCase() !== "c" ? (
+                        <div
+                          key={size}
+                          onClick={selectProductSize}
+                          id={size.toLowerCase()}
+                          className="selectsize-circle"
+                        >
+                          <p>{size}</p>
+                        </div>
+                      ) : (
+                        size.toLowerCase() === "c" && (
+                          <div
+                            onClick={(e) => {
+                              console.log(product.set);
+                              setproductCustomSizeInfo(product.set);
 
-                    <div
-                      onClick={(e) => {
-                        console.log(product.set);
-                        setproductCustomSizeInfo(product.set);
-
-                        selectProductSize(e);
-                      }}
-                      id="custom"
-                      className="selectsize-circle custom"
-                    >
-                      <p>CUSTOM</p>
-                    </div>
+                              selectProductSize(e);
+                            }}
+                            id="custom"
+                            className="selectsize-circle custom"
+                          >
+                            <p>CUSTOM</p>
+                          </div>
+                        )
+                      )
+                    )}
                   </div>
 
                   {productSize.error && (
