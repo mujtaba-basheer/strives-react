@@ -53,6 +53,8 @@ function CategoryArea() {
 
   const [showModal, setShowModal] = useState("false");
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [filter, setFilter] = useState({
     material: [],
     colour: [],
@@ -64,8 +66,6 @@ function CategoryArea() {
   }
 
   let { categoryid } = useParams();
-
-  console.log(categoryid);
 
   let query = useQuery();
   const queryString = query.get("search");
@@ -83,10 +83,12 @@ function CategoryArea() {
   );
 
   function clickfilter(type, data) {
-    /* console.log(e.target.value); */
     let filterObj = {
       ...filter,
     };
+    type = type.toLowerCase();
+    data = data.toLowerCase();
+
     let present = "false";
     filterObj[type].forEach((element) => {
       if (element === data) {
@@ -95,12 +97,10 @@ function CategoryArea() {
     });
 
     if (present === "false") {
-      filterObj[type].push(data.toLowerCase());
+      filterObj[type].push(data);
       setFilter(filterObj);
-      console.log(filterObj);
     } else if (present === "true") {
-      filterObj[type].pop(data.toLowerCase());
-      console.log(filterObj);
+      filterObj[type].pop(data);
       setFilter(filterObj);
     }
   }
@@ -156,6 +156,25 @@ function CategoryArea() {
     }
   }
 
+  function changeNavigation(value) {
+    let currentPageValue = parseInt(currentPage);
+    if (value === "previous") {
+      if (currentPage === 1) {
+        setCurrentPage(1);
+      } else {
+        currentPageValue = currentPageValue - 1;
+        setCurrentPage(currentPageValue);
+      }
+    } else if (value === "next") {
+      if (currentPage === 50) {
+        setCurrentPage(50);
+      } else {
+        currentPageValue = currentPageValue + 1;
+        setCurrentPage(currentPageValue);
+      }
+    }
+  }
+
   useEffect(() => {
     dispatch(
       getProducts({
@@ -167,10 +186,11 @@ function CategoryArea() {
         color: filter["color"],
         size: filter["size"],
         category: categoryid,
+        page: currentPage,
         /* "sub-category": "Cotton Salwar Kameez", */
       })
     );
-  }, [productslidervalue, queryString, sortValue]);
+  }, [productslidervalue, queryString, sortValue, filter]);
 
   return (
     <section className="content">
@@ -477,7 +497,16 @@ function CategoryArea() {
           </div>
           {products.length > 9 && (
             <div className="navigation flex">
-              <a className="navigation__button previous">
+              <button
+                className={
+                  currentPage < 2
+                    ? "navigation__button previous disabled"
+                    : "navigation__button previous"
+                }
+                onClick={() => {
+                  changeNavigation("previous");
+                }}
+              >
                 <img
                   style={{
                     height: "10px",
@@ -488,8 +517,13 @@ function CategoryArea() {
                   alt="previous"
                 />{" "}
                 previous
-              </a>
-              <a className="navigation__button next">
+              </button>
+              <button
+                className="navigation__button next"
+                onClick={() => {
+                  changeNavigation("next");
+                }}
+              >
                 next{" "}
                 <img
                   style={{
@@ -500,7 +534,7 @@ function CategoryArea() {
                   src={next}
                   alt="next"
                 />
-              </a>
+              </button>
             </div>
           )}
         </div>

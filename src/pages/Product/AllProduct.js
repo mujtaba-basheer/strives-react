@@ -20,7 +20,6 @@ import Alert from "../../components/Alert/Alert";
 
 import ProductSlider from "../../components/ProductSlider";
 import QuickView from "../../components/layout/QuickView";
-import SizeChart from "../../components/layout/SizeChart";
 
 import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.png";
 import productimage from "./images/image.png";
@@ -65,8 +64,6 @@ function AllProductArea() {
 
   let { from } = location.state || { from: { pathname: "/" } };
 
-  console.log(from, location);
-
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -91,6 +88,9 @@ function AllProductArea() {
     let filterObj = {
       ...filter,
     };
+    type = type.toLowerCase();
+    data = data.toLowerCase();
+
     let present = "false";
     filterObj[type].forEach((element) => {
       if (element === data) {
@@ -99,12 +99,10 @@ function AllProductArea() {
     });
 
     if (present === "false") {
-      filterObj[type].push(data.toLowerCase());
+      filterObj[type].push(data);
       setFilter(filterObj);
-      console.log(filterObj);
     } else if (present === "true") {
-      filterObj[type].pop(data.toLowerCase());
-      console.log(filterObj);
+      filterObj[type].pop(data);
       setFilter(filterObj);
     }
   }
@@ -161,15 +159,12 @@ function AllProductArea() {
   }
 
   function changeNavigation(value) {
-    console.log(value);
-
     let currentPageValue = parseInt(currentPage);
     if (value === "previous") {
       if (currentPage === 1) {
         setCurrentPage(1);
       } else {
         currentPageValue = currentPageValue - 1;
-        console.log(currentPageValue);
         setCurrentPage(currentPageValue);
       }
     } else if (value === "next") {
@@ -177,12 +172,9 @@ function AllProductArea() {
         setCurrentPage(50);
       } else {
         currentPageValue = currentPageValue + 1;
-        console.log(currentPageValue);
         setCurrentPage(currentPageValue);
       }
     }
-
-    console.log(currentPage);
   }
 
   useEffect(() => {
@@ -198,7 +190,7 @@ function AllProductArea() {
         page: currentPage,
       })
     );
-  }, [productslidervalue, queryString, sortValue, currentPage]);
+  }, [productslidervalue, queryString, sortValue, currentPage, filter]);
 
   return (
     <section className="content">
@@ -422,7 +414,7 @@ function AllProductArea() {
           <div className="product-container">
             {products &&
               products.map((product, index) => (
-                <div className="product-item">
+                <div className="product-item" key={product._id}>
                   <p
                     className="heart"
                     onClick={() => {
@@ -476,10 +468,8 @@ function AllProductArea() {
                       className="quick-view flex"
                       onClick={(e) => {
                         e.preventDefault();
-                        console.log("clicked");
                         setProductdetails(product);
                         setShowModal("true");
-
                         /* showQuickView(); */
                       }}
                     >
@@ -507,8 +497,12 @@ function AllProductArea() {
           </div>
           {products.length > 9 && (
             <div className="navigation flex">
-              <p
-                className="navigation__button previous"
+              <button
+                className={
+                  currentPage < 2
+                    ? "navigation__button previous disabled"
+                    : "navigation__button previous"
+                }
                 onClick={() => {
                   changeNavigation("previous");
                 }}
@@ -523,8 +517,8 @@ function AllProductArea() {
                   alt="previous"
                 />{" "}
                 previous
-              </p>
-              <p
+              </button>
+              <button
                 className="navigation__button next"
                 onClick={() => {
                   changeNavigation("next");
@@ -540,7 +534,7 @@ function AllProductArea() {
                   src={next}
                   alt="next"
                 />
-              </p>
+              </button>
             </div>
           )}
         </div>

@@ -5,28 +5,67 @@ import { getProducts } from "../../../../redux/actions/productActions";
 
 import ProductSlider from "../../../../components/ProductSlider";
 
+import { materials, sizes, colours } from "../../data";
+
 const Filter = () => {
   const dispatch = useDispatch();
 
-  const [bottombarfilter, setBottombarfilter] = useState("designer");
+  const [bottombarfilter, setBottombarfilter] = useState("material");
 
-  const categoryList = ["Designer", "Occasion", "Season", "Price", "Size"];
+  const categoryList = ["Material", "Size", "Colour", "Price"];
 
   const [productslidervalue, setProductslidervalue] = useState([]);
+
+  const [filter, setFilter] = useState({
+    material: [],
+    colour: [],
+    size: [],
+  });
+
+  useEffect(() => {
+    dispatch(
+      getProducts({
+        min: productslidervalue[0],
+        max: productslidervalue[1],
+        material: filter["material"],
+        color: filter["color"],
+        size: filter["size"],
+      })
+    );
+  }, [productslidervalue, filter]);
 
   function closebottomfilter() {
     document.getElementsByClassName("filterdiv ")[0].style.display = "none";
   }
 
-  useEffect(() => {
-    console.log(productslidervalue);
-    dispatch(
-      getProducts({
-        min: productslidervalue[0],
-        max: productslidervalue[1],
-      })
-    );
-  }, [productslidervalue]);
+  /* function applyFilter() {
+    document.getElementsByClassName("filterdiv ")[0].style.display = "none";
+  } */
+
+  function clickfilter(type, data) {
+    let filterObj = {
+      ...filter,
+    };
+    type = type.toLowerCase();
+    data = data.toLowerCase();
+
+    let present = "false";
+    filterObj[type].forEach((element) => {
+      if (element === data) {
+        present = "true";
+      }
+    });
+
+    if (present === "false") {
+      filterObj[type].push(data);
+      setFilter(filterObj);
+    } else if (present === "true") {
+      console.log("true");
+
+      filterObj[type].pop(data);
+      setFilter(filterObj);
+    }
+  }
 
   return (
     <div
@@ -50,102 +89,66 @@ const Filter = () => {
           </ul>
         </div>
         <div className="filterdiv__right">
-          {bottombarfilter === "designer" && (
+          {bottombarfilter === "material" && (
             <ul className="sortsub__list designer">
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Designer</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Designer</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Designer</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Designer</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Designer</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Designer</label>
-              </li>
+              {materials.map((material) => (
+                <li className="sortsub__list--item" key={material}>
+                  <label for={material}>
+                    <input
+                      type="checkbox"
+                      name="material"
+                      id={material}
+                      value={material}
+                      onClick={() => {
+                        clickfilter("material", material);
+                      }}
+                    />
+                    {material}
+                  </label>
+                </li>
+              ))}
             </ul>
           )}
 
-          {bottombarfilter === "occasion" && (
+          {bottombarfilter === "size" && (
             <ul className="sortsub__list occasion">
-              <li className="sortsub__list--item">
-                <div className="input-group">
-                  <input type="checkbox" name="" id="" />
-                  <label htmlFor="">occasion</label>
-                </div>
-              </li>
-              <li className="sortsub__list--item">
-                <div className="input-group">
-                  <input type="checkbox" name="" id="" />
-                  <label htmlFor="">occasion</label>
-                </div>
-              </li>
-              <li className="sortsub__list--item">
-                <div className="input-group">
-                  <input type="checkbox" name="" id="" />
-                  <label htmlFor="">occasion</label>
-                </div>
-              </li>
-              <li className="sortsub__list--item">
-                <div className="input-group">
-                  <input type="checkbox" name="" id="" />
-                  <label htmlFor="">occasion</label>
-                </div>
-              </li>
-              <li className="sortsub__list--item">
-                <div className="input-group">
-                  <input type="checkbox" name="" id="" />
-                  <label htmlFor="">occasion</label>
-                </div>
-              </li>
-              <li className="sortsub__list--item">
-                <div className="input-group">
-                  <input type="checkbox" name="" id="" />
-                  <label htmlFor="">occasion</label>
-                </div>
-              </li>
+              {sizes.map((size) => (
+                <li className="sortsub__list--item" key={size}>
+                  <label for={size}>
+                    <input
+                      type="checkbox"
+                      name="size"
+                      id={size}
+                      value={size}
+                      onClick={() => {
+                        clickfilter("size", size);
+                      }}
+                    />
+                    {size}
+                  </label>
+                </li>
+              ))}
             </ul>
           )}
 
-          {bottombarfilter === "season" && (
-            <ul className="sortsub__list season">
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Season</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Season</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Season</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Season</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Season</label>
-              </li>
-              <li className="sortsub__list--item">
-                <input type="checkbox" name="" id=" " />
-                <label htmlFor="">Season</label>
-              </li>
+          {bottombarfilter === "colour" && (
+            <ul className="sortsub__list--item">
+              {colours.map((colour) => (
+                <li className="size__list--item" key={colour}>
+                  <label for={colour}>
+                    <input
+                      type="checkbox"
+                      name="colour"
+                      id={colour}
+                      value={colour}
+                      onClick={() => {
+                        clickfilter("colour", colour);
+                      }}
+                    />
+                    {colour}
+                  </label>
+                </li>
+              ))}
             </ul>
           )}
 
@@ -162,7 +165,7 @@ const Filter = () => {
         <div className="cancelfilter" onClick={closebottomfilter}>
           Cancel
         </div>
-        <div className="applyfilter">Apply Filter</div>
+        <div className="applyfilter" onClick={closebottomfilter}>Apply Filter</div>
       </div>
     </div>
   );
