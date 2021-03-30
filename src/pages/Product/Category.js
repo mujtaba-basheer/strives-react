@@ -35,6 +35,8 @@ import BottomBar from "./components/BottomBar/BottomBar";
 
 import { materials, sizes, colours } from "./data";
 
+import { nav_data } from "../../components/Navbar/NavbarData/data";
+
 const Category = () => {
   return (
     <>
@@ -60,6 +62,8 @@ function CategoryArea() {
     colour: [],
     size: [],
   });
+
+  const [categoryName, setCategoryName] = useState("");
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -176,6 +180,12 @@ function CategoryArea() {
   }
 
   useEffect(() => {
+    // using the id showing category name
+
+    nav_data.forEach((navdata) => {
+      if (navdata._id === categoryid) setCategoryName(navdata.name);
+    });
+
     dispatch(
       getProducts({
         /* keyword: queryString, */
@@ -190,7 +200,7 @@ function CategoryArea() {
         /* "sub-category": "Cotton Salwar Kameez", */
       })
     );
-  }, [productslidervalue, queryString, sortValue, filter]);
+  }, [productslidervalue, queryString, sortValue, filter, currentPage]);
 
   return (
     <section className="content">
@@ -365,7 +375,9 @@ function CategoryArea() {
 
         <div className="allproducts__products">
           <div className="header flex">
-            <p className="header__heading">{categoryid}</p>
+            <p className="header__heading">
+              {categoryName !== "" ? categoryName : ""}
+            </p>
             <div className="header__right">
               <p className="header__right--display-results">
                 Displaying 6 out of 20 results
