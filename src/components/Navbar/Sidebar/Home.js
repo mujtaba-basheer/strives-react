@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { nav_data } from "../NavbarData/data";
 
-const Home = () => {
+const Home = ({ closeSideMenu }) => {
+  let history = useHistory();
+
   useEffect(() => {
     const accordianItemHeaders = document.querySelectorAll(
       ".accordian-item-header"
@@ -20,10 +22,16 @@ const Home = () => {
     });
   });
 
+  function closeOnClick(data1, data2) {
+    console.log(data1, data2);
+    closeSideMenu();
+    history.push(`/category/${data1}/${data2}`);
+  }
+
   return (
     <div className="accordian">
       <div className="accordian-item">
-        <div className="accordian-item-header active">Lehengas</div>
+        <div className="accordian-item-header">Lehengas</div>
         <div className="accordian-item-body">
           {nav_data[0].sub_categories.map((navdata) => (
             <>
@@ -31,9 +39,11 @@ const Home = () => {
               <ul className="flex">
                 {navdata.values.map((subnavdata) => (
                   <li>
-                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                    <p
+                      onClick={() => closeOnClick(nav_data[0]._id, subnavdata)}
+                    >
                       {subnavdata}
-                    </Link>
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -50,9 +60,11 @@ const Home = () => {
               <ul className="flex">
                 {navdata.values.map((subnavdata) => (
                   <li>
-                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                    <p
+                      onClick={() => closeOnClick(nav_data[0]._id, subnavdata)}
+                    >
                       {subnavdata}
-                    </Link>
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -69,9 +81,11 @@ const Home = () => {
               <ul className="flex">
                 {navdata.values.map((subnavdata) => (
                   <li>
-                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                    <p
+                      onClick={() => closeOnClick(nav_data[0]._id, subnavdata)}
+                    >
                       {subnavdata}
-                    </Link>
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -88,9 +102,11 @@ const Home = () => {
               <ul className="flex">
                 {navdata.values.map((subnavdata) => (
                   <li>
-                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                    <p
+                      onClick={() => closeOnClick(nav_data[0]._id, subnavdata)}
+                    >
                       {subnavdata}
-                    </Link>
+                    </p>
                   </li>
                 ))}
               </ul>

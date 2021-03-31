@@ -308,7 +308,9 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link to="/category/60212faaff106c000451ba03">Salwar Kameez</Link>
+                  <Link to="/category/60212faaff106c000451ba03">
+                    Salwar Kameez
+                  </Link>
                   <Shop height={navbarHeigt} />
                 </div>
               </li>
@@ -501,7 +503,9 @@ const Index = () => {
 
         {/* Accordian */}
 
-        {currentSidebarScreen === "home" && <Home />}
+        {currentSidebarScreen === "home" && (
+          <Home closeSideMenu={closeSideMenu} />
+        )}
 
         {/* Account */}
 

@@ -210,6 +210,11 @@
         .subtotal {
           justify-content: space-between;
           margin-bottom: 4px;
+
+          .strike {
+            text-decoration: line-through;
+            margin-right: 5px;
+          }
         }
 
         .subtotaldescription {
@@ -323,6 +328,28 @@
         /* width: 400px; */
         margin-top: 50px;
         /* height: 300px; */
+
+        .mainheading {
+          font-size: 28px;
+          line-height: 37px;
+          margin-bottom: 18px;
+          color: var(--clr-primary);
+        }
+
+        .line {
+          display: block;
+          width: 100%;
+          border-top: 1px solid rgba(44, 61, 80, 0.1);
+          margin-bottom: 16px;
+        }
+
+        .productdetailstext {
+          font-size: 16px;
+          line-height: 19px;
+          font-family: var(--font-secondary);
+          margin-bottom: 40px;
+          color: var(--clr-primary);
+        }
       }
 
       .carousel__dot-group {
@@ -355,7 +382,19 @@
       .productdetails {
         margin-top: 35px;
         &__container {
-          width: 90%;
+          width: 100%;
+
+          .mainheading {
+            display: none;
+          }
+
+          .line {
+            display: none;
+          }
+
+          .productdetailstext {
+            display: none;
+          }
 
           .selectquantity {
             .inputs {

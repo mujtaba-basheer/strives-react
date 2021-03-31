@@ -187,9 +187,10 @@ function SingleCategoryArea() {
         size: filter["size"],
         category: categoryid,
         "sub-category": subcategoryid,
+        page: currentPage,
       })
     );
-  }, [productslidervalue, sortValue, filter]);
+  }, [productslidervalue, sortValue, filter, categoryid, subcategoryid, currentPage]);
 
   return (
     <section className="content">

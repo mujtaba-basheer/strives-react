@@ -92,7 +92,6 @@ function SingleProductArea() {
     if (product.name) document.title = product.name;
   }, []);
 
-
   const onCustomFormSubmit = (formData) => {
     dispatch(setCustomSize(formData));
     document.querySelector(".customsizechart__container").click();
@@ -250,6 +249,7 @@ function SingleProductArea() {
 
       {product.name && (
         <section id="singleproduct" className="content singleproduct">
+          {console.log(product)}
           <div className="singleproduct-breadcrumbs flex">
             {/* <p className="category">fashion</p>
             <img src={breadcrumbsArrow} alt="arrow" />
@@ -259,6 +259,13 @@ function SingleProductArea() {
           <div className="singleproduct__content flex">
             <div className="productdetails__left">
               <div className="mobileproductimages">
+                <p className="mainheading">{product.name}</p>
+
+                <span className="line"></span>
+
+                <p className="productdetailstext">
+                  {product.short_description}
+                </p>
                 <Swiper
                   spaceBetween={0}
                   slidesPerView={1}
@@ -431,7 +438,10 @@ function SingleProductArea() {
 
                 <div className="subtotal flex">
                   <p className="subtotal__heading">Subtotal</p>
-                  <p className="subtotal__price">₹ {product.sp}</p>
+                  <p className="subtotal__price">
+                    ₹<span className="strike">{product.mrp}</span> ₹{" "}
+                    {product.sp}
+                  </p>
                 </div>
 
                 <div className="subtotaldescription">

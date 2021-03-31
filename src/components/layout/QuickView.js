@@ -210,6 +210,9 @@ const QuickView = ({ product, setShowModal }) => {
           )}
 
           <div className="mobileproductimages">
+            <p className="mainheading">{product.name}</p>
+            <span className="line"></span>
+            <p className="productdetailstext">{product.short_description}</p>
             <CarouselProvider
               naturalSlideWidth={100}
               naturalSlideHeight={125}
@@ -352,7 +355,10 @@ const QuickView = ({ product, setShowModal }) => {
 
               <div className="subtotal flex">
                 <p className="subtotal__heading">Subtotal</p>
-                <p className="subtotal__price">₹ {product.sp}</p>
+                <p className="subtotal__price">
+                  ₹ <span className="strike"> {product.mrp} </span> ₹{" "}
+                  {product.sp}
+                </p>
               </div>
 
               <div className="subtotaldescription">
