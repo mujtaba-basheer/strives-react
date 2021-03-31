@@ -164,6 +164,8 @@ export const favReducer = (state = { favItems: [] }, action) => {
 export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case CART_SET:
+      if (action.payload)
+        localStorage.setItem("cartItems", JSON.stringify(action.payload));
       return { cartItems: action.payload };
     case CART_CLEAR:
       return { cartItems: null };

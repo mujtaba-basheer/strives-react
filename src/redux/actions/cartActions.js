@@ -291,6 +291,7 @@ export const updateItemQty = (id, size, qty = 1) => async (
       if (item["_id"] === id && item["size"] === size) item["quantity"] = qty;
       return item;
     });
+
     dispatch({ type: CART_SET, payload: updatedItems });
 
     if (userInfo) {
