@@ -75,6 +75,7 @@ function AllProductArea() {
 
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
+  const { page: maxPages } = useSelector((state) => state.productPages);
   const { favItems } = useSelector((state) => state.fav);
   const { error: favAddError, success: favAddSuccess } = useSelector(
     (state) => state.favAdd
@@ -120,7 +121,7 @@ function AllProductArea() {
       var ele = document.getElementsByName(element);
 
       for (var i = 0; i < ele.length; i++) {
-        if (ele[i].type == "checkbox") ele[i].checked = false;
+        if (ele[i].type === "checkbox") ele[i].checked = false;
       }
     });
   }
@@ -168,8 +169,8 @@ function AllProductArea() {
         setCurrentPage(currentPageValue);
       }
     } else if (value === "next") {
-      if (currentPage === 50) {
-        setCurrentPage(50);
+      if (currentPage === maxPages) {
+        setCurrentPage(maxPages);
       } else {
         currentPageValue = currentPageValue + 1;
         setCurrentPage(currentPageValue);
@@ -178,19 +179,25 @@ function AllProductArea() {
   }
 
   useEffect(() => {
-    dispatch(
-      getProducts({
-        keyword: queryString,
-        min: productslidervalue[0],
-        max: productslidervalue[1],
-        sort: sortValue,
-        material: filter["material"],
-        color: filter["color"],
-        size: filter["size"],
-        page: currentPage,
-      })
-    );
-  }, [productslidervalue, queryString, sortValue, currentPage, filter]);
+    const queryObj = {
+      keyword: queryString,
+      min: productslidervalue[0],
+      max: productslidervalue[1],
+      sort: sortValue,
+      material: filter["material"],
+      color: filter["color"],
+      size: filter["size"],
+      page: currentPage,
+    };
+    dispatch(getProducts(queryObj));
+  }, [
+    productslidervalue,
+    queryString,
+    sortValue,
+    currentPage,
+    filter,
+    dispatch,
+  ]);
 
   return (
     <section className="content">
@@ -519,7 +526,12 @@ function AllProductArea() {
                 previous
               </button>
               <button
-                className="navigation__button next"
+                className={
+                  "navigation__button next " + currentPage === maxPages
+                    ? "disabled"
+                    : ""
+                }
+                disabled={currentPage === maxPages}
                 onClick={() => {
                   changeNavigation("next");
                 }}
@@ -550,7 +562,7 @@ function AllProductArea() {
         <div className="product-container">
           <div className="product-item">
             <div className="product-item__image">
-              <img src={productimage} alt="image" />
+              <img src={productimage} alt="product-item" />
               <div className="quick-view flex">
                 <p className="quick-view__text">Quick View</p>
               </div>
@@ -562,7 +574,7 @@ function AllProductArea() {
           </div>
           <div className="product-item">
             <div className="product-item__image">
-              <img src={productimage} alt="image" />
+              <img src={productimage} alt="product-item" />
               <div className="quick-view flex">
                 <p className="quick-view__text">Quick View</p>
               </div>
@@ -574,7 +586,7 @@ function AllProductArea() {
           </div>
           <div className="product-item">
             <div className="product-item__image">
-              <img src={productimage} alt="image" />
+              <img src={productimage} alt="product-item" />
             </div>
             <div className="product-item__details">
               <p className="product-item__details--heading">Colar T-shirt</p>
@@ -583,7 +595,7 @@ function AllProductArea() {
           </div>
           <div className="product-item">
             <div className="product-item__image">
-              <img src={productimage} alt="image" />
+              <img src={productimage} alt="product-item" />
             </div>
             <div className="product-item__details">
               <p className="product-item__details--heading">Colar T-shirt</p>

@@ -94,7 +94,7 @@ const Wishlist = () => {
 
             {loading && <Loader height={100} />}
 
-            {!loading && favItems.length === 0 && (
+            {!loading && (!favItems || favItems.length === 0) && (
               <h1
                 style={{
                   textAlign: "center",
@@ -104,7 +104,7 @@ const Wishlist = () => {
               </h1>
             )}
 
-            {favItems.length > 0 && (
+            {favItems && favItems.length > 0 && (
               <div className="wishlist">
                 <ul className="wishlist__list">
                   {favItems.map((product, index) => (

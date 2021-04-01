@@ -83,24 +83,9 @@ function CheckoutArea() {
     document.title = "Checkout";
     console.log(cartItems);
 
-    if (cartItems.length === 0) history.push("/cart");
+    if (!cartItems || cartItems.length === 0) history.push("/cart");
 
-    /* if (cartItems.length === 0) {
-      dispatch(getCart());
-
-      if (cartItems.length === 0) history.push("/");
-    } */
-
-    /* if (cartItems.length > 0) {
-      let total = 0;
-      cartItems.forEach((cart) => {
-        console.log(cart.sp);
-        total += cart.sp;
-      });
-      setTotalCartValue(total);
-    } */
-
-    if (cartItems.length > 0) {
+    if (cartItems && cartItems.length > 0) {
       let subtotal = 0,
         total = 0;
       cartItems.forEach((cart) => {
@@ -113,6 +98,8 @@ function CheckoutArea() {
         total: total,
       });
     }
+
+    if (userInfo && !user) dispatch(getUserDetails());
 
     if (user || error) {
       console.log(user);
@@ -131,7 +118,7 @@ function CheckoutArea() {
         type: user.address[0].type,
         state: user.address.state,
       });
-    } /* else dispatch(getUserDetails()); */ else {
+    } else {
       setFormData({
         name: "",
         address1: "",
@@ -160,7 +147,7 @@ function CheckoutArea() {
 
     if (!window.Razorpay) addRzpScript();
     else setSdkReady(true);
-  }, [user, dispatch, error, cartItems]);
+  }, [user, dispatch, error, cartItems, userInfo]);
 
   const onSubmit = (data) => {
     console.log(data);

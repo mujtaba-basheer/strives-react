@@ -174,7 +174,7 @@ export const getCart = () => async (dispatch, getState) => {
   }
 };
 
-export const addItemToCart = (product, qty = 1, size) => async (
+export const addItemToCart = (product, qty = 1, size, custom = {}) => async (
   dispatch,
   getState
 ) => {
@@ -188,22 +188,14 @@ export const addItemToCart = (product, qty = 1, size) => async (
       cart: { cartItems },
     } = getState();
 
-    console.log(product, qty, size);
-
     if (cartItems) {
       const itemIndex = cartItems.findIndex(
         ({ _id: id, size: itemSize }) =>
           product["_id"] === id && size === itemSize
       );
 
-      console.log(itemIndex);
-      if (itemIndex !== -1) {
-        console.log("if");
-        cartItems[itemIndex].quantity += qty;
-      } else {
-        console.log("Else");
-        cartItems.push({ ...product, quantity: qty, size });
-      }
+      if (itemIndex !== -1) cartItems[itemIndex].quantity += qty;
+      else cartItems.push({ ...product, quantity: qty, size, custom });
 
       dispatch({ type: CART_ADD_SUCCESS });
       dispatch({ type: CART_SET, payload: cartItems });

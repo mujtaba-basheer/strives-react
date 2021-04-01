@@ -1,4 +1,5 @@
 import apiCall from "../../utils/apiCall";
+import { CART_CLEAR } from "../constants/cartConstants";
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -107,6 +108,7 @@ export const placeOrder = (order) => async (dispatch, getState) => {
     await apiCall.post("order", order, config);
 
     dispatch({ type: ORDER_CREATE_SUCCESS });
+    dispatch({ type: CART_SET, payload: [] });
   } catch (error) {
     console.error(error);
     dispatch({
@@ -173,7 +175,7 @@ export const payOrder = (amount, order = {}) => async (dispatch, getState) => {
       order_id,
       handler: handlerFunction,
       theme: {
-        color: "#2C3D50",
+        color: "#f8e6e5",
       },
     };
     if (userDetails.user) {
