@@ -88,7 +88,7 @@ export const productPagesReducer = (state = {}, action) => {
 export const productSingleGetReducer = (state = { product: {} }, action) => {
   switch (action.type) {
     case PRODUCT_SINGLE_SET:
-      return { loading: true, product: action.payload };
+      return { loading: false, product: action.payload };
     case PRODUCT_SINGLE_GET_REQUEST:
       return { loading: true, product: {} };
     case PRODUCT_SINGLE_GET_SUCCESS:

@@ -169,10 +169,20 @@ function SingleProductArea() {
         ...productSize,
         error: "Please select a size",
       });
+    } else if (productSize.size === "custom" && !product.custom) {
+      setProductSize({
+        ...productSize,
+        error: "Please fill custom size form.",
+      });
     } else {
       console.log(productSize, productQuantity);
       dispatch(
-        addItemToCart(product, productQuantity, productSize.size.toUpperCase())
+        addItemToCart(
+          product,
+          productQuantity,
+          productSize.size.toUpperCase(),
+          product.custom || {}
+        )
       );
     }
   }

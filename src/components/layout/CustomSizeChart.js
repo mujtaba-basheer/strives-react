@@ -94,33 +94,9 @@ const CustomSizeChart = ({
                     onChange={(e) => setValue(e)}
                     required
                   />
-                  cm
+                  in.
                 </div>
               ))}
-
-              {/* <div className="input">
-                <p className="label">Enter Length: </p>
-                <input type="number" required />
-                cm
-              </div>
-
-              <div className="input">
-                <p className="label">Enter Length: </p>
-                <input type="number" required />
-                cm
-              </div>
-
-              <div className="input">
-                <p className="label">Enter Length: </p>
-                <input type="number" required />
-                cm
-              </div>
-
-              <div className="input">
-                <p className="label">Enter Length: </p>
-                <input type="number" required />
-                cm
-              </div> */}
             </div>
             <input type="submit" className="submit" value="Submit" />
           </form>

@@ -46,11 +46,11 @@ function CartArea() {
 
   useEffect(() => {
     document.title = "Cart";
-    if (cartItems.length === 0) {
+    if (!cartItems) {
       dispatch(getCart());
     }
 
-    if (cartItems.length > 0) {
+    if (cartItems && cartItems.length > 0) {
       let total = 0;
       cartItems.forEach((cart) => {
         console.log(cart.sp);
@@ -60,7 +60,7 @@ function CartArea() {
         total: total,
       });
     }
-  }, [error, cartItems]);
+  }, [error, cartItems, dispatch]);
 
   /* function showApplyCoupon() {
     document.querySelector(".couponbox-input").style.display = "none";
@@ -107,7 +107,7 @@ function CartArea() {
       <div className="cartbox flex">
         <div className="cartbox__left">
           <div className="cartlist">
-            {cartItems.length > 0 && (
+            {cartItems && cartItems.length > 0 && (
               <ul className="cartlist__list">
                 {cartItems.map((product, index) => (
                   <li className="cartlist__list--item" key={product._id}>
