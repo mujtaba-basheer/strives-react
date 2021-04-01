@@ -272,7 +272,7 @@ const Index = () => {
             display: "none",
           }}
           onClick={() => history.push("/")}
-          src={logo}
+          src="https://strives.s3.ap-south-1.amazonaws.com/assets/acb313dd-8f4c-4487-b6fb-341dfa0598cf.png"
           alt="strides"
         />
 
@@ -280,7 +280,7 @@ const Index = () => {
           <Link to="/">
             <img
               className={navbarHeigt > 80 ? "logo-large" : "logo"}
-              src={logo}
+              src="https://strives.s3.ap-south-1.amazonaws.com/assets/acb313dd-8f4c-4487-b6fb-341dfa0598cf.png"
               alt="strides"
             />
           </Link>

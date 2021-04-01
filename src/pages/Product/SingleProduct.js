@@ -78,6 +78,14 @@ function SingleProductArea() {
   const { favItems } = useSelector((state) => state.fav);
   const { cartItems } = useSelector((state) => state.cart);
 
+  const { error: cartAddError, success: cartAddSuccess } = useSelector(
+    (state) => state.cartAdd
+  );
+
+  const { error: cartRemoveError, success: cartRemoveSuccess } = useSelector(
+    (state) => state.cartRemove
+  );
+
   const { error: favAddError, success: favAddSuccess } = useSelector(
     (state) => state.favAdd
   );
@@ -89,6 +97,7 @@ function SingleProductArea() {
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
+    console.log(product);
     if (product.name) document.title = product.name;
   }, []);
 
@@ -245,6 +254,43 @@ function SingleProductArea() {
         />
       )}
 
+      {cartAddError && (
+        <Alert
+          type="danger"
+          popup
+          background="true"
+          timer="5000"
+          text={cartAddError}
+        />
+      )}
+      {cartAddSuccess && (
+        <Alert
+          type="success"
+          popup
+          background="true"
+          timer="5000"
+          text={"Added to Cart"}
+        />
+      )}
+      {cartRemoveError && (
+        <Alert
+          type="danger"
+          popup
+          background="true"
+          timer="5000"
+          text={cartRemoveError}
+        />
+      )}
+      {cartRemoveSuccess && (
+        <Alert
+          type="secondary"
+          popup
+          background="true"
+          timer="5000"
+          text={"Removed from Cart"}
+        />
+      )}
+
       {showSizeChart === "true" && (
         <SizeChart setShowSizeChart={setShowSizeChart} />
       )}
@@ -264,6 +310,8 @@ function SingleProductArea() {
             <img src={breadcrumbsArrow} alt="arrow" />
             <p className="classification">{product.name}</p> */}
           </div>
+
+          {console.log(product)}
 
           <div className="singleproduct__content flex">
             <div className="productdetails__left">

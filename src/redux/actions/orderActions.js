@@ -1,5 +1,5 @@
 import apiCall from "../../utils/apiCall";
-import { CART_CLEAR } from "../constants/cartConstants";
+import { CART_CLEAR, CART_SET } from "../constants/cartConstants";
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,

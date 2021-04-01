@@ -116,7 +116,8 @@
       padding-left: 80px;
 
       &__container {
-        width: 500px;
+        width: 80%;
+        max-width: 900px;
         .mainheading {
           font-size: 28px;
           line-height: 37px;
@@ -202,6 +203,8 @@
 
           .inputs {
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
 
             .input-group {
               .button {
@@ -225,7 +228,6 @@
                 text-align: center;
                 border: 1px solid var(--clr-primary);
                 border-radius: 2px;
-                padding-left: 15px;
               }
             }
           }
@@ -381,7 +383,7 @@
   @media only screen and (max-width: 1300px) {
     &__content {
       .productimages {
-        margin-left: 10px;
+        margin-left: 25px;
 
         &__main {
           width: 500px;
@@ -393,7 +395,7 @@
         padding-left: 40px;
 
         &__container {
-          width: 378px;
+          width: 90%;
         }
       }
     }
@@ -481,15 +483,13 @@
           .mainheading {
             display: none;
           }
-  
+
           .line {
             display: none;
-
           }
-  
+
           .productdetailstext {
             display: none;
-
           }
 
           .selectquantity {
