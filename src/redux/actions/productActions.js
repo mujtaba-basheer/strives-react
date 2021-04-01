@@ -29,6 +29,9 @@ import {
   PRODUCT_SINGLE_GET_SUCCESS,
   PRODUCT_SINGLE_GET_FAIL,
   PRODUCT_SINGLE_SET,
+  PRODUCT_PAGES_REQUEST,
+  PRODUCT_PAGES_SUCCESS,
+  PRODUCT_PAGES_FAIL,
 } from "../constants/productConstants";
 import { stringify } from "querystring";
 
@@ -41,9 +44,30 @@ export const getProducts = (filters = {}) => async (dispatch) => {
     const { data } = await apiCall.get(`products?${query_string}`);
 
     dispatch({ type: PRODUCT_GET_SUCCESS, payload: data.data });
+    dispatch(getPages(filters));
   } catch (error) {
     dispatch({
       type: PRODUCT_GET_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getPages = (filters = {}) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_PAGES_REQUEST });
+
+    const query_string = stringify(filters);
+
+    const { data } = await apiCall.get(`pages?${query_string}`);
+
+    dispatch({ type: PRODUCT_PAGES_SUCCESS, payload: data.data });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_PAGES_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -64,7 +88,8 @@ export const getSingleProduct = (id) => async (dispatch) => {
 
     toSort.sort(
       (a, b) =>
-        preSorted.findIndex((n) => n == a) - preSorted.findIndex((n) => n == b)
+        preSorted.findIndex((n) => n === a) -
+        preSorted.findIndex((n) => n === b)
     );
 
     dispatch({ type: PRODUCT_SINGLE_GET_SUCCESS, payload: data.data });

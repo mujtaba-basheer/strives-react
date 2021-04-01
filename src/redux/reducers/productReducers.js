@@ -31,6 +31,9 @@ import {
   PRODUCT_SINGLE_GET_SUCCESS,
   PRODUCT_SINGLE_GET_FAIL,
   PRODUCT_SINGLE_SET,
+  PRODUCT_PAGES_REQUEST,
+  PRODUCT_PAGES_SUCCESS,
+  PRODUCT_PAGES_FAIL,
 } from "../constants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -64,6 +67,19 @@ export const productGetReducer = (state = { products: [] }, action) => {
       };
     case PRODUCT_GET_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productPagesReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_PAGES_REQUEST:
+      return { pages: null };
+    case PRODUCT_PAGES_SUCCESS:
+      return { pages: action.payload };
+    case PRODUCT_PAGES_FAIL:
+      return { pages: 1 };
     default:
       return state;
   }
