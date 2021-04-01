@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { IconContext } from "react-icons";
 
 import logo from "../../assets/images/logo.png";
+
+import { FaRegUserCircle } from "react-icons/fa";
+import { BsHeart, BsSearch } from "react-icons/bs";
+import { HiUserCircle } from "react-icons/hi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";
@@ -366,14 +372,11 @@ const Index = () => {
                 onMouseLeave={resetNavbarColor}
                 to={userLogin.userInfo ? "/my-account" : "/login"}
               >
-                <img
-                  style={{
-                    width: "15px",
-                    height: "15px",
-                  }}
-                  src={usericon}
-                  alt="user"
-                />
+                <IconContext.Provider
+                  value={{ color: "#25D366", size: "25px" }}
+                >
+                  <HiUserCircle />
+                </IconContext.Provider>
               </Link>
             </li>
             <li>
@@ -383,14 +386,7 @@ const Index = () => {
                 onMouseLeave={resetNavbarColor}
                 className="flex"
               >
-                <img
-                  style={{
-                    width: "15px",
-                    height: "15px",
-                  }}
-                  src={hearticon}
-                  alt="heart"
-                />
+                <BsHeart />
                 {favItems && favItems.length > 0 && (
                   <p
                     style={WishlistValueIconStyles}
@@ -407,14 +403,11 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <img
-                  style={{
-                    width: "15px",
-                    height: "15px",
-                  }}
-                  src={carticon}
-                  alt="cart"
-                />
+                <IconContext.Provider
+                  value={{ color: "#25D366", size: "23px" }}
+                >
+                  <AiOutlineShoppingCart />
+                </IconContext.Provider>
                 {cartItems && cartItems.length > 0 && (
                   <p style={cartValueIconStyles} className="number superscript">
                     {cartItems.length}
@@ -427,14 +420,7 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <img
-                  style={{
-                    width: "15px",
-                    height: "15px",
-                  }}
-                  src={searchicon}
-                  alt="search"
-                />
+                <BsSearch />
               </Link>
             </li>
           </ul>

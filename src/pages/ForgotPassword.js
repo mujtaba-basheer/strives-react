@@ -86,7 +86,7 @@ function ForgotPassArea() {
                 </div>
               </form>
 
-              <Link to="/forgotpass" className="forgotpassdetails__signuplink">
+              <Link to="/login" className="forgotpassdetails__signuplink">
                 <img
                   style={{
                     width: "7px",

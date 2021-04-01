@@ -249,7 +249,6 @@ function SingleProductArea() {
 
       {product.name && (
         <section id="singleproduct" className="content singleproduct">
-          {console.log(product)}
           <div className="singleproduct-breadcrumbs flex">
             {/* <p className="category">fashion</p>
             <img src={breadcrumbsArrow} alt="arrow" />
