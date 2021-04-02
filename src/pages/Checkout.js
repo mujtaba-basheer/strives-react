@@ -251,12 +251,14 @@ function CheckoutArea() {
           <div className="checkoutbox__left">
             <div className="heading">
               <p className="heading__main">Billing Details</p>
-              <p className="heading__subheading">
-                Already a customer?{" "}
-                <Link to="/login" className="heading__subheading--link">
-                  Log in
-                </Link>
-              </p>
+              {!userInfo && (
+                <p className="heading__subheading">
+                  Already a customer?{" "}
+                  <Link to="/login" className="heading__subheading--link">
+                    Log in
+                  </Link>
+                </p>
+              )}
             </div>
             <div className="contactinformation">
               <div className="contactinformation__flex flex">

@@ -1,16 +1,30 @@
 import React from "react";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/swiper.scss";
+
+import { showcasedata } from "./data";
+
 const Showcase = () => {
   return (
     <section className="showcase">
-      <div className="showcasedetails flex">
-        <div className="showcasedetails__text">
-          A collection filled with traditions, stories & passion.
-        </div>
-        <div className="showcasedetails__button">
-          <button>SHOP COLLECTION</button>
-        </div>
-      </div>
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+      >
+        {showcasedata.map((show) => (
+          <SwiperSlide>
+            <div>
+              <img src={show} alt="qq" />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
 };

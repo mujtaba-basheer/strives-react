@@ -377,7 +377,7 @@ function AllProductArea() {
             </p>
             <div className="header__right">
               <p className="header__right--display-results">
-                Displaying 6 out of 20 results
+                {`Displaying  ${currentPage} out of ${maxPages} pages`}
               </p>
               <div className="header__right--dropdown">
                 Sort By:

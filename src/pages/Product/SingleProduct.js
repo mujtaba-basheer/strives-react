@@ -19,6 +19,8 @@ import {
 import {
   FAV_ADD_RESET,
   FAV_REMOVE_RESET,
+  CART_ADD_RESET,
+  CART_REMOVE_RESET,
 } from "../../redux/constants/cartConstants";
 
 import Navbar from "../../components/Navbar";
@@ -193,6 +195,8 @@ function SingleProductArea() {
           product.custom || {}
         )
       );
+
+      setTimeout(() => dispatch({ type: CART_ADD_RESET }), 3000);
     }
   }
 
@@ -517,7 +521,7 @@ function SingleProductArea() {
 
                 <div className="cta">
                   <button className="checkout btn flex" onClick={addToCart}>
-                    Add to Cart
+                    add to cart
                   </button>
                   <button
                     className="addtocart btn flex"
