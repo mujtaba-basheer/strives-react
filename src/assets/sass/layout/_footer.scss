@@ -207,6 +207,11 @@
     position: absolute;
     top: -23px;
     left: 10px;
+
+    &--img {
+      width: 30px;
+      height: auto;
+    }
   }
 }
 

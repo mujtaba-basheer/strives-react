@@ -8,7 +8,7 @@ import Feature from "./Feature";
 import Themes from "./Themes";
 import BestSeller from "./BestSeller";
 import Newsletter from "./Newsletter";
-import Customize from "./Customize";
+// import Customize from "./Customize";
 
 const Index = () => {
   useEffect(() => {
@@ -22,7 +22,7 @@ const Index = () => {
       <LatestCollections />
       <Feature />
       <Themes />
-      <Customize />
+      {/* <Customize /> */}
       <BestSeller />
       <Newsletter />
       <Footer />

@@ -386,7 +386,7 @@
   &__sub {
     font-size: 1.25em;
     border-radius: 2px;
-    background: rgba(55, 63, 69, 0.2);
+    background: rgba(248, 230, 229, 0.5);
     padding: 0.5em;
     margin: 0 0.5em 4em 0.5em;
     display: flex;
@@ -406,8 +406,8 @@
     &--btn {
       display: inline-block;
       width: min-content;
-      background: var(--clr-secondary);
-      color: #fff;
+      background: rgba(0, 0, 0, 0);
+      color: #f8e6e5;
       padding: 0 1em;
       border: none;
       font-weight: lighter;
@@ -424,7 +424,7 @@
   &__features {
     padding: 0 2em;
     &--text {
-      color: #f4f9ff;
+      color: #f8e6e5;
       font-family: var(--ff-p);
       font-size: 1.5em;
       text-align: center;
@@ -432,7 +432,7 @@
     }
 
     &--btn {
-      background: #f4f9ff;
+      background: #f8e6e5;
       border: none;
       border-radius: 2px;
       display: flex;

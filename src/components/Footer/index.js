@@ -82,11 +82,6 @@ const Index = () => {
             )}
           </ul>
         </div>
-        <picture className="footer__logo">
-          <source srcset={logo_big} media="(min-width: 1170px)" />
-          <source srcset={logo} />
-          <img className="feature__logo--img" alt="footer logo" src={logo} />
-        </picture>
       </footer>
       <div className="copyright">
         <p>
