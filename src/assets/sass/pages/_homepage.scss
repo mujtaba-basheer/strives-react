@@ -1,8 +1,7 @@
 .latest-collection {
-  margin-bottom: 144px;
   &__title {
     margin-top: 95px;
-    margin-bottom: 101px;
+    margin-bottom: 95px;
     font-size: 36px;
     line-height: 44px;
   }
@@ -33,18 +32,17 @@
     display: grid;
     grid-template-columns: repeat(3, 400px);
     grid-template-rows: 1fr;
-    grid-gap: 23px;
+    grid-gap: 25px;
     justify-content: center;
-    margin: 0 97px;
+    margin: 2rem 97px;
   }
 
   //profile card container
   &__container {
-    background-image: url(../images/homepage/latest-collections/desktop.png);
-    height: 800px;
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 
     display: flex;
     align-items: flex-end;
@@ -54,12 +52,23 @@
     &:hover {
       cursor: pointer;
     }
+
+    &__picture {
+      width: 100%;
+
+      &--img {
+        width: 100%;
+      }
+    }
+
     &__text {
       color: #fff;
       margin: 0 auto;
       display: none;
       animation-name: zoom;
       animation-duration: 0.6s;
+      position: absolute;
+      top: 50%;
 
       &--heading {
         font-size: 36px;
@@ -89,15 +98,11 @@
   @media screen and (max-width: 1260px) {
     &__wrapper-grid {
       grid-template-columns: repeat(2, 400px);
-      .latest-collection__container:last-child {
-        display: none;
-      }
     }
   }
 
   @media screen and (max-width: 860px) {
     &__container {
-      background-image: url(../images/homepage/latest-collections/desktop.png);
       height: 100%;
       background-size: contain;
       background-position: top center;
@@ -127,11 +132,25 @@
     }
 
     &__container {
-      background-image: url(../images/homepage/latest-collections/mobile.png);
       height: 100%;
-
       padding-bottom: 0px;
+
+      &__picture {
+        background: linear-gradient(to top, black, white);
+        &--img {
+          opacity: 0.75;
+          background: black;
+          display: block;
+          // background: linear-gradient(to top, black, red);
+        }
+      }
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+      }
     }
+
     &__wrapper-grid {
       margin: 0 16px;
       grid-template-columns: 1fr;

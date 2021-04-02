@@ -157,3 +157,62 @@ export const themesAndOccasions = [
     title: "Party Wear Salwar Kameez",
   },
 ];
+
+export const feature = {
+  img: {
+    main:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/76159c99-d855-4069-b0b4-86655b6489cf.png",
+    small:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/b6a7bdb5-cabe-4eeb-8826-40499060a218.png",
+    alt: "feature product",
+  },
+  info: [
+    {
+      title: "Embroidery",
+      text: "Works best with simple, low color count logos or artwork.",
+    },
+    {
+      title: "Screen Printing",
+      text:
+        "Ideal for Bulk/Group Orders, specific color matching and large variety of products.",
+    },
+    {
+      title: "Sublimation",
+      text: `Perfect choice for small quantity. Sublimation allows you to print
+              gradient colors on the T-shirts and has a quick turn around time.`,
+    },
+  ],
+};
+
+export const latestCollections = [
+  {
+    title: "lorem Ipsum",
+    subtitle: "Lorem Ipsum dolor sit amet",
+    img: {
+      main:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/1542d7a0-5079-4c00-9c21-6e03991c2fe6.png",
+      small:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
+    },
+  },
+  {
+    title: "lorem Ipsum",
+    subtitle: "Lorem Ipsum dolor sit amet",
+    img: {
+      main:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/1542d7a0-5079-4c00-9c21-6e03991c2fe6.png",
+      small:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
+    },
+  },
+  {
+    title: "lorem Ipsum",
+    subtitle: "Lorem Ipsum dolor sit amet",
+    img: {
+      main:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/1542d7a0-5079-4c00-9c21-6e03991c2fe6.png",
+      small:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
+    },
+  },
+];
