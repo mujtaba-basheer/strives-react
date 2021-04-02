@@ -33,6 +33,8 @@ import {
   FAV_REMOVE_ITEM,
   FAV_ADD_RESET,
   FAV_REMOVE_RESET,
+  CART_ADD_RESET,
+  CART_REMOVE_RESET,
 } from "../constants/cartConstants";
 
 export const favGetReducer = (state = {}, action) => {
@@ -99,6 +101,8 @@ export const cartAddReducer = (state = {}, action) => {
       return { loading: false, success: true, error: null };
     case CART_ADD_FAIL:
       return { loading: false, success: null, error: action.payload };
+    case CART_ADD_RESET:
+      return { loading: false };
     default:
       return state;
   }
@@ -112,6 +116,8 @@ export const cartRemoveReducer = (state = {}, action) => {
       return { loading: false, success: true, error: null };
     case CART_REMOVE_FAIL:
       return { loading: false, success: null, error: action.payload };
+    case CART_REMOVE_RESET:
+      return { loading: false };
     default:
       return state;
   }
