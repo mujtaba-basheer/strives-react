@@ -5,6 +5,11 @@ import { IconContext } from "react-icons";
 
 import logo from "../../assets/images/logo.png";
 
+import search from "./icons/search.svg";
+import cart from "./icons/cart.svg";
+import heart from "./icons/heart.svg";
+import user from "./icons/user.svg";
+
 import { FaRegUserCircle } from "react-icons/fa";
 import { BsHeart, BsSearch } from "react-icons/bs";
 import { HiUserCircle } from "react-icons/hi";
@@ -12,10 +17,10 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";
-import searchicon from "../../assets/images/navbar/navbar-icons/search.png";
+/* import searchicon from "../../assets/images/navbar/navbar-icons/search.png";
 import hearticon from "../../assets/images/navbar/navbar-icons/heart.png";
 import carticon from "../../assets/images/navbar/navbar-icons/cart.png";
-import usericon from "../../assets/images/navbar/navbar-icons/user.png";
+import usericon from "../../assets/images/navbar/navbar-icons/user.png"; */
 
 /* Sidebar Imports */
 import Home from "./Sidebar/Home";
@@ -177,6 +182,9 @@ const Index = () => {
         navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
         navbar.style.backdropFilter = "blur(20px)";
         document.body.style.opacity = "none";
+      } else {
+        navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+        navbar.style.backdropFilter = "blur(20px)";
       }
 
       if (
@@ -186,8 +194,13 @@ const Index = () => {
       ) {
         navbar.style.backgroundColor = "#fff";
       } else {
-        navbar.style.backgroundColor = "transparent";
-        navbar.style.backdropFilter = "blur(0px)";
+        /* navbar.style.backgroundColor = "#fff"; */
+        navbar.style.backdropFilter = "blur(20px)";
+
+        if (window.pageYOffset < 80) {
+          navbar.style.backgroundColor = "transparent";
+          navbar.style.backdropFilter = "blur(0px)";
+        }
       }
     }
   }
@@ -372,11 +385,7 @@ const Index = () => {
                 onMouseLeave={resetNavbarColor}
                 to={userLogin.userInfo ? "/my-account" : "/login"}
               >
-                <IconContext.Provider
-                  value={{ color: "#25D366", size: "25px" }}
-                >
-                  <HiUserCircle />
-                </IconContext.Provider>
+                <img src={user} alt="user" />
               </Link>
             </li>
             <li>

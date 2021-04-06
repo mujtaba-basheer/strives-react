@@ -1,7 +1,15 @@
 import React from "react";
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+/* import { Swiper, SwiperSlide } from "swiper/react";
+
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]); */
+
+// import Swiper core and required modules
+import SwiperCore, { Navigation, autoplay, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import "swiper/swiper.scss";
@@ -14,7 +22,7 @@ const Showcase = () => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        navigation
+        autoplay={{ delay: 500 }}
         pagination={{ clickable: true }}
       >
         {showcasedata.map((show) => (

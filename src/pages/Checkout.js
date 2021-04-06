@@ -623,9 +623,9 @@ function CheckoutArea() {
               </div>
             </div>
 
-            <div className="shipment">
+            {/* <div className="shipment">
               <div className="shipment__flex flex">
-                {/* Left Side Number  */}
+                Left Side Number 
                 <div className="number">
                   <div className="number__flex">
                     <div className="dot flex">
@@ -672,7 +672,7 @@ function CheckoutArea() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="payment">
               <div className="payment__flex flex">
@@ -680,7 +680,7 @@ function CheckoutArea() {
                 <div className="number">
                   <div className="number__flex">
                     <div className="dot flex">
-                      <p className="dot__text">4</p>
+                      <p className="dot__text">3</p>
                     </div>
                     <div className="line"></div>
                   </div>
