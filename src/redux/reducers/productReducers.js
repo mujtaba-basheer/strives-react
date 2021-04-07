@@ -34,6 +34,12 @@ import {
   PRODUCT_PAGES_REQUEST,
   PRODUCT_PAGES_SUCCESS,
   PRODUCT_PAGES_FAIL,
+  PRODUCT_COLLECTIONS_REQUEST,
+  PRODUCT_COLLECTIONS_SUCCESS,
+  PRODUCT_COLLECTIONS_FAIL,
+  PRODUCT_COLLECTION_REQUEST,
+  PRODUCT_COLLECTION_SUCCESS,
+  PRODUCT_COLLECTION_FAIL,
 } from "../constants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -97,6 +103,44 @@ export const productSingleGetReducer = (state = { product: {} }, action) => {
         product: action.payload,
       };
     case PRODUCT_SINGLE_GET_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productCollectionsReducer = (
+  state = { collections: [] },
+  action
+) => {
+  switch (action.type) {
+    case PRODUCT_COLLECTIONS_REQUEST:
+      return { loading: true, collections: [] };
+    case PRODUCT_COLLECTIONS_SUCCESS:
+      return {
+        loading: false,
+        collections: action.payload,
+      };
+    case PRODUCT_COLLECTIONS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productCollectionReducer = (
+  state = { collection: {} },
+  action
+) => {
+  switch (action.type) {
+    case PRODUCT_COLLECTION_REQUEST:
+      return { loading: true, collection: {} };
+    case PRODUCT_COLLECTION_SUCCESS:
+      return {
+        loading: false,
+        collection: action.payload,
+      };
+    case PRODUCT_COLLECTION_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

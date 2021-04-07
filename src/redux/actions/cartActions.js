@@ -26,6 +26,7 @@ import {
   FAV_REMOVE_REQUEST,
   FAV_REMOVE_SUCCESS,
   FAV_REMOVE_FAIL,
+  BUY_NOW_PRODUCT_ADD,
 } from "../constants/cartConstants";
 
 export const getFav = () => async (dispatch, getState) => {
@@ -173,6 +174,14 @@ export const getCart = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const addItemToBuyNow = (product, qty = 1, size, custom = {}) => async (
+  dispatch
+) =>
+  dispatch({
+    type: BUY_NOW_PRODUCT_ADD,
+    payload: { ...product, quantity: qty, size, custom },
+  });
 
 export const addItemToCart = (product, qty = 1, size, custom = {}) => async (
   dispatch,

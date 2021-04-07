@@ -35,6 +35,8 @@ import {
   FAV_REMOVE_RESET,
   CART_ADD_RESET,
   CART_REMOVE_RESET,
+  BUY_NOW_PRODUCT_ADD,
+  BUY_NOW_PRODUCT_RESET,
 } from "../constants/cartConstants";
 
 export const favGetReducer = (state = {}, action) => {
@@ -190,6 +192,10 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       } else {
         return { ...state, cartItems: [...state.cartItems, item] };
       }
+    case BUY_NOW_PRODUCT_ADD:
+      return { ...state, buyNow: [action.payload] };
+    case BUY_NOW_PRODUCT_RESET:
+      return { ...state, buyNow: null };
     case CART_REMOVE_ITEM:
       return {
         ...state,

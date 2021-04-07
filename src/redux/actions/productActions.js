@@ -32,6 +32,12 @@ import {
   PRODUCT_PAGES_REQUEST,
   PRODUCT_PAGES_SUCCESS,
   PRODUCT_PAGES_FAIL,
+  PRODUCT_COLLECTIONS_REQUEST,
+  PRODUCT_COLLECTIONS_SUCCESS,
+  PRODUCT_COLLECTIONS_FAIL,
+  PRODUCT_COLLECTION_REQUEST,
+  PRODUCT_COLLECTION_SUCCESS,
+  PRODUCT_COLLECTION_FAIL,
 } from "../constants/productConstants";
 import { stringify } from "querystring";
 
@@ -68,6 +74,42 @@ export const getPages = (filters = {}) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_PAGES_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getCollections = () => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_COLLECTIONS_REQUEST });
+
+    const { data } = await apiCall.get("collections-list");
+
+    dispatch({ type: PRODUCT_COLLECTIONS_SUCCESS, payload: data.data });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_COLLECTIONS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getSingleCollection = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_COLLECTION_REQUEST });
+
+    const { data } = await apiCall.get(`collection/${id}`);
+
+    dispatch({ type: PRODUCT_COLLECTION_SUCCESS, payload: data.data });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_COLLECTION_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
