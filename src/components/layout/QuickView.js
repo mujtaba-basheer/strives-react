@@ -18,6 +18,10 @@ import {
 } from "../../redux/constants/cartConstants";
 import CustomSizeChart from "./CustomSizeChart";
 
+
+import heartfillsvg from "./images/heart-fill-brown.svg";
+import heart from "./images/heart.png";
+
 const QuickView = ({ product, setShowModal }) => {
   const [productQuantity, setProductQuantity] = useState(1);
   const [productSize, setProductSize] = useState({
@@ -210,7 +214,38 @@ const QuickView = ({ product, setShowModal }) => {
           )}
 
           <div className="mobileproductimages">
-            <p className="mainheading">{product.name}</p>
+            <p className="mainheading flex">
+              {product.name}
+              <p
+                className="heart"
+                onClick={() => {
+                  if (
+                    favItems &&
+                    favItems.find(
+                      (favProduct) => favProduct._id === product._id
+                    )
+                  )
+                    removeFromWishlist(product["_id"]);
+                  else addToWishlist(product);
+                }}
+              >
+                <img
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                  }}
+                  src={
+                    favItems &&
+                    favItems.find(
+                      (favProduct) => favProduct._id === product._id
+                    )
+                      ? heartfillsvg
+                      : heart
+                  }
+                  alt="heart"
+                />
+              </p>
+            </p>
             <span className="line"></span>
             <p className="productdetailstext">{product.short_description}</p>
             <CarouselProvider
@@ -267,7 +302,38 @@ const QuickView = ({ product, setShowModal }) => {
 
           <div className="productdetails">
             <div className="productdetails__container">
-              <p className="mainheading">{product.name}</p>
+              <p className="mainheading flex">
+                {product.name}
+                <p
+                  className="heart"
+                  onClick={() => {
+                    if (
+                      favItems &&
+                      favItems.find(
+                        (favProduct) => favProduct._id === product._id
+                      )
+                    )
+                      removeFromWishlist(product["_id"]);
+                    else addToWishlist(product);
+                  }}
+                >
+                  <img
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                    }}
+                    src={
+                      favItems &&
+                      favItems.find(
+                        (favProduct) => favProduct._id === product._id
+                      )
+                        ? heartfillsvg
+                        : heart
+                    }
+                    alt="heart"
+                  />
+                </p>
+              </p>
 
               <span className="line"></span>
 

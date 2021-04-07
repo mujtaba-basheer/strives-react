@@ -395,7 +395,7 @@ const Index = () => {
                 onMouseLeave={resetNavbarColor}
                 className="flex"
               >
-                <BsHeart />
+                <img src={heart} alt="heart" />
                 {favItems && favItems.length > 0 && (
                   <p
                     style={WishlistValueIconStyles}
@@ -412,11 +412,7 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <IconContext.Provider
-                  value={{ color: "#25D366", size: "23px" }}
-                >
-                  <AiOutlineShoppingCart />
-                </IconContext.Provider>
+                <img src={cart} alt="cart" />
                 {cartItems && cartItems.length > 0 && (
                   <p style={cartValueIconStyles} className="number superscript">
                     {cartItems.length}
@@ -429,7 +425,7 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <BsSearch />
+                <img src={search} alt="search" />
               </Link>
             </li>
           </ul>

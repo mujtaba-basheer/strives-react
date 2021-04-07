@@ -33,6 +33,9 @@ import instagram from "./images/instagram.png";
 import twitter from "./images/twitter.png";
 import usp from "./images/usp.png";
 
+import heartfillsvg from "./images/heart-fill-brown.svg";
+import heart from "./images/heart.png";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
@@ -171,6 +174,33 @@ function SingleProductArea() {
 
   function openCustomSizeChartModal() {
     setShowCustomSizeChart("true");
+  }
+
+  function clickBuyNow() {
+    console.log("clicked");
+    if (productSize.size === "") {
+      setProductSize({
+        ...productSize,
+        error: "Please select a size",
+      });
+    } else if (productSize.size === "custom" && !product.custom) {
+      setProductSize({
+        ...productSize,
+        error: "Please fill custom size form.",
+      });
+    } else {
+      console.log(productSize, productQuantity);
+      /* dispatch(
+        addItemToCart(
+          product,
+          productQuantity,
+          productSize.size.toUpperCase(),
+          product.custom || {}
+        )
+      ); */
+
+      setTimeout(() => dispatch({ type: CART_ADD_RESET }), 3000);
+    }
   }
 
   function addToCart() {
@@ -320,7 +350,38 @@ function SingleProductArea() {
           <div className="singleproduct__content flex">
             <div className="productdetails__left">
               <div className="mobileproductimages">
-                <p className="mainheading">{product.name}</p>
+                <p className="mainheading flex">
+                  {product.name}
+                  <p
+                    className="heart"
+                    onClick={() => {
+                      if (
+                        favItems &&
+                        favItems.find(
+                          (favProduct) => favProduct._id === product._id
+                        )
+                      )
+                        removeFromWishlist(product["_id"]);
+                      else addToWishlist(product);
+                    }}
+                  >
+                    <img
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                      }}
+                      src={
+                        favItems &&
+                        favItems.find(
+                          (favProduct) => favProduct._id === product._id
+                        )
+                          ? heartfillsvg
+                          : heart
+                      }
+                      alt="heart"
+                    />
+                  </p>
+                </p>
 
                 <span className="line"></span>
 
@@ -408,7 +469,38 @@ function SingleProductArea() {
 
             <div className="productdetails">
               <div className="productdetails__container">
-                <p className="mainheading">{product.name}</p>
+                <p className="mainheading flex">
+                  {product.name}
+                  <p
+                    className="heart"
+                    onClick={() => {
+                      if (
+                        favItems &&
+                        favItems.find(
+                          (favProduct) => favProduct._id === product._id
+                        )
+                      )
+                        removeFromWishlist(product["_id"]);
+                      else addToWishlist(product);
+                    }}
+                  >
+                    <img
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                      }}
+                      src={
+                        favItems &&
+                        favItems.find(
+                          (favProduct) => favProduct._id === product._id
+                        )
+                          ? heartfillsvg
+                          : heart
+                      }
+                      alt="heart"
+                    />
+                  </p>
+                </p>
 
                 <span className="line"></span>
 
@@ -520,12 +612,13 @@ function SingleProductArea() {
                 </div>
 
                 <div className="cta">
-                  <button className="checkout btn flex" onClick={addToCart}>
-                    add to cart
+                  <button className="checkout btn flex" onClick={clickBuyNow}>
+                    Buy Now
                   </button>
                   <button
                     className="addtocart btn flex"
-                    onClick={() => {
+                    onClick={addToCart}
+                    /* onClick={() => {
                       if (
                         favItems &&
                         favItems.find(
@@ -534,14 +627,15 @@ function SingleProductArea() {
                       )
                         removeFromWishlist(product["_id"]);
                       else addToWishlist(product);
-                    }}
+                    }} */
                   >
-                    {favItems &&
+                    {/* {favItems &&
                     favItems.find(
                       (favProduct) => favProduct._id === product._id
                     )
                       ? "Remove from Wishlist"
-                      : "add to Wishlist"}
+                      : "add to Wishlist"} */}
+                    add to cart
                   </button>
                 </div>
 
