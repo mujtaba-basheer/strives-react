@@ -88,7 +88,10 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 };
 
-export const placeOrder = (order) => async (dispatch, getState) => {
+export const placeOrder = (order, isExpress = false) => async (
+  dispatch,
+  getState
+) => {
   dispatch({ type: ORDER_CREATE_REQUEST });
 
   const {
@@ -108,7 +111,7 @@ export const placeOrder = (order) => async (dispatch, getState) => {
     await apiCall.post("order", order, config);
 
     dispatch({ type: ORDER_CREATE_SUCCESS });
-    dispatch({ type: CART_SET, payload: [] });
+    if (isExpress) dispatch({ type: CART_SET, payload: [] });
   } catch (error) {
     console.error(error);
     dispatch({
@@ -121,7 +124,10 @@ export const placeOrder = (order) => async (dispatch, getState) => {
   }
 };
 
-export const payOrder = (amount, order = {}) => async (dispatch, getState) => {
+export const payOrder = (amount, order = {}, isExpress = false) => async (
+  dispatch,
+  getState
+) => {
   try {
     dispatch({ type: ORDER_PAY_REQUEST });
 
@@ -159,7 +165,7 @@ export const payOrder = (amount, order = {}) => async (dispatch, getState) => {
           type: ORDER_PAY_SUCCESS,
           payload: { ...response, receipt },
         });
-        dispatch(placeOrder(order));
+        dispatch(placeOrder(order, isExpress));
       }
     };
 
