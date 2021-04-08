@@ -159,6 +159,7 @@ const QuickView = ({ product, setShowModal }) => {
 
   return (
     <div id="quickviewmodal" className="quickviewmodal">
+      {console.log(product)}
       {showSizeChart === "true" && (
         <SizeChart setShowSizeChart={setShowSizeChart} />
       )}

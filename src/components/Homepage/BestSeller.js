@@ -77,7 +77,7 @@ const BestSeller = () => {
   return (
     <>
       {showModal === "true" && (
-        <QuickView /* product={productdetails} */ setShowModal={setShowModal} />
+        <QuickView product={productdetails} setShowModal={setShowModal} />
       )}
       <section className="best-seller">
         <div className="best-seller__title section-title">
@@ -174,7 +174,7 @@ const BestSeller = () => {
                   changeMainImageHover(product.gallery.main, "leave", index)
                 }
               >
-                <Link to={`/products/${product._id}`}>
+                <Link to={`/product/${product._id}`}>
                   <img
                     id={`showcase-img` + index}
                     style={{

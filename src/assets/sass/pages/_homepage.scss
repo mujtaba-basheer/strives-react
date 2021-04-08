@@ -30,12 +30,14 @@
 
   &__wrapper-grid {
     display: grid;
-    grid-template-columns: repeat(3, 400px);
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
     grid-gap: 25px;
     justify-content: center;
     margin: 2rem 97px;
   }
+
+  
 
   //profile card container
   &__container {
@@ -47,7 +49,6 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: 103px;
 
     &:hover {
       cursor: pointer;
@@ -64,15 +65,15 @@
     &__text {
       color: #fff;
       margin: 0 auto;
-      display: none;
-      animation-name: zoom;
-      animation-duration: 0.6s;
+      /* display: none; */
+      /* animation-name: zoom;
+      animation-duration: 0.6s; */
       position: absolute;
-      top: 50%;
+      bottom: 25%;
 
       &--heading {
-        font-size: 36px;
-        line-height: 43px;
+        font-size: 45px;
+        /* line-height: 43px; */
         font-family: var(--font-secondary);
         color: #fff;
       }
@@ -95,11 +96,11 @@
     }
   }
 
-  @media screen and (max-width: 1260px) {
+  /* @media screen and (max-width: 1260px) {
     &__wrapper-grid {
       grid-template-columns: repeat(2, 400px);
     }
-  }
+  } */
 
   @media screen and (max-width: 860px) {
     &__container {
@@ -111,7 +112,7 @@
     &__wrapper-grid {
       margin: 0 16px;
       grid-template-columns: 1fr;
-      grid-template-rows: 800px;
+      /* grid-template-rows: 800px; */
     }
   }
 
@@ -293,7 +294,6 @@
 
 .best-seller {
   margin: 3em 0;
-  text-align: center;
   width: 92vw;
   margin-left: auto;
   margin-right: auto;
@@ -388,11 +388,6 @@
     }
   }
 
-
-
-
-
-
   .product-item {
     /* height: 515px; */
     position: relative;
@@ -447,10 +442,6 @@
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 3px;
-
-        &:hover {
-          cursor: pointer;
-        }
       }
 
       &--price {
@@ -465,15 +456,6 @@
           margin-left: 3px;
         }
       }
-    }
-
-    &:hover {
-      box-shadow: 0px 4px 20px rgba(57, 70, 145, 0.08);
-    }
-
-    &:hover .quick-view {
-      /* visibility: visible; */
-      transition: visibility 500ms;
     }
   }
 }
@@ -676,7 +658,8 @@
       margin-right: auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      row-gap: 2em;
+      column-gap: 20px;
+      row-gap: 50px;
     }
 
     &__title {
@@ -699,71 +682,6 @@
         &:hover {
           opacity: 0.8;
         }
-      }
-
-      &--actions {
-        z-index: 7;
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        width: 100%;
-        top: calc(50% - 34px);
-        visibility: hidden;
-        transition: visibility 300ms, transform 500ms;
-        transform: scale(0.75);
-
-        &--icon {
-          width: 4em;
-          margin: 0 1em;
-          height: 4em;
-          background: rgba(255, 255, 255, 0.664);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 50%;
-          cursor: pointer;
-
-          i {
-            font-size: 2em;
-
-            &.fa-heart:hover {
-              color: rgba(255, 0, 0, 0.7);
-            }
-
-            &.fa-cart-plus:hover {
-              color: rgba(0, 0, 255, 0.7);
-            }
-          }
-        }
-      }
-
-      &--quick-view {
-        position: absolute;
-        text-transform: uppercase;
-        font-family: var(--font-secondary);
-        font-weight: 700;
-        height: 36px;
-        font-size: 15px;
-        line-height: 18px;
-        background: #caa26e;
-        color: #fff;
-        bottom: 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        visibility: hidden;
-        transition: visibility 100ms;
-      }
-
-      &:hover .best-seller__image--actions {
-        visibility: visible;
-        transform: scale(1);
-      }
-
-      &:hover .best-seller__image--quick-view {
-        visibility: visible;
-        cursor: pointer;
       }
     }
 
