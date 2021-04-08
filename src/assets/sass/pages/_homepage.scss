@@ -134,13 +134,10 @@
 
     &__container {
       height: 100%;
-      padding-bottom: 0px;
+      padding-bottom: 50px;
 
       &__picture {
-        background: linear-gradient(to top, black, white);
         &--img {
-          opacity: 0.75;
-          background: black;
           display: block;
           // background: linear-gradient(to top, black, red);
         }
@@ -154,8 +151,8 @@
 
     &__wrapper-grid {
       margin: 0 16px;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(2, 300px);
+      /* grid-template-columns: 1fr; */
+      /* grid-template-rows: repeat(2, 300px); */
     }
   }
 }
@@ -163,7 +160,6 @@
 .feature {
   margin: 3em 0;
   text-align: center;
-  font-family: "Lora", serif;
   width: 92vw;
   margin-left: auto;
   margin-right: auto;
@@ -192,7 +188,6 @@
 
     &--head {
       font-weight: 400;
-      font-family: "Lora", serif;
       font-size: 1.25em;
       line-height: 1.5;
     }
