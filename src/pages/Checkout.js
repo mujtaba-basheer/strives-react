@@ -134,6 +134,38 @@ function CheckoutArea() {
       });
     }
 
+    if (couponData) {
+      setApplyCouponDetails({
+        ...applyCouponDetails,
+        inputState: "disabled",
+        couponApplied: true,
+        text: "Coupon Applied Successfully",
+      });
+
+      if (couponData.discount_type === "percent") {
+        let discountValue = couponData.amount,
+          subtotal = 0,
+          discount = 0;
+
+        discount = (discountValue / 100) * cartValue.subtotal;
+        subtotal = cartValue.subtotal - discount;
+        setCartValue({
+          ...cartValue,
+          total: cartValue.subtotal,
+          subtotal: subtotal,
+          discount: discount,
+        });
+        cartValue.discount = cartValue.subtotal;
+      }
+    } else if (couponError) {
+      setApplyCouponDetails({
+        ...applyCouponDetails,
+        inputState: "",
+        couponApplied: false,
+        text: couponError,
+      });
+    }
+
     const addRzpScript = async () => {
       const script = document.createElement("script");
       script.type = "text/javascript";
@@ -147,7 +179,7 @@ function CheckoutArea() {
 
     if (!window.Razorpay) addRzpScript();
     else setSdkReady(true);
-  }, [user, dispatch, error, cartItems, userInfo]);
+  }, [user, dispatch, error, cartItems, userInfo, couponData]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -207,41 +239,7 @@ function CheckoutArea() {
 
   function applyCoupon() {
     console.log(applyCouponDetails.name);
-    dispatch(checkCoupon(applyCouponDetails.name, "1500"));
-    if (couponData) {
-      console.log(couponData);
-
-      setApplyCouponDetails({
-        ...applyCouponDetails,
-        inputState: "disabled",
-        couponApplied: true,
-        text: "Coupon Applied Successfully",
-      });
-
-      if (couponData.discount_type === "percent") {
-        let discountValue = couponData.amount,
-          subtotal = 0,
-          discount = 0;
-
-        discount = (discountValue / 100) * cartValue.subtotal;
-        subtotal = cartValue.subtotal - discount;
-        setCartValue({
-          ...cartValue,
-          total: cartValue.subtotal,
-          subtotal: subtotal,
-          discount: discount,
-        });
-        cartValue.discount = cartValue.subtotal;
-      }
-    } else if (couponError) {
-      console.log(couponError);
-      setApplyCouponDetails({
-        ...applyCouponDetails,
-        inputState: "",
-        couponApplied: false,
-        text: couponError,
-      });
-    }
+    dispatch(checkCoupon(applyCouponDetails.name, cartValue.subtotal));
   }
 
   return (

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { CarouselProvider, Slider, Slide, DotGroup } from "pure-react-carousel";
@@ -10,6 +11,7 @@ import {
   addItemToFav,
   addItemToCart,
   removeItemFromFav,
+  addItemToBuyNow,
 } from "../../redux/actions/cartActions";
 
 import {
@@ -17,7 +19,6 @@ import {
   FAV_REMOVE_RESET,
 } from "../../redux/constants/cartConstants";
 import CustomSizeChart from "./CustomSizeChart";
-
 
 import heartfillsvg from "./images/heart-fill-brown.svg";
 import heart from "./images/heart.png";
@@ -33,6 +34,7 @@ const QuickView = ({ product, setShowModal }) => {
   const [productCustomSizeInfo, setproductCustomSizeInfo] = useState([]);
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { favItems } = useSelector((state) => state.fav);
 
@@ -136,8 +138,33 @@ const QuickView = ({ product, setShowModal }) => {
     document.getElementById(name).classList.add("active");
   }
 
+  function clickBuyNow() {
+    if (productSize.size === "") {
+      setProductSize({
+        ...productSize,
+        error: "Please select a size",
+      });
+    } else if (productSize.size === "custom" && !product.custom) {
+      setProductSize({
+        ...productSize,
+        error: "Please fill custom size form.",
+      });
+    } else {
+      console.log(productSize, productQuantity);
+      dispatch(
+        addItemToBuyNow(
+          product,
+          productQuantity,
+          productSize.size.toUpperCase(),
+          product.custom || {}
+        )
+      );
+
+      history.push("/express-checkout");
+    }
+  }
+
   function addToCart() {
-    console.log("clicked");
     if (productSize.size === "") {
       setProductSize({
         ...productSize,
@@ -442,11 +469,13 @@ const QuickView = ({ product, setShowModal }) => {
               </div>
 
               <div className="cta">
-                <button className="checkout btn flex" onClick={addToCart}>
-                  Add to Cart
+                <button className="checkout btn flex" onClick={clickBuyNow}>
+                  Buy Now
                 </button>
                 <button
-                  onClick={() => {
+                  className="addtocart btn flex"
+                  onClick={addToCart}
+                  /* onClick={() => {
                     if (
                       favItems &&
                       favItems.find(
@@ -456,12 +485,13 @@ const QuickView = ({ product, setShowModal }) => {
                       removeFromWishlist(product["_id"]);
                     else addToWishlist(product);
                   }}
-                  className="addtocart btn flex"
+                  className="addtocart btn flex" */
                 >
-                  {favItems &&
+                  {/* {favItems &&
                   favItems.find((favProduct) => favProduct._id === product._id)
                     ? "Remove from Wishlist"
-                    : "add to Wishlist"}
+                    : "add to Wishlist"} */}
+                  add to cart
                 </button>
               </div>
             </div>

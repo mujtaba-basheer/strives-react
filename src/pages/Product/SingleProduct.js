@@ -105,7 +105,7 @@ function SingleProductArea() {
     dispatch(getSingleProduct(id));
     console.log(product);
     if (product.name) document.title = product.name;
-  }, []);
+  }, [product]);
 
   const onCustomFormSubmit = (formData) => {
     dispatch(setCustomSize(formData));
@@ -178,7 +178,6 @@ function SingleProductArea() {
   }
 
   function clickBuyNow() {
-    console.log("clicked");
     if (productSize.size === "") {
       setProductSize({
         ...productSize,
@@ -202,12 +201,10 @@ function SingleProductArea() {
 
       history.push("/express-checkout");
 
-      setTimeout(() => dispatch({ type: CART_ADD_RESET }), 3000);
     }
   }
 
   function addToCart() {
-    console.log("clicked");
     if (productSize.size === "") {
       setProductSize({
         ...productSize,
@@ -347,8 +344,6 @@ function SingleProductArea() {
             <img src={breadcrumbsArrow} alt="arrow" />
             <p className="classification">{product.name}</p> */}
           </div>
-
-          {console.log(product)}
 
           <div className="singleproduct__content flex">
             <div className="productdetails__left">

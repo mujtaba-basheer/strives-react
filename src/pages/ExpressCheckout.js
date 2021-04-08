@@ -20,19 +20,19 @@ import razorpayBanner from "../assets/images/checkout/razorpay.png";
 import image from "../assets/images/checkout/image.png";
 import coupon from "../assets/images/checkout/coupon.png";
 
-const Checkout = () => {
+const ExpressCheckout = () => {
   return (
     <>
       <Navbar />
-      <CheckoutArea />
+      <ExpressCheckoutArea />
       <Footer />
     </>
   );
 };
 
-export default Checkout;
+export default ExpressCheckout;
 
-function CheckoutArea() {
+function ExpressCheckoutArea() {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
   const { user, error } = useSelector((state) => state.userDetails);
@@ -81,7 +81,6 @@ function CheckoutArea() {
 
   useEffect(() => {
     document.title = "Checkout";
-    console.log(cartItems, buyNow);
 
     if (!buyNow || buyNow.length === 0) history.push("/cart");
 
@@ -141,6 +140,38 @@ function CheckoutArea() {
       });
     }
 
+    if (couponData) {
+      setApplyCouponDetails({
+        ...applyCouponDetails,
+        inputState: "disabled",
+        couponApplied: true,
+        text: "Coupon Applied Successfully",
+      });
+
+      if (couponData.discount_type === "percent") {
+        let discountValue = couponData.amount,
+          subtotal = 0,
+          discount = 0;
+
+        discount = (discountValue / 100) * cartValue.subtotal;
+        subtotal = cartValue.subtotal - discount;
+        setCartValue({
+          ...cartValue,
+          total: cartValue.subtotal,
+          subtotal: subtotal,
+          discount: discount,
+        });
+        cartValue.discount = cartValue.subtotal;
+      }
+    } else if (couponError) {
+      setApplyCouponDetails({
+        ...applyCouponDetails,
+        inputState: "",
+        couponApplied: false,
+        text: couponError,
+      });
+    }
+
     const addRzpScript = async () => {
       const script = document.createElement("script");
       script.type = "text/javascript";
@@ -154,7 +185,7 @@ function CheckoutArea() {
 
     if (!window.Razorpay) addRzpScript();
     else setSdkReady(true);
-  }, [user, dispatch, error, cartItems, userInfo]);
+  }, [user, dispatch, error, cartItems, userInfo, couponData]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -213,10 +244,8 @@ function CheckoutArea() {
   }
 
   function applyCoupon() {
-    console.log(applyCouponDetails.name);
-    dispatch(checkCoupon(applyCouponDetails.name, "1500"));
+    dispatch(checkCoupon(applyCouponDetails.name, cartValue.subtotal));
     if (couponData) {
-      console.log(couponData);
 
       setApplyCouponDetails({
         ...applyCouponDetails,
@@ -226,6 +255,7 @@ function CheckoutArea() {
       });
 
       if (couponData.discount_type === "percent") {
+        console.log("hi");
         let discountValue = couponData.amount,
           subtotal = 0,
           discount = 0;
