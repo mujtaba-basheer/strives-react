@@ -4,11 +4,11 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getUserDetails } from "../redux/actions/userActions";
-import { payOrder } from "../redux/actions/orderActions";
 import {
   checkCoupon,
   resetCoupon,
   placeOrder,
+  payOrder,
 } from "../redux/actions/orderActions";
 import { getCart } from "../redux/actions/cartActions";
 
@@ -184,9 +184,9 @@ function CheckoutArea() {
     console.log(orderObj);
 
     if (paymentType === "cod") {
-      dispatch(placeOrder(orderObj));
+      dispatch(placeOrder(orderObj, true));
     } else if (paymentType === "rzp") {
-      dispatch(payOrder(cartValue.total, orderObj));
+      dispatch(payOrder(cartValue.total, orderObj, true));
     }
   };
 
