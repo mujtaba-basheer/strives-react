@@ -14,6 +14,7 @@ import {
   addItemToFav,
   addItemToCart,
   removeItemFromFav,
+  addItemToBuyNow,
 } from "../../redux/actions/cartActions";
 
 import {
@@ -190,14 +191,16 @@ function SingleProductArea() {
       });
     } else {
       console.log(productSize, productQuantity);
-      /* dispatch(
-        addItemToCart(
+      dispatch(
+        addItemToBuyNow(
           product,
           productQuantity,
           productSize.size.toUpperCase(),
           product.custom || {}
         )
-      ); */
+      );
+
+      history.push("/express-checkout");
 
       setTimeout(() => dispatch({ type: CART_ADD_RESET }), 3000);
     }

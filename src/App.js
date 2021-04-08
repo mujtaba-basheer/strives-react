@@ -15,6 +15,7 @@ import ManageAddress from "./pages/User/ManageAddress";
 import Wishlist from "./pages/User/Wishlist";
 
 import Checkout from "./pages/Checkout";
+import ExpressCheckout from "./pages/ExpressCheckout";
 
 /* Product Pages */
 import AllProduct from "./pages/Product/AllProduct";
@@ -48,6 +49,8 @@ const App = () => {
 
         <Route exact path="/checkout" component={Checkout} />
 
+        <Route exact path="/express-checkout" component={ExpressCheckout} />
+
         <Route exact path="/cart" component={Cart} />
 
         <Route exact path="/products" component={AllProduct} />
@@ -55,9 +58,12 @@ const App = () => {
         <Route exact path="/products/:id" component={SingleProduct} />
 
         <Route exact path="/category/:categoryid" component={Category} />
-        
-        <Route exact path="/category/:categoryid/:subcategoryid" component={SingleCategory} />
 
+        <Route
+          exact
+          path="/category/:categoryid/:subcategoryid"
+          component={SingleCategory}
+        />
       </Switch>
     </Router>
   );

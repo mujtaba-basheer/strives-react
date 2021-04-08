@@ -70,6 +70,7 @@ function AllProductArea() {
 
   let query = useQuery();
   const queryString = query.get("search");
+  const occasionString = query.get("occassion");
 
   const dispatch = useDispatch();
 
@@ -239,6 +240,7 @@ function AllProductArea() {
       )}
 
       <div className="allproducts-breadcrumbs flex">
+        {console.log(occasionString)}
         {/* <p className="category">fashion</p>
         <img src={breadcrumbsArrow} alt="arrow" />
         <p className="classification">t-shirt</p> */}

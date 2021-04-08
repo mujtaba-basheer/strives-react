@@ -56,7 +56,7 @@ function CheckoutArea() {
     couponApplied: false,
     text: "",
   });
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems, buyNow } = useSelector((state) => state.cart);
   const {
     coupon: couponData,
     error: couponError,
@@ -81,11 +81,11 @@ function CheckoutArea() {
 
   useEffect(() => {
     document.title = "Checkout";
-    console.log(cartItems);
+    console.log(cartItems, buyNow);
 
-    if (!cartItems || cartItems.length === 0) history.push("/cart");
+    if (!buyNow || buyNow.length === 0) history.push("/cart");
 
-    if (cartItems && cartItems.length > 0) {
+    /* if (cartItems && cartItems.length > 0) {
       let subtotal = 0,
         total = 0;
       cartItems.forEach((cart) => {
@@ -94,8 +94,15 @@ function CheckoutArea() {
         subtotal += cart.sp;
       });
       setCartValue({
-        subtotal: subtotal,
-        total: total,
+        subtotal: buyNow[0].sp,
+        total: buyNow[0].mrp,
+      });
+    } */
+
+    if (buyNow && buyNow.length > 0) {
+      setCartValue({
+        subtotal: buyNow[0].sp,
+        total: buyNow[0].mrp,
       });
     }
 
