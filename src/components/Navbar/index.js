@@ -365,15 +365,15 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <Link to="/">Discover</Link>
+                <Link to="/">New Arrivals</Link>
               </li>
-              <li
+              {/* <li
                 className="main-nav--listitem"
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
                 <Link to="/">Ethnic</Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>

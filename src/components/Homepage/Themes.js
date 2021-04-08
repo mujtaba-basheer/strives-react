@@ -20,7 +20,7 @@ const Themes = () => {
 
   return (
     <section className="theme">
-      <div className="theme__title section-title">Theme &amp; Occasions</div>
+      <div className="theme__title section-title">{/* Theme &amp;  */}Occasions</div>
       <div className="theme__section theme__mobile">
         <div className="theme__nav">
           <span>

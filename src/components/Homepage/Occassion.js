@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { themesAndOccasions } from "./data";
 
-const Themes = () => {
+const Occassion = () => {
   const [current, setCurrent] = useState(0);
   const slide = (type) => {
     switch (type) {
@@ -65,4 +65,4 @@ const Themes = () => {
   );
 };
 
-export default Themes;
+export default Occassion;

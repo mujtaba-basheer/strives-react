@@ -105,7 +105,7 @@ function SingleProductArea() {
     dispatch(getSingleProduct(id));
     console.log(product);
     if (product.name) document.title = product.name;
-  }, [product]);
+  }, []);
 
   const onCustomFormSubmit = (formData) => {
     dispatch(setCustomSize(formData));
@@ -200,7 +200,6 @@ function SingleProductArea() {
       );
 
       history.push("/express-checkout");
-
     }
   }
 
@@ -610,12 +609,21 @@ function SingleProductArea() {
                 </div>
 
                 <div className="cta">
-                  <button className="checkout btn flex" onClick={clickBuyNow}>
+                  <button
+                    className="checkout btn flex"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      clickBuyNow();
+                    }}
+                  >
                     Buy Now
                   </button>
                   <button
                     className="addtocart btn flex"
-                    onClick={addToCart}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      addToCart();
+                    }}
                     /* onClick={() => {
                       if (
                         favItems &&
