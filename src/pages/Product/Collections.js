@@ -28,7 +28,6 @@ const Collections = () => {
     <>
       <Navbar />
       <CollectionsArea />
-      <Footer />
     </>
   );
 };
@@ -82,164 +81,169 @@ function CollectionsArea() {
   }
 
   return (
-    <section className="content collections">
+    <>
       {loading && <Loader height={100} />}
 
-      {favAddError && (
-        <Alert
-          type="warning"
-          popup
-          background="true"
-          timer="5000"
-          text={favAddError}
-        />
-      )}
-      {favAddSuccess && (
-        <Alert
-          type="success"
-          popup
-          background="true"
-          timer="5000"
-          text={"Added to wishlist"}
-        />
-      )}
-      {favRemoveError && (
-        <Alert
-          type="warning"
-          popup
-          background="true"
-          timer="5000"
-          text={favRemoveError}
-        />
-      )}
-      {favRemoveSuccess && (
-        <Alert
-          type="secondary"
-          popup
-          background="true"
-          timer="5000"
-          text={"Removed from wishlist"}
-        />
-      )}
+      <section className="content collections">
+        {favAddError && (
+          <Alert
+            type="warning"
+            popup
+            background="true"
+            timer="5000"
+            text={favAddError}
+          />
+        )}
+        {favAddSuccess && (
+          <Alert
+            type="success"
+            popup
+            background="true"
+            timer="5000"
+            text={"Added to wishlist"}
+          />
+        )}
+        {favRemoveError && (
+          <Alert
+            type="warning"
+            popup
+            background="true"
+            timer="5000"
+            text={favRemoveError}
+          />
+        )}
+        {favRemoveSuccess && (
+          <Alert
+            type="secondary"
+            popup
+            background="true"
+            timer="5000"
+            text={"Removed from wishlist"}
+          />
+        )}
 
-      {error && (
-        <p
-          style={{
-            color: "red",
-          }}
-        >
-          error
-        </p>
-      )}
+        {error && (
+          <p
+            style={{
+              color: "red",
+            }}
+          >
+            error
+          </p>
+        )}
 
-      {showModal === "true" && (
-        <QuickView product={productdetails} setShowModal={setShowModal} />
-      )}
+        {showModal === "true" && (
+          <QuickView product={productdetails} setShowModal={setShowModal} />
+        )}
 
-      <ul className="collections__list">
-        {collections &&
-          collections.map((collection) => (
-            <li className="collections__list--item" key={collection._id}>
-              <div className="mainheading section-title">{collection.name}</div>
-              <p className="subheading">{collection.tagline}</p>
+        <ul className="collections__list">
+          {collections &&
+            collections.map((collection) => (
+              <li className="collections__list--item" key={collection._id}>
+                <div className="mainheading section-title">
+                  {collection.name}
+                </div>
+                <p className="subheading">{collection.tagline}</p>
 
-              <div className="product-container">
-                {collection.products &&
-                  collection.products.map((product, index) => (
-                    <div className="product-item" key={product._id}>
-                      <p
-                        className="heart"
-                        onClick={() => {
-                          if (
-                            favItems &&
-                            favItems.find(
-                              (favProduct) => favProduct._id === product._id
+                <div className="product-container">
+                  {collection.products &&
+                    collection.products.map((product, index) => (
+                      <div className="product-item" key={product._id}>
+                        <p
+                          className="heart"
+                          onClick={() => {
+                            if (
+                              favItems &&
+                              favItems.find(
+                                (favProduct) => favProduct._id === product._id
+                              )
                             )
-                          )
-                            removeFromWishlist(product["_id"]);
-                          else addToWishlist(product);
-                        }}
-                      >
-                        <img
-                          style={{
-                            width: "20px",
-                            height: "20px",
-                          }}
-                          src={
-                            favItems &&
-                            favItems.find(
-                              (favProduct) => favProduct._id === product._id
-                            )
-                              ? heartfillsvg
-                              : heart
-                          }
-                          alt="heart"
-                        />
-                      </p>
-                      <div
-                        className="product-item__image"
-                        onMouseEnter={() =>
-                          changeMainImageHover(
-                            product.gallery.main,
-                            "enter",
-                            index
-                          )
-                        }
-                        onMouseLeave={() =>
-                          changeMainImageHover(
-                            product.gallery.main,
-                            "leave",
-                            index
-                          )
-                        }
-                      >
-                        <Link to={`/products/${product._id}`}>
-                          <img
-                            id={`showcase-img` + index}
-                            style={{
-                              height: "100%",
-                              width: "100%",
-                            }}
-                            src={product.gallery.main[0].src}
-                            alt={product.name}
-                          />
-                        </Link>
-                        <div
-                          className="quick-view flex"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setProductdetails(product);
-                            setShowModal("true");
-                            /* showQuickView(); */
+                              removeFromWishlist(product["_id"]);
+                            else addToWishlist(product);
                           }}
                         >
-                          <p className="quick-view__text">Quick View</p>
+                          <img
+                            style={{
+                              width: "20px",
+                              height: "20px",
+                            }}
+                            src={
+                              favItems &&
+                              favItems.find(
+                                (favProduct) => favProduct._id === product._id
+                              )
+                                ? heartfillsvg
+                                : heart
+                            }
+                            alt="heart"
+                          />
+                        </p>
+                        <div
+                          className="product-item__image"
+                          onMouseEnter={() =>
+                            changeMainImageHover(
+                              product.gallery.main,
+                              "enter",
+                              index
+                            )
+                          }
+                          onMouseLeave={() =>
+                            changeMainImageHover(
+                              product.gallery.main,
+                              "leave",
+                              index
+                            )
+                          }
+                        >
+                          <Link to={`/products/${product._id}`}>
+                            <img
+                              id={`showcase-img` + index}
+                              style={{
+                                height: "100%",
+                                width: "100%",
+                              }}
+                              src={product.gallery.main[0].src}
+                              alt={product.name}
+                            />
+                          </Link>
+                          <div
+                            className="quick-view flex"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setProductdetails(product);
+                              setShowModal("true");
+                              /* showQuickView(); */
+                            }}
+                          >
+                            <p className="quick-view__text">Quick View</p>
+                          </div>
+                        </div>
+                        <div className="product-item__details">
+                          <Link
+                            to={`/products/${product._id}`}
+                            className="product-item__details--heading"
+                          >
+                            {product.name}
+                          </Link>
+                          <span className="flex">
+                            <p className="product-item__details--price">
+                              ₹ {product.sp}
+                            </p>
+                            <p className="product-item__details--price--mrp">
+                              ₹ {product.mrp}
+                            </p>
+                          </span>
                         </div>
                       </div>
-                      <div className="product-item__details">
-                        <Link
-                          to={`/products/${product._id}`}
-                          className="product-item__details--heading"
-                        >
-                          {product.name}
-                        </Link>
-                        <span className="flex">
-                          <p className="product-item__details--price">
-                            ₹ {product.sp}
-                          </p>
-                          <p className="product-item__details--price--mrp">
-                            ₹ {product.mrp}
-                          </p>
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-              <button className="view-more">View More</button>
-            </li>
-          ))}
-      </ul>
-    </section>
+                    ))}
+                </div>
+                <button className="view-more">View More</button>
+              </li>
+            ))}
+        </ul>
+      </section>
+      {!loading && <Footer />}
+    </>
   );
 }
 
