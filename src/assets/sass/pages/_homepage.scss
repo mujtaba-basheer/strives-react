@@ -176,7 +176,7 @@
 .feature {
   margin: 3em 0;
   text-align: center;
-  width: 92vw;
+  /* width: 92vw; */
   margin-left: auto;
   margin-right: auto;
 
@@ -236,47 +236,19 @@
 
 .theme {
   margin: 3em 0;
-  text-align: center;
-  width: 92vw;
+  /* width: 92vw; */
   margin-left: auto;
   margin-right: auto;
+
+  .swiper-container {
+    padding-bottom: 50px;
+  }
 
   &__section {
     position: relative;
     margin-bottom: 1.5em;
   }
 
-  &__desktop {
-    display: none;
-  }
-
-  &__nav {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    align-self: center;
-    width: 100%;
-    top: 45%;
-
-    &--icon {
-      color: rgba(255, 255, 255, 0.75);
-      border-radius: 50%;
-      font-size: 2.5em;
-      margin: 0 1em;
-      cursor: pointer;
-      background: rgba(255, 237, 237, 0.35);
-      width: 1em;
-      height: 1em;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &:hover {
-        color: #fff;
-      }
-    }
-  }
 
   &__title {
     margin-bottom: 2em;
@@ -284,30 +256,87 @@
     font-weight: 400;
   }
 
-  &__image {
-    width: 90%;
-    margin: 0 auto;
-    overflow: hidden;
+  .product-item {
+    /* height: 515px; */
+    position: relative;
 
-    &--img {
-      width: 100%;
-      height: auto;
+    .heart {
+      position: absolute;
+      z-index: 1;
+      top: 25px;
+      right: 25px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
-  }
 
-  &__text {
-    color: var(--clr-primary);
-    font-weight: 400;
-    margin: 1em 0;
-    text-align: center;
+    &__image {
+      /* height: 386px; */
+      position: relative;
+      transition: visibility 500ms;
+
+      :hover {
+        cursor: pointer;
+      }
+
+      .quick-view {
+        position: absolute;
+        /* visibility: hidden; */
+
+        bottom: 0;
+        background: var(--clr-secondary);
+        color: var(--clr-primary);
+        height: 36px;
+        width: 100%;
+        justify-content: center;
+        z-index: 1;
+
+        &__text {
+          font-family: var(--font-secondary);
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__details {
+      /* margin-top: 44px;
+      margin-left: 17px; */
+      margin: 20px;
+      &--heading {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 3px;
+      }
+
+      &--price {
+        font-size: 16px;
+        line-height: 21px;
+        font-family: var(--font-secondary);
+        margin-right: 5px;
+
+        &--mrp {
+          color: #bdcbdb;
+          text-decoration: line-through;
+          margin-left: 3px;
+        }
+      }
+    }
   }
 }
 
 .best-seller {
   margin: 3em 0;
-  width: 92vw;
+  /* width: 92vw; */
   margin-left: auto;
   margin-right: auto;
+
+  .swiper-container {
+    padding-bottom: 50px;
+  }
 
   &__section {
     position: relative;
@@ -617,36 +646,14 @@
 
   .theme {
     margin: 4em auto;
-
-    &__mobile {
-      display: none;
-    }
-
-    &__section:not(.theme__mobile) {
-      position: relative;
-      width: 92vw;
-      margin: 4em auto;
-      margin-left: auto;
-      margin-right: auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .swiper-container {
+      padding-bottom: 50px;
     }
 
     &__title {
       margin-bottom: 2em;
       font-size: 2.25em;
       font-weight: 400;
-    }
-
-    &__image {
-      width: 90%;
-      margin: 0 auto;
-      overflow: hidden;
-
-      &--img {
-        width: 100%;
-        height: auto;
-      }
     }
 
     &__text {
@@ -663,7 +670,7 @@
 
     &__section:not(.best-seller__mobile) {
       position: relative;
-      width: 92vw;
+      /* width: 92vw; */
       margin: 4em auto;
       margin-left: auto;
       margin-right: auto;

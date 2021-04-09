@@ -60,7 +60,7 @@ const App = () => {
 
         <Route
           exact
-          path="/collections/:id"
+          path="/collections"
           component={Collections}
         />
         {/* <Route exact path="/products/:id" component={SingleProduct} /> */}

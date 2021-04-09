@@ -3,8 +3,7 @@ import Rating from "../util/Rating";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import carticon from "../../assets/images/homepage/icons/cart.png";
-import wishlisticon from "../../assets/images/homepage/icons/heart.png";
+
 import QuickView from "../layout/QuickView";
 
 import {
@@ -22,12 +21,25 @@ import { bestSellers } from "./data";
 import heartfillsvg from "./images/heartfill.svg";
 import heart from "./images/heart.png";
 
+// import Swiper core and required modules
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/scrollbar/scrollbar.scss";
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
 const BestSeller = () => {
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState("false");
 
   const dispatch = useDispatch();
-
 
   const { favItems } = useSelector((state) => state.fav);
   const { error: favAddError, success: favAddSuccess } = useSelector(
@@ -83,137 +95,97 @@ const BestSeller = () => {
         <div className="best-seller__title section-title">
           Best Seller Products
         </div>
-        <div className="best-seller__section best-seller__mobile">
-          <div className="best-seller__nav">
-            <span>
-              <i
-                onClick={(e) => {
-                  e.preventDefault();
-                  slide("prev");
-                }}
-                className="best-seller__nav--icon fas fa-angle-left"
-              ></i>
-            </span>
-            <span>
-              <i
-                onClick={(e) => {
-                  e.preventDefault();
-                  slide("next");
-                }}
-                className="best-seller__nav--icon fas fa-angle-right"
-              ></i>
-            </span>
-          </div>
-          <div className="best-seller__image">
-            <img
-              className="best-seller__image--img"
-              alt={bestSellers[current].name}
-              src={bestSellers[current].gallery.main[0].src}
-            />
-          </div>
-          <div className="best-seller__details">
-            <div className="best-seller__details--rating">
-              {/* <Rating
-                value={bestSellers[current]["rating"]["value"]}
-                total={bestSellers[current]["rating"]["total"]}
-              /> */}
-            </div>
-            <div className="best-seller__details--text">
-              <h4>{bestSellers[current].name}</h4>
-              {bestSellers[current].mrp === bestSellers[current].sp ? (
-                <p>₹{bestSellers[current].mrp} per unit</p>
-              ) : (
-                <p>
-                  <span style={{ textDecoration: "line-through" }}>
-                    ₹{bestSellers[current].mrp}
-                  </span>{" "}
-                  ₹{bestSellers[current].sp} per unit
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="best-seller__section best-seller__desktop">
+
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+        >
           {bestSellers.map((product, index) => (
-            <div className="product-item" key={product._id}>
-              <p
-                className="heart"
-                onClick={() => {
-                  if (
-                    favItems &&
-                    favItems.find(
-                      (favProduct) => favProduct._id === product._id
+            <SwiperSlide>
+              <div className="product-item" key={product._id.$oid}>
+                <p
+                  className="heart"
+                  onClick={() => {
+                    if (
+                      favItems &&
+                      favItems.find(
+                        (favProduct) => favProduct._id.$oid === product._id.$oid
+                      )
                     )
-                  )
-                    removeFromWishlist(product["_id"]);
-                  else addToWishlist(product);
-                }}
-              >
-                <img
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                  }}
-                  src={
-                    favItems &&
-                    favItems.find(
-                      (favProduct) => favProduct._id === product._id
-                    )
-                      ? heartfillsvg
-                      : heart
-                  }
-                  alt="heart"
-                />
-              </p>
-              <div
-                className="product-item__image"
-                onMouseEnter={() =>
-                  changeMainImageHover(product.gallery.main, "enter", index)
-                }
-                onMouseLeave={() =>
-                  changeMainImageHover(product.gallery.main, "leave", index)
-                }
-              >
-                <Link to={`/product/${product._id}`}>
-                  <img
-                    id={`showcase-img` + index}
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                    }}
-                    src={product.gallery.main[0].src}
-                    alt={product.name}
-                  />
-                </Link>
-                <div
-                  className="quick-view flex"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setProductdetails(product);
-                    setShowModal("true");
-                    /* showQuickView(); */
+                      removeFromWishlist(product["$oid"]);
+                    else addToWishlist(product);
                   }}
                 >
-                  <p className="quick-view__text">Quick View</p>
+                  <img
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                    }}
+                    src={
+                      favItems &&
+                      favItems.find(
+                        (favProduct) => favProduct._id.$oid === product._id.$oid
+                      )
+                        ? heartfillsvg
+                        : heart
+                    }
+                    alt="heart"
+                  />
+                </p>
+                <div
+                  className="product-item__image"
+                  onMouseEnter={() =>
+                    changeMainImageHover(product.gallery.main, "enter", index)
+                  }
+                  onMouseLeave={() =>
+                    changeMainImageHover(product.gallery.main, "leave", index)
+                  }
+                >
+                  <Link to={`/product/${product._id.$oid}`}>
+                    <img
+                      id={`showcase-img` + index}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                      }}
+                      src={product.gallery.main[0].src}
+                      alt={product.name}
+                    />
+                  </Link>
+                  <div
+                    className="quick-view flex"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setProductdetails(product);
+                      setShowModal("true");
+                      /* showQuickView(); */
+                    }}
+                  >
+                    <p className="quick-view__text">Quick View</p>
+                  </div>
+                </div>
+                <div className="product-item__details">
+                  <Link
+                    to={`/products/${product._id.$oid}`}
+                    className="product-item__details--heading"
+                  >
+                    {product.name}
+                  </Link>
+                  <span className="flex">
+                    <p className="product-item__details--price">
+                      ₹ {product.sp}
+                    </p>
+                    <p className="product-item__details--price--mrp">
+                      ₹ {product.mrp}
+                    </p>
+                  </span>
                 </div>
               </div>
-              <div className="product-item__details">
-                <Link
-                  to={`/products/${product._id}`}
-                  className="product-item__details--heading"
-                >
-                  {product.name}
-                </Link>
-                <span className="flex">
-                  <p className="product-item__details--price">₹ {product.sp}</p>
-                  <p className="product-item__details--price--mrp">
-                    ₹ {product.mrp}
-                  </p>
-                </span>
-              </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </section>
     </>
   );
