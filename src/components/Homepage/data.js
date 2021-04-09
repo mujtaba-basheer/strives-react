@@ -1,25 +1,25 @@
 export const bestSellers = [
   {
-    name: "Saloni",
+    name: "Sakeena",
     short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
+      "The urbane cream beige suit with pant styled pyjama and matching dupatta is a classic for beautiful soul like you.",
     available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
+    mrp: 4999,
+    sp: 3055,
     free_shipping: true,
     details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
+      "cream beige suit in authentic cotton silk with rose pink piping work.",
+      " Pyjama is pant styled crafted out of premium cotton silk.",
+      " Paired with matching organza dupatta bordered with rose pink tassel lace",
+      " Designed with jewel neckline and wrist length sleeves",
     ],
     rating: 0,
     rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
+    materials: ["silk", "cotton"],
     subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
+      "The urbane cream beige suit with pant styled pyjama and matching dupatta is a classic for beautiful soul like you",
     category: {
-      $oid: "6021307bff106c000451ba04",
+      $oid: "60212faaff106c000451ba03",
     },
     sub_categories: [
       {
@@ -28,7 +28,7 @@ export const bestSellers = [
         },
         name: "STYLE",
         slug_name: "style",
-        value: "See All Gown",
+        value: "See All Salwar Kameez",
       },
       {
         _id: {
@@ -36,11 +36,18 @@ export const bestSellers = [
         },
         name: "OCCASION",
         slug_name: "occasion",
-        value: "Party wear Gowns",
+        value: "Festive Salwar Kameez",
+      },
+      {
+        _id: {
+          $oid: "60212806ff106c000451b9fc",
+        },
+        name: "FABRIC",
+        slug_name: "fabric",
+        value: "Silk Salwar Kameez",
       },
     ],
     tags: [
-      "saree",
       "red",
       "lehenga",
       "georgette",
@@ -48,136 +55,120 @@ export const bestSellers = [
       "cotton",
       "blue",
       "bengali",
+      "saree",
     ],
-    discount: 1295,
-    stocks_available: 1,
+    discount: 1944,
+    stocks_available: 6,
     colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
+      _id: {
+        $oid: "6011526675d21e119cebfd20",
+      },
+      full_name: "Lemon Yellow",
+      hexcode: "fcff9c",
+      common_name: "Yellow",
+      slug_name: "yellow",
     },
     gallery: {
       main: [
         {
-          name: "SDP_1442.jpg",
+          name: "3.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/76e2b794-7d54-420c-9e76-19457cb7eb68.jpg",
           details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
+            ETag: '"aa42d701464512db5cbe53525b4e4a8e"',
+            Key: "assets/76e2b794-7d54-420c-9e76-19457cb7eb68.jpg",
           },
         },
         {
-          name: "SDP_1443.jpg",
+          name: "2.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/5e791f0a-d711-40e6-af98-1bc21a19a9f8.jpg",
           details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
+            ETag: '"5a7b4875943ac416fdf3fd26bb265939"',
+            Key: "assets/5e791f0a-d711-40e6-af98-1bc21a19a9f8.jpg",
           },
         },
         {
-          name: "SDP_1447.jpg",
+          name: "1.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/2f759a7b-5222-4093-89f9-3298da64d472.jpg",
           details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
+            ETag: '"0992fcbf3d947ce9301fed1bbfeb135d"',
+            Key: "assets/2f759a7b-5222-4093-89f9-3298da64d472.jpg",
           },
         },
       ],
       small: [
         {
-          name: "SDP_1442.jpg",
+          name: "SDP_2116.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/b7fe56eb-c604-4dc8-9bfa-c17abbbc05f2.jpg",
           details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
+            ETag: '"966148ff626786e10e0ed5d521cba86c"',
+            Key: "assets/b7fe56eb-c604-4dc8-9bfa-c17abbbc05f2.jpg",
           },
         },
         {
-          name: "SDP_1443.jpg",
+          name: "SDP_2112.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/9779b766-5df0-47c3-ac58-0811b6b5b12d.jpg",
           details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
+            ETag: '"be5df080ab1a514a8229d5c3b5292a7a"',
+            Key: "assets/9779b766-5df0-47c3-ac58-0811b6b5b12d.jpg",
           },
         },
         {
-          name: "SDP_1447.jpg",
+          name: "SDP_2101.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/cd16830e-e26d-47d8-b19f-6e33341fba8e.jpg",
           details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
+            ETag: '"1aa88ea4991ca006b26fd916a8d34018"',
+            Key: "assets/cd16830e-e26d-47d8-b19f-6e33341fba8e.jpg",
           },
         },
       ],
     },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
     isBlocked: false,
+    date: "2021-03-19T10:40:40.669Z",
+    slug_name: "sakeena",
+    set: ["kurti", "pant"],
+    collection: {
+      $oid: "606c302a4948870004ce9931",
+    },
   },
   {
-    name: "Saloni",
+    name: "Akshara - I",
     short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
+      "The classic melon orange hue suit with pant styled pyjama and matching dupatta. It is adorned with adorable floral embriodery using French knot work in silk.",
     available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
+    mrp: 3999,
+    sp: 2999,
     free_shipping: true,
     details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
+      "Melon orange hue suit in dola silk with intricate French knot work.",
+      "Pyjama is pant styled crafted from elite Russian silk with side zip and one side pocket.",
+      "Paired with matching organza dupatta bordered with yellow ochre lace.",
+      "Designed with collar neckline with pintex along the centerline and half sleeves.",
     ],
     rating: 0,
     rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
+    materials: ["cotton", "russian-silk"],
     subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
+      "The classic melon orange hue suit with pant styled pyjama and matching dupatta. It is adorned with adorable floral embriodery using French knot work in silk.",
     category: {
-      $oid: "6021307bff106c000451ba04",
+      $oid: "60212faaff106c000451ba03",
     },
     sub_categories: [
       {
@@ -186,7 +177,7 @@ export const bestSellers = [
         },
         name: "STYLE",
         slug_name: "style",
-        value: "See All Gown",
+        value: "See All Salwar Kameez",
       },
       {
         _id: {
@@ -194,11 +185,18 @@ export const bestSellers = [
         },
         name: "OCCASION",
         slug_name: "occasion",
-        value: "Party wear Gowns",
+        value: "Party Wear Salwar Kameez",
+      },
+      {
+        _id: {
+          $oid: "60212806ff106c000451b9fc",
+        },
+        name: "FABRIC",
+        slug_name: "fabric",
+        value: "Cotton Salwar Kameez",
       },
     ],
     tags: [
-      "saree",
       "red",
       "lehenga",
       "georgette",
@@ -207,135 +205,117 @@ export const bestSellers = [
       "blue",
       "bengali",
     ],
-    discount: 1295,
-    stocks_available: 1,
+    discount: 1000,
+    stocks_available: 4,
     colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
+      _id: {
+        $oid: "60587c8308c2d80004ba3567",
+      },
+      full_name: "Coral",
+      hexcode: "FF7F50",
+      common_name: "coral",
+      slug_name: "coral",
     },
     gallery: {
-      main: [
+      small: [
         {
-          name: "SDP_1442.jpg",
+          name: "SDP_2077.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/d58def98-7d73-489e-bb82-1afd391251f0.jpg",
           details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
+            ETag: '"5c15f4cf07801fdefdfacf32c2290bcb"',
+            Key: "assets/d58def98-7d73-489e-bb82-1afd391251f0.jpg",
           },
         },
         {
-          name: "SDP_1443.jpg",
+          name: "SDP_2094.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/7ce1b48d-1190-42f9-9b89-206109369d04.jpg",
           details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
+            ETag: '"d26cfff7f2a98edbb8b85479666647b8"',
+            Key: "assets/7ce1b48d-1190-42f9-9b89-206109369d04.jpg",
           },
         },
         {
-          name: "SDP_1447.jpg",
+          name: "SDP_2071.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/173cf6b2-49c4-41f5-ae96-b9c9f99f97a5.jpg",
           details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
+            ETag: '"94711a82d7f574eef87d90f000fa922c"',
+            Key: "assets/173cf6b2-49c4-41f5-ae96-b9c9f99f97a5.jpg",
           },
         },
       ],
-      small: [
+      main: [
         {
-          name: "SDP_1442.jpg",
+          name: "SDP_2077.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/d81b5451-2519-4304-b898-645136405732.jpg",
           details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
+            ETag: '"597714a2e2d2e7adb5cec5804dbf8c90"',
+            Key: "assets/d81b5451-2519-4304-b898-645136405732.jpg",
           },
         },
         {
-          name: "SDP_1443.jpg",
+          name: "SDP_2094.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/2ef82448-4aeb-4da0-8ecd-ae7f7b7e305d.jpg",
           details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
+            ETag: '"f223551d38d4af61cd52ce451684ef29"',
+            Key: "assets/2ef82448-4aeb-4da0-8ecd-ae7f7b7e305d.jpg",
           },
         },
         {
-          name: "SDP_1447.jpg",
+          name: "SDP_2071.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/219a22fe-9bfe-46b9-a710-950ead664daf.jpg",
           details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
+            ETag: '"ab1d8b292603bcf41021a0ee753cd7e9"',
+            Key: "assets/219a22fe-9bfe-46b9-a710-950ead664daf.jpg",
           },
         },
       ],
     },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
     isBlocked: false,
+    set: ["kurti", "pant"],
+    date: "2021-03-19T13:23:38.970Z",
+    slug_name: "akshara-i",
+    collection: {
+      $oid: "606c302a4948870004ce9931",
+    },
   },
   {
-    name: "Saloni",
+    name: "Preet",
     short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
+      "The royal banana yellow peplum lehenga and pre-stitched matching dupatta. The blouse is embellished with intricate moti and cutdana work",
     available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
+    mrp: 9999,
+    sp: 8288,
     free_shipping: true,
     details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
+      "Banana yellow peplum in sheer georgette fabric with moti and cutdana work.",
+      "Lehenga is crafted from premium silk with prestitched dupatta.",
+      " Designed with boat neckline and 3/4 sleeves.",
     ],
     rating: 0,
     rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
+    materials: ["georgette", "moti", "cutdana"],
     subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
+      "The royal banana yellow peplum lehenga and pre-stitched matching dupatta. The blouse is embellished with intricate moti and cutdana work.",
     category: {
-      $oid: "6021307bff106c000451ba04",
+      $oid: "60212edfff106c000451ba02",
     },
     sub_categories: [
       {
@@ -344,7 +324,7 @@ export const bestSellers = [
         },
         name: "STYLE",
         slug_name: "style",
-        value: "See All Gown",
+        value: "See All Lehengas",
       },
       {
         _id: {
@@ -352,7 +332,7 @@ export const bestSellers = [
         },
         name: "OCCASION",
         slug_name: "occasion",
-        value: "Party wear Gowns",
+        value: "Day wedding Lehengas",
       },
     ],
     tags: [
@@ -365,156 +345,155 @@ export const bestSellers = [
       "blue",
       "bengali",
     ],
-    discount: 1295,
+    discount: 1711,
     stocks_available: 1,
     colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
+      _id: {
+        $oid: "6011526675d21e119cebfd20",
+      },
+      full_name: "Lemon Yellow",
+      hexcode: "fcff9c",
+      common_name: "Yellow",
+      slug_name: "yellow",
     },
     gallery: {
       main: [
         {
-          name: "SDP_1442.jpg",
+          name: "SDP_2149.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/314a5aae-b11d-455c-800b-4e673986ae76.jpg",
           details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
+            ETag: '"203f6550f6dc9a51eec63d41c8adaecd"',
+            Key: "assets/314a5aae-b11d-455c-800b-4e673986ae76.jpg",
           },
         },
         {
-          name: "SDP_1443.jpg",
+          name: "SDP_2171.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/73d5dbb9-7d58-4785-ab56-f8585edbaf8d.jpg",
           details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
+            ETag: '"c219479451bae981f0d97590e92abc02"',
+            Key: "assets/73d5dbb9-7d58-4785-ab56-f8585edbaf8d.jpg",
           },
         },
         {
-          name: "SDP_1447.jpg",
+          name: "SDP_2151.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/83eee736-98f8-4c2d-90e0-c4472a5af12e.jpg",
           details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
+            ETag: '"b13392d947804120a1d3526674b64b4a"',
+            Key: "assets/83eee736-98f8-4c2d-90e0-c4472a5af12e.jpg",
           },
         },
         {
-          name: "SDP_1458.jpg",
+          name: "SDP_2180.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/4e2c19f6-566e-4a99-913f-76a3911e5881.jpg",
           details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
+            ETag: '"597375ec00b3409e0a44e874f0899a97"',
+            Key: "assets/4e2c19f6-566e-4a99-913f-76a3911e5881.jpg",
           },
         },
       ],
       small: [
         {
-          name: "SDP_1442.jpg",
+          name: "SDP_2149.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/0c0c0558-c44d-4c61-a9cb-94993ed327c9.jpg",
           details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
+            ETag: '"f170961615c822e0300ba3972a175fa4"',
+            Key: "assets/0c0c0558-c44d-4c61-a9cb-94993ed327c9.jpg",
           },
         },
         {
-          name: "SDP_1443.jpg",
+          name: "SDP_2171.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/9935c0c6-4468-4ffd-a2be-c20d889b2b47.jpg",
           details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
+            ETag: '"77daa1945eeb66d44cc5c6084822b9ba"',
+            Key: "assets/9935c0c6-4468-4ffd-a2be-c20d889b2b47.jpg",
           },
         },
         {
-          name: "SDP_1447.jpg",
+          name: "SDP_2151.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/882dac93-3111-4053-8913-2fec8cc9dbbe.jpg",
           details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
+            ETag: '"d1d8ebdb9815d7b451f62e8efc8a8a92"',
+            Key: "assets/882dac93-3111-4053-8913-2fec8cc9dbbe.jpg",
           },
         },
         {
-          name: "SDP_1458.jpg",
+          name: "SDP_2180.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/19dcf270-7721-44ac-9d70-65de7d4a792b.jpg",
           details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
+            ETag: '"429f17c662e76d7191b18b59eb683694"',
+            Key: "assets/19dcf270-7721-44ac-9d70-65de7d4a792b.jpg",
           },
         },
       ],
     },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
     isBlocked: false,
+    set: ["lehenga", "gown", "dress"],
+    date: "2021-03-19T13:32:16.815Z",
+    slug_name: "preet",
+    collection: {
+      $oid: "606c302a4948870004ce9931",
+    },
   },
   {
-    name: "Saloni",
+    _id: { $oid: "6054ae1d3a8a090004aa308b" },
+    name: "Dilkash",
     short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
+      "The sumptuous opal purple gown crafted from the finest Italian velvet adorned with a blend of classic zari and zardozi work.",
     available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
+    mrp: 9999,
+    sp: 8777,
     free_shipping: true,
     details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
+      "Floor length opal purple hue gown",
+      "Adorned with a blend of classic zari and zardozi work",
+      "Crafted from the finest Italian velvet with tulle silk sleeves",
+      "Designed with jewel neckline and full sleeves",
     ],
     rating: 0,
     rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
+    materials: ["silk", "zardozi", "silk-zari-boti"],
     subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    category: {
-      $oid: "6021307bff106c000451ba04",
-    },
+      "The sumptuous opal purple gown crafted from the finest Italian velvet adorned with a blend of classic zari and zardozi work.",
+    category: { $oid: "6021307bff106c000451ba04" },
     sub_categories: [
       {
-        _id: {
-          $oid: "60212614ff106c000451b9fa",
-        },
+        _id: { $oid: "60212614ff106c000451b9fa" },
         name: "STYLE",
         slug_name: "style",
-        value: "See All Gown",
+        value: "Designer Gown",
       },
       {
-        _id: {
-          $oid: "60212795ff106c000451b9fb",
-        },
+        _id: { $oid: "60212795ff106c000451b9fb" },
         name: "OCCASION",
         slug_name: "occasion",
         value: "Party wear Gowns",
       },
     ],
     tags: [
-      "saree",
       "red",
       "lehenga",
       "georgette",
@@ -523,903 +502,92 @@ export const bestSellers = [
       "blue",
       "bengali",
     ],
-    discount: 1295,
+    discount: 1222,
     stocks_available: 1,
     colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
+      _id: { $oid: "6058770208c2d80004ba3559" },
+      full_name: "Au Chico",
+      hexcode: "97605D",
+      common_name: "chico",
+      slug_name: "chico",
     },
     gallery: {
       main: [
         {
-          name: "SDP_1442.jpg",
+          name: "SDP_2186.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/997d19cd-c4be-421d-b4ac-f06e57667fa1.jpg",
           details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
+            ETag: '"4fce84a17605b029cc60a381563ceec3"',
+            Key: "assets/997d19cd-c4be-421d-b4ac-f06e57667fa1.jpg",
           },
         },
         {
-          name: "SDP_1443.jpg",
+          name: "SDP_2205.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/e557b1e9-e892-4dff-9c28-47b696057ea5.jpg",
           details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
+            ETag: '"df1bd10e44e446f4c79d97ea50c9d493"',
+            Key: "assets/e557b1e9-e892-4dff-9c28-47b696057ea5.jpg",
           },
         },
         {
-          name: "SDP_1447.jpg",
+          name: "SDP_2215.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/2f5aa49d-5ebe-4974-a4ea-c4f5bb3ef4d0.jpg",
           details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
+            ETag: '"ca959327d925f4996126cc143a04d2a1"',
+            Key: "assets/2f5aa49d-5ebe-4974-a4ea-c4f5bb3ef4d0.jpg",
           },
         },
       ],
       small: [
         {
-          name: "SDP_1442.jpg",
+          name: "SDP_2186.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/914552fd-47ad-462a-a6a5-0a12e3c54be6.jpg",
           details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
+            ETag: '"50bd98ab9ebf5d7e20f898706614d954"',
+            Key: "assets/914552fd-47ad-462a-a6a5-0a12e3c54be6.jpg",
           },
         },
         {
-          name: "SDP_1443.jpg",
+          name: "SDP_2205.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/92aae8d1-0d92-4006-a731-4565fde79bdd.jpg",
           details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
+            ETag: '"b6acf0847de0f0c6749ed67615a69ce2"',
+            Key: "assets/92aae8d1-0d92-4006-a731-4565fde79bdd.jpg",
           },
         },
         {
-          name: "SDP_1447.jpg",
+          name: "SDP_2215.jpg",
           extension: ".jpg",
           type: "image/jpeg",
           src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
+            "https://the-strives.s3.us-east-2.amazonaws.com/assets/7cf33e92-10f3-4eba-b50d-c33038c58c16.jpg",
           details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
+            ETag: '"3777a4cc8a1ee0ee205136bd347553e8"',
+            Key: "assets/7cf33e92-10f3-4eba-b50d-c33038c58c16.jpg",
           },
         },
       ],
     },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
     isBlocked: false,
-  },
-  {
-    name: "Saloni",
-    short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
-    free_shipping: true,
-    details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
-    ],
-    rating: 0,
-    rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
-    subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    category: {
-      $oid: "6021307bff106c000451ba04",
-    },
-    sub_categories: [
-      {
-        _id: {
-          $oid: "60212614ff106c000451b9fa",
-        },
-        name: "STYLE",
-        slug_name: "style",
-        value: "See All Gown",
-      },
-      {
-        _id: {
-          $oid: "60212795ff106c000451b9fb",
-        },
-        name: "OCCASION",
-        slug_name: "occasion",
-        value: "Party wear Gowns",
-      },
-    ],
-    tags: [
-      "saree",
-      "red",
-      "lehenga",
-      "georgette",
-      "dupatta",
-      "cotton",
-      "blue",
-      "bengali",
-    ],
-    discount: 1295,
-    stocks_available: 1,
-    colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
-    },
-    gallery: {
-      main: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          },
-        },
-      ],
-      small: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          },
-        },
-      ],
-    },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
-    isBlocked: false,
-  },
-  {
-    name: "Saloni",
-    short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
-    free_shipping: true,
-    details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
-    ],
-    rating: 0,
-    rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
-    subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    category: {
-      $oid: "6021307bff106c000451ba04",
-    },
-    sub_categories: [
-      {
-        _id: {
-          $oid: "60212614ff106c000451b9fa",
-        },
-        name: "STYLE",
-        slug_name: "style",
-        value: "See All Gown",
-      },
-      {
-        _id: {
-          $oid: "60212795ff106c000451b9fb",
-        },
-        name: "OCCASION",
-        slug_name: "occasion",
-        value: "Party wear Gowns",
-      },
-    ],
-    tags: [
-      "saree",
-      "red",
-      "lehenga",
-      "georgette",
-      "dupatta",
-      "cotton",
-      "blue",
-      "bengali",
-    ],
-    discount: 1295,
-    stocks_available: 1,
-    colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
-    },
-    gallery: {
-      main: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          },
-        },
-      ],
-      small: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          },
-        },
-      ],
-    },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
-    isBlocked: false,
-  },
-  {
-    name: "Saloni",
-    short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
-    free_shipping: true,
-    details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
-    ],
-    rating: 0,
-    rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
-    subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    category: {
-      $oid: "6021307bff106c000451ba04",
-    },
-    sub_categories: [
-      {
-        _id: {
-          $oid: "60212614ff106c000451b9fa",
-        },
-        name: "STYLE",
-        slug_name: "style",
-        value: "See All Gown",
-      },
-      {
-        _id: {
-          $oid: "60212795ff106c000451b9fb",
-        },
-        name: "OCCASION",
-        slug_name: "occasion",
-        value: "Party wear Gowns",
-      },
-    ],
-    tags: [
-      "saree",
-      "red",
-      "lehenga",
-      "georgette",
-      "dupatta",
-      "cotton",
-      "blue",
-      "bengali",
-    ],
-    discount: 1295,
-    stocks_available: 1,
-    colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
-    },
-    gallery: {
-      main: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          },
-        },
-      ],
-      small: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          },
-        },
-      ],
-    },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
-    isBlocked: false,
-  },
-  {
-    name: "Saloni",
-    short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
-    free_shipping: true,
-    details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
-    ],
-    rating: 0,
-    rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
-    subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    category: {
-      $oid: "6021307bff106c000451ba04",
-    },
-    sub_categories: [
-      {
-        _id: {
-          $oid: "60212614ff106c000451b9fa",
-        },
-        name: "STYLE",
-        slug_name: "style",
-        value: "See All Gown",
-      },
-      {
-        _id: {
-          $oid: "60212795ff106c000451b9fb",
-        },
-        name: "OCCASION",
-        slug_name: "occasion",
-        value: "Party wear Gowns",
-      },
-    ],
-    tags: [
-      "saree",
-      "red",
-      "lehenga",
-      "georgette",
-      "dupatta",
-      "cotton",
-      "blue",
-      "bengali",
-    ],
-    discount: 1295,
-    stocks_available: 1,
-    colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
-    },
-    gallery: {
-      main: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          },
-        },
-      ],
-      small: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          },
-        },
-      ],
-    },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
-    isBlocked: false,
-  },
-  {
-    name: "Saloni",
-    short_description:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    available_sizes: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "C"],
-    mrp: 5000,
-    sp: 3705,
-    free_shipping: true,
-    details: [
-      " Salmon pink gown is crafted from cotton silk",
-      " Shrug has a C-cut hem with a geometric impression of cutdana, moti and coin work",
-      " Designed with jewel neckline and 3/4 sleeves with cuffs",
-      " Care-dry clean only",
-    ],
-    rating: 0,
-    rating_count: 0,
-    materials: ["cotton", "silk", "cutdana", "moti"],
-    subtitle:
-      "The voguish salmon pink shrug style gown.The shrug has a geometric impression of cutdana,moti and coin work",
-    category: {
-      $oid: "6021307bff106c000451ba04",
-    },
-    sub_categories: [
-      {
-        _id: {
-          $oid: "60212614ff106c000451b9fa",
-        },
-        name: "STYLE",
-        slug_name: "style",
-        value: "See All Gown",
-      },
-      {
-        _id: {
-          $oid: "60212795ff106c000451b9fb",
-        },
-        name: "OCCASION",
-        slug_name: "occasion",
-        value: "Party wear Gowns",
-      },
-    ],
-    tags: [
-      "saree",
-      "red",
-      "lehenga",
-      "georgette",
-      "dupatta",
-      "cotton",
-      "blue",
-      "bengali",
-    ],
-    discount: 1295,
-    stocks_available: 1,
-    colour: {
-      _id: "605870e408c2d80004ba354c",
-      full_name: "Apricot Peach",
-      hexcode: "FBCEB1",
-      common_name: "light pink",
-      slug_name: "light-pink",
-    },
-    gallery: {
-      main: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          details: {
-            ETag: '"193f2e647aef9c71b0f64ab8b0e32642"',
-            Key: "assets/33926cf0-bd12-43b3-a215-1056be5f6a8c.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          details: {
-            ETag: '"7f1b5b6966f4e3c30e440f285f38810b"',
-            Key: "assets/91bc01fd-0eb7-4557-8ecf-9b183f1ef406.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          details: {
-            ETag: '"ce27f96777c9d49ec9b631ad91f8519a"',
-            Key: "assets/9b0f3e0c-f5fe-4af4-acfb-4caded41d176.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          details: {
-            ETag: '"f385d4824695da5ac4bd5e0693ae93fc"',
-            Key: "assets/ba783de0-624c-4b37-8a14-f26a6e95556e.jpg",
-          },
-        },
-      ],
-      small: [
-        {
-          name: "SDP_1442.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          details: {
-            ETag: '"8f6d549e93b1e29fa62039c8d4990ac0"',
-            Key: "assets/b34aefbe-93e8-49a4-bf5a-be9f87961273.jpg",
-          },
-        },
-        {
-          name: "SDP_1443.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          details: {
-            ETag: '"4c64df7e21225c0191d043df12845382"',
-            Key: "assets/eb993d2a-6359-42dd-873b-ec4b6cea1070.jpg",
-          },
-        },
-        {
-          name: "SDP_1447.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          details: {
-            ETag: '"e07c31250085112fca60516e77da1499"',
-            Key: "assets/51a99d46-3278-44fa-9344-8b40bc3b5adc.jpg",
-          },
-        },
-        {
-          name: "SDP_1458.jpg",
-          extension: ".jpg",
-          type: "image/jpeg",
-          src:
-            "https://strives.s3.ap-south-1.amazonaws.com/assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          details: {
-            ETag: '"be247af1ad5e632556cedbaa9517fce7"',
-            Key: "assets/84abe89d-8686-46cc-94c6-13615ed462bb.jpg",
-          },
-        },
-      ],
-    },
-    set: ["gown", "dress"],
-    date: "2021-04-02T10:58:15.431Z",
-    slug_name: "saloni",
-    isBlocked: false,
+    set: ["dress", "gown"],
+    date: "2021-03-19T13:58:53.628Z",
+    slug_name: "dilkash",
+    collection: { $oid: "606c302a4948870004ce9931" },
   },
 ];
 

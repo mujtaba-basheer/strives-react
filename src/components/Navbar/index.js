@@ -367,6 +367,13 @@ const Index = () => {
               >
                 <Link to="/">New Arrivals</Link>
               </li>
+              <li
+                className="main-nav--listitem"
+                onMouseOver={changeNavbarColor}
+                onMouseLeave={resetNavbarColor}
+              >
+                <Link to="/collections">Collections</Link>
+              </li>
               {/* <li
                 className="main-nav--listitem"
                 onMouseOver={changeNavbarColor}
