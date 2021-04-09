@@ -1,3 +1,21 @@
+.showcase {
+  &__div {
+    position: relative;
+  }
+
+  &__text {
+    position: absolute;
+    bottom: 25%;
+    /* text-align: center; */
+    /* margin: 0 auto; */
+    /* display: block; */
+    left: 50%;
+    color: white;
+    font-size: 35px;
+    transform: translateX(-50%);
+  }
+}
+
 .latest-collection {
   &__title {
     margin-top: 95px;
@@ -30,14 +48,12 @@
 
   &__wrapper-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(246px, 1fr));
 
     grid-gap: 25px;
     justify-content: center;
     margin: 2rem 97px;
   }
-
-  
 
   //profile card container
   &__container {

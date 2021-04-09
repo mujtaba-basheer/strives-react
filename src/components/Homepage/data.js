@@ -728,7 +728,21 @@ export const latestCollections = [
 export const showcasedata = [
   /* "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
   "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png", */
-  "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
-  "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
-  "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
+  
+
+  {
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
+    text: "test123",
+  },
+  {
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
+    text: "test456",
+  },
+  {
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
+    text: "test789",
+  },
 ];

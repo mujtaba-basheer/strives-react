@@ -29,8 +29,9 @@ const Showcase = () => {
       >
         {showcasedata.map((show) => (
           <SwiperSlide>
-            <div>
-              <img src={show} alt="qq" />
+            <div className="showcase__div">
+              <img src={show.img} alt="qq" />
+              <p className="showcase__text">{show.text}</p>
             </div>
           </SwiperSlide>
         ))}
