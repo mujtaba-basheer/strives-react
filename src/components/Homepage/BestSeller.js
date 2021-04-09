@@ -3,7 +3,6 @@ import Rating from "../util/Rating";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-
 import QuickView from "../layout/QuickView";
 
 import {
@@ -96,96 +95,195 @@ const BestSeller = () => {
           Best Seller Products
         </div>
 
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={3}
-          navigation
-          pagination={{ clickable: true }}
-        >
-          {bestSellers.map((product, index) => (
-            <SwiperSlide>
-              <div className="product-item" key={product._id.$oid}>
-                <p
-                  className="heart"
-                  onClick={() => {
-                    if (
-                      favItems &&
-                      favItems.find(
-                        (favProduct) => favProduct._id.$oid === product._id.$oid
+        <div className="mobile">
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={2}
+            navigation
+            pagination={{ clickable: true }}
+          >
+            {bestSellers.map((product, index) => (
+              <SwiperSlide>
+                <div className="product-item" key={product._id.$oid}>
+                  <p
+                    className="heart"
+                    onClick={() => {
+                      if (
+                        favItems &&
+                        favItems.find(
+                          (favProduct) =>
+                            favProduct._id.$oid === product._id.$oid
+                        )
                       )
-                    )
-                      removeFromWishlist(product["$oid"]);
-                    else addToWishlist(product);
-                  }}
-                >
-                  <img
-                    style={{
-                      width: "20px",
-                      height: "20px",
-                    }}
-                    src={
-                      favItems &&
-                      favItems.find(
-                        (favProduct) => favProduct._id.$oid === product._id.$oid
-                      )
-                        ? heartfillsvg
-                        : heart
-                    }
-                    alt="heart"
-                  />
-                </p>
-                <div
-                  className="product-item__image"
-                  onMouseEnter={() =>
-                    changeMainImageHover(product.gallery.main, "enter", index)
-                  }
-                  onMouseLeave={() =>
-                    changeMainImageHover(product.gallery.main, "leave", index)
-                  }
-                >
-                  <Link to={`/product/${product._id.$oid}`}>
-                    <img
-                      id={`showcase-img` + index}
-                      style={{
-                        height: "100%",
-                        width: "100%",
-                      }}
-                      src={product.gallery.main[0].src}
-                      alt={product.name}
-                    />
-                  </Link>
-                  <div
-                    className="quick-view flex"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setProductdetails(product);
-                      setShowModal("true");
-                      /* showQuickView(); */
+                        removeFromWishlist(product["$oid"]);
+                      else addToWishlist(product);
                     }}
                   >
-                    <p className="quick-view__text">Quick View</p>
+                    <img
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                      }}
+                      src={
+                        favItems &&
+                        favItems.find(
+                          (favProduct) =>
+                            favProduct._id.$oid === product._id.$oid
+                        )
+                          ? heartfillsvg
+                          : heart
+                      }
+                      alt="heart"
+                    />
+                  </p>
+                  <div
+                    className="product-item__image"
+                    onMouseEnter={() =>
+                      changeMainImageHover(product.gallery.main, "enter", index)
+                    }
+                    onMouseLeave={() =>
+                      changeMainImageHover(product.gallery.main, "leave", index)
+                    }
+                  >
+                    <Link to={`/product/${product._id.$oid}`}>
+                      <img
+                        id={`showcase-img` + index}
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                        }}
+                        src={product.gallery.main[0].src}
+                        alt={product.name}
+                      />
+                    </Link>
+                    <div
+                      className="quick-view flex"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setProductdetails(product);
+                        setShowModal("true");
+                        /* showQuickView(); */
+                      }}
+                    >
+                      <p className="quick-view__text">Quick View</p>
+                    </div>
+                  </div>
+                  <div className="product-item__details">
+                    <Link
+                      to={`/products/${product._id.$oid}`}
+                      className="product-item__details--heading"
+                    >
+                      {product.name}
+                    </Link>
+                    <span className="flex">
+                      <p className="product-item__details--price">
+                        ₹ {product.sp}
+                      </p>
+                      <p className="product-item__details--price--mrp">
+                        ₹ {product.mrp}
+                      </p>
+                    </span>
                   </div>
                 </div>
-                <div className="product-item__details">
-                  <Link
-                    to={`/products/${product._id.$oid}`}
-                    className="product-item__details--heading"
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <div className="desktop">
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={3}
+            navigation
+            pagination={{ clickable: true }}
+          >
+            {bestSellers.map((product, index) => (
+              <SwiperSlide>
+                <div className="product-item" key={product._id.$oid}>
+                  <p
+                    className="heart"
+                    onClick={() => {
+                      if (
+                        favItems &&
+                        favItems.find(
+                          (favProduct) =>
+                            favProduct._id.$oid === product._id.$oid
+                        )
+                      )
+                        removeFromWishlist(product["$oid"]);
+                      else addToWishlist(product);
+                    }}
                   >
-                    {product.name}
-                  </Link>
-                  <span className="flex">
-                    <p className="product-item__details--price">
-                      ₹ {product.sp}
-                    </p>
-                    <p className="product-item__details--price--mrp">
-                      ₹ {product.mrp}
-                    </p>
-                  </span>
+                    <img
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                      }}
+                      src={
+                        favItems &&
+                        favItems.find(
+                          (favProduct) =>
+                            favProduct._id.$oid === product._id.$oid
+                        )
+                          ? heartfillsvg
+                          : heart
+                      }
+                      alt="heart"
+                    />
+                  </p>
+                  <div
+                    className="product-item__image"
+                    onMouseEnter={() =>
+                      changeMainImageHover(product.gallery.main, "enter", index)
+                    }
+                    onMouseLeave={() =>
+                      changeMainImageHover(product.gallery.main, "leave", index)
+                    }
+                  >
+                    <Link to={`/product/${product._id.$oid}`}>
+                      <img
+                        id={`showcase-img` + index}
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                        }}
+                        src={product.gallery.main[0].src}
+                        alt={product.name}
+                      />
+                    </Link>
+                    <div
+                      className="quick-view flex"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setProductdetails(product);
+                        setShowModal("true");
+                        /* showQuickView(); */
+                      }}
+                    >
+                      <p className="quick-view__text">Quick View</p>
+                    </div>
+                  </div>
+                  <div className="product-item__details">
+                    <Link
+                      to={`/products/${product._id.$oid}`}
+                      className="product-item__details--heading"
+                    >
+                      {product.name}
+                    </Link>
+                    <span className="flex">
+                      <p className="product-item__details--price">
+                        ₹ {product.sp}
+                      </p>
+                      <p className="product-item__details--price--mrp">
+                        ₹ {product.mrp}
+                      </p>
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </section>
     </>
   );
