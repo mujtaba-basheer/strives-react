@@ -64,9 +64,10 @@
       &__thumbs {
         margin-right: 25px;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: start;
+        gap: 10px;
         div {
-          width: 70px;
+          width: 95px;
           height: auto;
           cursor: pointer;
 
@@ -123,7 +124,7 @@
           line-height: 37px;
           margin-bottom: 18px;
           color: var(--clr-primary);
-          justify-content: space-between; 
+          justify-content: space-between;
         }
 
         .line {
