@@ -485,9 +485,9 @@ const Index = () => {
         {/* Top Area of the Sidebar */}
         <ul className="flex top-area">
           <li>
-            <Link onClick={closeSideMenu}>
-              <img className="logo" src={logo} alt="logo" />
-            </Link>
+            <p onClick={closeSideMenu}>
+              <img className="logo" src="https://strives.s3.ap-south-1.amazonaws.com/assets/acb313dd-8f4c-4487-b6fb-341dfa0598cf.png" alt="logo" />
+            </p>
           </li>
           <li>
             <img
