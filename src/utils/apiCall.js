@@ -6,7 +6,7 @@ import { logout } from "../redux/actions/userActions";
 let api_url;
 if (process.env.NODE_ENV === "development")
   api_url = "http://localhost:5001/api/";
-else api_url = "https://api.thestrives.com/";
+else api_url = "https://api.thestrives.com/api/";
 
 class ApiCall {
   post = (url, data, headers) =>
