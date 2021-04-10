@@ -109,15 +109,14 @@ function SingleProductArea() {
     if (product.name) document.title = product.name;
 
     const AddFbSdkScript = async () => {
-      const initScript = document.createElement("script");
-      initScript.innerText = `window.fbAsyncInit = function() {
-                                  FB.init({
-                                    appId            : 'your-app-id',
-                                    autoLogAppEvents : true,
-                                    xfbml            : true,
-                                    version          : 'v10.0'
-                                });
-                              };`;
+      window.fbAsyncInit = function () {
+        window.FB.init({
+          appId: "1056993144823639",
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: "v10.0",
+        });
+      };
 
       const script = document.createElement("script");
       script.type = "text/javascript";
@@ -471,9 +470,11 @@ function SingleProductArea() {
                       window.FB.ui(
                         {
                           method: "share",
-                          href: "https://developers.facebook.com/docs/",
+                          href: window.location.href,
                         },
-                        function (response) {}
+                        function (response) {
+                          console.log(response);
+                        }
                       );
                     }}
                   >
