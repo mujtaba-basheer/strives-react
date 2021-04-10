@@ -75,7 +75,7 @@ function AllProductArea() {
 
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
-  const { page: maxPages } = useSelector((state) => state.productPages);
+  const { pages: maxPages } = useSelector((state) => state.productPages);
   const { favItems } = useSelector((state) => state.fav);
   const { error: favAddError, success: favAddSuccess } = useSelector(
     (state) => state.favAdd
@@ -190,6 +190,8 @@ function AllProductArea() {
       page: currentPage,
     };
     dispatch(getProducts(queryObj));
+
+    console.log(maxPages);
   }, [
     productslidervalue,
     queryString,
@@ -527,9 +529,9 @@ function AllProductArea() {
               </button>
               <button
                 className={
-                  "navigation__button next " + currentPage === maxPages
-                    ? "disabled"
-                    : ""
+                  currentPage === maxPages
+                    ? "navigation__button next disabled"
+                    : "navigation__button next"
                 }
                 disabled={currentPage === maxPages}
                 onClick={() => {

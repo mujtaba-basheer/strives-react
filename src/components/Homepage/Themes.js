@@ -135,7 +135,7 @@ const Themes = () => {
                         favItems &&
                         favItems.find(
                           (favProduct) =>
-                            favProduct._id.$oid === product._id.$oid
+                            favProduct._id === product._id.$oid
                         )
                       )
                         removeFromWishlist(product._id.$oid);
@@ -151,7 +151,7 @@ const Themes = () => {
                         favItems &&
                         favItems.find(
                           (favProduct) =>
-                            favProduct._id.$oid === product._id.$oid
+                            favProduct._id=== product._id.$oid
                         )
                           ? heartfillsvg
                           : heart
@@ -230,7 +230,7 @@ const Themes = () => {
                         favItems &&
                         favItems.find(
                           (favProduct) =>
-                            favProduct._id.$oid === product._id.$oid
+                            favProduct._id === product._id.$oid
                         )
                       )
                         removeFromWishlist(product._id.$oid);
@@ -246,7 +246,7 @@ const Themes = () => {
                         favItems &&
                         favItems.find(
                           (favProduct) =>
-                            favProduct._id.$oid === product._id.$oid
+                            favProduct._id === product._id.$oid
                         )
                           ? heartfillsvg
                           : heart
