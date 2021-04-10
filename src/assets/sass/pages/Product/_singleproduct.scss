@@ -85,6 +85,10 @@
           width: 20px;
         }
 
+        a:not(:first-child) {
+          margin: 0 10px;
+        }
+
         svg:not(:first-child) {
           margin: 0 10px;
         }
@@ -306,15 +310,6 @@
             background: #fff;
             color: #2c3d50;
             color: var(--clr-primary);
-          }
-        }
-
-        .usp {
-          width: 100%;
-          margin-top: 15px;
-
-          img {
-            width: 100%;
           }
         }
 

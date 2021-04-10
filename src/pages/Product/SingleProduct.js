@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { IconContext } from "react-icons";
@@ -32,7 +33,6 @@ import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.p
 import facebook from "./images/facebook.png";
 import instagram from "./images/instagram.png";
 import twitter from "./images/twitter.png";
-import usp from "./images/usp.png";
 
 import heartfillsvg from "./images/heart-fill-brown.svg";
 import heart from "./images/heart.png";
@@ -71,6 +71,8 @@ function SingleProductArea() {
   const [showCustomSizeChart, setShowCustomSizeChart] = useState(false);
   const [productCustomSizeInfo, setproductCustomSizeInfo] = useState([]);
 
+  const [isFbSdkLoaded, setIsFbSdkLoaded] = useState(false);
+
   const [sizeArray, setSizeArray] = useState([]);
 
   let { id } = useParams();
@@ -105,6 +107,31 @@ function SingleProductArea() {
     dispatch(getSingleProduct(id));
     console.log(product);
     if (product.name) document.title = product.name;
+
+    const AddFbSdkScript = async () => {
+      const initScript = document.createElement("script");
+      initScript.innerText = `window.fbAsyncInit = function() {
+                                  FB.init({
+                                    appId            : 'your-app-id',
+                                    autoLogAppEvents : true,
+                                    xfbml            : true,
+                                    version          : 'v10.0'
+                                });
+                              };`;
+
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `https://connect.facebook.net/en_US/sdk.js`;
+      script.async = true;
+      script.defer = true;
+      script.crossorigin = `anonymous`;
+      script.onload = () => setIsFbSdkLoaded(true);
+
+      document.body.appendChild(script);
+    };
+
+    if (!window.FB) AddFbSdkScript();
+    else setIsFbSdkLoaded(true);
   }, []);
 
   const onCustomFormSubmit = (formData) => {
@@ -437,30 +464,35 @@ function SingleProductArea() {
                 <IconContext.Provider
                   value={{ color: "#3b5998", size: "20px" }}
                 >
-                  {/* <div
-                    onClick={() => {
-                      window.location.href = "https://www.facebook.com/sharer/sharer.php?u=${}";
+                  <a
+                    href=""
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.FB.ui(
+                        {
+                          method: "share",
+                          href: "https://developers.facebook.com/docs/",
+                        },
+                        function (response) {}
+                      );
                     }}
                   >
-                  </div> */}
-                  <FaFacebook />
+                    <FaFacebook />
+                  </a>
                 </IconContext.Provider>
                 <IconContext.Provider
                   value={{ color: "#25D366", size: "20px" }}
                 >
-                  <FaWhatsapp />
+                  <a
+                    href={`https://api.whatsapp.com/send?text=%0D%0Ahttps%3A%2F%2F${window.location.host}%2Fproducts%2F${product["_id"]}`}
+                    data-action="share/whatsapp/share"
+                    target="_blank"
+                    rel="noreferrer"
+                    title={`${product.name}`}
+                  >
+                    <FaWhatsapp />
+                  </a>
                 </IconContext.Provider>
-                <IconContext.Provider
-                  value={{ color: "#8a3ab9", size: "20px" }}
-                >
-                  <FaInstagram />
-                </IconContext.Provider>
-                <a
-                  href="whatsapp://send?text=The text to share!"
-                  data-action="share/whatsapp/share"
-                >
-                  Share via Whatsapp
-                </a>
               </div>
             </div>
 
@@ -645,9 +677,9 @@ function SingleProductArea() {
                   </button>
                 </div>
 
-                <div className="usp">
+                {/* <div className="usp">
                   <img src={usp} alt="usp" />
-                </div>
+                </div> */}
 
                 <div className="productdescription1">
                   <p className="heading">Product Details</p>

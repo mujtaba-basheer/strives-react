@@ -3,6 +3,7 @@ import { policies, social, contact, myaccount, followuson } from "./data";
 
 import logo from "../../assets/images/footer/logo.png";
 import logo_big from "../../assets/images/footer/logo_big.png";
+import usp from "../Homepage/images/usp.png";
 
 const Index = () => {
   return (
@@ -15,6 +16,10 @@ const Index = () => {
             are Best In Market. Need Anything Cool, Start Shopping with Us. We
             are Best Online Store in the market.
           </p>
+
+          <div className="usp">
+            <img src={usp} alt="usp" />
+          </div>
         </div>
 
         <div className="footer__policies">
