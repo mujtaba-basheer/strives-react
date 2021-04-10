@@ -47,6 +47,8 @@
       list-style: none;
       font-family: var(--ff-p);
       font-size: 1.12em;
+      display: flex;
+      flex-direction: column;
 
       &-item {
         /* margin: 0.2em;

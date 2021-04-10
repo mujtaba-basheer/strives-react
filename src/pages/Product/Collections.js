@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import Navbar from "../../components/Navbar";
@@ -54,6 +54,8 @@ function CollectionsArea() {
   console.log(id);
 
   const dispatch = useDispatch();
+  const history = useHistory();
+
 
   useEffect(() => {
     dispatch(getCollections());
@@ -237,7 +239,9 @@ function CollectionsArea() {
                       </div>
                     ))}
                 </div>
-                <button className="view-more">View More</button>
+                <button className="view-more" onClick={(e) => {
+                  history.push(`/collections/${collection._id}`)
+                }}>View More</button>
               </li>
             ))}
         </ul>

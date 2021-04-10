@@ -73,7 +73,7 @@ const LatestCollection = () => {
 
       <div className="latest-collection__button-area flex">
         <button
-          onClick={(e) => history.push("/products")}
+          onClick={(e) => history.push("/collections")}
           className="latest-collection__btn"
         >
           explore all our products

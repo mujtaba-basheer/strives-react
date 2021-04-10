@@ -25,6 +25,7 @@ import MyOrders from "./pages/User/MyOrders";
 import Category from "./pages/Product/Category";
 import SingleCategory from "./pages/Product/SingleCategory";
 import Collections from "./pages/Product/Collections";
+import SingleCollection from "./pages/Product/SingleCollection";
 
 const App = () => {
   return (
@@ -58,11 +59,10 @@ const App = () => {
 
         <Route exact path="/products/:id" component={SingleProduct} />
 
-        <Route
-          exact
-          path="/collections"
-          component={Collections}
-        />
+        <Route exact path="/collections" component={Collections} />
+
+        <Route exact path="/collections/:id" component={SingleCollection} />
+
         {/* <Route exact path="/products/:id" component={SingleProduct} /> */}
 
         <Route exact path="/category/:categoryid" component={Category} />

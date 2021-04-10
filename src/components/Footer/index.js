@@ -4,6 +4,7 @@ import { policies, social, contact, myaccount, followuson } from "./data";
 import logo from "../../assets/images/footer/logo.png";
 import logo_big from "../../assets/images/footer/logo_big.png";
 import usp from "../Homepage/images/usp.png";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -26,15 +27,15 @@ const Index = () => {
           <div className="footer__policies--heading">My Account</div>
           <ul className="footer__policies--list">
             {myaccount.map(({ text, url }, index) => (
-              <li className="footer__policies--list-item" key={index}>
+              <Link to={`/${url}`} className="footer__policies--list-item" key={index}>
                 {text}
-              </li>
+              </Link>
             ))}
           </ul>
         </div>
 
         <div className="footer__policies">
-          <div className="footer__policies--heading">Follow us on</div>
+          <div className="footer__policies--heading">Policies</div>
           <ul className="footer__policies--list">
             {followuson.map(({ text, url }, index) => (
               <li className="footer__policies--list-item" key={index}>

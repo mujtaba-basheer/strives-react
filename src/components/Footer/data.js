@@ -8,11 +8,11 @@ export const policies = [
 ];
 
 export const myaccount = [
-  { text: "My Account", url: "" },
-  { text: "My Orders", url: "" },
-  { text: "My Wishlist", url: "" },
-  { text: "My Address", url: "" },
-  { text: "My Coupons", url: "" },
+  { text: "My Account", url: "my-account" },
+  { text: "My Orders", url: "my-orders" },
+  { text: "My Wishlist", url: "wishlist" },
+  { text: "My Address", url: "manage-address" },
+  /* { text: "My Coupons", url: "" }, */
 ];
 
 export const followuson = [
