@@ -1071,6 +1071,28 @@ export const latestCollections = [
         "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
     },
   },
+  {
+    title: "Karigari",
+    subtitle: "Lorem Ipsum dolor sit amet",
+    img: {
+      main:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/1157c2dd-4581-40c7-b5b2-104e8a9969df.jpg",
+
+      small:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/1157c2dd-4581-40c7-b5b2-104e8a9969df.jpg",
+    },
+  },
+  {
+    title: "Shahar",
+    subtitle: "Lorem Ipsum dolor sit amet",
+    img: {
+      main:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/1157c2dd-4581-40c7-b5b2-104e8a9969df.jpg",
+
+      small:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/1157c2dd-4581-40c7-b5b2-104e8a9969df.jpg",
+    },
+  },
 ];
 
 export const showcasedata = [
