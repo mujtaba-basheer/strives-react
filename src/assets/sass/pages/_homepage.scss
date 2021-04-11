@@ -86,12 +86,19 @@
       animation-duration: 0.6s; */
       position: absolute;
       bottom: 25%;
+      width: 100%;
+      text-align: center;
 
       &--heading {
         font-size: 45px;
-        /* line-height: 43px; */
+        line-height: 43px;
         font-family: var(--font-secondary);
         color: #fff;
+
+        @media screen and (max-width: 768px) {
+          font-size: 30px;
+          line-height: 33px;
+        }
       }
 
       &--text {

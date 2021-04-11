@@ -1083,14 +1083,14 @@ export const latestCollections = [
     },
   },
   {
-    title: "Shahar",
+    title: "Strives Everyday Wardrobe ",
     subtitle: "Lorem Ipsum dolor sit amet",
     img: {
       main:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/1157c2dd-4581-40c7-b5b2-104e8a9969df.jpg",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/138c69db-ff10-4d80-939f-5c0b7d70b5f6.jpg",
 
       small:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/1157c2dd-4581-40c7-b5b2-104e8a9969df.jpg",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/138c69db-ff10-4d80-939f-5c0b7d70b5f6.jpg",
     },
   },
 ];
