@@ -21,7 +21,7 @@ import {
 import CustomSizeChart from "./CustomSizeChart";
 
 import heartfillsvg from "./images/heart-fill-brown.svg";
-import heart from "./images/heart.png";
+import heart from "./images/heart-outline.svg";
 
 const QuickView = ({ product, setShowModal }) => {
   const [productQuantity, setProductQuantity] = useState(1);

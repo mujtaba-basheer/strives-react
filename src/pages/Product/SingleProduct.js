@@ -35,7 +35,7 @@ import instagram from "./images/instagram.png";
 import twitter from "./images/twitter.png";
 
 import heartfillsvg from "./images/heart-fill-brown.svg";
-import heart from "./images/heart.png";
+import heart from "./images/heart-outline.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";

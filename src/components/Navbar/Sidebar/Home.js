@@ -107,19 +107,21 @@ const Home = ({ closeSideMenu }) => {
               <>
                 <h3>{navdata.name}</h3>
                 <ul className="flex">
-                  {/* {navdata.values.map((subnavdata) => (
-                  <li>
-                    <p
-                      onClick={() => closeOnClick(nav_data[0]._id, subnavdata)}
-                    >
-                      {subnavdata}
-                    </p>
-                  </li>
-                ))} */}
+                  {navdata.values.map((subnavdata) => (
+                    <li>
+                      <p
+                        onClick={() =>
+                          closeOnClick(nav_data[0]._id, subnavdata)
+                        }
+                      >
+                        {subnavdata}
+                      </p>
+                    </li>
+                  ))}
 
-                  <li>
+                  {/* <li>
                     <p>All Sets</p>
-                  </li>
+                  </li> */}
                 </ul>
               </>
             ))}

@@ -22,13 +22,13 @@ const NavbarLink4 = ({ height }) => {
           <div className="hovermenu__listitems">
             <h3>{navdata.name}</h3>
             <ul>
-              {/* {navdata.values.map((subnavdata) => (
+              {navdata.values.map((subnavdata) => (
                 <li>
                   <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>{subnavdata}</Link>
                 </li>
-              ))} */}
+              ))}
 
-              <li>
+              {/* <li>
                 <Link to="/">All Sets</Link>
               </li>
               <li>
@@ -39,7 +39,7 @@ const NavbarLink4 = ({ height }) => {
               </li>
               <li>
                 <Link to="/">Gown Sets</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         ))}

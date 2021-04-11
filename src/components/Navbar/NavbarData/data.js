@@ -120,15 +120,7 @@ export const nav_data = [
       {
         _id: "60212a9aff106c000451b9fe",
         name: "SHOP BY SETS",
-        values: [
-          "Complete Kurta Sets",
-          "All Sets",
-          "Lehenga Sets",
-          "Gharara Sets",
-          "Sharara Sets ",
-          "Palazzo Sets",
-          "Dhoti Sets",
-        ],
+        values: ["All Sets", "Lehenga", "Salwar Kameez", "Gown Sets"],
         slug_name: "shop-by-sets",
       },
     ],
