@@ -522,9 +522,9 @@ function SingleCollectionArea() {
               </button>
               <button
                 className={
-                  "navigation__button next " + currentPage === maxPages
-                    ? "disabled"
-                    : ""
+                  currentPage === maxPages
+                    ? "navigation__button next disabled"
+                    : "navigation__button next"
                 }
                 disabled={currentPage === maxPages}
                 onClick={() => {

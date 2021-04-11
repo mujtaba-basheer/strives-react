@@ -74,6 +74,7 @@ function SingleCategoryArea() {
 
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
+  const { page: maxPages } = useSelector((state) => state.productPages);
   const { favItems } = useSelector((state) => state.fav);
   const { error: favAddError, success: favAddSuccess } = useSelector(
     (state) => state.favAdd
@@ -190,7 +191,14 @@ function SingleCategoryArea() {
         page: currentPage,
       })
     );
-  }, [productslidervalue, sortValue, filter, categoryid, subcategoryid, currentPage]);
+  }, [
+    productslidervalue,
+    sortValue,
+    filter,
+    categoryid,
+    subcategoryid,
+    currentPage,
+  ]);
 
   return (
     <section className="content">
@@ -519,7 +527,12 @@ function SingleCategoryArea() {
                 previous
               </button>
               <button
-                className="navigation__button next"
+                className={
+                  currentPage === maxPages
+                    ? "navigation__button next disabled"
+                    : "navigation__button next"
+                }
+                disabled={currentPage === maxPages}
                 onClick={() => {
                   changeNavigation("next");
                 }}

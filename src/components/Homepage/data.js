@@ -1079,17 +1079,23 @@ export const showcasedata = [
 
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/700e8ddb-41c1-4e37-9442-70b93056d0d92",
     text: "test123",
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/1d76115e-4125-42c4-821e-71ac7f8e0866.jpg",
     text: "test456",
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/7f54df6e-edb0-4da5-9c95-d9f0c02d30e2.png",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/7a55f41e-6431-4b16-8cbc-dd8247398655.jpg",
     text: "test789",
+  },
+
+  {
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/ebf3d5a2-3656-460e-892c-7070c82f8ac1.jpg",
+    text: "test",
   },
 ];
