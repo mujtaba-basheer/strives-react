@@ -1052,7 +1052,7 @@ export const latestCollections = [
     },
   },
   {
-    title: "lorem Ipsum",
+    title: "Khawaish",
     subtitle: "Lorem Ipsum dolor sit amet",
     img: {
       main:
@@ -1062,7 +1062,7 @@ export const latestCollections = [
     },
   },
   {
-    title: "lorem Ipsum",
+    title: "Shahar",
     subtitle: "Lorem Ipsum dolor sit amet",
     img: {
       main:

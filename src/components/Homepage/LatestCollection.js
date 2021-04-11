@@ -31,7 +31,7 @@ const LatestCollection = () => {
               </picture>
               <div className="latest-collection__container__text">
                 <div className="latest-collection__container__text--heading">
-                  {title}
+                  {title.toUpperCase()}
                 </div>
                 {/* <div className="latest-collection__container__text--text">
                 {subtitle}
