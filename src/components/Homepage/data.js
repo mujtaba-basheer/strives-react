@@ -1122,21 +1122,48 @@ export const showcasedata = [
   },
 ];
 
-export const occasion = [
+export const occasions = [
   {
-    img: "",
-    text: "",
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/fe1be101-34ad-4fc7-b7f6-42762563c734.jpg",
+    text: "wedding",
   },
   {
-    img: "",
-    text: "",
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/da34249e-9a5b-40c9-a765-81671dcbc60a.jpg",
+    text: "mehendi",
   },
   {
-    img: "",
-    text: "",
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/51b1a0c3-3608-4374-9079-02a8af6f7799.jpg",
+    text: "sangeet",
   },
   {
-    img: "",
-    text: "",
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/51ae80ab-e87b-4f6c-8184-becd2f208034.jpg",
+    text: "cocktail",
+  },
+];
+
+export const setsdata = [
+  {
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/25319bba-7b8c-497e-a1e9-06f95fc4d825.jpg",
+    text: "gowns",
+  },
+  {
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/18e1bdee-98b8-48d0-a689-0f0c61bd826c.jpg",
+    text: "lehenga",
+  },
+  {
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/99f262c1-412f-4f7f-a9c3-91e0666066e9.jpg",
+    text: "dresses",
+  },
+  {
+    img:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/ee89b2fe-1b84-4466-b51b-2f57a0eb070f.jpg",
+    text: "Salwar kameez",
   },
 ];

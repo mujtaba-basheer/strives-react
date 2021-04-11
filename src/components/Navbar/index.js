@@ -101,6 +101,8 @@ const Index = () => {
         mainNav.classList.remove("scrolled");
         setnavbarHeigt(110);
 
+        
+
         if (
           !document
             .getElementsByClassName("navbar__searchdiv")[0]

@@ -8,6 +8,8 @@ import Feature from "./Feature";
 import Themes from "./Themes";
 import BestSeller from "./BestSeller";
 import Newsletter from "./Newsletter";
+import Occassion from "./Occassion";
+import Sets from "./Sets";
 // import Customize from "./Customize";
 
 const Index = () => {
@@ -21,6 +23,8 @@ const Index = () => {
       <Showcase />
       <LatestCollections />
       <Feature />
+      <Occassion />
+      <Sets />
       <Themes />
       {/* <Customize /> */}
       <BestSeller />
