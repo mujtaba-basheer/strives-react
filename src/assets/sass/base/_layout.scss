@@ -302,6 +302,21 @@
         }
       }
     }
+
+    ul {
+      flex-direction: column;
+      align-items: flex-start;
+
+      li {
+        padding-top: 26px;
+
+        a {
+          color: var(--clr-primary);
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+    }
   }
 
   .sidebar__searchdiv {
