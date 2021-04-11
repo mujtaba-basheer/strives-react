@@ -1042,11 +1042,11 @@ export const feature = {
 
 export const latestCollections = [
   {
-    title: "lorem Ipsum",
+    title: "INARA",
     subtitle: "Lorem Ipsum dolor sit amet",
     img: {
       main:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/1542d7a0-5079-4c00-9c21-6e03991c2fe6.png",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/d1acbfbd-847d-47ef-8c3d-d5bff745f93c.jpg",
       small:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
     },
@@ -1056,7 +1056,7 @@ export const latestCollections = [
     subtitle: "Lorem Ipsum dolor sit amet",
     img: {
       main:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/1542d7a0-5079-4c00-9c21-6e03991c2fe6.png",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/f2d28f7f-5c15-485f-9ab5-327c6a9cba2d.jpg",
       small:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
     },
@@ -1066,7 +1066,7 @@ export const latestCollections = [
     subtitle: "Lorem Ipsum dolor sit amet",
     img: {
       main:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/1542d7a0-5079-4c00-9c21-6e03991c2fe6.png",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/0cb3dd82-ece9-45f1-8efe-869b58cf40fb.jpg",
       small:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
     },
@@ -1097,5 +1097,24 @@ export const showcasedata = [
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/ebf3d5a2-3656-460e-892c-7070c82f8ac1.jpg",
     text: "test",
+  },
+];
+
+export const occasion = [
+  {
+    img: "",
+    text: "",
+  },
+  {
+    img: "",
+    text: "",
+  },
+  {
+    img: "",
+    text: "",
+  },
+  {
+    img: "",
+    text: "",
   },
 ];
