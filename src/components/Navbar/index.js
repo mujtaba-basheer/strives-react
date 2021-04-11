@@ -285,7 +285,7 @@ const Index = () => {
             display: "none",
           }}
           onClick={() => history.push("/")}
-          src="https://strives.s3.ap-south-1.amazonaws.com/assets/acb313dd-8f4c-4487-b6fb-341dfa0598cf.png"
+          src="https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png"
           alt="strides"
         />
 
@@ -293,7 +293,7 @@ const Index = () => {
           <Link to="/">
             <img
               className={navbarHeigt > 80 ? "logo-large" : "logo"}
-              src="https://strives.s3.ap-south-1.amazonaws.com/assets/acb313dd-8f4c-4487-b6fb-341dfa0598cf.png"
+              src="https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png"
               alt="strides"
             />
           </Link>
@@ -486,7 +486,7 @@ const Index = () => {
         <ul className="flex top-area">
           <li>
             <p onClick={closeSideMenu}>
-              <img className="logo" src="https://strives.s3.ap-south-1.amazonaws.com/assets/acb313dd-8f4c-4487-b6fb-341dfa0598cf.png" alt="logo" />
+              <img className="logo" src="https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png" alt="logo" />
             </p>
           </li>
           <li>
