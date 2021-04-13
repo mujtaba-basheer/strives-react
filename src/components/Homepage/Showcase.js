@@ -27,11 +27,11 @@ const Showcase = () => {
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true, type: "bullets" }}
       >
-        {showcasedata.map((show) => (
+        {showcasedata.map((show, index) => (
           <SwiperSlide>
             <div className="showcase__div">
               <img src={show.img} alt="qq" />
-              <p className="showcase__text">{show.text}</p>
+              <p className={index < 1 ? "showcase__text--custom" : "showcase__text"}>{show.text}</p>
             </div>
           </SwiperSlide>
         ))}

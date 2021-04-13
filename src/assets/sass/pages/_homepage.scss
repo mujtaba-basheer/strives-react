@@ -5,14 +5,22 @@
 
   &__text {
     position: absolute;
-    bottom: 25%;
-    /* text-align: center; */
-    /* margin: 0 auto; */
-    /* display: block; */
+    /* bottom: 25%; */
     left: 50%;
-    color: white;
+    top: 50%;
+    color: #fff;
     font-size: 35px;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+
+    &--custom {
+      position: absolute;
+      /* bottom: 25%; */
+      left: 50%;
+      top: 50%;
+      color: #fff;
+      font-size: 35px;
+      transform: translate(-40%, -50%);
+    }
   }
 }
 
