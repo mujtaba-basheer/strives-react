@@ -10,10 +10,10 @@ import cart from "./icons/cart.svg";
 import heart from "./icons/heart.svg";
 import user from "./icons/user.svg";
 
-import { FaRegUserCircle } from "react-icons/fa";
+/* import { FaRegUserCircle } from "react-icons/fa";
 import { BsHeart, BsSearch } from "react-icons/bs";
 import { HiUserCircle } from "react-icons/hi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai"; */
 
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";

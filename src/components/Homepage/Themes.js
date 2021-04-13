@@ -88,26 +88,6 @@ const Themes = () => {
     }
   }
 
-  /* useEffect(() => {
-    console.log("richard");
-    console.log(window.screen.width);
-    if (window.screen.width <= 768) {
-      console.log("hi");
-    }
-  }, [window.screen.width]); */
-
-  function handleResize() {
-    console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
-
-    if (window.innerWidth <= 768) {
-      setNumberOfSlides(1);
-    } else {
-      setNumberOfSlides(3);
-    }
-  }
-
-  window.addEventListener("resize", handleResize);
-
   return (
     <>
       {showModal === "true" && (

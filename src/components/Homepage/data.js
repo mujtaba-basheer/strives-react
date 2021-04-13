@@ -1024,18 +1024,16 @@ export const feature = {
   },
   info: [
     {
-      title: "Embroidery",
-      text: "Works best with simple, low color count logos or artwork.",
+      title: "Inara",
+      /* text: "Works best with simple, low color count logos or artwork.", */
     },
     {
-      title: "Screen Printing",
-      text:
-        "Ideal for Bulk/Group Orders, specific color matching and large variety of products.",
+      /* title: "Screen Printing", */
+      text: "Lights the world around you",
     },
     {
-      title: "Sublimation",
-      text: `Perfect choice for small quantity. Sublimation allows you to print
-              gradient colors on the T-shirts and has a quick turn around time.`,
+      /* title: "Sublimation", */
+      text: `Inara is inspired from the lives of mighty women who spread positive vibes and have stood against the evil of the society`,
     },
   ],
 };
@@ -1102,23 +1100,23 @@ export const showcasedata = [
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/700e8ddb-41c1-4e37-9442-70b93056d0d92",
-    text: "test123",
+    text: "Lights the world around you",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/1d76115e-4125-42c4-821e-71ac7f8e0866.jpg",
-    text: "test456",
+    text: "A poetry by the Indian artisans",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7a55f41e-6431-4b16-8cbc-dd8247398655.jpg",
-    text: "test789",
+    text: "If attire is your desire",
   },
 
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/ebf3d5a2-3656-460e-892c-7070c82f8ac1.jpg",
-    text: "test",
+    text: "Designed for your excellency",
   },
 ];
 

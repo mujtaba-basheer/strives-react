@@ -20,7 +20,6 @@ const NavbarLink3 = ({ height }) => {
       <div className="navbar__hovermenu__options flex">
         {nav_data[2].sub_categories.map((navdata) => (
           <div className="hovermenu__listitems">
-            {console.log(navdata)}
             <h3>{navdata.name}</h3>
             <ul>
               {navdata.values.map((subnavdata) => (
