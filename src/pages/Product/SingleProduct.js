@@ -51,6 +51,14 @@ import CustomSizeChart from "../../components/layout/CustomSizeChart";
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
+const fbHref = () => {
+  const appId = "1056993144823639";
+  const display = "popup";
+  const href = `https%3A%2F%2Fmain.d6agqspa0h3hf.amplifyapp.com%2F${window.location.pathname}%2F`;
+
+  return `https://www.facebook.com/dialog/share?app_id=${appId}&display=${display}&href=${href}`;
+};
+
 const SingleProduct = () => {
   return (
     <>
@@ -463,21 +471,7 @@ function SingleProductArea() {
                 <IconContext.Provider
                   value={{ color: "#3b5998", size: "20px" }}
                 >
-                  <a
-                    href=""
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.FB.ui(
-                        {
-                          method: "share",
-                          href: window.location.href,
-                        },
-                        function (response) {
-                          console.log(response);
-                        }
-                      );
-                    }}
-                  >
+                  <a target="_blank" rel="noreferrer" href={fbHref()}>
                     <FaFacebook />
                   </a>
                 </IconContext.Provider>
