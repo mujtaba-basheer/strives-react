@@ -1100,22 +1100,30 @@ export const showcasedata = [
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/700e8ddb-41c1-4e37-9442-70b93056d0d92",
+    small:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/1cb3bd64-2b9e-4906-978b-76d4fdff3a56.jpg",
     text: "Lights the world around you",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/1d76115e-4125-42c4-821e-71ac7f8e0866.jpg",
+    small:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/78715b2c-06d5-409a-9027-8ef34c3a1e0c.jpg",
     text: "A poetry by the Indian artisans",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7a55f41e-6431-4b16-8cbc-dd8247398655.jpg",
+    small:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/a372fd68-e692-4920-badb-0389beb90f26.jpg",
     text: "If attire is your desire",
   },
 
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/ebf3d5a2-3656-460e-892c-7070c82f8ac1.jpg",
+    small:
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/0f0f69c5-7fdc-4e81-aae0-7a84289e676d.jpg",
     text: "Designed for your excellency",
   },
 ];

@@ -30,8 +30,18 @@ const Showcase = () => {
         {showcasedata.map((show, index) => (
           <SwiperSlide>
             <div className="showcase__div">
-              <img src={show.img} alt="qq" />
-              <p className={index < 1 ? "showcase__text--custom" : "showcase__text"}>{show.text}</p>
+              <picture>
+                <source srcset={show.img} media="(min-width: 768px)" />
+                <source srcset={show.small} />
+                <img src={show.small} alt="qq" />
+                <p
+                  className={
+                    index < 1 ? "showcase__text--custom" : "showcase__text"
+                  }
+                >
+                  {show.text}
+                </p>
+              </picture>
             </div>
           </SwiperSlide>
         ))}
