@@ -34,13 +34,13 @@ const Showcase = () => {
                 <source srcset={show.img} media="(min-width: 768px)" />
                 <source srcset={show.small} />
                 <img src={show.small} alt="qq" />
-                <p
+                {/* <p
                   className={
-                    index < 1 ? "showcase__text--custom" : "showcase__text"
+                    index > 1 ? "showcase__text" : "showcase__text--custom"
                   }
                 >
                   {show.text}
-                </p>
+                </p> */}
               </picture>
             </div>
           </SwiperSlide>

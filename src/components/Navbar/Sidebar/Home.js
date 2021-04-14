@@ -12,20 +12,13 @@ const Home = ({ closeSideMenu }) => {
     );
     accordianItemHeaders.forEach((accordianItemHeader) => {
       accordianItemHeader.addEventListener("click", () => {
-
         accordianItemHeaders.forEach((accordianItemHeader) => {
           if (accordianItemHeader.classList.contains("active")) {
-            console.log("hi")
-            console.log(accordianItemHeader)
+            accordianItemHeader.classList.toggle("active");
             accordianItemHeader.classList.remove("active");
           }
         });
-
-        accordianItemHeaders.forEach((accordianItemHeader) => {
-          if (accordianItemHeader.classList.contains("active")) {
-            accordianItemHeader.classList.remove("active");
-          }
-        });
+        console.log("setting active");
         accordianItemHeader.classList.toggle("active");
       });
     });

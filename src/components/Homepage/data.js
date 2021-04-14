@@ -1046,7 +1046,7 @@ export const latestCollections = [
       main:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/d1acbfbd-847d-47ef-8c3d-d5bff745f93c.jpg",
       small:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/97190536-1711-4473-82dc-19ce479b4524.jpg",
     },
   },
   {
@@ -1056,17 +1056,17 @@ export const latestCollections = [
       main:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/f2d28f7f-5c15-485f-9ab5-327c6a9cba2d.jpg",
       small:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/638eee7a-640c-4814-86c2-0a71c2653c35.jpg",
     },
   },
   {
-    title: "Shahar",
+    title: "Shehar",
     subtitle: "Lorem Ipsum dolor sit amet",
     img: {
       main:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/0cb3dd82-ece9-45f1-8efe-869b58cf40fb.jpg",
       small:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/4c8a2f0e-3a1d-4797-8f81-6bf940179092.png",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/edef5c11-ea4c-446c-bb3c-c3221e8e4a61.jpg",
     },
   },
   {
@@ -1077,7 +1077,7 @@ export const latestCollections = [
         "https://strives.s3.ap-south-1.amazonaws.com/assets/1157c2dd-4581-40c7-b5b2-104e8a9969df.jpg",
 
       small:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/1157c2dd-4581-40c7-b5b2-104e8a9969df.jpg",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/b2b5da32-a0c7-4d49-827c-0807e6072c5d.jpg",
     },
   },
   {
@@ -1088,7 +1088,7 @@ export const latestCollections = [
         "https://strives.s3.ap-south-1.amazonaws.com/assets/138c69db-ff10-4d80-939f-5c0b7d70b5f6.jpg",
 
       small:
-        "https://strives.s3.ap-south-1.amazonaws.com/assets/138c69db-ff10-4d80-939f-5c0b7d70b5f6.jpg",
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/e0c12aac-248a-4fb1-ace8-ea4ed4376fca.jpg",
     },
   },
 ];
@@ -1101,30 +1101,34 @@ export const showcasedata = [
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/700e8ddb-41c1-4e37-9442-70b93056d0d92",
     small:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/1cb3bd64-2b9e-4906-978b-76d4fdff3a56.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/4e9fa9a3-1fb4-4bf1-9ff8-ae1548abe87a.jpg",
     text: "Lights the world around you",
+    name: "Karigri",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/1d76115e-4125-42c4-821e-71ac7f8e0866.jpg",
     small:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/78715b2c-06d5-409a-9027-8ef34c3a1e0c.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/b161f73c-2ade-4ce7-b94b-531951abaaa1.jpg",
     text: "A poetry by the Indian artisans",
+    name: "Inara",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7a55f41e-6431-4b16-8cbc-dd8247398655.jpg",
     small:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/a372fd68-e692-4920-badb-0389beb90f26.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/8821c011-c012-4b4a-9cee-2d160e6c9dfc.jpg",
     text: "If attire is your desire",
+    name: "Khawaish",
   },
 
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/ebf3d5a2-3656-460e-892c-7070c82f8ac1.jpg",
     small:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/0f0f69c5-7fdc-4e81-aae0-7a84289e676d.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/7e746787-9223-4061-aa94-50cae355f926.jpg",
     text: "Designed for your excellency",
+    name: "Shehar",
   },
 ];
 
