@@ -633,6 +633,17 @@
       font-weight: lighter;
       cursor: pointer;
     }
+
+    &--noti {
+      margin-right: auto;
+      margin-left: auto;
+
+      .custom-alert {
+        position: relative;
+        width: auto;
+        top: 0;
+      }
+    }
   }
 }
 

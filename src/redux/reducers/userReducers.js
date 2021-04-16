@@ -41,6 +41,10 @@ import {
   USER_ADD_ADDRESS_REQUEST,
   USER_ADD_ADDRESS_SUCCESS,
   USER_ADD_ADDRESS_FAIL,
+  USER_NEWSLETTER_REQUEST,
+  USER_NEWSLETTER_SUCCESS,
+  USER_NEWSLETTER_FAIL,
+  USER_NEWSLETTER_RESET,
 } from "../constants/userConstants";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -205,6 +209,21 @@ export const userUpdateReducer = (state = {}, action) => {
     case USER_UPDATE_FAIL:
       return { loading: false, error: action.payload };
     case USER_UPDATE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const userNewsletterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_NEWSLETTER_REQUEST:
+      return { loading: true };
+    case USER_NEWSLETTER_SUCCESS:
+      return { loading: false, success: action.payload };
+    case USER_NEWSLETTER_FAIL:
+      return { loading: false, error: action.payload };
+    case USER_NEWSLETTER_RESET:
       return {};
     default:
       return state;
