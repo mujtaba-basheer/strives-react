@@ -1115,7 +1115,7 @@ export const showcasedata = [
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/7a55f41e-6431-4b16-8cbc-dd8247398655.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/d3fe0228-6c1d-4dfe-9d79-1333a40c58ed.jpg",
     small:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/8821c011-c012-4b4a-9cee-2d160e6c9dfc.jpg",
     text: "If attire is your desire",
@@ -1124,7 +1124,7 @@ export const showcasedata = [
 
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/ebf3d5a2-3656-460e-892c-7070c82f8ac1.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/02268567-a8ff-4660-b85f-598343a48020.jpg",
     small:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7e746787-9223-4061-aa94-50cae355f926.jpg",
     text: "Designed for your excellency",
