@@ -244,6 +244,18 @@
           position: relative;
           transition: visibility 500ms;
 
+          height: 450px;
+
+          a {
+            height: 100%;
+            width: 100%;
+          }
+
+          img {
+            height: 100%;
+            width: auto;
+          }
+
           :hover {
             cursor: pointer;
           }

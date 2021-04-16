@@ -39,6 +39,9 @@ import {
   USER_ADD_ADDRESS_REQUEST,
   USER_ADD_ADDRESS_SUCCESS,
   USER_ADD_ADDRESS_FAIL,
+  USER_NEWSLETTER_REQUEST,
+  USER_NEWSLETTER_SUCCESS,
+  USER_NEWSLETTER_FAIL,
 } from "../constants/userConstants";
 
 import { FAV_CLEAR, CART_CLEAR } from "../constants/cartConstants";
@@ -416,6 +419,24 @@ export const updateUser = (user) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const addToNewsletter = (email) => async (dispatch) => {
+  dispatch({ type: USER_NEWSLETTER_REQUEST });
+
+  try {
+    const { data } = await apiCall.post("newsletter", { email });
+
+    dispatch({ type: USER_NEWSLETTER_SUCCESS, payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: USER_NEWSLETTER_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

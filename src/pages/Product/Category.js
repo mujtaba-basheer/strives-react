@@ -200,7 +200,14 @@ function CategoryArea() {
         /* "sub-category": "Cotton Salwar Kameez", */
       })
     );
-  }, [productslidervalue, queryString, sortValue, filter, currentPage, categoryid]);
+  }, [
+    productslidervalue,
+    queryString,
+    sortValue,
+    filter,
+    currentPage,
+    categoryid,
+  ]);
 
   return (
     <section className="content">
