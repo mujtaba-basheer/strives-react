@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import SwiperCore, {
   Navigation,
@@ -30,18 +31,20 @@ const Showcase = () => {
         {showcasedata.map((show, index) => (
           <SwiperSlide>
             <div className="showcase__div">
-              <picture>
-                <source srcset={show.img} media="(min-width: 768px)" />
-                <source srcset={show.small} />
-                <img src={show.small} alt="qq" />
-                {/* <p
+              <Link to="/collections/606b1d0d0d88096d07f0ed7a">
+                <picture>
+                  <source srcset={show.img} media="(min-width: 768px)" />
+                  <source srcset={show.small} />
+                  <img src={show.small} alt="qq" />
+                  {/* <p
                   className={
                     index > 1 ? "showcase__text" : "showcase__text--custom"
                   }
                 >
                   {show.text}
                 </p> */}
-              </picture>
+                </picture>
+              </Link>
             </div>
           </SwiperSlide>
         ))}

@@ -18,7 +18,7 @@ const LatestCollection = () => {
               <Link to="/collections/606b1d0d0d88096d07f0ed7a">
                 <div key={index} className="latest-collection__container">
                   <picture className="latest-collection__container__picture">
-                    <source srcset={img.main} media="(min-width: 1170px)" />
+                    <source srcset={img.small} media="(min-width: 1170px)" />
                     <source srcset={img.small} />
                     {/* <img
                       className="latest-collection__container__picture--img"
@@ -52,7 +52,7 @@ const LatestCollection = () => {
               <Link to="/collections/606b1d0d0d88096d07f0ed7a">
                 <div key={index} className="latest-collection__container">
                   <picture className="latest-collection__container__picture">
-                    <source srcset={img.main} media="(min-width: 1170px)" />
+                    <source srcset={img.small} media="(min-width: 1170px)" />
                     <source srcset={img.small} />
                     <img
                       className="latest-collection__container__picture--img"

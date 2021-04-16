@@ -1099,7 +1099,7 @@ export const showcasedata = [
 
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/700e8ddb-41c1-4e37-9442-70b93056d0d92",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/e0d62b88-179f-4223-bea5-51895b9f9d3a.jpg",
     small:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/4e9fa9a3-1fb4-4bf1-9ff8-ae1548abe87a.jpg",
     text: "Lights the world around you",
@@ -1107,7 +1107,7 @@ export const showcasedata = [
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/1d76115e-4125-42c4-821e-71ac7f8e0866.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/ff658453-b94d-4728-be94-8c6144eff382.jpg",
     small:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/b161f73c-2ade-4ce7-b94b-531951abaaa1.jpg",
     text: "A poetry by the Indian artisans",
