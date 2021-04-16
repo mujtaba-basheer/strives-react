@@ -56,7 +56,6 @@ function CollectionsArea() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-
   useEffect(() => {
     dispatch(getCollections());
   }, []);
@@ -239,9 +238,14 @@ function CollectionsArea() {
                       </div>
                     ))}
                 </div>
-                <button className="view-more" onClick={(e) => {
-                  history.push(`/collections/${collection._id}`)
-                }}>View More</button>
+                <button
+                  className="view-more"
+                  onClick={(e) => {
+                    history.push(`/collections/${collection._id}`);
+                  }}
+                >
+                  View More
+                </button>
               </li>
             ))}
         </ul>

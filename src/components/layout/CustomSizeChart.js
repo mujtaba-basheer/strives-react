@@ -93,8 +93,8 @@ const CustomSizeChart = ({
                     name={sizeChartInput}
                     onChange={(e) => setValue(e)}
                     required
-                  />
-                  in.
+                  />{" "}
+                  inches
                 </div>
               ))}
             </div>

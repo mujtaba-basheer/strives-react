@@ -378,9 +378,9 @@ function AllProductArea() {
               {queryString ? `Search Results for ${queryString}` : "Products"}
             </p>
             <div className="header__right">
-              <p className="header__right--display-results">
+              {/* <p className="header__right--display-results">
                 {`Displaying  ${currentPage} out of ${maxPages} pages`}
-              </p>
+              </p> */}
               <div className="header__right--dropdown">
                 Sort By:
                 <select onChange={selectSortBy} id="sortby" name="sortby">
