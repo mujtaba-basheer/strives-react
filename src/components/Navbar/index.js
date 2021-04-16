@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { IconContext } from "react-icons";
-
-import logo from "../../assets/images/logo.png";
 
 import search from "./icons/search.svg";
 import cart from "./icons/cart.svg";
 import heart from "./icons/heart.svg";
 import user from "./icons/user.svg";
+
+import searchwhite from "./icons/search-white.svg";
+import cartwhite from "./icons/cart-white.svg";
+import heartwhite from "./icons/heart-white.svg";
+import userwhite from "./icons/user-white.svg";
 
 /* import { FaRegUserCircle } from "react-icons/fa";
 import { BsHeart, BsSearch } from "react-icons/bs";
@@ -42,6 +44,8 @@ const Index = () => {
   const userLogin = useSelector((state) => state.userLogin);
 
   const [currentSidebarScreen, setCurrentSidebarScreen] = useState("home");
+
+  const [homepageCurrentPos, setHomepageCurrentPos] = useState("homepage-top");
 
   const [navbarHeigt, setnavbarHeigt] = useState(110);
 
@@ -100,8 +104,7 @@ const Index = () => {
         navbar.style.backdropFilter = "blur(0px)";
         mainNav.classList.remove("scrolled");
         setnavbarHeigt(110);
-
-        
+        setHomepageCurrentPos("homepage-top");
 
         if (
           !document
@@ -109,8 +112,12 @@ const Index = () => {
             .classList.contains("hide")
         ) {
           navbar.style.backgroundColor = "#fff";
+          setHomepageCurrentPos("homepage");
+        } else {
+          setHomepageCurrentPos("homepage-top");
         }
       } else {
+        setHomepageCurrentPos("homepage");
         if (
           document
             .getElementsByClassName("navbar__searchdiv")[0]
@@ -122,6 +129,7 @@ const Index = () => {
           setnavbarHeigt(71);
         } else {
           navbar.style.backgroundColor = "#fff";
+          setHomepageCurrentPos("homepage");
         }
       }
     }
@@ -161,6 +169,7 @@ const Index = () => {
       var navbar = document.getElementsByClassName("navbar")[0];
       navbar.style.backgroundColor = "#fff";
       setnavbarHeigt(71);
+      setHomepageCurrentPos("homepage");
     } else {
       document.getElementsByClassName("navbar")[0].style.border = "none";
       window.addEventListener("scroll", changeNavbar);
@@ -171,6 +180,8 @@ const Index = () => {
   function changeNavbarColor() {
     var navbar = document.getElementsByClassName("navbar")[0];
     navbar.style.backgroundColor = "#fff";
+
+    setHomepageCurrentPos("homepage");
   }
 
   function resetNavbarColor() {
@@ -184,9 +195,23 @@ const Index = () => {
         navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
         navbar.style.backdropFilter = "blur(20px)";
         document.body.style.opacity = "none";
+        setHomepageCurrentPos("homepage");
       } else {
         navbar.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
         navbar.style.backdropFilter = "blur(20px)";
+        setHomepageCurrentPos("homepage-top");
+
+        if (
+          !document
+            .getElementsByClassName("navbar__searchdiv")[0]
+            .classList.contains("hide")
+        ) {
+          setHomepageCurrentPos("homepage");
+          /* setHomepageCurrentPos("homepage-top"); */
+        } else {
+          console.log("youx");
+          setHomepageCurrentPos("homepage-top");
+        }
       }
 
       if (
@@ -230,6 +255,7 @@ const Index = () => {
       if (window.pageYOffset < 80) {
         navbar.style.backgroundColor = "transparent";
         navbar.style.backdropFilter = "blur(0px)";
+        setHomepageCurrentPos("homepage-top");
 
         if (
           !document
@@ -319,7 +345,7 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link to="/category/60212edfff106c000451ba02">Lehengas</Link>
+                  <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/category/60212edfff106c000451ba02">Lehengas</Link>
                   <NavbarLink1 height={navbarHeigt} />
                 </div>
               </li>
@@ -329,7 +355,7 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link to="/category/60212faaff106c000451ba03">
+                  <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/category/60212faaff106c000451ba03">
                     Salwar Kameez
                   </Link>
                   <Shop height={navbarHeigt} />
@@ -341,7 +367,7 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link to="/category/6021307bff106c000451ba04">Gowns</Link>
+                  <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/category/6021307bff106c000451ba04">Gowns</Link>
                   <NavbarLink3 height={navbarHeigt} />
                 </div>
               </li>
@@ -358,7 +384,7 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link to="/category/602130d9ff106c000451ba05">Sets</Link>
+                  <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/category/602130d9ff106c000451ba05">Sets</Link>
                   <NavbarLink4 height={navbarHeigt} />
                 </div>
               </li>
@@ -367,14 +393,14 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <Link to="/">New Arrivals</Link>
+                <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/">New Arrivals</Link>
               </li>
               <li
                 className="main-nav--listitem"
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <Link to="/collections">Collections</Link>
+                <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/collections">Collections</Link>
               </li>
               {/* <li
                 className="main-nav--listitem"
@@ -394,7 +420,10 @@ const Index = () => {
                 onMouseLeave={resetNavbarColor}
                 to={userLogin.userInfo ? "/my-account" : "/login"}
               >
-                <img src={user} alt="user" />
+                <img
+                  src={homepageCurrentPos === "homepage-top" ? userwhite : user}
+                  alt="user"
+                />
               </Link>
             </li>
             <li>
@@ -404,7 +433,13 @@ const Index = () => {
                 onMouseLeave={resetNavbarColor}
                 className="flex"
               >
-                <img src={heart} alt="heart" />
+                <img
+                  src={
+                    homepageCurrentPos === "homepage-top" ? heartwhite : heart
+                  }
+                  alt="heart"
+                />
+
                 {favItems && favItems.length > 0 && (
                   <p
                     style={WishlistValueIconStyles}
@@ -421,7 +456,10 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <img src={cart} alt="cart" />
+                <img
+                  src={homepageCurrentPos === "homepage-top" ? cartwhite : cart}
+                  alt="cart"
+                />
                 {cartItems && cartItems.length > 0 && (
                   <p style={cartValueIconStyles} className="number superscript">
                     {cartItems.length}
@@ -434,7 +472,12 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <img src={search} alt="search" />
+                <img
+                  src={
+                    homepageCurrentPos === "homepage-top" ? searchwhite : search
+                  }
+                  alt="search"
+                />
               </Link>
             </li>
           </ul>
@@ -488,7 +531,11 @@ const Index = () => {
         <ul className="flex top-area">
           <li>
             <p onClick={closeSideMenu}>
-              <img className="logo" src="https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png" alt="logo" />
+              <img
+                className="logo"
+                src="https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png"
+                alt="logo"
+              />
             </p>
           </li>
           <li>
