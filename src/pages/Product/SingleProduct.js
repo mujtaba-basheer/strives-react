@@ -109,12 +109,33 @@ function SingleProductArea() {
     (state) => state.favRemove
   );
 
-  const images = [];
+  /* const images = []; */
+  const [images, setImages] = useState([]);
+  const [currentImage, setcurrentImage] = useState("");
+
+  const [imageHover, setimageHover] = useState({
+    backgroundImage: `url(${currentImage})`,
+    backgroundPosition: "0% 0%",
+  });
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
     console.log(product);
-    if (product.name) document.title = product.name;
+    if (product.name) {
+      document.title = product.name;
+      let imagesT = [];
+
+      setcurrentImage(product.gallery.main[0].src);
+      setimageHover({
+        ...imageHover,
+        backgroundImage: `url(${product.gallery.main[0].src})`,
+      });
+
+      product.gallery.main.map((image) => imagesT.push(image.src));
+      setImages(imagesT);
+
+      /* setcurrentImage(imagesT[0]); */
+    }
 
     const AddFbSdkScript = async () => {
       window.fbAsyncInit = function () {
@@ -139,7 +160,7 @@ function SingleProductArea() {
 
     if (!window.FB) AddFbSdkScript();
     else setIsFbSdkLoaded(true);
-  }, []);
+  }, [dispatch, id]);
 
   const onCustomFormSubmit = (formData) => {
     dispatch(setCustomSize(formData));
@@ -150,6 +171,11 @@ function SingleProductArea() {
     const src = event.target.src;
     const mainImage = document.getElementById("quickview-mainimage");
     mainImage.src = src;
+    setcurrentImage(src);
+    setimageHover({
+      ...imageHover,
+      backgroundImage: `url(${src})`,
+    });
   }
 
   function changeQuantity(type) {
@@ -267,8 +293,25 @@ function SingleProductArea() {
     setShowSizeChart("true");
   }
 
-  if (product.gallery)
-    product.gallery.main.map((image) => images.push(image.src));
+  /* const imageSrc =
+    "https://images.unsplash.com/photo-1444065381814-865dc9da92c0"; */
+
+  /* setCurrentImage(images[0]); */
+
+  const imageSrc = images[0];
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.pageX - left + 200) / width) * 100;
+    const y = ((e.pageY - top + 200) / height) * 100;
+
+    console.log(images, imageHover, currentImage);
+
+    setimageHover({
+      ...imageHover,
+      backgroundPosition: `${x}% ${y}%`,
+    });
+  };
 
   return (
     <>
@@ -457,13 +500,19 @@ function SingleProductArea() {
                   ))}
                 </div>
                 <div className="productimages__main">
-                  <img
-                    id="quickview-mainimage"
-                    src={images[0]}
-                    alt={product.name}
-                    width="100%"
-                    height="100%"
-                  />
+                  <figure onMouseMove={handleMouseMove} style={imageHover}>
+                    <img
+                      id="quickview-mainimage"
+                      src={currentImage}
+                      alt={product.name}
+                      width="100%"
+                      height="100%"
+                    />
+                  </figure>
+
+                  {/* <figure onMouseMove={handleMouseMove} style={imageHover}>
+                    <img src={imageSrc} />
+                  </figure> */}
                 </div>
               </div>
               <div className="productimages__share flex">

@@ -49,6 +49,8 @@
         z-index: -1;
       }
 
+      
+
       flex: 1;
       margin-top: 26px;
       margin-left: 178px;
@@ -59,6 +61,25 @@
         width: 500px;
         /* height: 573px; */
         transition: all 0.2s linear;
+
+        figure {
+          width: 100%;
+          background-repeat: no-repeat;
+        }
+  
+        img{
+          width: 100%;
+        }
+        
+        figure:hover img {
+          opacity: 0;
+        }
+  
+        img {
+          display: block;
+          width: 100%;
+          
+        }
       }
 
       &__thumbs {
