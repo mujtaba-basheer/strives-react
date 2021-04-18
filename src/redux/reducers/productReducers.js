@@ -100,7 +100,8 @@ export const productSingleGetReducer = (state = { product: {} }, action) => {
     case PRODUCT_SINGLE_GET_SUCCESS:
       return {
         loading: false,
-        product: action.payload,
+        product: action.payload.product,
+        productImages: action.payload.images,
       };
     case PRODUCT_SINGLE_GET_FAIL:
       return { loading: false, error: action.payload };

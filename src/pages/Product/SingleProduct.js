@@ -88,7 +88,7 @@ function SingleProductArea() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { loading, product, error } = useSelector(
+  const { loading, product, productImages, error } = useSelector(
     (state) => state.productSingleGet
   );
   const { favItems } = useSelector((state) => state.fav);
@@ -119,23 +119,19 @@ function SingleProductArea() {
   });
 
   useEffect(() => {
+    /* if (!product) {
+      console.log("run")
+    } */
     dispatch(getSingleProduct(id));
     console.log(product);
-    if (product.name) {
-      document.title = product.name;
-      let imagesT = [];
-
-      setcurrentImage(product.gallery.main[0].src);
+    /* if (product.name) {
       setimageHover({
         ...imageHover,
         backgroundImage: `url(${product.gallery.main[0].src})`,
       });
 
-      product.gallery.main.map((image) => imagesT.push(image.src));
-      setImages(imagesT);
-
-      /* setcurrentImage(imagesT[0]); */
-    }
+      setcurrentImage(imagesT[0]);
+    } */
 
     const AddFbSdkScript = async () => {
       window.fbAsyncInit = function () {
@@ -300,12 +296,43 @@ function SingleProductArea() {
 
   const imageSrc = images[0];
 
-  const handleMouseMove = (e) => {
-    const { left, top, width, height } = e.target.getBoundingClientRect();
-    const x = ((e.pageX - left + 200) / width) * 100;
-    const y = ((e.pageY - top + 200) / height) * 100;
+  /* document.title = product.name;
+  setcurrentImage(productImages[0]); */
 
-    console.log(images, imageHover, currentImage);
+  const handleMouseEnter = (e) => {
+    console.log("hovered");
+    if (currentImage === "") {
+      setcurrentImage(productImages[0]);
+      setimageHover({
+        ...imageHover,
+        backgroundImage: `url(${productImages[0]})`,
+      });
+    } /* else if (currentImage !== productImages()) console.log(); */
+  };
+
+  const handleMouseMove = (e) => {
+    if (currentImage === "") {
+      console.log("if ran");
+      /* setcurrentImage(productImages[0]); */
+      setimageHover({
+        ...imageHover,
+        backgroundImage: `url(${productImages[0]})`,
+      });
+    }
+
+    if (currentImage !== productImages[0]) {
+      /* setcurrentImage(productImages[0]); */
+      setimageHover({
+        ...imageHover,
+        backgroundImage: `url(${productImages[0]})`,
+      });
+    }
+
+    console.log(currentImage, productImages[0]);
+
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.pageX - left + 200) / width) * 50;
+    const y = ((e.pageY - top + 200) / height) * 50;
 
     setimageHover({
       ...imageHover,
@@ -485,7 +512,7 @@ function SingleProductArea() {
                 <div className="yellow-box"></div>
                 {/* <div className="mobileproductimages"></div> */}
                 <div className="productimages__thumbs flex">
-                  {images.map((image) => (
+                  {productImages.map((image) => (
                     <div>
                       <img
                         onClick={(e) => {
@@ -500,10 +527,16 @@ function SingleProductArea() {
                   ))}
                 </div>
                 <div className="productimages__main">
-                  <figure onMouseMove={handleMouseMove} style={imageHover}>
+                  <figure
+                    onMouseMove={handleMouseMove}
+                    onMouseEnter={handleMouseEnter}
+                    style={imageHover}
+                  >
                     <img
                       id="quickview-mainimage"
-                      src={currentImage}
+                      src={
+                        currentImage === "" ? productImages[0] : currentImage
+                      }
                       alt={product.name}
                       width="100%"
                       height="100%"

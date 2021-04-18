@@ -134,7 +134,19 @@ export const getSingleProduct = (id) => async (dispatch) => {
         preSorted.findIndex((n) => n === b)
     );
 
-    dispatch({ type: PRODUCT_SINGLE_GET_SUCCESS, payload: data.data });
+    console.log(data.data);
+
+    let images = [];
+
+    data.data.gallery.main.map((image) => images.push(image.src));
+
+    dispatch({
+      type: PRODUCT_SINGLE_GET_SUCCESS,
+      payload: {
+        product: data.data,
+        images: images,
+      },
+    });
   } catch (error) {
     dispatch({
       type: PRODUCT_SINGLE_GET_FAIL,

@@ -1017,9 +1017,9 @@ export const themesAndOccasions = [
 export const feature = {
   img: {
     main:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/76159c99-d855-4069-b0b4-86655b6489cf.png",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/b54dfd91-67cd-466f-aa2d-47cecea9f7eb.jpg",
     small:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/b6a7bdb5-cabe-4eeb-8826-40499060a218.png",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/b54dfd91-67cd-466f-aa2d-47cecea9f7eb.jpg",
     alt: "feature product",
   },
   info: [
@@ -1135,22 +1135,22 @@ export const showcasedata = [
 export const occasions = [
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/fe1be101-34ad-4fc7-b7f6-42762563c734.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/9d55fe47-e5de-4073-b77e-0b18d89ef3e3.jpg",
     text: "wedding",
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/da34249e-9a5b-40c9-a765-81671dcbc60a.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/7c971816-5100-40f3-be5f-c07e16eb4a54.jpg",
     text: "mehendi",
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/51b1a0c3-3608-4374-9079-02a8af6f7799.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/7f6c64d5-3b4d-4384-a1eb-1d217ef21f77sangeet%20jpg",
     text: "sangeet",
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/51ae80ab-e87b-4f6c-8184-becd2f208034.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/2fb6eda3-16c7-4e29-9a0b-f4d1ca6f0ecc.jpg",
     text: "cocktail",
   },
 ];
@@ -1158,22 +1158,22 @@ export const occasions = [
 export const setsdata = [
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/25319bba-7b8c-497e-a1e9-06f95fc4d825.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/6823ea49-066d-4542-ae2f-dd5a6026b78b.jpg",
     text: "gowns",
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/18e1bdee-98b8-48d0-a689-0f0c61bd826c.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/a8450dc4-46c0-483f-8703-32e3fbde98da.jpg",
     text: "lehenga",
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/99f262c1-412f-4f7f-a9c3-91e0666066e9.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/1e18005a-a9b8-423c-abaf-8825ba17e593.jpg",
     text: "dresses",
   },
   {
     img:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/ee89b2fe-1b84-4466-b51b-2f57a0eb070f.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/492d5da9-bb6b-4933-9d9f-f410b1a6140c.jpg",
     text: "Salwar kameez",
   },
 ];
