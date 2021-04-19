@@ -38,6 +38,7 @@ import { nav_data } from "./NavbarData/data";
 import NavbarLink1 from "./NavbarData/NavbarLink1";
 import NavbarLink3 from "./NavbarData/NavbarLink3";
 import NavbarLink4 from "./NavbarData/NavbarLink4";
+import CollectionsSubmenu from "./NavbarData/CollectionsSubmenu";
 
 const Index = () => {
   const history = useHistory();
@@ -345,7 +346,16 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/category/60212edfff106c000451ba02">Lehengas</Link>
+                  <Link
+                    className={
+                      homepageCurrentPos === "homepage-top"
+                        ? "main-nav--listitemanchor"
+                        : ""
+                    }
+                    to="/category/60212edfff106c000451ba02"
+                  >
+                    Lehengas
+                  </Link>
                   <NavbarLink1 height={navbarHeigt} />
                 </div>
               </li>
@@ -355,7 +365,14 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/category/60212faaff106c000451ba03">
+                  <Link
+                    className={
+                      homepageCurrentPos === "homepage-top"
+                        ? "main-nav--listitemanchor"
+                        : ""
+                    }
+                    to="/category/60212faaff106c000451ba03"
+                  >
                     Salwar Kameez
                   </Link>
                   <Shop height={navbarHeigt} />
@@ -367,7 +384,16 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/category/6021307bff106c000451ba04">Gowns</Link>
+                  <Link
+                    className={
+                      homepageCurrentPos === "homepage-top"
+                        ? "main-nav--listitemanchor"
+                        : ""
+                    }
+                    to="/category/6021307bff106c000451ba04"
+                  >
+                    Gowns
+                  </Link>
                   <NavbarLink3 height={navbarHeigt} />
                 </div>
               </li>
@@ -384,7 +410,16 @@ const Index = () => {
                   onMouseOver={changeNavbarColor}
                   onMouseLeave={resetNavbarColor}
                 >
-                  <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/category/602130d9ff106c000451ba05">Sets</Link>
+                  <Link
+                    className={
+                      homepageCurrentPos === "homepage-top"
+                        ? "main-nav--listitemanchor"
+                        : ""
+                    }
+                    to="/category/602130d9ff106c000451ba05"
+                  >
+                    Sets
+                  </Link>
                   <NavbarLink4 height={navbarHeigt} />
                 </div>
               </li>
@@ -393,14 +428,39 @@ const Index = () => {
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/">New Arrivals</Link>
+                <Link
+                  className={
+                    homepageCurrentPos === "homepage-top"
+                      ? "main-nav--listitemanchor"
+                      : ""
+                  }
+                  to="/"
+                >
+                  New Arrivals
+                </Link>
               </li>
               <li
                 className="main-nav--listitem"
                 onMouseOver={changeNavbarColor}
                 onMouseLeave={resetNavbarColor}
               >
-                <Link className={homepageCurrentPos === "homepage-top" ? "main-nav--listitemanchor" : ""} to="/collections">Collections</Link>
+                <div
+                  className="dropdown-shop"
+                  onMouseOver={changeNavbarColor}
+                  onMouseLeave={resetNavbarColor}
+                >
+                  <Link
+                    className={
+                      homepageCurrentPos === "homepage-top"
+                        ? "main-nav--listitemanchor"
+                        : ""
+                    }
+                    to="/category/602130d9ff106c000451ba05"
+                  >
+                    Collections
+                  </Link>
+                  <CollectionsSubmenu height={navbarHeigt} />
+                </div>
               </li>
               {/* <li
                 className="main-nav--listitem"
