@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { occasions } from "./data";
 
@@ -10,10 +11,12 @@ const Occassion = () => {
       <div className="occassion__grid">
         {occasions.map((occassion) => (
           <div className="occassion__grid--container">
-            <div className="image">
-              <img src={occassion.img} alt={occassion.text} />
-            </div>
-            <p className="text">{occassion.text}</p>
+            <Link to={occassion.url}>
+              <div className="image">
+                <img src={occassion.img} alt={occassion.text} />
+              </div>
+            </Link>
+            <Link to={occassion.url} className="text">{occassion.text}</Link>
           </div>
         ))}
       </div>

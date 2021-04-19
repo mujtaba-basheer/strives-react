@@ -94,9 +94,7 @@ const Themes = () => {
         <QuickView product={productdetails} setShowModal={setShowModal} />
       )}
       <section className="theme">
-        <div className="theme__title section-title">
-          {/* Theme &amp;  */}Occasions
-        </div>
+        <div className="theme__title section-title">Recommended for You</div>
 
         <div className="mobile">
           <Swiper
@@ -114,8 +112,7 @@ const Themes = () => {
                       if (
                         favItems &&
                         favItems.find(
-                          (favProduct) =>
-                            favProduct._id === product._id.$oid
+                          (favProduct) => favProduct._id === product._id.$oid
                         )
                       )
                         removeFromWishlist(product._id.$oid);
@@ -130,8 +127,7 @@ const Themes = () => {
                       src={
                         favItems &&
                         favItems.find(
-                          (favProduct) =>
-                            favProduct._id=== product._id.$oid
+                          (favProduct) => favProduct._id === product._id.$oid
                         )
                           ? heartfillsvg
                           : heart
@@ -209,8 +205,7 @@ const Themes = () => {
                       if (
                         favItems &&
                         favItems.find(
-                          (favProduct) =>
-                            favProduct._id === product._id.$oid
+                          (favProduct) => favProduct._id === product._id.$oid
                         )
                       )
                         removeFromWishlist(product._id.$oid);
@@ -225,8 +220,7 @@ const Themes = () => {
                       src={
                         favItems &&
                         favItems.find(
-                          (favProduct) =>
-                            favProduct._id === product._id.$oid
+                          (favProduct) => favProduct._id === product._id.$oid
                         )
                           ? heartfillsvg
                           : heart

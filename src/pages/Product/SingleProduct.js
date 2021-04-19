@@ -494,7 +494,7 @@ function SingleProductArea() {
                   slidesPerView={1}
                   pagination={{ clickable: true }}
                 >
-                  {images.map((image) => (
+                  {productImages.map((image) => (
                     <SwiperSlide>
                       <img
                         style={{

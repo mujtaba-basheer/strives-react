@@ -25,9 +25,9 @@ const Index = () => {
       <Feature />
       <Occassion />
       <Sets />
-      <Themes />
       {/* <Customize /> */}
       <BestSeller />
+      <Themes />
       <Newsletter />
       <Footer />
     </>
