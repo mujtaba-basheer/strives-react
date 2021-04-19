@@ -125,4 +125,38 @@ export const nav_data = [
       },
     ],
   },
+
+  {
+    _id: "602130d9ff106c000451ba05",
+    name: "Collections ",
+    sub_categories: [
+      {
+        _id: "60212614ff106c000451b9fa",
+        name: "STYLE",
+        values: [
+          {
+            name: "Karigari",
+            id: "606b1d0d0d88096d07f0ed7a",
+          },
+          {
+            name: "Shahar",
+            id: "606c2fef4948870004ce9930",
+          },
+          {
+            name: "Inara",
+            id: "606c302a4948870004ce9931",
+          },
+          {
+            name: "Khawaish",
+            id: "606c30664948870004ce9932",
+          },
+          {
+            name: "Strives Everyday Wardrobe ",
+            id: "606c316f4948870004ce9933",
+          },
+        ],
+        slug_name: "style",
+      },
+    ],
+  },
 ];

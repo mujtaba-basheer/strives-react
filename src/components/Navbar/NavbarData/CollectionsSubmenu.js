@@ -18,13 +18,13 @@ const CollectionsSubmenu = ({ height }) => {
       className="navbar__hovermenu shop flex"
     >
       <div className="navbar__hovermenu__options flex">
-        {nav_data[3].sub_categories.map((navdata) => (
+        {nav_data[4].sub_categories.map((navdata) => (
           <div className="hovermenu__listitems">
-            <h3>{navdata.name} || Collection</h3>
+            <h3>{navdata.name}</h3>
             <ul>
               {navdata.values.map((subnavdata) => (
                 <li>
-                  <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>{subnavdata}</Link>
+                  <Link to={`/collections/${subnavdata.id}`}>{subnavdata.name}</Link>
                 </li>
               ))}
 

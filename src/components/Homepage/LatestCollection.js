@@ -13,9 +13,9 @@ const LatestCollection = () => {
       </div>
       <div className="latest-collection__wrapper-grid">
         {latestCollections.map(
-          ({ title, subtitle, img }, index) =>
+          ({ title, subtitle, img, url }, index) =>
             index < 3 && (
-              <Link to="/collections/606b1d0d0d88096d07f0ed7a">
+              <Link to={url}>
                 <div key={index} className="latest-collection__container">
                   <picture className="latest-collection__container__picture">
                     <source srcset={img.small} media="(min-width: 1170px)" />
@@ -47,9 +47,9 @@ const LatestCollection = () => {
 
       <div className="latest-collection__wrapper-grid ">
         {latestCollections.map(
-          ({ title, subtitle, img }, index) =>
+          ({ title, subtitle, img, url }, index) =>
             index > 2 && (
-              <Link to="/collections/606b1d0d0d88096d07f0ed7a">
+              <Link to={url}>
                 <div key={index} className="latest-collection__container">
                   <picture className="latest-collection__container__picture">
                     <source srcset={img.small} media="(min-width: 1170px)" />

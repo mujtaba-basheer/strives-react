@@ -1048,6 +1048,7 @@ export const latestCollections = [
       small:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/97190536-1711-4473-82dc-19ce479b4524.jpg",
     },
+    url: "/collections/606c302a4948870004ce9931",
   },
   {
     title: "Khawaish",
@@ -1058,6 +1059,7 @@ export const latestCollections = [
       small:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/638eee7a-640c-4814-86c2-0a71c2653c35.jpg",
     },
+    url: "/collections/606c30664948870004ce9932",
   },
   {
     title: "Shehar",
@@ -1068,6 +1070,7 @@ export const latestCollections = [
       small:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/edef5c11-ea4c-446c-bb3c-c3221e8e4a61.jpg",
     },
+    url: "/collections/606c2fef4948870004ce9930",
   },
   {
     title: "Karigari",
@@ -1079,6 +1082,7 @@ export const latestCollections = [
       small:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/b2b5da32-a0c7-4d49-827c-0807e6072c5d.jpg",
     },
+    url: "/collections/606b1d0d0d88096d07f0ed7a",
   },
   {
     title: "Strives Everyday Wardrobe ",
@@ -1090,6 +1094,7 @@ export const latestCollections = [
       small:
         "https://strives.s3.ap-south-1.amazonaws.com/assets/e0c12aac-248a-4fb1-ace8-ea4ed4376fca.jpg",
     },
+    url: "/collections/606c316f4948870004ce9933",
   },
 ];
 
@@ -1104,6 +1109,7 @@ export const showcasedata = [
       "https://strives.s3.ap-south-1.amazonaws.com/assets/4e9fa9a3-1fb4-4bf1-9ff8-ae1548abe87a.jpg",
     text: "Lights the world around you",
     name: "Karigri",
+    url: "/collections/606b1d0d0d88096d07f0ed7a",
   },
   {
     img:
@@ -1112,6 +1118,7 @@ export const showcasedata = [
       "https://strives.s3.ap-south-1.amazonaws.com/assets/b161f73c-2ade-4ce7-b94b-531951abaaa1.jpg",
     text: "A poetry by the Indian artisans",
     name: "Inara",
+    url: "/collections/606c302a4948870004ce9931",
   },
   {
     img:
@@ -1120,6 +1127,7 @@ export const showcasedata = [
       "https://strives.s3.ap-south-1.amazonaws.com/assets/8821c011-c012-4b4a-9cee-2d160e6c9dfc.jpg",
     text: "If attire is your desire",
     name: "Khawaish",
+    url: "/collections/606c30664948870004ce9932",
   },
 
   {
@@ -1129,6 +1137,7 @@ export const showcasedata = [
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7e746787-9223-4061-aa94-50cae355f926.jpg",
     text: "Designed for your excellency",
     name: "Shehar",
+    url: "/collections/606c2fef4948870004ce9930",
   },
 ];
 
@@ -1137,25 +1146,25 @@ export const occasions = [
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/9d55fe47-e5de-4073-b77e-0b18d89ef3e3.jpg",
     text: "wedding",
-    url: "",
+    url: "/occassins/wedding",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7c971816-5100-40f3-be5f-c07e16eb4a54.jpg",
     text: "mehendi",
-    url: "",
+    url: "/occassins/mehendi",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7f6c64d5-3b4d-4384-a1eb-1d217ef21f77sangeet%20jpg",
     text: "sangeet",
-    url: "",
+    url: "/occassins/sangeet",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/2fb6eda3-16c7-4e29-9a0b-f4d1ca6f0ecc.jpg",
     text: "cocktail",
-    url: "",
+    url: "/occassins/cocktail",
   },
 ];
 
@@ -1164,24 +1173,24 @@ export const setsdata = [
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/6823ea49-066d-4542-ae2f-dd5a6026b78b.jpg",
     text: "gowns",
-    url: "",
+    url: "/category/6021307bff106c000451ba04",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/a8450dc4-46c0-483f-8703-32e3fbde98da.jpg",
     text: "lehenga",
-    url: "",
+    url: "/category/60212edfff106c000451ba02",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/1e18005a-a9b8-423c-abaf-8825ba17e593.jpg",
     text: "dresses",
-    url: "",
+    url: "/category/60212edfff106c000451ba02/All%20Sets",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/492d5da9-bb6b-4933-9d9f-f410b1a6140c.jpg",
     text: "Salwar kameez",
-    url: "",
+    url: "/category/60212faaff106c000451ba03",
   },
 ];

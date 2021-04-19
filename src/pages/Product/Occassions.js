@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
@@ -20,6 +20,7 @@ import Alert from "../../components/Alert/Alert";
 
 import ProductSlider from "../../components/ProductSlider";
 import QuickView from "../../components/layout/QuickView";
+import SizeChart from "../../components/layout/SizeChart";
 
 import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.png";
 import productimage from "./images/image.png";
@@ -34,17 +35,19 @@ import BottomBar from "./components/BottomBar/BottomBar";
 
 import { materials, sizes, colours } from "./data";
 
-const AllProduct = () => {
+import { nav_data } from "../../components/Navbar/NavbarData/data";
+
+const Occassions = () => {
   return (
     <>
       <Navbar />
-      <AllProductArea />
+      <OccassionsArea />
       <Footer />
     </>
   );
 };
 
-function AllProductArea() {
+function OccassionsArea() {
   /* const [sortbyValue, setSortbyValue] = useState("latest"); */
   const [sortValue, setSortValue] = useState(["date", "-1"]);
 
@@ -60,13 +63,13 @@ function AllProductArea() {
     size: [],
   });
 
-  let location = useLocation();
-
-  let { from } = location.state || { from: { pathname: "/" } };
+  const [categoryName, setCategoryName] = useState("");
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
+
+  let { categoryid } = useParams();
 
   let query = useQuery();
   const queryString = query.get("search");
@@ -75,7 +78,6 @@ function AllProductArea() {
 
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
-  const { pages: maxPages } = useSelector((state) => state.productPages);
   const { favItems } = useSelector((state) => state.fav);
   const { error: favAddError, success: favAddSuccess } = useSelector(
     (state) => state.favAdd
@@ -85,7 +87,6 @@ function AllProductArea() {
   );
 
   function clickfilter(type, data) {
-    /* console.log(e.target.value); */
     let filterObj = {
       ...filter,
     };
@@ -121,7 +122,7 @@ function AllProductArea() {
       var ele = document.getElementsByName(element);
 
       for (var i = 0; i < ele.length; i++) {
-        if (ele[i].type === "checkbox") ele[i].checked = false;
+        if (ele[i].type == "checkbox") ele[i].checked = false;
       }
     });
   }
@@ -169,8 +170,8 @@ function AllProductArea() {
         setCurrentPage(currentPageValue);
       }
     } else if (value === "next") {
-      if (currentPage === maxPages) {
-        setCurrentPage(maxPages);
+      if (currentPage === 50) {
+        setCurrentPage(50);
       } else {
         currentPageValue = currentPageValue + 1;
         setCurrentPage(currentPageValue);
@@ -179,25 +180,33 @@ function AllProductArea() {
   }
 
   useEffect(() => {
-    const queryObj = {
-      keyword: queryString,
-      min: productslidervalue[0],
-      max: productslidervalue[1],
-      sort: sortValue,
-      material: filter["material"],
-      color: filter["color"],
-      size: filter["size"],
-      page: currentPage,
-    };
-    console.log(queryString, )
-    dispatch(getProducts(queryObj));
+    // using the id showing category name
+
+    nav_data.forEach((navdata) => {
+      if (navdata._id === categoryid) setCategoryName(navdata.name);
+    });
+
+    dispatch(
+      getProducts({
+        /* keyword: queryString, */
+        min: productslidervalue[0],
+        max: productslidervalue[1],
+        sort: sortValue,
+        material: filter["material"],
+        color: filter["color"],
+        size: filter["size"],
+        occassion: categoryid,
+        page: currentPage,
+        /* "sub-category": "Cotton Salwar Kameez", */
+      })
+    );
   }, [
     productslidervalue,
     queryString,
     sortValue,
-    currentPage,
     filter,
-    dispatch,
+    currentPage,
+    categoryid,
   ]);
 
   return (
@@ -374,12 +383,12 @@ function AllProductArea() {
         <div className="allproducts__products">
           <div className="header flex">
             <p className="header__heading">
-              {queryString ? `Search Results for ${queryString}` : "Products"}
+              {categoryid.toUpperCase()}
             </p>
             <div className="header__right">
-              {/* <p className="header__right--display-results">
-                {`Displaying  ${currentPage} out of ${maxPages} pages`}
-              </p> */}
+              <p className="header__right--display-results">
+                Displaying 6 out of 20 results
+              </p>
               <div className="header__right--dropdown">
                 Sort By:
                 <select onChange={selectSortBy} id="sortby" name="sortby">
@@ -422,7 +431,7 @@ function AllProductArea() {
           <div className="product-container">
             {products &&
               products.map((product, index) => (
-                <div className="product-item" key={product._id}>
+                <div className="product-item">
                   <p
                     className="heart"
                     onClick={() => {
@@ -476,8 +485,10 @@ function AllProductArea() {
                       className="quick-view flex"
                       onClick={(e) => {
                         e.preventDefault();
+                        console.log("clicked");
                         setProductdetails(product);
                         setShowModal("true");
+
                         /* showQuickView(); */
                       }}
                     >
@@ -527,12 +538,7 @@ function AllProductArea() {
                 previous
               </button>
               <button
-                className={
-                  currentPage === maxPages
-                    ? "navigation__button next disabled"
-                    : "navigation__button next"
-                }
-                disabled={currentPage === maxPages}
+                className="navigation__button next"
                 onClick={() => {
                   changeNavigation("next");
                 }}
@@ -563,7 +569,7 @@ function AllProductArea() {
         <div className="product-container">
           <div className="product-item">
             <div className="product-item__image">
-              <img src={productimage} alt="product-item" />
+              <img src={productimage} alt="image" />
               <div className="quick-view flex">
                 <p className="quick-view__text">Quick View</p>
               </div>
@@ -575,7 +581,7 @@ function AllProductArea() {
           </div>
           <div className="product-item">
             <div className="product-item__image">
-              <img src={productimage} alt="product-item" />
+              <img src={productimage} alt="image" />
               <div className="quick-view flex">
                 <p className="quick-view__text">Quick View</p>
               </div>
@@ -587,7 +593,7 @@ function AllProductArea() {
           </div>
           <div className="product-item">
             <div className="product-item__image">
-              <img src={productimage} alt="product-item" />
+              <img src={productimage} alt="image" />
             </div>
             <div className="product-item__details">
               <p className="product-item__details--heading">Colar T-shirt</p>
@@ -596,7 +602,7 @@ function AllProductArea() {
           </div>
           <div className="product-item">
             <div className="product-item__image">
-              <img src={productimage} alt="product-item" />
+              <img src={productimage} alt="image" />
             </div>
             <div className="product-item__details">
               <p className="product-item__details--heading">Colar T-shirt</p>
@@ -610,4 +616,4 @@ function AllProductArea() {
   );
 }
 
-export default AllProduct;
+export default Occassions;

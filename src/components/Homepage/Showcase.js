@@ -31,7 +31,7 @@ const Showcase = () => {
         {showcasedata.map((show, index) => (
           <SwiperSlide>
             <div className="showcase__div">
-              <Link to="/collections/606b1d0d0d88096d07f0ed7a">
+              <Link to={show.url}>
                 <picture>
                   <source srcset={show.img} media="(min-width: 768px)" />
                   <source srcset={show.small} />

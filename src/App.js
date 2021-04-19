@@ -26,6 +26,7 @@ import Category from "./pages/Product/Category";
 import SingleCategory from "./pages/Product/SingleCategory";
 import Collections from "./pages/Product/Collections";
 import SingleCollection from "./pages/Product/SingleCollection";
+import Occassions from "./pages/Product/Occassions";
 
 const App = () => {
   return (
@@ -56,6 +57,8 @@ const App = () => {
         <Route exact path="/cart" component={Cart} />
 
         <Route exact path="/products" component={AllProduct} />
+
+        <Route exact path="/occassions/:categoryid" component={Occassions} />
 
         <Route exact path="/products/:id" component={SingleProduct} />
 
