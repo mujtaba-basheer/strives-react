@@ -1146,25 +1146,25 @@ export const occasions = [
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/9d55fe47-e5de-4073-b77e-0b18d89ef3e3.jpg",
     text: "wedding",
-    url: "/occassins/wedding",
+    url: "/occassions/wedding",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7c971816-5100-40f3-be5f-c07e16eb4a54.jpg",
     text: "mehendi",
-    url: "/occassins/mehendi",
+    url: "/occassions/mehendi",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/7f6c64d5-3b4d-4384-a1eb-1d217ef21f77sangeet%20jpg",
     text: "sangeet",
-    url: "/occassins/sangeet",
+    url: "/occassions/sangeet",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/2fb6eda3-16c7-4e29-9a0b-f4d1ca6f0ecc.jpg",
     text: "cocktail",
-    url: "/occassins/cocktail",
+    url: "/occassions/cocktail",
   },
 ];
 

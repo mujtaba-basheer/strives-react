@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { feature } from "./data";
 
@@ -28,8 +29,10 @@ const Feature = () => {
           </div>
         ))}
         <div className="feature__cta">
-          <span className="feature__cta--text">learn more</span>
-          <span className="feature__cta--arr">&rarr;</span>
+          <Link to="/collections/606c302a4948870004ce9931">
+            <span className="feature__cta--text">learn more</span>
+            <span className="feature__cta--arr">&rarr;</span>
+          </Link>
         </div>
       </div>
     </section>
