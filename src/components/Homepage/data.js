@@ -1017,7 +1017,7 @@ export const themesAndOccasions = [
 export const feature = {
   img: {
     main:
-      "https://strives.s3.ap-south-1.amazonaws.com/assets/b54dfd91-67cd-466f-aa2d-47cecea9f7eb.jpg",
+      "https://strives.s3.ap-south-1.amazonaws.com/assets/f9da0a01-d72a-4b6f-84d6-c19c7f1653f0.jpg",
     small:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/b54dfd91-67cd-466f-aa2d-47cecea9f7eb.jpg",
     alt: "feature product",
@@ -1038,10 +1038,10 @@ export const feature = {
   ], */
 
   info: {
-    text: "Inara",
-    details: "Lights the world around you",
+    text: "Khawaish",
+    details: "If attire is your desire",
     subtext:
-      "Inara is inspired from the lives of mighty women who spread positive vibes and have stood against the evil of the society",
+      "The vogue which every women desires for crafted with utmost grace and elegance because it's not just a piece of clothe it's an art",
   },
 };
 

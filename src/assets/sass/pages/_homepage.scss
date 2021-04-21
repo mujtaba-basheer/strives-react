@@ -193,7 +193,8 @@
 
 .feature {
   width: 90%;
-  margin: 5rem auto;
+  margin: 3rem auto;
+  margin-top: 5rem;
   max-width: 1200px;
   gap: 25px;
 
@@ -231,7 +232,8 @@
       z-index: -1;
 
       @media screen and (max-width: 991px) {
-        left: 3%;
+        left: 5%;
+        top: 4%;
       }
     }
   }
