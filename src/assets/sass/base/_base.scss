@@ -23,6 +23,20 @@
   --clr-black: black;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 ul {
   list-style-type: none;
 }
