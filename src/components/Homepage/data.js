@@ -1022,20 +1022,27 @@ export const feature = {
       "https://strives.s3.ap-south-1.amazonaws.com/assets/b54dfd91-67cd-466f-aa2d-47cecea9f7eb.jpg",
     alt: "feature product",
   },
-  info: [
+  /* info: [
     {
       title: "Inara",
-      /* text: "Works best with simple, low color count logos or artwork.", */
+      text: "Works best with simple, low color count logos or artwork.",
     },
     {
-      /* title: "Screen Printing", */
+      title: "Screen Printing",
       text: "Lights the world around you",
     },
     {
-      /* title: "Sublimation", */
+      title: "Sublimation",
       text: `Inara is inspired from the lives of mighty women who spread positive vibes and have stood against the evil of the society`,
     },
-  ],
+  ], */
+
+  info: {
+    text: "Inara",
+    details: "Lights the world around you",
+    subtext:
+      "Inara is inspired from the lives of mighty women who spread positive vibes and have stood against the evil of the society",
+  },
 };
 
 export const latestCollections = [
