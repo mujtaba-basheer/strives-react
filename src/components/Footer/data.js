@@ -16,10 +16,10 @@ export const myaccount = [
 ];
 
 export const followuson = [
-  { text: "Returns & Refund", url: "" },
+  { text: "Returns & Refund", url: "/terms-and-conditions" },
   { text: "FAQs", url: "" },
   { text: "Blog", url: "" },
-  { text: "Privacy policy", url: "" },
+  { text: "Privacy policy", url: "/privacy-policy" },
   { text: "About us", url: "" },
 ];
 

@@ -27,7 +27,11 @@ const Index = () => {
           <div className="footer__policies--heading">My Account</div>
           <ul className="footer__policies--list">
             {myaccount.map(({ text, url }, index) => (
-              <Link to={`/${url}`} className="footer__policies--list-item" key={index}>
+              <Link
+                to={`/${url}`}
+                className="footer__policies--list-item"
+                key={index}
+              >
                 {text}
               </Link>
             ))}
@@ -39,7 +43,9 @@ const Index = () => {
           <ul className="footer__policies--list">
             {followuson.map(({ text, url }, index) => (
               <li className="footer__policies--list-item" key={index}>
-                {text}
+                <Link className="footer__policies--list-item" to={url}>
+                  {text}
+                </Link>
               </li>
             ))}
           </ul>
