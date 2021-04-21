@@ -186,7 +186,7 @@ function SingleCategoryArea() {
         material: filter["material"],
         color: filter["color"],
         size: filter["size"],
-        category: categoryid,
+        /* category: categoryid, */
         "sub-category": subcategoryid,
         page: currentPage,
       })
