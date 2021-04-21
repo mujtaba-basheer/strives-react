@@ -1,0 +1,46 @@
+.thankyou {
+  max-width: 1200px;
+  width: 90%;
+  margin: 4rem auto;
+
+  .heading,
+  .subheading {
+    text-align: center;
+  }
+
+  .heading {
+    font-size: 38px;
+    margin-bottom: 30px;
+  }
+
+  .subheading {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+
+  .cta {
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+    font-size: 16px;
+    line-height: 21px;
+    padding: 16px 32px;
+    margin-top: 85px;
+    text-transform: uppercase;
+    background: var(--clr-primary);
+    border-radius: 2px;
+    color: var(--clr-secondary);
+    font-family: var(--font-secondary);
+  }
+
+  @media screen and (max-width: 768px) {
+    .heading {
+      font-size: 22px;
+    }
+
+    .subheading {
+      font-size: 18px;
+    }
+  }
+}
