@@ -28,6 +28,11 @@ import Collections from "./pages/Product/Collections";
 import SingleCollection from "./pages/Product/SingleCollection";
 import Occassions from "./pages/Product/Occassions";
 
+/* Extra Pages */
+
+import PrivacyPolicy from "./pages/Extra/PrivacyPolicy";
+import TnC from "./pages/Extra/TnC";
+
 const App = () => {
   return (
     <Router>
@@ -75,6 +80,10 @@ const App = () => {
           path="/category/:categoryid/:subcategoryid"
           component={SingleCategory}
         />
+
+        <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+
+        <Route exact path="/terms-and-conditions" component={TnC} />
       </Switch>
     </Router>
   );
