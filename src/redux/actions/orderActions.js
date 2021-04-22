@@ -139,14 +139,15 @@ export const payOrder = (amount, order = {}, isExpress = false) => async (
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
       },
     };
+
+    if (userInfo) config.headers["Authorization"] = `Bearer ${userInfo.token}`;
 
     // getting credentials
     const {
       data: { key_id },
-    } = await apiCall.get("credentials", config);
+    } = await apiCall.get("credentials");
 
     // getting razorpay order
     const {
@@ -177,7 +178,8 @@ export const payOrder = (amount, order = {}, isExpress = false) => async (
       name: "The Strives",
       description: "Pay Order",
       payment_capture: "1",
-      image: "https://chartsjs.s3.us-east-2.amazonaws.com/logo.png",
+      image:
+        "https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png",
       order_id,
       handler: handlerFunction,
       theme: {

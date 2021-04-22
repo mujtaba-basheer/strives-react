@@ -39,7 +39,7 @@ const Wishlist = () => {
 
   useEffect(() => {
     /* if (!userInfo) history.push("/login"); */
-
+    window.scrollTo({ top: 0, behavior: "smooth" });
     document.title = "Wishlist";
 
     if (!favItems) dispatch(getFav());
