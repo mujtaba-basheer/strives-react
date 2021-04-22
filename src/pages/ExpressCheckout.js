@@ -79,7 +79,6 @@ function ExpressCheckoutArea() {
     custphone: "",
   });
 
-
   useEffect(() => {
     document.title = "Checkout";
 
@@ -101,8 +100,8 @@ function ExpressCheckoutArea() {
 
     if (buyNow && buyNow.length > 0) {
       setCartValue({
-        subtotal: buyNow[0].sp,
-        total: buyNow[0].mrp,
+        subtotal: buyNow[0].sp * buyNow[0].quantity,
+        total: buyNow[0].mrp * buyNow[0].quantity,
       });
     }
 
@@ -247,7 +246,6 @@ function ExpressCheckoutArea() {
   function applyCoupon() {
     dispatch(checkCoupon(applyCouponDetails.name, cartValue.subtotal));
     if (couponData) {
-
       setApplyCouponDetails({
         ...applyCouponDetails,
         inputState: "disabled",
