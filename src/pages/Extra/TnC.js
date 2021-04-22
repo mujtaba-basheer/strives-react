@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 const TnC = () => {
+  useEffect(() => window.scrollTo({ top: 0, behavior: "smooth" }), []);
+
   return (
     <>
       <Navbar />
