@@ -2,8 +2,10 @@ import React from "react";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { useHistory } from "react-router";
 
 const ThankYou = () => {
+  let history = useHistory();
   return (
     <>
       <Navbar />
@@ -13,7 +15,14 @@ const ThankYou = () => {
           You will be contacted shortly by our representative confirming your
           order.
         </h1>
-        <button className="cta">Continue Shopping</button>
+        <button
+          onClick={() => {
+            history.push("/");
+          }}
+          className="cta"
+        >
+          Continue Shopping
+        </button>
       </section>
       <Footer />
     </>
