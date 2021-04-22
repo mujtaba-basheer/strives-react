@@ -79,7 +79,6 @@ function ExpressCheckoutArea() {
     custphone: "",
   });
 
-
   useEffect(() => {
     document.title = "Checkout";
 
@@ -247,7 +246,6 @@ function ExpressCheckoutArea() {
   function applyCoupon() {
     dispatch(checkCoupon(applyCouponDetails.name, cartValue.subtotal));
     if (couponData) {
-
       setApplyCouponDetails({
         ...applyCouponDetails,
         inputState: "disabled",

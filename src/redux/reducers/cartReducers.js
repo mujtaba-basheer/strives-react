@@ -174,7 +174,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     case CART_SET:
       if (action.payload)
         localStorage.setItem("cartItems", JSON.stringify(action.payload));
-      return { cartItems: action.payload };
+      return { ...state, cartItems: action.payload };
     case CART_CLEAR:
       localStorage.removeItem("cartItems");
       return { cartItems: null };
