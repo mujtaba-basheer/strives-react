@@ -22,7 +22,7 @@ const Showcase = () => {
   return (
     <section className="showcase">
       <Swiper
-        spaceBetween={50}
+        spaceBetween={0}
         loop={true}
         slidesPerView={1}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -35,14 +35,7 @@ const Showcase = () => {
                 <picture>
                   <source srcset={show.img} media="(min-width: 768px)" />
                   <source srcset={show.small} />
-                  <img src={show.small} alt="qq" />
-                  {/* <p
-                  className={
-                    index > 1 ? "showcase__text" : "showcase__text--custom"
-                  }
-                >
-                  {show.text}
-                </p> */}
+                  <img src={show.small} alt="showcase" />
                 </picture>
               </Link>
             </div>
