@@ -211,7 +211,7 @@ function CheckoutArea() {
     if (paymentType === "cod") {
       dispatch(placeOrder(orderObj));
     } else if (paymentType === "rzp") {
-      dispatch(payOrder(cartValue.total, orderObj));
+      dispatch(payOrder(cartValue.subtotal, orderObj));
     }
   };
 
