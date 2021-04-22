@@ -123,6 +123,7 @@ function SingleProductArea() {
       console.log("run")
     } */
     dispatch(getSingleProduct(id));
+    window.scrollTo({ top: 0, behavior: "smooth" });
     console.log(product);
     /* if (product.name) {
       setimageHover({
@@ -156,11 +157,11 @@ function SingleProductArea() {
 
     if (!window.FB) AddFbSdkScript();
     else setIsFbSdkLoaded(true);
-  }, [dispatch, id]);
+  }, [id]);
 
   const onCustomFormSubmit = (formData) => {
     dispatch(setCustomSize(formData));
-    document.querySelector(".customsizechart__container").click();
+    document.querySelector(".customsizechartmodal__close").click();
   };
 
   function swapMainImage(event) {

@@ -58,7 +58,8 @@ function CollectionsArea() {
 
   useEffect(() => {
     dispatch(getCollections());
-  }, []);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [dispatch]);
 
   function addToWishlist(product) {
     dispatch(addItemToFav(product));

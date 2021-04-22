@@ -200,6 +200,7 @@ function OccassionsArea() {
         /* "sub-category": "Cotton Salwar Kameez", */
       })
     );
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [
     productslidervalue,
     queryString,
@@ -382,9 +383,7 @@ function OccassionsArea() {
 
         <div className="allproducts__products">
           <div className="header flex">
-            <p className="header__heading">
-              {categoryid.toUpperCase()}
-            </p>
+            <p className="header__heading">{categoryid.toUpperCase()}</p>
             <div className="header__right">
               <p className="header__right--display-results">
                 Displaying 6 out of 20 results

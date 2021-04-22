@@ -189,8 +189,9 @@ function AllProductArea() {
       size: filter["size"],
       page: currentPage,
     };
-    console.log(queryString, )
+    console.log(queryString);
     dispatch(getProducts(queryObj));
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [
     productslidervalue,
     queryString,
