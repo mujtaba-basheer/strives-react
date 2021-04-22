@@ -194,6 +194,7 @@ function SingleCollectionArea() {
       page: currentPage,
     };
     dispatch(getProducts(queryObj));
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [productslidervalue, id, sortValue, currentPage, filter, dispatch]);
 
   return (
