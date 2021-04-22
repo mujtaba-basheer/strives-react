@@ -53,9 +53,10 @@ function CartArea() {
 
     if (cartItems && cartItems.length > 0) {
       let total = 0;
+      console.log(cartItems);
       cartItems.forEach((cart) => {
         console.log(cart.sp);
-        total += cart.sp;
+        total += cart.sp * cart.quantity;
       });
       setCartValue({
         total: total,
