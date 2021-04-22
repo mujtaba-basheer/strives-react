@@ -48,6 +48,7 @@ const ChangePassword = () => {
   } = useSelector((state) => state.userAddress);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     if (!userInfo) history.push("/login");
 
     if (addressData) {

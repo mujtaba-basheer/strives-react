@@ -35,6 +35,7 @@ const ChangePassword = () => {
   );
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     if (!userInfo) history.push("/login");
   }, [userInfo, history, dispatch]);
 

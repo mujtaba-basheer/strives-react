@@ -39,6 +39,7 @@ const MyOrders = () => {
   useEffect(() => {
     /* if (!userInfo) history.push("/login"); */
 
+    window.scrollTo({ top: 0, behavior: "smooth" });
     document.title = "Orders";
 
     /* if (favItems.length === 0) {

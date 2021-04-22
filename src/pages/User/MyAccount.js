@@ -50,6 +50,7 @@ const MyAccount = () => {
     if (!userInfo) history.push("/login");
 
     if (user) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       let spIndex = user.name.indexOf(" ");
       spIndex = spIndex === -1 ? false : spIndex;
       setFormData({
@@ -68,6 +69,7 @@ const MyAccount = () => {
     } else dispatch(getUserDetails());
 
     if (updateSuccess) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       document.getElementsByClassName("header__btn--edit")[0].style.display =
         "block";
       document.getElementsByClassName("submit-button")[0].style.display =
