@@ -16,7 +16,7 @@ function valuetext(value) {
 
 export default function RangeSlider({ setProductslidervalue }) {
   const classes = useStyles();
-  const [value, setValue] = React.useState([100, 10000]);
+  const [value, setValue] = React.useState([100, 200000]);
 
   setProductslidervalue(value);
 

@@ -434,7 +434,7 @@ const Index = () => {
                       ? "main-nav--listitemanchor"
                       : ""
                   }
-                  to="/"
+                  to="/products"
                 >
                   New Arrivals
                 </Link>

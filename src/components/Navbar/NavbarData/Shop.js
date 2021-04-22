@@ -22,10 +22,20 @@ const Shop = ({ height }) => {
           <div className="hovermenu__listitems">
             <h3>{navdata.name}</h3>
             <ul>
-              {navdata.values.map((subnavdata) => (
-                <li>
-                  <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>{subnavdata}</Link>
-                </li>
+              {navdata.values.map((subnavdata, index) => (
+                index === 0 ? (
+                  <li>
+                    <Link to={`/category/60212faaff106c000451ba03`}>
+                      {subnavdata}
+                    </Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to={`/category/${nav_data[0]._id}/${subnavdata}`}>
+                      {subnavdata}
+                    </Link>
+                  </li>
+                )
               ))}
             </ul>
           </div>

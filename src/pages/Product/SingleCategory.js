@@ -196,7 +196,6 @@ function SingleCategoryArea() {
     productslidervalue,
     sortValue,
     filter,
-    categoryid,
     subcategoryid,
     currentPage,
   ]);

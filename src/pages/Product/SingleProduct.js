@@ -124,7 +124,6 @@ function SingleProductArea() {
     } */
     dispatch(getSingleProduct(id));
     window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log(product);
     /* if (product.name) {
       setimageHover({
         ...imageHover,
