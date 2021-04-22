@@ -112,6 +112,7 @@ export const placeOrder = (order, isExpress = false) => async (
 
     dispatch({ type: ORDER_CREATE_SUCCESS });
     if (isExpress) dispatch({ type: CART_SET, payload: [] });
+    window.location.href(window.location.host + "/thankyou");
   } catch (error) {
     console.error(error);
     dispatch({
