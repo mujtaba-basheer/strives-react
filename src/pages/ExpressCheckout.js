@@ -198,7 +198,7 @@ function ExpressCheckoutArea() {
       totalMP: cartValue.subtotal,
       totalSP: cartValue.subtotal,
 
-      items: cartItems,
+      items: buyNow,
 
       address: {
         address1: data.address1,
