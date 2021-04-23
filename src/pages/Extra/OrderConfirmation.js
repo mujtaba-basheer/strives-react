@@ -47,34 +47,34 @@ function OrderConfirmationArea() {
 
   console.log(orderId);
 
-  useEffect(async () => {
+  const getOrder = async (order_id) => {
+    try {
+      const { data } = await apiCall.get(`order/${order_id}`, {});
+      setCartItems(data.data.items);
+      let totalSp = 0;
+      data.data.items.forEach((product) => {
+        totalSp = totalSp + product.sp * product.quantity;
+      });
+
+      setCartValue({
+        total: totalSp,
+        subtotal: totalSp,
+      });
+    } catch (error) {
+      if (error.response || error.response.data.message) {
+        console.log(error.response.data.message, error.message);
+        setError(error.response.data.message);
+        setTimeout(() => setError(""), 5000);
+      }
+    }
+  };
+
+  useEffect(() => {
     document.title = "Order Details";
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    if (orderId !== null) {
-      try {
-        const { data } = await apiCall.get(`order/${orderId}`, {});
-        setCartItems(data.data.items);
-        let totalSp = 0;
-        data.data.items.forEach((product) => {
-          totalSp = totalSp + product.sp * product.quantity;
-        });
-
-        setCartValue({
-          total: totalSp,
-          subtotal: totalSp,
-        });
-
-        /* setCartValue({}) */
-      } catch (error) {
-        if (error.response || error.response.data.message) {
-          console.log(error.response.data.message, error.message);
-          setError(error.response.data.message);
-          setTimeout(() => setError(""), 5000);
-        }
-      }
-    }
-  }, []);
+    if (orderId !== null) getOrder(orderId);
+  });
 
   const getOrderDetails = async () => {
     if (orderid === "") {
