@@ -39,7 +39,7 @@ function OrderConfirmationArea() {
   const history = useHistory();
 
   useEffect(() => {
-    document.title = "order Details";
+    document.title = "Order Details";
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
@@ -69,7 +69,13 @@ function OrderConfirmationArea() {
       </div>
 
       {error !== "" && (
-        <Alert type="danger" popup background="true" timer="5000" text={error} />
+        <Alert
+          type="danger"
+          popup
+          background="true"
+          timer="5000"
+          text={error}
+        />
       )}
 
       {/* {loading && <Loader height={100} />} */}
