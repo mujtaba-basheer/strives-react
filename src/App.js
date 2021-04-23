@@ -33,6 +33,7 @@ import Occassions from "./pages/Product/Occassions";
 import PrivacyPolicy from "./pages/Extra/PrivacyPolicy";
 import TnC from "./pages/Extra/TnC";
 import ThankYou from "./pages/Extra/ThankYou";
+import OrderConfirmation from "./pages/Extra/OrderConfirmation";
 
 const App = () => {
   return (
@@ -87,6 +88,8 @@ const App = () => {
         <Route exact path="/terms-and-conditions" component={TnC} />
 
         <Route exact path="/thankyou" component={ThankYou} />
+
+        <Route exact path="/checkorder" component={OrderConfirmation} />
       </Switch>
     </Router>
   );
