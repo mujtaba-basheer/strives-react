@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getCart, removeItemFromCart } from "../../redux/actions/cartActions";
@@ -38,13 +38,45 @@ function OrderConfirmationArea() {
 
   const history = useHistory();
 
-  useEffect(() => {
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  let query = useQuery();
+  const orderId = query.get("orderid");
+
+  console.log(orderId);
+
+  useEffect(async () => {
     document.title = "Order Details";
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    if (orderId !== null) {
+      try {
+        const { data } = await apiCall.get(`order/${orderId}`, {});
+        setCartItems(data.data.items);
+        let totalSp = 0;
+        data.data.items.forEach((product) => {
+          totalSp = totalSp + product.sp * product.quantity;
+        });
+
+        setCartValue({
+          total: totalSp,
+          subtotal: totalSp,
+        });
+
+        /* setCartValue({}) */
+      } catch (error) {
+        if (error.response || error.response.data.message) {
+          console.log(error.response.data.message, error.message);
+          setError(error.response.data.message);
+          setTimeout(() => setError(""), 5000);
+        }
+      }
+    }
   }, []);
 
   const getOrderDetails = async () => {
-    console.log("clicked");
     if (orderid === "") {
       setError("Order ID cannot be empty");
       setTimeout(() => setError(""), 5000);
@@ -52,6 +84,17 @@ function OrderConfirmationArea() {
       try {
         const { data } = await apiCall.get(`order/${orderid}`, {});
         setCartItems(data.data.items);
+        let totalSp = 0;
+        data.data.items.forEach((product) => {
+          totalSp = totalSp + product.sp * product.quantity;
+        });
+
+        setCartValue({
+          total: totalSp,
+          subtotal: totalSp,
+        });
+
+        /* setCartValue({}) */
       } catch (error) {
         if (error.response || error.response.data.message) {
           console.log(error.response.data.message, error.message);
@@ -94,7 +137,7 @@ function OrderConfirmationArea() {
           <div className="orderidbox">
             <p className="heading">Enter Order ID</p>
             <input
-              type="number"
+              type="text"
               onChange={(e) => {
                 setOrderid(e.target.value);
               }}

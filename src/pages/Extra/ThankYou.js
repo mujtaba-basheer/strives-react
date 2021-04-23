@@ -53,7 +53,7 @@ const ThankYou = () => {
           </p>
           <p className="thankyou__noti--para">
             You can also track your orders under{" "}
-            <Link to={`/checkorder`}>Check Order</Link>.
+            <Link to={`/checkorder?orderid=${order["_id"]}`}>Check Order</Link>.
           </p>
         </div>
         <div className="thankyou__cta">
