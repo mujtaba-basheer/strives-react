@@ -104,7 +104,8 @@ const BestSeller = () => {
           >
             {bestSellers.map((product, index) => (
               <SwiperSlide>
-                <div className="product-item" key={product._id.$oid}>
+                {console.log(product)}
+                <div className="product-item" key={product._id}>
                   <p
                     className="heart"
                     onClick={() => {
@@ -112,10 +113,10 @@ const BestSeller = () => {
                         favItems &&
                         favItems.find(
                           (favProduct) =>
-                            favProduct._id.$oid === product._id.$oid
+                            favProduct._id === product._id
                         )
                       )
-                        removeFromWishlist(product["$oid"]);
+                        removeFromWishlist(product["_id"]);
                       else addToWishlist(product);
                     }}
                   >
@@ -128,7 +129,7 @@ const BestSeller = () => {
                         favItems &&
                         favItems.find(
                           (favProduct) =>
-                            favProduct._id.$oid === product._id.$oid
+                            favProduct._id === product._id
                         )
                           ? heartfillsvg
                           : heart
@@ -145,7 +146,7 @@ const BestSeller = () => {
                       changeMainImageHover(product.gallery.main, "leave", index)
                     }
                   >
-                    <Link to={`/product/${product._id.$oid}`}>
+                    <Link to={`/products/${product._id}`}>
                       <img
                         id={`showcase-img` + index}
                         style={{
@@ -199,7 +200,7 @@ const BestSeller = () => {
           >
             {bestSellers.map((product, index) => (
               <SwiperSlide>
-                <div className="product-item" key={product._id.$oid}>
+                <div className="product-item" key={product._id}>
                   <p
                     className="heart"
                     onClick={() => {
@@ -207,10 +208,10 @@ const BestSeller = () => {
                         favItems &&
                         favItems.find(
                           (favProduct) =>
-                            favProduct._id.$oid === product._id.$oid
+                            favProduct._id === product._id
                         )
                       )
-                        removeFromWishlist(product["$oid"]);
+                        removeFromWishlist(product["_id"]);
                       else addToWishlist(product);
                     }}
                   >
@@ -223,7 +224,7 @@ const BestSeller = () => {
                         favItems &&
                         favItems.find(
                           (favProduct) =>
-                            favProduct._id.$oid === product._id.$oid
+                            favProduct._id === product._id
                         )
                           ? heartfillsvg
                           : heart
@@ -240,7 +241,7 @@ const BestSeller = () => {
                       changeMainImageHover(product.gallery.main, "leave", index)
                     }
                   >
-                    <Link to={`/product/${product._id.$oid}`}>
+                    <Link to={`/products/${product._id}`}>
                       <img
                         id={`showcase-img` + index}
                         style={{
@@ -265,7 +266,7 @@ const BestSeller = () => {
                   </div>
                   <div className="product-item__details">
                     <Link
-                      to={`/products/${product._id.$oid}`}
+                      to={`/products/${product._id}`}
                       className="product-item__details--heading"
                     >
                       {product.name}

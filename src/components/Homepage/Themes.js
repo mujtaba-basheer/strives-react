@@ -15,7 +15,7 @@ import {
   FAV_REMOVE_RESET,
 } from "../../redux/constants/cartConstants";
 
-import { themesAndOccasions, bestSellers } from "./data";
+import { themesAndOccasions } from "./data";
 
 import heartfillsvg from "./images/heartfill.svg";
 import heart from "./images/heart.png";
@@ -103,19 +103,19 @@ const Themes = () => {
             navigation
             pagination={{ clickable: true }}
           >
-            {bestSellers.map((product, index) => (
+            {themesAndOccasions.map((product, index) => (
               <SwiperSlide>
-                <div className="product-item" key={product._id.$oid}>
+                <div className="product-item" key={product._id}>
                   <p
                     className="heart"
                     onClick={() => {
                       if (
                         favItems &&
                         favItems.find(
-                          (favProduct) => favProduct._id === product._id.$oid
+                          (favProduct) => favProduct._id === product._id
                         )
                       )
-                        removeFromWishlist(product._id.$oid);
+                        removeFromWishlist(product._id);
                       else addToWishlist(product);
                     }}
                   >
@@ -127,7 +127,7 @@ const Themes = () => {
                       src={
                         favItems &&
                         favItems.find(
-                          (favProduct) => favProduct._id === product._id.$oid
+                          (favProduct) => favProduct._id === product._id
                         )
                           ? heartfillsvg
                           : heart
@@ -144,7 +144,7 @@ const Themes = () => {
                       changeMainImageHover(product.gallery.main, "leave", index)
                     }
                   >
-                    <Link to={`/products/${product._id.$oid}`}>
+                    <Link to={`/products/${product._id}`}>
                       <img
                         id={`showcase-img` + index}
                         style={{
@@ -169,7 +169,7 @@ const Themes = () => {
                   </div>
                   <div className="product-item__details">
                     <Link
-                      to={`/products/${product._id.$oid}`}
+                      to={`/products/${product._id}`}
                       className="product-item__details--heading"
                     >
                       {product.name}
@@ -196,19 +196,19 @@ const Themes = () => {
             navigation
             pagination={{ clickable: true }}
           >
-            {bestSellers.map((product, index) => (
+            {themesAndOccasions.map((product, index) => (
               <SwiperSlide>
-                <div className="product-item" key={product._id.$oid}>
+                <div className="product-item" key={product._id}>
                   <p
                     className="heart"
                     onClick={() => {
                       if (
                         favItems &&
                         favItems.find(
-                          (favProduct) => favProduct._id === product._id.$oid
+                          (favProduct) => favProduct._id === product._id
                         )
                       )
-                        removeFromWishlist(product._id.$oid);
+                        removeFromWishlist(product._id);
                       else addToWishlist(product);
                     }}
                   >
@@ -220,7 +220,7 @@ const Themes = () => {
                       src={
                         favItems &&
                         favItems.find(
-                          (favProduct) => favProduct._id === product._id.$oid
+                          (favProduct) => favProduct._id === product._id
                         )
                           ? heartfillsvg
                           : heart
@@ -237,7 +237,7 @@ const Themes = () => {
                       changeMainImageHover(product.gallery.main, "leave", index)
                     }
                   >
-                    <Link to={`/products/${product._id.$oid}`}>
+                    <Link to={`/products/${product._id}`}>
                       <img
                         id={`showcase-img` + index}
                         style={{
@@ -262,7 +262,7 @@ const Themes = () => {
                   </div>
                   <div className="product-item__details">
                     <Link
-                      to={`/products/${product._id.$oid}`}
+                      to={`/products/${product._id}`}
                       className="product-item__details--heading"
                     >
                       {product.name}
