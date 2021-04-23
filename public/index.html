@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/x-icon" href="https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Best online shop for ethnic wear" />
@@ -16,10 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <meta
-      property="og:url"
-      content="https://main.d6agqspa0h3hf.amplifyapp.com/"
-    />
+    <meta property="og:url" content="https://www.thestrives.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="The Strives" />
     <meta
@@ -28,25 +29,48 @@
     />
     <meta
       property="og:image"
-      content="https://www.your-domain.com/path/image.jpg"
+      content="https://strives.s3.ap-south-1.amazonaws.com/assets/99605b7f-5b86-4c95-a3bd-f74704579ebb.png"
     />
 
-    <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script>
-      (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src =
-          "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, "script", "facebook-jssdk");
-    </script>
-
     <title>The Strives</title>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1035303290232660");
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        src="https://www.facebook.com/tr?id=1035303290232660&ev=PageView
+&noscript=1"
+      />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
