@@ -23,6 +23,7 @@ import {
   ORDER_COUPON_SUCCESS,
   ORDER_COUPON_FAIL,
   ORDER_COUPON_RESET,
+  ORDER_CURRENT_SET,
 } from "../constants/orderConstants";
 
 export const checkCoupon = (code, amount) => async (dispatch, getState) => {
@@ -88,7 +89,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 };
 
-export const placeOrder = (order, isExpress = false) => async (
+export const placeOrder = (order, isExpress = false, navigate) => async (
   dispatch,
   getState
 ) => {
@@ -108,11 +109,15 @@ export const placeOrder = (order, isExpress = false) => async (
     if (userInfo) config.headers["Authorization"] = `Bearer ${userInfo.token}`;
     if (order.paymentMethod === "rzp") order.paymentDetails = orderPay.order;
 
-    await apiCall.post("order", order, config);
+    const {
+      data: { order_id },
+    } = await apiCall.post("order", order, config);
 
     dispatch({ type: ORDER_CREATE_SUCCESS });
     if (isExpress) dispatch({ type: CART_SET, payload: [] });
-    window.location.href = "/thankyou";
+
+    dispatch({ type: ORDER_CURRENT_SET, payload: { ...order, _id: order_id } });
+    if (navigate) navigate();
   } catch (error) {
     console.error(error);
     dispatch({
@@ -125,10 +130,12 @@ export const placeOrder = (order, isExpress = false) => async (
   }
 };
 
-export const payOrder = (amount, order = {}, isExpress = false) => async (
-  dispatch,
-  getState
-) => {
+export const payOrder = (
+  amount,
+  order = {},
+  isExpress = false,
+  navigate
+) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_PAY_REQUEST });
 
@@ -167,7 +174,7 @@ export const payOrder = (amount, order = {}, isExpress = false) => async (
           type: ORDER_PAY_SUCCESS,
           payload: { ...response, receipt },
         });
-        dispatch(placeOrder(order, isExpress));
+        dispatch(placeOrder(order, isExpress, navigate));
       }
     };
 

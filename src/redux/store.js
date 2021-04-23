@@ -49,6 +49,8 @@ import {
   orderDeliverReducer,
   orderListReducer,
   orderListMyReducer,
+  orderSingleReducer,
+  orderCurrentReducer,
 } from "./reducers/orderReducers";
 
 const reducer = combineReducers({
@@ -93,6 +95,8 @@ const reducer = combineReducers({
   orderDeliver: orderDeliverReducer,
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
+  orderSingle: orderSingleReducer,
+  orderCurrent: orderCurrentReducer,
 });
 
 const favItemsFromStorage = localStorage.getItem("favItems")
@@ -113,6 +117,9 @@ const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
 const paymentMethodFromStorage = localStorage.getItem("paymentMethod")
   ? JSON.parse(localStorage.getItem("paymentMethod"))
   : {};
+const currentOrderFromStorage = localStorage.getItem("currentOrder")
+  ? JSON.parse(localStorage.getItem("currentOrder"))
+  : null;
 
 const initialState = {
   cart: {
@@ -126,6 +133,7 @@ const initialState = {
   fav: {
     favItems: favItemsFromStorage,
   },
+  orderCurrent: { order: currentOrderFromStorage },
 };
 
 const middleware = [thunk];

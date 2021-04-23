@@ -25,6 +25,13 @@ import {
   ORDER_COUPON_SUCCESS,
   ORDER_COUPON_FAIL,
   ORDER_COUPON_RESET,
+  ORDER_SINGLE_REQUEST,
+  ORDER_SINGLE_SUCCESS,
+  ORDER_SINGLE_FAIL,
+  ORDER_SINGLE_RESET,
+  ORDER_SINGLE_SET,
+  ORDER_CURRENT_RESET,
+  ORDER_CURRENT_SET,
 } from "../constants/orderConstants";
 
 export const orderCouponReducer = (state = { loading: true }, action) => {
@@ -141,6 +148,37 @@ export const orderListReducer = (state = { orders: [] }, action) => {
       return { loading: false, error: action.payload };
     case ORDER_LIST_RESET:
       return { orders: [] };
+    default:
+      return state;
+  }
+};
+
+export const orderSingleReducer = (state = { order: {} }, action) => {
+  switch (action.type) {
+    case ORDER_SINGLE_REQUEST:
+      return { loading: true };
+    case ORDER_SINGLE_SUCCESS:
+      return {
+        loading: false,
+        order: action.payload,
+      };
+    case ORDER_SINGLE_FAIL:
+      return { loading: false, error: action.payload };
+    case ORDER_SINGLE_RESET:
+      return { order: null };
+    case ORDER_SINGLE_SET:
+      return { order: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const orderCurrentReducer = (state = { order: {} }, action) => {
+  switch (action.type) {
+    case ORDER_CURRENT_RESET:
+      return { order: null };
+    case ORDER_CURRENT_SET:
+      return { order: action.payload };
     default:
       return state;
   }

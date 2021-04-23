@@ -1,21 +1,28 @@
 .thankyou {
+  font-size: 1rem;
   max-width: 1200px;
   width: 90%;
-  margin: 4rem auto;
+  margin: 4em auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
 
-  .heading,
-  .subheading {
+  &__head {
+    &--title {
+      margin-bottom: 1em;
+    }
+  }
+
+  &__tick {
     text-align: center;
   }
 
-  .heading {
-    font-size: 38px;
-    margin-bottom: 30px;
-  }
+  &__noti {
+    line-height: 1.75;
 
-  .subheading {
-    font-size: 30px;
-    margin-bottom: 30px;
+    a {
+      text-decoration: underline;
+    }
   }
 
   .cta {
@@ -23,24 +30,20 @@
     max-width: 300px;
     margin: 0 auto;
     display: block;
-    font-size: 16px;
+    font-size: 1em;
     line-height: 21px;
-    padding: 16px 32px;
-    margin-top: 85px;
+    padding: 1em 2em;
     text-transform: uppercase;
     background: var(--clr-primary);
     border-radius: 2px;
     color: var(--clr-secondary);
     font-family: var(--font-secondary);
   }
+}
 
-  @media screen and (max-width: 768px) {
-    .heading {
-      font-size: 22px;
-    }
-
-    .subheading {
-      font-size: 18px;
-    }
+@media only screen and (min-width: 742px) {
+  .thankyou {
+    text-align: center;
+    font-size: 1.2rem;
   }
 }

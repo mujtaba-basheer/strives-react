@@ -209,9 +209,13 @@ function CheckoutArea() {
     console.log(orderObj);
 
     if (paymentType === "cod") {
-      dispatch(placeOrder(orderObj));
+      dispatch(placeOrder(orderObj, false, () => history.push("/thankyou")));
     } else if (paymentType === "rzp") {
-      dispatch(payOrder(cartValue.subtotal, orderObj));
+      dispatch(
+        payOrder(cartValue.subtotal, orderObj, false, () =>
+          history.push("/thankyou")
+        )
+      );
     }
   };
 

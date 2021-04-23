@@ -215,18 +215,14 @@ function ExpressCheckoutArea() {
     console.log(orderObj);
 
     if (paymentType === "cod") {
-      dispatch(placeOrder(orderObj, true));
+      dispatch(placeOrder(orderObj, true, () => history.push("/thankyou")));
     } else if (paymentType === "rzp") {
-      dispatch(payOrder(cartValue.total, orderObj, true));
+      dispatch(
+        payOrder(cartValue.total, orderObj, true, () =>
+          history.push("/thankyou")
+        )
+      );
     }
-  };
-
-  const testRazorpay = () => {
-    dispatch(payOrder(100));
-    setImmediate(() => {
-      if (orderResult) alert("payment successfull");
-      else if (orderError) alert("payment failed");
-    });
   };
 
   function showApplyCoupon() {
