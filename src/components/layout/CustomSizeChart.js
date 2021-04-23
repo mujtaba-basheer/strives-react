@@ -101,11 +101,11 @@ const CustomSizeChart = ({
             <input type="submit" className="submit" value="Submit" />
           </form>
 
-          <p className="disclaimer">
+          {/* <p className="disclaimer">
             Disclaimer: Lorem Ipsum is simply dummy text of the printing and
             typesetting industry. Lorem Ipsum has been the industry's standard
             dummy text ever since the 1500s
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
