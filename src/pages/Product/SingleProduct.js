@@ -38,15 +38,23 @@ import heartfillsvg from "./images/heart-fill-brown.svg";
 import heart from "./images/heart-outline.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  zoom,
+} from "swiper";
 
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
+import "swiper/components/zoom/zoom.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import Alert from "../../components/Alert/Alert";
 import SizeChart from "../../components/layout/SizeChart";
 import CustomSizeChart from "../../components/layout/CustomSizeChart";
+import ImageModal from "../../components/layout/ImageModal";
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -117,6 +125,9 @@ function SingleProductArea() {
     backgroundImage: `url(${currentImage})`,
     backgroundPosition: "0% 0%",
   });
+
+  const [showImageModal, setShowImageModal] = useState("false");
+  const [modalImageSrc, setModalImageSrc] = useState("");
 
   useEffect(() => {
     /* if (!product) {
@@ -428,6 +439,13 @@ function SingleProductArea() {
         />
       )}
 
+      {showImageModal === "true" && (
+        <ImageModal
+          modalImageSrc={modalImageSrc}
+          setShowImageModal={setShowImageModal}
+        />
+      )}
+
       {showSizeChart === "true" && (
         <SizeChart setShowSizeChart={setShowSizeChart} />
       )}
@@ -495,7 +513,13 @@ function SingleProductArea() {
                   pagination={{ clickable: true }}
                 >
                   {productImages.map((image) => (
-                    <SwiperSlide>
+                    <SwiperSlide
+                      zoom={true}
+                      onClick={() => {
+                        setModalImageSrc(image);
+                        setShowImageModal("true");
+                      }}
+                    >
                       <img
                         style={{
                           width: "100%",

@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { CarouselProvider, Slider, Slide, DotGroup } from "pure-react-carousel";
+import {
+  CarouselProvider,
+  ImageWithZoom,
+  Slider,
+  Slide,
+  DotGroup,
+} from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Alert from "../Alert/Alert";
 import SizeChart from "./SizeChart";
@@ -200,7 +206,13 @@ const QuickView = ({ product, setShowModal }) => {
 
       {product && (
         <div className="quickviewmodal__content flex">
-          <span onClick={hideQuickView} className="quickviewmodal__close">
+          <span
+            onClick={hideQuickView}
+            className="quickviewmodal__close"
+            style={{
+              position: "fixed",
+            }}
+          >
             &times;
           </span>
 
@@ -282,9 +294,9 @@ const QuickView = ({ product, setShowModal }) => {
               totalSlides={images.length}
             >
               <Slider>
-                {images.map((image) => (
-                  <Slide index={0}>
-                    <img
+                {images.map((image, index) => (
+                  <Slide index={index}>
+                    <ImageWithZoom
                       src={image}
                       style={{
                         width: "100%",

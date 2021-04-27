@@ -3,6 +3,17 @@
 @import "base/utilities";
 @import "base/layout";
 
+/* Components */
+@import "components/quickview";
+@import "components/imagemodal";
+@import "components/sizechart";
+@import "components/customsizechart";
+@import "components/usersidebar";
+@import "components/navbar";
+@import "components/_allproduct-bottombar";
+@import "layout/footer";
+@import "./components/util/index";
+
 /* Global Pages */
 @import "pages/homepage";
 @import "pages/cart";
@@ -25,15 +36,7 @@
 /* Extra Pages Styles */
 @import "./pages/Extras/index";
 
-/* Components */
-@import "components/quickview";
-@import "components/sizechart";
-@import "components/customsizechart";
-@import "components/usersidebar";
-@import "components/navbar";
-@import "components/_allproduct-bottombar";
-@import "layout/footer";
-@import "./components/util/index";
+
 
 /* To be replaced later in its appropirate place */
 @import "media";
