@@ -36,6 +36,7 @@ import twitter from "./images/twitter.png";
 
 import heartfillsvg from "./images/heart-fill-brown.svg";
 import heart from "./images/heart-outline.svg";
+import zoomin from "./images/zoomin.png";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
@@ -520,14 +521,19 @@ function SingleProductArea() {
                         setShowImageModal("true");
                       }}
                     >
-                      <img
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                        }}
-                        src={image}
-                        alt={product.name}
-                      />
+                      <div className="image-div">
+                        <button className="zoom-btn">
+                          <img src={zoomin} alt="zoomin" />
+                        </button>
+                        <img
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                          }}
+                          src={image}
+                          alt={product.name}
+                        />
+                      </div>
                     </SwiperSlide>
                   ))}
                 </Swiper>
