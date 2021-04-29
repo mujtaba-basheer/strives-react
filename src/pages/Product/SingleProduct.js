@@ -514,15 +514,15 @@ function SingleProductArea() {
                   pagination={{ clickable: true }}
                 >
                   {productImages.map((image) => (
-                    <SwiperSlide
-                      zoom={true}
-                      onClick={() => {
-                        setModalImageSrc(image);
-                        setShowImageModal("true");
-                      }}
-                    >
+                    <SwiperSlide zoom={true}>
                       <div className="image-div">
-                        <button className="zoom-btn">
+                        <button
+                          className="zoom-btn"
+                          onClick={() => {
+                            setModalImageSrc(image);
+                            setShowImageModal("true");
+                          }}
+                        >
                           <img src={zoomin} alt="zoomin" />
                         </button>
                         <img

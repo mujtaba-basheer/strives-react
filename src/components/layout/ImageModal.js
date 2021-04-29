@@ -73,7 +73,17 @@ const ImageModal = ({ modalImageSrc, setShowImageModal }) => {
           width: "auto",
         }}
       >
-        <span onClick={hideQuickView} className="quickviewmodal__close">
+        <span onClick={hideQuickView} className="quickviewmodal__close" style={{
+          top: "15px",
+          right: "20px",
+          background: "#fff",
+          borderRadius: "40px",
+          width: "50px",
+          height: "50px",
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "center",
+        }}>
           &times;
         </span>
         <img src={modalImageSrc} alt="modal" />
