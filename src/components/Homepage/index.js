@@ -10,6 +10,7 @@ import BestSeller from "./BestSeller";
 import Newsletter from "./Newsletter";
 import Occassion from "./Occassion";
 import Sets from "./Sets";
+import Festivals from "./Festivals";
 // import Customize from "./Customize";
 
 const Index = () => {
@@ -24,6 +25,7 @@ const Index = () => {
       <LatestCollections />
       <Feature />
       <Occassion />
+      <Festivals />
       <Sets />
       {/* <Customize /> */}
       <BestSeller />
