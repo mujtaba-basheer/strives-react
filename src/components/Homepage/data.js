@@ -182,25 +182,25 @@ export const festivals = [
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/17df45b5-4f22-44c3-9596-90b15ada0448.jpg",
     text: "diwali",
-    url: "/occassions/wedding",
+    url: "/festivals/diwali",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/a736ca43-23ce-467a-955d-12226bb12585.jpg",
     text: "Eid Ul Fitr",
-    url: "/occassions/mehendi",
+    url: "/festivals/eid",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/c5dd1b09-0bf0-46b7-84c0-7303bd46f0a7.jpg",
     text: "Navratri",
-    url: "/occassions/sangeet",
+    url: "/festivals/navratri",
   },
   {
     img:
       "https://strives.s3.ap-south-1.amazonaws.com/assets/002e05f9-c127-4ce8-9716-0810ac499e8c.jpg",
     text: "Christmas",
-    url: "/occassions/cocktail",
+    url: "/festivals/christmas",
   },
 ];
 
