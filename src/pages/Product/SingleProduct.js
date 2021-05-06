@@ -36,17 +36,26 @@ import twitter from "./images/twitter.png";
 
 import heartfillsvg from "./images/heart-fill-brown.svg";
 import heart from "./images/heart-outline.svg";
+import zoomin from "./images/zoomin.png";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  zoom,
+} from "swiper";
 
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
+import "swiper/components/zoom/zoom.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import Alert from "../../components/Alert/Alert";
 import SizeChart from "../../components/layout/SizeChart";
 import CustomSizeChart from "../../components/layout/CustomSizeChart";
+import ImageModal from "../../components/layout/ImageModal";
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -117,6 +126,9 @@ function SingleProductArea() {
     backgroundImage: `url(${currentImage})`,
     backgroundPosition: "0% 0%",
   });
+
+  const [showImageModal, setShowImageModal] = useState("false");
+  const [modalImageSrc, setModalImageSrc] = useState("");
 
   useEffect(() => {
     /* if (!product) {
@@ -428,6 +440,13 @@ function SingleProductArea() {
         />
       )}
 
+      {showImageModal === "true" && (
+        <ImageModal
+          modalImageSrc={modalImageSrc}
+          setShowImageModal={setShowImageModal}
+        />
+      )}
+
       {showSizeChart === "true" && (
         <SizeChart setShowSizeChart={setShowSizeChart} />
       )}
@@ -495,15 +514,26 @@ function SingleProductArea() {
                   pagination={{ clickable: true }}
                 >
                   {productImages.map((image) => (
-                    <SwiperSlide>
-                      <img
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                        }}
-                        src={image}
-                        alt={product.name}
-                      />
+                    <SwiperSlide zoom={true}>
+                      <div className="image-div">
+                        <button
+                          className="zoom-btn"
+                          onClick={() => {
+                            setModalImageSrc(image);
+                            setShowImageModal("true");
+                          }}
+                        >
+                          <img src={zoomin} alt="zoomin" />
+                        </button>
+                        <img
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                          }}
+                          src={image}
+                          alt={product.name}
+                        />
+                      </div>
                     </SwiperSlide>
                   ))}
                 </Swiper>

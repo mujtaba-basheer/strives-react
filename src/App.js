@@ -34,6 +34,7 @@ import PrivacyPolicy from "./pages/Extra/PrivacyPolicy";
 import TnC from "./pages/Extra/TnC";
 import ThankYou from "./pages/Extra/ThankYou";
 import OrderConfirmation from "./pages/Extra/OrderConfirmation";
+import Festivals from "./pages/Product/Festivals";
 
 const App = () => {
   return (
@@ -66,6 +67,8 @@ const App = () => {
         <Route exact path="/products" component={AllProduct} />
 
         <Route exact path="/occassions/:categoryid" component={Occassions} />
+
+        <Route exact path="/festivals/:categoryid" component={Festivals} />
 
         <Route exact path="/products/:id" component={SingleProduct} />
 
