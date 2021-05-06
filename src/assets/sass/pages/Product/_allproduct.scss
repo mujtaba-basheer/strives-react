@@ -456,7 +456,8 @@
 
       .product-container {
         grid-gap: 27px 10px;
-        grid-template-columns: repeat(auto-fit, minmax(294px, 1fr));
+        // grid-template-columns: repeat(auto-fit, minmax(294px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   }
