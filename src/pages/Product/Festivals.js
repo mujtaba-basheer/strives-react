@@ -194,7 +194,7 @@ function FestivalsArea() {
                 material: filter["material"],
                 color: filter["color"],
                 size: filter["size"],
-                occassion: categoryid,
+                festival: categoryid,
                 page: currentPage,
                 /* "sub-category": "Cotton Salwar Kameez", */
             })
