@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getProducts } from "../../redux/actions/productActions";
@@ -20,14 +20,11 @@ import Alert from "../../components/Alert/Alert";
 
 import ProductSlider from "../../components/ProductSlider";
 import QuickView from "../../components/layout/QuickView";
-import SizeChart from "../../components/layout/SizeChart";
 
-import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.png";
-import productimage from "./images/image.png";
+// import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.png";
 import previous from "./images/previous.png";
 import next from "./images/next.png";
 import heart from "./images/heart.png";
-/* import heartfill from "./images/heartfill.png"; */
 import heartfillsvg from "./images/heart-fill.svg";
 
 import Loader from "../../components/Loader/Loader";
@@ -37,17 +34,17 @@ import { materials, sizes, colours } from "./data";
 
 import { nav_data } from "../../components/Navbar/NavbarData/data";
 
-const Category = () => {
+const Category = ({ match }) => {
   return (
     <>
       <Navbar />
-      <CategoryArea />
+      <CategoryArea categoryId={match.params.categoryid} />
       <Footer />
     </>
   );
 };
 
-function CategoryArea() {
+function CategoryArea({ categoryId }) {
   /* const [sortbyValue, setSortbyValue] = useState("latest"); */
   const [sortValue, setSortValue] = useState(["date", "-1"]);
 
@@ -69,8 +66,6 @@ function CategoryArea() {
     return new URLSearchParams(useLocation().search);
   }
 
-  let { categoryid } = useParams();
-
   let query = useQuery();
   const queryString = query.get("search");
 
@@ -84,6 +79,9 @@ function CategoryArea() {
   );
   const { error: favRemoveError, success: favRemoveSuccess } = useSelector(
     (state) => state.favRemove
+  );
+  const { products: productsNum, pages: pagesNum } = useSelector(
+    (state) => state.productPages
   );
 
   function clickfilter(type, data) {
@@ -122,7 +120,7 @@ function CategoryArea() {
       var ele = document.getElementsByName(element);
 
       for (var i = 0; i < ele.length; i++) {
-        if (ele[i].type == "checkbox") ele[i].checked = false;
+        if (ele[i].type === "checkbox") ele[i].checked = false;
       }
     });
   }
@@ -183,8 +181,10 @@ function CategoryArea() {
     // using the id showing category name
 
     nav_data.forEach((navdata) => {
-      if (navdata._id === categoryid) setCategoryName(navdata.name);
+      if (navdata._id === categoryId) setCategoryName(navdata.name);
     });
+
+    // preloadImages();
 
     dispatch(
       getProducts({
@@ -195,7 +195,7 @@ function CategoryArea() {
         material: filter["material"],
         color: filter["color"],
         size: filter["size"],
-        category: categoryid,
+        category: categoryId,
         page: currentPage,
         /* "sub-category": "Cotton Salwar Kameez", */
       })
@@ -207,7 +207,8 @@ function CategoryArea() {
     sortValue,
     filter,
     currentPage,
-    categoryid,
+    categoryId,
+    dispatch,
   ]);
 
   return (
@@ -311,46 +312,7 @@ function CategoryArea() {
                   </li>
                 ))}
               </ul>
-              {/* <a href="#" className="see-more">
-                See More
-              </a> */}
             </div>
-
-            {/* <div className="designer">
-              <p className="designer__heading">Designer</p>
-              <ul className="designer__list">
-                <li className="designer__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-                <li className="designer__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-                <li className="designer__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-              </ul>
-              <a href="#" className="see-more">
-                See More
-              </a>
-            </div> */}
 
             <div className="colour">
               <p className="colour__heading">Colour</p>
@@ -388,7 +350,9 @@ function CategoryArea() {
             </p>
             <div className="header__right">
               <p className="header__right--display-results">
-                Displaying 6 out of 20 results
+                {products && products.length > 0 && pagesNum
+                  ? `Displaying ${products.length} out of ${productsNum} results`
+                  : " "}
               </p>
               <div className="header__right--dropdown">
                 Sort By:
@@ -432,7 +396,7 @@ function CategoryArea() {
           <div className="product-container">
             {products &&
               products.map((product, index) => (
-                <div className="product-item">
+                <div className="product-item" key={product["_id"]}>
                   <p
                     className="heart"
                     onClick={() => {
@@ -478,6 +442,8 @@ function CategoryArea() {
                           height: "100%",
                           width: "100%",
                         }}
+                        loading="lazy"
+                        onLoad={() => console.log("loaded")}
                         src={product.gallery.main[0].src}
                         alt={product.name}
                       />
@@ -539,10 +505,15 @@ function CategoryArea() {
                 previous
               </button>
               <button
-                className="navigation__button next"
+                className={
+                  currentPage === pagesNum
+                    ? "navigation__button next disabled"
+                    : "navigation__button next"
+                }
                 onClick={() => {
                   changeNavigation("next");
                 }}
+                disabled={currentPage === pagesNum}
               >
                 next{" "}
                 <img
@@ -560,58 +531,6 @@ function CategoryArea() {
         </div>
       </div>
       <div className="allproducts__divider"></div>
-      <div
-        className="allproducts__popularproducts"
-        style={{
-          display: "none",
-        }}
-      >
-        <p className="heading">Propular Products</p>
-        <div className="product-container">
-          <div className="product-item">
-            <div className="product-item__image">
-              <img src={productimage} alt="image" />
-              <div className="quick-view flex">
-                <p className="quick-view__text">Quick View</p>
-              </div>
-            </div>
-            <div className="product-item__details">
-              <p className="product-item__details--heading">Colar T-shirt</p>
-              <p className="product-item__details--price">$190</p>
-            </div>
-          </div>
-          <div className="product-item">
-            <div className="product-item__image">
-              <img src={productimage} alt="image" />
-              <div className="quick-view flex">
-                <p className="quick-view__text">Quick View</p>
-              </div>
-            </div>
-            <div className="product-item__details">
-              <p className="product-item__details--heading">Colar T-shirt</p>
-              <p className="product-item__details--price">$190</p>
-            </div>
-          </div>
-          <div className="product-item">
-            <div className="product-item__image">
-              <img src={productimage} alt="image" />
-            </div>
-            <div className="product-item__details">
-              <p className="product-item__details--heading">Colar T-shirt</p>
-              <p className="product-item__details--price">$190</p>
-            </div>
-          </div>
-          <div className="product-item">
-            <div className="product-item__image">
-              <img src={productimage} alt="image" />
-            </div>
-            <div className="product-item__details">
-              <p className="product-item__details--heading">Colar T-shirt</p>
-              <p className="product-item__details--price">$190</p>
-            </div>
-          </div>
-        </div>
-      </div>
       <BottomBar />
     </section>
   );

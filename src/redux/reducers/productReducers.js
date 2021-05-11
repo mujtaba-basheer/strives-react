@@ -81,11 +81,11 @@ export const productGetReducer = (state = { products: [] }, action) => {
 export const productPagesReducer = (state = {}, action) => {
   switch (action.type) {
     case PRODUCT_PAGES_REQUEST:
-      return { pages: null };
+      return { pages: null, products: null };
     case PRODUCT_PAGES_SUCCESS:
-      return { pages: action.payload };
+      return { pages: action.payload.pages, products: action.payload.products };
     case PRODUCT_PAGES_FAIL:
-      return { pages: 1 };
+      return { pages: 1, products: 0 };
     default:
       return state;
   }
