@@ -287,9 +287,6 @@ function CategoryArea({ categoryId }) {
                   </li>
                 ))}
               </ul>
-              {/* <a href="#" className="see-more">
-                See More
-              </a> */}
             </div>
 
             <div className="size">

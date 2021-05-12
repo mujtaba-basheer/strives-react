@@ -54,8 +54,9 @@ const Newsletter = () => {
               placeholder="Your awesome email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
             />
-            <button type="submit" className="newsletter__sub--btn">
+            <button type="submit" className="newsletter__sub--btn" disabled={loading}>
               <i className="newsletter__sub--btn--icon fas fa-angle-right"></i>
             </button>
           </div>

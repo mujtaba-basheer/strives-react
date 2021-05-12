@@ -21,12 +21,10 @@ import Alert from "../../components/Alert/Alert";
 import ProductSlider from "../../components/ProductSlider";
 import QuickView from "../../components/layout/QuickView";
 
-import breadcrumbsArrow from "../../assets/images/allproduct/breadcrumbs-arrow.png";
 import productimage from "./images/image.png";
 import previous from "./images/previous.png";
 import next from "./images/next.png";
 import heart from "./images/heart.png";
-/* import heartfill from "./images/heartfill.png"; */
 import heartfillsvg from "./images/heart-fill.svg";
 
 import Loader from "../../components/Loader/Loader";
@@ -277,9 +275,6 @@ function AllProductArea() {
                   </li>
                 ))}
               </ul>
-              {/* <a href="#" className="see-more">
-                See More
-              </a> */}
             </div>
 
             <div className="size">
@@ -302,46 +297,7 @@ function AllProductArea() {
                   </li>
                 ))}
               </ul>
-              {/* <a href="#" className="see-more">
-                See More
-              </a> */}
             </div>
-
-            {/* <div className="designer">
-              <p className="designer__heading">Designer</p>
-              <ul className="designer__list">
-                <li className="designer__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-                <li className="designer__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-                <li className="designer__list--item">
-                  <input
-                    type="checkbox"
-                    name="material2"
-                    id="material2"
-                    value="polyster"
-                  />
-                  <label for="material2">Polyster</label> <br />
-                </li>
-              </ul>
-              <a href="#" className="see-more">
-                See More
-              </a>
-            </div> */}
 
             <div className="colour">
               <p className="colour__heading">Colour</p>
@@ -378,9 +334,6 @@ function AllProductArea() {
               {queryString ? `Search Results for ${queryString}` : "Products"}
             </p>
             <div className="header__right">
-              {/* <p className="header__right--display-results">
-                {`Displaying  ${currentPage} out of ${maxPages} pages`}
-              </p> */}
               <div className="header__right--dropdown">
                 Sort By:
                 <select onChange={selectSortBy} id="sortby" name="sortby">
@@ -479,7 +432,6 @@ function AllProductArea() {
                         e.preventDefault();
                         setProductdetails(product);
                         setShowModal("true");
-                        /* showQuickView(); */
                       }}
                     >
                       <p className="quick-view__text">Quick View</p>

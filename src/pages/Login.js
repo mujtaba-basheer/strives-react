@@ -52,7 +52,14 @@ const Login = () => {
                   </p>
                 </div>
                 <div>
-                  {loginError && <Alert type="danger" fullWidth background="true" text={loginError} />}
+                  {loginError && (
+                    <Alert
+                      type="danger"
+                      fullWidth
+                      background="true"
+                      text={loginError}
+                    />
+                  )}
                 </div>
                 <div className="user-details">
                   <form onSubmit={handleSubmit(onSubmit)}>
@@ -113,20 +120,6 @@ const Login = () => {
                 <Link to="/register" className="logindetails__signuplink">
                   Don’t have an account? Click here to sign up
                 </Link>
-
-                {/* <div className="wrapper">
-                  <div className="badge">OR</div>
-                </div> */}
-
-                {/* <div className="social-login">
-                  <a href="#" class="fb btn-social">
-                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                  </a>
-
-                  <a href="#" class="google btn-social">
-                    <i class="fa fa-google fa-fw"></i> Login with Google+
-                  </a>
-                </div> */}
               </div>
             </div>
           </div>

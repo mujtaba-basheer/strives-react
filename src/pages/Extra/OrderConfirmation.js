@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import {  Link, useLocation } from "react-router-dom";
 
-import { useSelector, useDispatch } from "react-redux";
-import { getCart, removeItemFromCart } from "../../redux/actions/cartActions";
 
 import apiCall from "../../utils/apiCall";
 
@@ -10,7 +8,6 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 import Alert from "../../components/Alert/Alert";
-import Loader from "../../components/Loader/Loader";
 
 const OrderConfirmation = () => {
   return (
@@ -29,14 +26,10 @@ function OrderConfirmationArea() {
     total: 0,
     subtotal: 0,
   });
-  /* const { userInfo } = useSelector((state) => state.userLogin); */
-  /* const { cartItems, loading } = useSelector((state) => state.cart); */
 
   const [cartItems, setCartItems] = useState([]);
   const [orderid, setOrderid] = useState("");
   const [error, setError] = useState("");
-
-  const history = useHistory();
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -121,17 +114,6 @@ function OrderConfirmationArea() {
         />
       )}
 
-      {/* {loading && <Loader height={100} />} */}
-
-      {/* {!loading && (!cartItems || cartItems.length === 0) && (
-        <h1
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Cart is empty
-        </h1>
-      )} */}
       <div className="cartbox flex">
         {cartItems.length === 0 && (
           <div className="orderidbox">

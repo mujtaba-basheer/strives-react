@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import { nav_data } from "../NavbarData/data";
@@ -7,24 +7,6 @@ const Home = ({ closeSideMenu }) => {
   let history = useHistory();
 
   const [currentModal, setCurrentModal] = useState("");
-
-  /* useEffect(() => {
-    const accordianItemHeaders = document.querySelectorAll(
-      ".accordian-item-header"
-    );
-    accordianItemHeaders.forEach((accordianItemHeader) => {
-      accordianItemHeader.addEventListener("click", () => {
-        accordianItemHeaders.forEach((accordianItemHeader) => { 
-          if (accordianItemHeader.classList.contains("active")) {
-            accordianItemHeader.classList.toggle("active");
-            accordianItemHeader.classList.remove("active");
-          }
-        });
-        console.log("setting active");
-        accordianItemHeader.classList.toggle("active");
-      });
-    });
-  }); */
 
   const openModal = (e) => {
     if (e.target.classList[1] === "active") {

@@ -82,7 +82,6 @@ function RegisterArea() {
     console.log(userdata.phone);
     e.preventDefault();
     setOtpsuccess("");
-    console.log("uu");
     if (otp === "" || otp === "undefined") {
       setOtperror("OTP cannot be empty");
     } else {

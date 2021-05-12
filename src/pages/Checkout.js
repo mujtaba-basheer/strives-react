@@ -10,14 +10,12 @@ import {
   resetCoupon,
   placeOrder,
 } from "../redux/actions/orderActions";
-import { getCart } from "../redux/actions/cartActions";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Alert from "../components/Alert/Alert";
 
 import razorpayBanner from "../assets/images/checkout/razorpay.png";
-import image from "../assets/images/checkout/image.png";
 import coupon from "../assets/images/checkout/coupon.png";
 
 const Checkout = () => {
@@ -49,7 +47,7 @@ function CheckoutArea() {
   const history = useHistory();
   const [paymentType, setPaymentType] = useState("cod");
   const [sdkReady, setSdkReady] = useState(false);
-  const [shipmentType, setShipmentType] = useState("normal");
+  /* const [shipmentType, setShipmentType] = useState("normal"); */
   const [applyCouponDetails, setApplyCouponDetails] = useState({
     name: "",
     inputState: "",
@@ -60,7 +58,6 @@ function CheckoutArea() {
   const {
     coupon: couponData,
     error: couponError,
-    loading: couponLoading,
   } = useSelector((state) => state.orderCoupon);
 
   const { register, handleSubmit, errors } = useForm();
@@ -113,10 +110,8 @@ function CheckoutArea() {
         city: user.address[0].city,
         pincode: user.address[0].pincode,
         landmark: user.address[0].landmark,
-        state: user.address[0].state,
         phone: user.address[0].phone,
         type: user.address[0].type,
-        state: user.address.state,
       });
     } else {
       setFormData({
@@ -219,26 +214,10 @@ function CheckoutArea() {
     }
   };
 
-  const testRazorpay = () => {
-    dispatch(payOrder(100));
-    setImmediate(() => {
-      if (orderResult) alert("payment successfull");
-      else if (orderError) alert("payment failed");
-    });
-  };
 
   function showApplyCoupon() {
     document.querySelector(".couponbox-input").style.display = "none";
     document.querySelector(".applycoupon").style.display = "block";
-  }
-
-  function removeCoupon() {
-    setApplyCouponDetails({
-      ...applyCouponDetails,
-      inputState: "",
-      couponApplied: false,
-      text: "",
-    });
   }
 
   function applyCoupon() {

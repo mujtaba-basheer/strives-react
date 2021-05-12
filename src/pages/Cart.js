@@ -30,19 +30,10 @@ function CartArea() {
     total: 0,
     subtotal: 0,
   });
-  /* const { userInfo } = useSelector((state) => state.userLogin); */
   const { user, error } = useSelector((state) => state.userDetails);
   const { cartItems, loading } = useSelector((state) => state.cart);
 
   const history = useHistory();
-  /* const [paymentType, setPaymentType] = useState("cod");
-  const [sdkReady, setSdkReady] = useState(false);
-  const [shipmentType, setShipmentType] = useState("normal");
-  const [applyCouponDetails, setApplyCouponDetails] = useState({
-    name: "",
-    inputState: "",
-    couponApplied: false,
-  }); */
 
   useEffect(() => {
     document.title = "Cart";
@@ -64,28 +55,6 @@ function CartArea() {
     }
   }, [error, cartItems, dispatch]);
 
-  /* function showApplyCoupon() {
-    document.querySelector(".couponbox-input").style.display = "none";
-    document.querySelector(".applycoupon").style.display = "block";
-  }
-
-  function removeCoupon() {
-    setApplyCouponDetails({
-      ...applyCouponDetails,
-      inputState: "",
-      couponApplied: false,
-    });
-  }
-
-  function applyCoupon() {
-    console.log(applyCouponDetails.name);
-    setApplyCouponDetails({
-      ...applyCouponDetails,
-      inputState: "disabled",
-      couponApplied: true,
-    });
-  } */
-
   return (
     <section className="content cart">
       <div className="heading">
@@ -102,7 +71,6 @@ function CartArea() {
             textAlign: "center",
           }}
         >
-          {/* No Products has been added to the cart */}
           Cart is empty
         </h1>
       )}
@@ -164,10 +132,7 @@ function CartArea() {
                             />
                             Remove Item
                           </button>
-                          <button
-                            /* onClick={addToCart} */
-                            className="buttons__wishlist flex"
-                          >
+                          <button className="buttons__wishlist flex">
                             <img
                               style={{
                                 width: "14px",
@@ -200,29 +165,6 @@ function CartArea() {
                 <p className="ordersummary__heading">Order Summary</p>
 
                 <div className="ordersummary__items">
-                  {/* <ul className="ordersummary__items__list">
-                    <li className="ordersummary__items__list--item flex">
-                      <img
-                        className="ordersummary__items__list--item--image"
-                        src={image}
-                        alt="image"
-                      />
-                      <div className="ordersummary__items__list--item--productdetails flex">
-                        <div className="ordersummary__items__list--item--productdetails--name">
-                          <p className="ordersummary__items__list--item--productdetails--name--main">
-                            Collar T-shirt
-                          </p>
-                          <p className="ordersummary__items__list--item--productdetails--name--description">
-                            Gery <span>x2</span>{" "}
-                          </p>
-                        </div>
-                        <div className="ordersummary__items__list--item--productdetails--price">
-                          ₹900
-                        </div>
-                      </div>
-                    </li>
-                  </ul> */}
-
                   <div className="total">
                     <div className="total-gst flex">
                       <p className="total-gst--text">Total Price (Inc GST)</p>
@@ -256,7 +198,6 @@ function CartArea() {
                   className="ordersummarybox__footer--button"
                   onClick={(e) => {
                     e.preventDefault();
-                    /* testRazorpay(); */
                     history.push("/checkout");
                   }}
                 >
@@ -264,88 +205,6 @@ function CartArea() {
                 </button>
               </div>
             </div>
-
-            {/* <div className="couponbox">
-              <button
-                onClick={showApplyCoupon}
-                className="couponbox-input flex"
-                type="button"
-              >
-                <p>Have a coupon?</p>
-                <img
-                  src={coupon}
-                  style={{
-                    width: "15px",
-                    height: "15px",
-                    marginLeft: "10px",
-                  }}
-                  alt="coupon"
-                />
-              </button>
-
-              <div
-                className="applycoupon"
-                style={{
-                  display: "none",
-                }}
-              >
-                <div className="applycoupon__heading flex">
-                  <p className="applycoupon__heading--text">Have a coupon?</p>
-                  <img
-                    src={coupon}
-                    style={{
-                      width: "15px",
-                      height: "15px",
-                      marginLeft: "10px",
-                    }}
-                    alt="coupon"
-                  />
-                </div>
-
-                <div className="applycoupon__input">
-                  <input
-                    className="applycoupon__input--input"
-                    placeholder="Enter Coupon"
-                    type="text"
-                    disabled={applyCouponDetails.inputState}
-                    onChange={(e) =>
-                      setApplyCouponDetails({
-                        ...applyCouponDetails,
-                        name: e.target.value,
-                      })
-                    }
-                  />
-                  {applyCouponDetails.couponApplied ? (
-                    <button
-                      onClick={removeCoupon}
-                      type="button"
-                      className="applycoupon__input--button"
-                    >
-                      Remove coupon
-                    </button>
-                  ) : (
-                    <button
-                      onClick={applyCoupon}
-                      type="button"
-                      className="applycoupon__input--button"
-                    >
-                      Apply coupon
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div> */}
-            {/* <button
-              type="submit"
-              id="placeorder"
-              className="mobile__placeorder--button"
-              onClick={(e) => {
-                e.preventDefault();
-                testRazorpay();
-              }}
-            >
-              Place your order
-            </button> */}
           </div>
         )}
       </div>

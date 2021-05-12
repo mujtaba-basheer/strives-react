@@ -12,17 +12,8 @@ import cartwhite from "./icons/cart-white.svg";
 import heartwhite from "./icons/heart-white.svg";
 import userwhite from "./icons/user-white.svg";
 
-/* import { FaRegUserCircle } from "react-icons/fa";
-import { BsHeart, BsSearch } from "react-icons/bs";
-import { HiUserCircle } from "react-icons/hi";
-import { AiOutlineShoppingCart } from "react-icons/ai"; */
-
 import hamburger from "../../assets/images/navbar/hamburger.png";
 import closeicon from "../../assets/images/navbar/close.png";
-/* import searchicon from "../../assets/images/navbar/navbar-icons/search.png";
-import hearticon from "../../assets/images/navbar/navbar-icons/heart.png";
-import carticon from "../../assets/images/navbar/navbar-icons/cart.png";
-import usericon from "../../assets/images/navbar/navbar-icons/user.png"; */
 
 /* Sidebar Imports */
 import Home from "./Sidebar/Home";
@@ -32,9 +23,7 @@ import Account from "./Sidebar/Account";
 
 /* Navbar Hovermenu DIVS */
 import Shop from "./NavbarData/Shop";
-import Brand from "./NavbarData/Brand";
 
-import { nav_data } from "./NavbarData/data";
 import NavbarLink1 from "./NavbarData/NavbarLink1";
 import NavbarLink3 from "./NavbarData/NavbarLink3";
 import NavbarLink4 from "./NavbarData/NavbarLink4";

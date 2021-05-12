@@ -46,14 +46,12 @@ const Alert = ({ type, text, background, timer, popup }) => {
         break;
     }
 
-    console.log(timer);
-
     if (timer > 0) {
       setTimeout(() => {
         setIsClose("close");
       }, timer);
     }
-  }, [type, background]);
+  }, [type, background, timer]);
 
   if (popup) {
     return (

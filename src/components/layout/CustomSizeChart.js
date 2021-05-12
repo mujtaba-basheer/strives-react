@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 
+import React, { useEffect, useState } from "react";
 import { sizeInfo } from "./customsizemodaldata";
 
 const CustomSizeChart = ({
@@ -32,8 +32,6 @@ const CustomSizeChart = ({
       document.getElementsByTagName("body")[0].style.overflow = "hidden";
     }
 
-    /* console.log(productCustomSizeInfo); */
-    /* const sizes = ["garara", "blouse"]; */
     const set = new Set();
 
     for (let size of productCustomSizeInfo) {
@@ -43,7 +41,6 @@ const CustomSizeChart = ({
     }
 
     const fields_arr = Array.from(set);
-    /* console.log(fields_arr); */
     setSizeChartInputs(fields_arr);
 
     return () => {
@@ -52,7 +49,6 @@ const CustomSizeChart = ({
   }, []);
 
   function setValue(e) {
-    /* console.log(e.target.value); */
     setSizeChartValues({
       ...sizeChartValues,
       [e.target.name]: Number(e.target.value),
@@ -61,7 +57,6 @@ const CustomSizeChart = ({
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log(sizeChartValues);
     onCustomFormSubmit(sizeChartValues);
     hideCustomSizeChart();
   }
@@ -100,12 +95,6 @@ const CustomSizeChart = ({
             </div>
             <input type="submit" className="submit" value="Submit" />
           </form>
-
-          {/* <p className="disclaimer">
-            Disclaimer: Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry. Lorem Ipsum has been the industry's standard
-            dummy text ever since the 1500s
-          </p> */}
         </div>
       </div>
     </div>

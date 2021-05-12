@@ -1,8 +1,6 @@
 import React from "react";
-import { policies, social, contact, myaccount, followuson } from "./data";
+import {  social, contact, myaccount, followuson } from "./data";
 
-import logo from "../../assets/images/footer/logo.png";
-import logo_big from "../../assets/images/footer/logo_big.png";
 import usp from "../Homepage/images/usp.png";
 import { Link } from "react-router-dom";
 

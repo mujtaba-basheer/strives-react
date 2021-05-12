@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Rating from "../util/Rating";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -35,34 +34,14 @@ import "swiper/components/scrollbar/scrollbar.scss";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const BestSeller = () => {
-  const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState("false");
 
   const dispatch = useDispatch();
 
   const { favItems } = useSelector((state) => state.fav);
-  const { error: favAddError, success: favAddSuccess } = useSelector(
-    (state) => state.favAdd
-  );
-  const { error: favRemoveError, success: favRemoveSuccess } = useSelector(
-    (state) => state.favRemove
-  );
 
   const [productdetails, setProductdetails] = useState({});
 
-  const slide = (type) => {
-    switch (type) {
-      case "next":
-        setCurrent((current + 1) % 8);
-        break;
-      case "prev":
-        if (current === 0) setCurrent(7);
-        else setCurrent((current - 1) % 8);
-        break;
-      default:
-        break;
-    }
-  };
 
   function addToWishlist(product) {
     dispatch(addItemToFav(product));
