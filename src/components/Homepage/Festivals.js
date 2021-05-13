@@ -13,10 +13,12 @@ const Festivals = () => {
           <div className="occassion__grid--container">
             <Link to={festivals.url}>
               <div className="image">
-                <img src={festivals.img} alt={festivals.text} />
+                <img loading="lazy" src={festivals.img} alt={festivals.text} />
               </div>
             </Link>
-            <Link to={festivals.url} className="text">{festivals.text}</Link>
+            <Link to={festivals.url} className="text">
+              {festivals.text}
+            </Link>
           </div>
         ))}
       </div>

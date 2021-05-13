@@ -35,7 +35,7 @@ const Showcase = () => {
                 <picture>
                   <source srcset={show.img} media="(min-width: 768px)" />
                   <source srcset={show.small} />
-                  <img src={show.small} alt="showcase" />
+                  <img src={show.small} loading="eager" alt="showcase" />
                 </picture>
               </Link>
             </div>

@@ -20,25 +20,13 @@ const LatestCollection = () => {
                   <picture className="latest-collection__container__picture">
                     <source srcset={img.small} media="(min-width: 1170px)" />
                     <source srcset={img.small} />
-                    {/* <img
-                      className="latest-collection__container__picture--img"
-                      alt={img.alt}
-                      src={img.small}
-                    /> */}
                     <img
                       className="latest-collection__container__picture--img"
                       alt={img.alt}
                       src={img.main}
+                      loading="lazy"
                     />
                   </picture>
-                  {/* <div className="latest-collection__container__text">
-                    <div className="latest-collection__container__text--heading">
-                      {title.toUpperCase()}
-                    </div>
-                    <div className="latest-collection__container__text--text">
-                {subtitle}
-              </div>
-                  </div> */}
                 </div>
               </Link>
             )
@@ -58,16 +46,9 @@ const LatestCollection = () => {
                       className="latest-collection__container__picture--img"
                       alt={img.alt}
                       src={img.small}
+                      loading="lazy"
                     />
                   </picture>
-                  {/* <div className="latest-collection__container__text">
-                    <div className="latest-collection__container__text--heading">
-                      {title.toUpperCase()}
-                    </div>
-                    <div className="latest-collection__container__text--text">
-                    {subtitle}
-                  </div>
-                  </div> */}
                 </div>
               </Link>
             )
@@ -76,7 +57,7 @@ const LatestCollection = () => {
 
       <div className="latest-collection__button-area flex">
         <button
-          onClick={(e) => history.push("/collections")}
+          onClick={() => history.push("/collections")}
           className="latest-collection__btn"
         >
           explore all our products

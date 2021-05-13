@@ -108,6 +108,7 @@ const Themes = () => {
                           ? heartfillsvg
                           : heart
                       }
+                      loading="lazy"
                       alt="heart"
                     />
                   </p>
@@ -129,6 +130,7 @@ const Themes = () => {
                         }}
                         src={product.gallery.main[0].src}
                         alt={product.name}
+                        loading="lazy"
                       />
                     </Link>
                     <div
@@ -193,6 +195,7 @@ const Themes = () => {
                         width: "20px",
                         height: "20px",
                       }}
+                      loading="lazy"
                       src={
                         favItems &&
                         favItems.find(
@@ -222,6 +225,7 @@ const Themes = () => {
                         }}
                         src={product.gallery.main[0].src}
                         alt={product.name}
+                        loading="lazy"
                       />
                     </Link>
                     <div
