@@ -42,13 +42,14 @@ const MyAccount = () => {
     error: updateError,
     success: updateSuccess,
   } = useSelector((state) => state.userUpdateProfile);
-  const { loading: loadingLogin, error: errorLogin, userInfo } = useSelector(
-    (state) => state.userLogin
-  );
+  const {
+    loading: loadingLogin,
+    error: errorLogin,
+    userInfo,
+  } = useSelector((state) => state.userLogin);
 
   useEffect(() => {
-    if (!userInfo) history.push("/login");
-
+    /* if (!userInfo) history.push("/login"); */
     if (user) {
       window.scrollTo({ top: 0, behavior: "smooth" });
       let spIndex = user.name.indexOf(" ");
