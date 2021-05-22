@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import { useSelector } from "react-redux";
+import FallbackLoading from "./components/layout/FallbackLoading";
 const Home = lazy(() => import("./pages/Home"));
 /* Login */
 const Login = lazy(() => import("./pages/Login"));
@@ -47,7 +48,7 @@ const ProtectedRoute = ({ ...props }) => {
 const Routes = () => {
   return (
     <Router>
-      <Suspense fallback={<div>Page is Loading...</div>}>
+      <Suspense fallback={<FallbackLoading />}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
