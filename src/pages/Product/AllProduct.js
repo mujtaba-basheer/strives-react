@@ -73,7 +73,9 @@ function AllProductArea() {
 
   const [productslidervalue, setProductslidervalue] = useState([]);
   const { loading, products, error } = useSelector((state) => state.productGet);
-  const { pages: maxPages } = useSelector((state) => state.productPages);
+  const { products: productsNum, pages: pagesNum } = useSelector(
+    (state) => state.productPages
+  );
   const { favItems } = useSelector((state) => state.fav);
   const { error: favAddError, success: favAddSuccess } = useSelector(
     (state) => state.favAdd
@@ -167,8 +169,8 @@ function AllProductArea() {
         setCurrentPage(currentPageValue);
       }
     } else if (value === "next") {
-      if (currentPage === maxPages) {
-        setCurrentPage(maxPages);
+      if (currentPage === pagesNum) {
+        setCurrentPage(pagesNum);
       } else {
         currentPageValue = currentPageValue + 1;
         setCurrentPage(currentPageValue);
@@ -187,7 +189,7 @@ function AllProductArea() {
       size: filter["size"],
       page: currentPage,
     };
-    console.log(queryString);
+
     dispatch(getProducts(queryObj));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [
@@ -422,6 +424,7 @@ function AllProductArea() {
                           height: "100%",
                           width: "100%",
                         }}
+                        loading="lazy"
                         src={product.gallery.main[0].src}
                         alt={product.name}
                       />
@@ -481,11 +484,11 @@ function AllProductArea() {
               </button>
               <button
                 className={
-                  currentPage === maxPages
+                  currentPage === pagesNum
                     ? "navigation__button next disabled"
                     : "navigation__button next"
                 }
-                disabled={currentPage === maxPages}
+                disabled={currentPage === pagesNum}
                 onClick={() => {
                   changeNavigation("next");
                 }}
